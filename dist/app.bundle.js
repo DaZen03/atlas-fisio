@@ -38896,9 +38896,13 @@ void main() {
     renderLoadFocus();
     updateReadout();
   }
+  function smootherStep(t) {
+    t = MathUtils.clamp(t, 0, 1);
+    return t * t * t * (t * (t * 6 - 15) + 10);
+  }
   function guidedFraction(m = movements[activeMovement]) {
     const t = MathUtils.clamp(progress / 100, 0, 1);
-    return m.base ? t : t * t * (3 - 2 * t);
+    return m.base ? t : smootherStep(t);
   }
   function renderLoadFocus() {
     $("load-focus").hidden = false;
@@ -39277,6 +39281,7 @@ void main() {
   }
   document.querySelectorAll(".layer input").forEach((input) => input.addEventListener("change", () => updateLayers()));
   $("explode-slider").addEventListener("input", () => updateLayers());
+  $("muscle-depth").addEventListener("change", updateLayers);
   $("fullscreen-explode-slider").addEventListener("input", (event) => {
     $("explode-slider").value = event.target.value;
     updateLayers();
@@ -39797,7 +39802,7 @@ void main() {
       const previous = keyPhases ? [...keyPhases].reverse().find((phase) => phase.at <= value) || { at: 0, pose: { [key]: [0, 0, 0] } } : null;
       const next = keyPhases ? keyPhases.find((phase) => phase.at >= value) || previous : null;
       const phaseT = keyPhases && next.at > previous.at ? MathUtils.clamp((value - previous.at) / (next.at - previous.at), 0, 1) : 0;
-      const phaseEase = phaseT * phaseT * (3 - 2 * phaseT);
+      const phaseEase = smootherStep(phaseT);
       const initial = phases ? previous.pose[key] : m.from?.[key] || [0, 0, 0], final = phases ? next.pose[key] : m.pose?.[key] || [0, 0, 0];
       const v = initial.map((n, i) => n + (final[i] - n) * (phases ? phaseEase : ease));
       if (key === "rootPosition") {
@@ -39985,9 +39990,17 @@ void main() {
     const selected = /* @__PURE__ */ new Set([activeStructure, ...relatedMeshes[activeStructure] || []]);
     const structure = structures.find((item) => item.id === activeStructure);
     const selectedIsMuscle = structure?.type.startsWith("M\xDASC");
+    const depthStage = $("muscle-depth")?.value || "all";
+    const muscleDepth = (name) => {
+      const n = (name || "").toLowerCase();
+      if (/deep|profund|interosse|lumbrical|rotator|multifid|transvers|quadratus|pterygoid|subscapular|infraspinat|supraspinat/.test(n)) return "deep";
+      if (/middle|intermed|medial|longissimus|iliocostalis|serratus posterior|flexor|extensor|adductor|vastus intermed/.test(n)) return "intermediate";
+      return "superficial";
+    };
     bodyRoot.traverse((obj) => {
       if (!obj.isMesh || !obj.userData.layer) return;
       let show = visible[obj.userData.layer] && !(anatomicalModelLoaded && obj.userData.procedural && (obj.userData.layer === "bones" || obj.userData.layer === "muscles"));
+      if (obj.userData.layer === "muscles" && depthStage !== "all") show = show && muscleDepth(obj.userData.anatomicalName) === depthStage;
       if (isolateSelected && obj.userData.layer === "muscles") {
         show = show && selectedIsMuscle && selected.has(obj.userData.structure);
         const name = obj.userData.anatomicalName || "";

@@ -58,6 +58,9 @@
         </div>
         <div class="control-divider"></div>
         <h3>Explorar capas</h3>
+        <label class="explore-label" for="muscle-depth">Etapa anatómica</label>
+        <select id="muscle-depth" class="catalog-select" aria-label="Mostrar capas musculares por profundidad"><option value="all">Todas las capas</option><option value="superficial">Superficiales</option><option value="intermediate">Intermedias</option><option value="deep">Profundas</option></select>
+        <p class="small-note">Guía visual aproximada por grupos; no equivale a una disección anatómica.</p>
         <label class="explore-label" for="explode-slider">Separar músculos <strong id="explode-value">0%</strong></label>
         <input id="explode-slider" type="range" min="0" max="150" value="0" aria-label="Separación visual de músculos">
         <label class="explore-label" for="separation-plane">Dirección de separación</label>
@@ -152,7 +155,8 @@
     <section class="format-section" id="formatos">
       <div class="section-heading"><div><span class="section-num">FORMATO Y FIDELIDAD</span><h2>Mallas reales.<br><em>Movimiento explicado.</em></h2></div><p>Las piezas visibles proceden de un conjunto anatómico con identificación por estructura. El archivo GLB conserva las mallas en un formato portátil; el movimiento didáctico se controla desde el visor.</p></div>
       <div class="format-grid">
-        <article><span>01 / MODELO ACTUAL</span><h3>GLB anatómico</h3><p>600 mallas reducidas de BodyParts3D: 206 piezas óseas y 394 musculares. Sus nombres permiten seleccionar y resaltar estructuras o piezas individuales. Los grupos móviles se articulan alrededor de pivotes aproximados.</p><a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html" target="_blank" rel="noopener noreferrer">Especificación glTF ↗</a></article>
+        <article><span>01 / MODELO ACTUAL</span><h3>GLB anatómico</h3><p>600 mallas reducidas de BodyParts3D: 206 piezas óseas y 394 musculares. Sus nombres permiten seleccionar y resaltar estructuras o piezas individuales. Los grupos móviles se articulan alrededor de pivotes aproximados. glTF es un estándar de intercambio 3D; no certifica la anatomía ni el uso clínico.</p><a href="https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html" target="_blank" rel="noopener noreferrer">Especificación glTF ↗</a></article>
+        <article><span>02 / REFERENCIAS DE MOVIMIENTO</span><h3>Análisis abierto</h3><p>OpenSim, OpenCap y Sports2D publican software y métodos de investigación. Sus repositorios no acreditan este atlas ni sus animaciones. Aquí las animaciones siguen siendo esquemas didácticos y no resultados medidos/certificados.</p><a href="https://github.com/opensim-org/opensim-core" target="_blank" rel="noopener noreferrer">OpenSim ↗</a> · <a href="https://github.com/stanfordnmbl/opencap-processing" target="_blank" rel="noopener noreferrer">OpenCap ↗</a> · <a href="https://github.com/davidpagnon/Sports2D" target="_blank" rel="noopener noreferrer">Sports2D ↗</a></article>
         <article><span>02 / ENTREGA SIN CONEXIÓN</span><h3>HTML autónomo o ZIP</h3><p>El HTML incorpora el GLB para abrirlo directamente. El ZIP guarda el GLB como archivo separado y sirve para un sitio estático. Ambos conservan las fichas y controles sin contratar alojamiento.</p></article>
         <article><span>03 / CRÉDITOS Y LÍMITE</span><h3>BodyParts3D</h3><p>“BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International”. Se usan mallas con reducción de polígonos del 99 %; no son un modelo clínico animado.</p><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" target="_blank" rel="noopener noreferrer">Datos originales ↗</a> · <a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" target="_blank" rel="noopener noreferrer">Licencia ↗</a></article>
       </div>
