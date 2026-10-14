@@ -1,0 +1,479 @@
+FMA3802	trunk of right coronary artery	1	FJ2723
+FMA3807	right conus artery	2	FJ2670,FJ2676
+FMA3813	anterior ventricular branch of right coronary artery	8	FJ2667,FJ2668,FJ2671
+FMA3815	first anterior ventricular branch of right coronary artery	3	FJ2671,FJ2673,FJ2677
+FMA3818	marginal branch of right coronary artery	5	FJ2667,FJ2668,FJ2672
+FMA3835	posterior ventricular branch of right coronary artery	9	FJ2714,FJ2715,FJ2716
+FMA3837	first posterior ventricular branch of right coronary artery	9	FJ2714,FJ2715,FJ2716
+FMA3840	posterior interventricular branch of right coronary artery	9	FJ2692,FJ2693,FJ2694
+FMA3845	septal branch of right posterior interventricular artery	2	FJ2735,FJ2736
+FMA3847	first septal branch of right posterior interventricular artery	1	FJ2735
+FMA3848	second septal branch of right posterior interventricular artery	1	FJ2736
+FMA3870	right anterior branch of anterior interventricular branch of left coronary artery	5	FJ2632,FJ2641,FJ2645
+FMA3872	first right anterior branch of anterior interventricular branch of left coronary artery	2	FJ2632,FJ2645
+FMA3874	second right anterior branch of anterior interventricular branch of left coronary artery	1	FJ2646
+FMA3876	third right anterior branch of anterior interventricular branch of left coronary artery	2	FJ2641,FJ2647
+FMA3941	right common carotid artery	1	FJ3564
+FMA3949	right internal carotid artery	1	FJ1682
+FMA3953	right subclavian artery	1	FJ3579
+FMA3958	right vertebral artery	1	FJ1725
+FMA3969	right internal thoracic artery	1	FJ1937
+FMA3988	right superior epigastric artery	1	FJ1936
+FMA3992	right thyrocervical trunk	1	FJ2307
+FMA4057	right dorsal scapular artery	1	FJ2284
+FMA4634	right subcostal artery	1	FJ1967
+FMA4716	right marginal vein	3	FJ2727,FJ2728,FJ2729
+FMA4751	right brachiocephalic vein	1	FJ3583
+FMA4754	right internal jugular vein	1	FJ3585
+FMA4755	right subclavian vein	1	FJ3587
+FMA4758	right internal thoracic vein	1	FJ1993
+FMA4771	right superior epigastric vein	1	FJ3615
+FMA4772	right musculophrenic vein	1	FJ1996
+FMA4843	right ascending lumbar vein	1	FJ3589
+FMA4844	right subcostal vein	1	FJ1995
+FMA4877	right superior intercostal vein	1	FJ1991
+FMA5039	right costocervical trunk	1	FJ2276
+FMA5041	right second posterior intercostal artery	1	FJ1950
+FMA5042	right superior intercostal artery	1	FJ1935
+FMA7204	right kidney	1	FJ3147
+FMA7211	right testis	1	FJ3142
+FMA7249	right anterior cusp of pulmonary valve	1	FJ2434
+FMA7252	right posterior cusp of aortic valve	1	FJ2431
+FMA7260	anterior papillary muscle of right ventricle	1	FJ2419
+FMA7261	posterior papillary muscle of right ventricle	1	FJ2430
+FMA7262	septal papillary muscle of right ventricle	1	FJ2437
+FMA7875	right first costal cartilage	1	FJ3333
+FMA7886	right second costal cartilage	1	FJ3335
+FMA7913	right third costal cartilage	1	FJ3337
+FMA7976	right fourth costal cartilage	1	FJ3339
+FMA8070	right fifth costal cartilage	1	FJ3341
+FMA8194	right sixth costal cartilage	1	FJ3343
+FMA8248	right seventh costal cartilage	1	FJ3345
+FMA8620	right anterior segmental artery	2	FJ2041,FJ2044
+FMA8662	right anterior segmental vein	2	FJ3028,FJ3029
+FMA8663	right posterior segmental vein	7	FJ3022,FJ3023,FJ3024
+FMA8670	right superior segmental vein	6	FJ3050,FJ3051,FJ3052
+FMA8673	right anterior basal segmental vein	2	FJ3049,FJ3056
+FMA8681	apical part of right apical segmental vein	3	FJ3064,FJ3067,FJ3068
+FMA9291	cavity of right ventricle	1	FJ2423
+FMA9422	right medial basal segmental vein	2	FJ3054,FJ3055
+FMA9425	right lateral basal segmental vein	4	FJ3059,FJ3060,FJ3061
+FMA9428	right posterior basal segmental vein	9	FJ3041,FJ3043,FJ3044
+FMA9457	wall of right atrium	1	FJ2439
+FMA9761	right transversus thoracis	1	FJ1461
+FMA10660	right deep cervical artery	1	FJ2278
+FMA10692	right musculophrenic artery	1	FJ1969
+FMA10697	right inferior thyroid artery	1	FJ2209
+FMA10698	right suprascapular artery	1	FJ2303
+FMA10699	right transverse cervical artery	1	FJ2309
+FMA10700	right superficial cervical artery	1	FJ2308
+FMA11359	cavity of right atrium	1	FJ2424
+FMA13325	right cephalic vein	1	FJ2272
+FMA13330	right axillary vein	1	FJ2269
+FMA13912	ventricular branch of right coronary artery	17	FJ2667,FJ2668,FJ2671
+FMA14335	right renal vein	2	FJ3577,FJ3578
+FMA14338	right hepatic vein	1	FJ2416
+FMA14341	right testicular vein	1	FJ3618
+FMA14343	right suprarenal vein	1	FJ3580
+FMA14669	right hepatic duct	1	FJ3123
+FMA14746	right inferior phrenic artery	8	FJ3619,FJ3620,FJ3621
+FMA14752	right renal artery	1	FJ2038
+FMA14755	right middle suprarenal artery	1	FJ3586
+FMA14759	right testicular artery	1	FJ3617
+FMA14765	right common iliac artery	1	FJ3565
+FMA14776	right gastric artery	1	FJ3594
+FMA14781	right gastro-epiploic artery	1	FJ3596
+FMA14811	right colic artery	1	FJ3590
+FMA15397	right gastroepiploic vein	1	FJ3597
+FMA15400	right gastric vein	1	FJ3595
+FMA15407	right colic vein	1	FJ3591
+FMA15414	right portal vein	2	FJ1913,FJ2405
+FMA15420	anterior superior segmental branch of right portal vein	1	FJ3073
+FMA15421	anterior inferior segmental branch of right portal vein	1	FJ3074
+FMA15423	posterior superior segmental branch of right portal vein	2	FJ3112,FJ3113
+FMA15424	posterior inferior segmental branch of right portal vein	1	FJ3111
+FMA15571	right ureter	1	FJ3146
+FMA15629	right adrenal gland	1	FJ3130
+FMA15755	region of anterior sector of right liver (in-vivo)	3	FJ2821,FJ2823,FJ2824
+FMA15756	region of posterior sector of right liver (in-vivo)	2	FJ2409,FJ2822
+FMA15791	tributary of right hepatic vein	4	FJ3118,FJ3119,FJ3120
+FMA15796	posterior superior segmental tributary of right hepatic vein	1	FJ3119
+FMA15797	posterior inferior segmental tributary of right hepatic vein	2	FJ3118,FJ3120
+FMA15798	anterior superior segmental tributary of right hepatic vein	1	FJ3121
+FMA18256	right epididymis	1	FJ3141
+FMA18806	right external iliac artery	1	FJ3567
+FMA18809	right internal iliac artery	1	FJ3569
+FMA18885	right external iliac vein	1	FJ3568
+FMA18887	right internal iliac vein	6	FJ3570,FJ3571,FJ3572
+FMA18903	right iliolumbar vein	1	FJ3603
+FMA18906	right lateral sacral vein	1	FJ3611
+FMA18909	right superior gluteal vein	1	FJ3616
+FMA18912	right inferior gluteal vein	1	FJ3606
+FMA18915	right obturator vein	1	FJ3612
+FMA18918	right internal pudendal vein	1	FJ3610
+FMA19235	right deferent duct	1	FJ3140
+FMA19387	right seminal vesicle	1	FJ3143
+FMA20688	right inferior epigastric artery	1	FJ3604
+FMA20735	right superficial epigastric artery	1	FJ3614
+FMA20801	right lateral circumflex femoral artery	1	FJ2158
+FMA20818	right dorsal artery of penis	2	FJ3592,FJ3593
+FMA21163	right inferior epigastric vein	1	FJ3605
+FMA21188	right femoral vein	1	FJ2144
+FMA21379	right great saphenous vein	1	FJ2145
+FMA21385	right superficial dorsal vein of penis	1	FJ3637
+FMA21387	right common iliac vein	1	FJ3566
+FMA21422	descending branch of right lateral circumflex femoral artery	1	FJ2057
+FMA22507	right descending genicular artery	1	FJ2137
+FMA22562	right middle genicular artery	1	FJ2167
+FMA22586	right medial superior genicular artery	1	FJ2166
+FMA22588	right lateral superior genicular artery	1	FJ2162
+FMA22655	right axillary artery	1	FJ2268
+FMA22675	right lateral thoracic artery	1	FJ1938
+FMA22678	right subscapular artery	1	FJ2298
+FMA22682	right anterior circumflex humeral artery	1	FJ2264
+FMA22685	right posterior circumflex humeral artery	2	FJ2291,FJ2292
+FMA22691	right brachial artery	1	FJ2271
+FMA22696	right deep brachial artery	1	FJ2277
+FMA22707	right superior ulnar collateral artery	1	FJ2373
+FMA22712	right inferior ulnar collateral artery	1	FJ2267
+FMA22733	right radial artery	1	FJ2294
+FMA22764	right radial recurrent artery	1	FJ2295
+FMA22772	dorsal carpal branch of right radial artery	1	FJ2283
+FMA22777	right arteria radialis indicis	2	FJ2342,FJ2363
+FMA22779	right spinalis thoracis	1	FJ1544
+FMA22797	right ulnar artery	1	FJ2310
+FMA22801	right anterior ulnar recurrent artery	1	FJ2311
+FMA22804	right posterior ulnar recurrent artery	1	FJ2293
+FMA22807	right common interosseous artery	1	FJ2275
+FMA22812	right anterior interosseous artery	1	FJ2266
+FMA22821	right dorsal carpal branch of ulnar artery	1	FJ2288
+FMA22835	right superficial palmar arterial arch	1	FJ2300
+FMA22839	right deep palmar arch	1	FJ2279
+FMA22856	right first common palmar digital artery	1	FJ2343
+FMA22858	lateral proper palmar digital artery of right middle finger	1	FJ2365
+FMA22864	right palmar metacarpal artery	1	FJ2289
+FMA22890	right interspinalis thoracis	1	FJ1551
+FMA22905	right arteria princeps pollicis	2	FJ2371,FJ2372
+FMA22909	right basilic vein	1	FJ2270
+FMA22912	right deep palmar venous arch	1	FJ2281
+FMA22915	right superficial palmar venous arch	1	FJ2301
+FMA22920	right palmar metacarpal vein	3	FJ2290,FJ2350,FJ2353
+FMA22935	right medial brachial vein	1	FJ2341
+FMA22948	right radial vein	1	FJ2296
+FMA22951	right ulnar vein	1	FJ2312
+FMA22964	right median cubital vein	1	FJ2287
+FMA22968	right median antebrachial vein	1	FJ2286
+FMA23050	medial proper palmar digital artery of right index finger	1	FJ2364
+FMA23052	medial proper palmar digital artery of right ring finger	1	FJ2369
+FMA23054	lateral proper palmar digital artery of right little finger	1	FJ2368
+FMA23063	pectoral branch of right thoraco-acromial artery	1	FJ2361
+FMA23068	acromial branch of right thoraco-acromial artery	1	FJ2263
+FMA23072	deltoid branch of right thoraco-acromial artery	1	FJ2282
+FMA23089	right lumbar rotator	1	FJ1522
+FMA23114	right subscapular vein	1	FJ2299
+FMA23124	middle collateral branch of right deep brachial artery	1	FJ2362
+FMA23126	radial collateral branch of right deep brachial artery	1	FJ2262
+FMA23180	right circumflex scapular artery	1	FJ2273
+FMA23707	interosseous membrane of right forearm	1	FJ1476
+FMA24500	navicular bone of right foot	1	FJ3308
+FMA32530	right rectus capitis posterior major	1	FJ1589
+FMA32532	right rectus capitis posterior minor	1	FJ1590
+FMA32534	right obliquus capitis superior	1	FJ1585
+FMA32536	right obliquus capitis inferior	1	FJ1584
+FMA35192	interosseous membrane of right leg	1	FJ1392
+FMA40120	flexor retinaculum of right wrist	1	FJ1471
+FMA43890	right inferior medial genicular artery	1	FJ2152
+FMA43892	right inferior lateral genicular artery	1	FJ2150
+FMA43896	right anterior tibial artery	1	FJ2130
+FMA43898	right posterior tibial artery	1	FJ2172
+FMA43907	right anterior tibial recurrent artery	1	FJ2131
+FMA43916	right dorsalis pedis artery	1	FJ2055
+FMA43929	right medial plantar artery	1	FJ2164
+FMA43931	right lateral plantar artery	1	FJ2159
+FMA43937	right superficial medial plantar artery	1	FJ2179
+FMA43943	right plantar arch	1	FJ2169
+FMA44249	right long plantar ligament	1	FJ1424
+FMA44328	right popliteal vein	1	FJ2171
+FMA44334	right small saphenous vein	1	FJ2176
+FMA44336	right anterior tibial vein	2	FJ2132,FJ2193
+FMA44338	right posterior tibial vein	1	FJ2173
+FMA44340	right superficial epigastric vein	1	FJ2178
+FMA44881	dorsal venous arch of right foot	2	FJ2061,FJ2062
+FMA44883	plantar venous arch of right foot	1	FJ2129
+FMA44885	right fibular vein	3	FJ2190,FJ2194,FJ2200
+FMA44887	right genicular vein	4	FJ2151,FJ2153,FJ2181
+FMA44918	right medial circumflex femoral vein	1	FJ2202
+FMA44920	right lateral circumflex femoral vein	1	FJ2201
+FMA45097	sesamoid bone of right foot	2	FJ3372,FJ3376
+FMA45826	right stylohyoid	1	FJ1598
+FMA45854	right pubococcygeus	1	FJ2550
+FMA45856	right puborectalis	1	FJ2551
+FMA45858	right iliococcygeus	1	FJ2549
+FMA46292	right digastric	2	FJ1556,FJ1579
+FMA46309	right longus capitis	1	FJ1582
+FMA46313	right rectus capitis anterior	1	FJ1588
+FMA46317	right rectus capitis lateralis	1	FJ1591
+FMA46321	right mylohyoid	1	FJ1583
+FMA46326	right geniohyoid	1	FJ1580
+FMA46443	right coccygeus	1	FJ2547
+FMA46577	right posterior crico-arytenoid	1	FJ2800
+FMA46580	right lateral crico-arytenoid	1	FJ2796
+FMA46584	right oblique arytenoid	1	FJ2798
+FMA46589	right thyro-arytenoid	2	FJ2802,FJ2803
+FMA46592	right vocalis	1	FJ2806
+FMA46604	right aryepiglotticus	1	FJ2791
+FMA46611	straight part of right cricothyroid	1	FJ2801
+FMA46613	oblique part of right cricothyroid	1	FJ2799
+FMA46631	right superior pharyngeal constrictor	1	FJ2759
+FMA46633	right middle pharyngeal constrictor	1	FJ2742
+FMA46635	right inferior pharyngeal constrictor	1	FJ2752
+FMA46667	right stylopharyngeus	1	FJ2758
+FMA46669	right salpingopharyngeus	1	FJ2757
+FMA46671	right palatopharyngeus	1	FJ2755
+FMA46698	right genioglossus	1	FJ2750
+FMA46703	right hyoglossus	1	FJ2751
+FMA46728	right levator veli palatini	1	FJ2753
+FMA46731	right tensor veli palatini	1	FJ2760
+FMA49044	right superior rectus	1	FJ1374
+FMA49046	right inferior rectus	1	FJ1346
+FMA49048	right levator palpebrae superioris	1	FJ1357
+FMA49050	right inferior oblique	1	FJ1345
+FMA49052	right superior oblique	1	FJ1373
+FMA49054	right lateral rectus	1	FJ1355
+FMA49056	right medial rectus	1	FJ1359
+FMA49067	trochlea of right superior oblique	1	FJ1380
+FMA49072	right common tendinous ring	1	FJ1342
+FMA49144	check ligament of right lateral rectus	1	FJ1334
+FMA49147	check ligament of right medial rectus	1	FJ1335
+FMA49869	right ophthalmic artery	1	FJ1695
+FMA49911	right inferior pulmonary vein	1	FJ3040
+FMA49914	right superior pulmonary vein	1	FJ3020
+FMA50029	right anterior cerebral artery	1	FJ1654
+FMA50085	right posterior communicating artery	1	FJ1713
+FMA50088	right anterior choroidal artery	1	FJ1658
+FMA50146	branch of right anterior choroidal artery to posterior limb of right internal capsule	1	FJ1674
+FMA50343	right medial frontobasal artery	1	FJ1690
+FMA50347	right callosomarginal artery	1	FJ1676
+FMA50351	intermediomedial branch of right callosomarginal artery	1	FJ1681
+FMA50353	posteromedial branch of right callosomarginal artery	1	FJ1722
+FMA50357	paracentral branch of right callosomarginal artery	3	FJ1696,FJ1697,FJ1698
+FMA50359	right pericallosal artery	1	FJ1699
+FMA50361	precuneal branch of right pericallosal artery	1	FJ1671
+FMA50366	sphenoid part of right middle cerebral artery	1	FJ1692
+FMA50369	insular part of right middle cerebral artery	2	FJ1660,FJ1694
+FMA50377	anterolateral central branch of right middle cerebral artery	2	FJ1662,FJ1663
+FMA50380	right polar temporal artery	1	FJ1712
+FMA50383	right anterior temporal artery	1	FJ1659
+FMA50428	hypothalamic branch of right posterior communicating artery	1	FJ1679
+FMA50443	right lateral frontobasal artery	2	FJ1685,FJ1686
+FMA50445	right prefrontal artery	1	FJ1724
+FMA50467	middle temporal branch of right middle cerebral artery	1	FJ1693
+FMA50470	posterior temporal branch of right middle cerebral artery	1	FJ1717
+FMA50473	temporo-occipital branch of right middle cerebral artery	1	FJ1729
+FMA50476	branch of right middle cerebral artery to right angular gyrus	1	FJ1673
+FMA50480	artery of right precentral sulcus	3	FJ1668,FJ1669,FJ1670
+FMA50483	artery of right postcentral sulcus	1	FJ1666
+FMA50486	right anterior parietal artery	1	FJ1667
+FMA50489	right posterior parietal artery	1	FJ1716
+FMA50519	right posterior inferior cerebellar artery	13	FJ1700,FJ1701,FJ1702
+FMA50532	right anterior spinal artery	1	FJ1657
+FMA50566	medial branch of right pontine artery	1	FJ1689
+FMA50568	lateral branch of right pontine artery	1	FJ1684
+FMA50574	right superior cerebellar artery	1	FJ1726
+FMA50578	lateral branch of right superior cerebellar artery	1	FJ1683
+FMA50581	medial branch of right superior cerebellar artery	1	FJ1688
+FMA50639	precommunicating part of right posterior cerebral artery	1	FJ1723
+FMA50641	postcommunicating part of right posterior cerebral artery	1	FJ1714
+FMA50643	right lateral occipital artery	1	FJ1687
+FMA50645	right medial occipital artery	1	FJ1691
+FMA50660	posteromedial central branch of right posterior cerebral artery	1	FJ1721
+FMA50664	right thalamoperforating artery	1	FJ1720
+FMA50670	right thalamogeniculate artery	1	FJ1675
+FMA50672	right posterior medial choroidal artery	1	FJ1727
+FMA50678	anterior temporal branch of right lateral occipital artery	1	FJ1661
+FMA50680	middle temporal branch of right lateral occipital artery	1	FJ1680
+FMA50684	right splenial artery	2	FJ1677,FJ1678
+FMA50696	superior vermian branch of medial branch of right superior cerebellar artery	1	FJ1728
+FMA50859	right suprascapular vein	1	FJ2302
+FMA50872	right pulmonary artery	1	FJ3019
+FMA50875	right optic nerve	2	FJ1364,FJ1819
+FMA50881	right trochlear nerve	1	FJ1381
+FMA51042	right deep femoral vein	1	FJ2135
+FMA52574	superior branch of right oculomotor nerve	1	FJ1372
+FMA52576	inferior branch of right oculomotor nerve	1	FJ1344
+FMA52622	right ophthalmic nerve	1	FJ1363
+FMA52629	right lacrimal nerve	1	FJ1351
+FMA52639	right frontal nerve	1	FJ1341
+FMA52643	right supratrochlear nerve	1	FJ1377
+FMA52656	right supra-orbital nerve	1	FJ1376
+FMA52669	right nasociliary nerve	1	FJ1361
+FMA52673	communicating branch of right nasociliary nerve with right ciliary ganglion	1	FJ1362
+FMA52676	right anterior ethmoidal nerve	1	FJ1333
+FMA52698	right infratrochlear nerve	1	FJ1347
+FMA52715	right posterior ethmoidal nerve	1	FJ1366
+FMA53549	right ciliary ganglion	1	FJ1339
+FMA54159	tendon of right levator palpebrae superioris	1	FJ1343
+FMA55113	right arytenoid cartilage	1	FJ2792
+FMA55115	right corniculate cartilage	1	FJ2793
+FMA55117	right cuneiform cartilage	1	FJ2795
+FMA55133	right thyrohyoid membrane	1	FJ2804
+FMA55140	right lateral thyrohyoid ligament	1	FJ2797
+FMA55245	right vocal ligament	1	FJ2805
+FMA55251	right conus elasticus	1	FJ2794
+FMA55619	right pterygomandibular raphe	1	FJ2756
+FMA55680	right upper lateral secondary incisor tooth	1	FJ1280
+FMA55681	right upper central secondary incisor tooth	1	FJ1279
+FMA55686	right lower secondary canine tooth	1	FJ1274
+FMA55688	right upper second secondary premolar tooth	1	FJ1278
+FMA55689	right upper first secondary premolar tooth	1	FJ1277
+FMA55694	right lower first secondary premolar tooth	1	FJ1269
+FMA55695	right lower second secondary premolar tooth	1	FJ1271
+FMA55697	right upper second secondary molar tooth	1	FJ1275
+FMA55698	right upper first secondary molar tooth	1	FJ1276
+FMA55705	right lower first secondary molar tooth	1	FJ1268
+FMA55706	right lower second secondary molar tooth	1	FJ1270
+FMA55798	right upper secondary canine tooth	1	FJ1281
+FMA57140	right lower lateral secondary incisor tooth	1	FJ1273
+FMA57142	right lower central secondary incisor tooth	1	FJ1272
+FMA58081	anterior chamber of right eyeball	1	FJ1332
+FMA58236	right iris	1	FJ1348
+FMA58239	right cornea	1	FJ1340
+FMA58242	right lens	1	FJ1356
+FMA58271	right sclera	1	FJ1368
+FMA58299	right choroid	2	FJ1336,FJ1337
+FMA58483	right corona ciliaris	1	FJ1338
+FMA58607	optic part of right retina	1	FJ1367
+FMA58776	right iliotibial tract	1	FJ1423
+FMA58828	right vitreous body	1	FJ1382
+FMA58839	suspensory ligament of right lens	1	FJ1371
+FMA59089	tarsal plate of right lower eyelid	1	FJ1379
+FMA59091	tarsal plate of right upper eyelid	1	FJ1375
+FMA59102	right lacrimal gland	1	FJ1350
+FMA59505	right major alar cartilage	1	FJ2554
+FMA59512	right lateral nasal cartilage	1	FJ2558
+FMA59541	right lacrimal lake	1	FJ1352
+FMA59545	right lacrimal sac	1	FJ1360
+FMA59555	right nasolacrimal duct	1	FJ1353
+FMA59582	right lacrimal canaliculus	1	FJ1349
+FMA59802	right submandibular gland	1	FJ2768
+FMA59804	right sublingual gland	1	FJ2767
+FMA62382	right optic tract	1	FJ1820
+FMA62506	dorsal venous network of right hand	1	FJ2280
+FMA65198	superficial head of right flexor pollicis brevis	1	FJ1514
+FMA66242	right first posterior intercostal artery	1	FJ1939
+FMA66321	right thoracodorsal artery	1	FJ2305
+FMA66327	branch of right coronary artery	30	FJ2667,FJ2668,FJ2670
+FMA66363	trunk of right renal artery	1	FJ3576
+FMA66563	trunk of right thoraco-acromial artery	1	FJ2304
+FMA68197	right upper lobar artery	1	FJ2973
+FMA68211	right apical segmental bronchial tree	8	FJ2454,FJ2520,FJ2521
+FMA68212	right anterior segmental bronchial tree	7	FJ2453,FJ2509,FJ2510
+FMA68213	right posterior segmental bronchial tree	6	FJ2458,FJ2515,FJ2516
+FMA68216	right superior segmental bronchial tree	9	FJ2459,FJ2495,FJ2496
+FMA68218	right medial basal segmental bronchial tree	2	FJ2456,FJ2488
+FMA68220	right lateral basal segmental bronchial tree	4	FJ2455,FJ2490,FJ2491
+FMA68221	right posterior basal segmental bronchial tree	6	FJ2457,FJ2470,FJ2481
+FMA68321	right anterior basal segmental bronchial tree	3	FJ2452,FJ2493,FJ2494
+FMA68418	right main bronchus proper	1	FJ2539
+FMA68662	apical part of right apical segmental artery	4	FJ2967,FJ3015,FJ3016
+FMA68665	anterior part of right apical segmental artery	4	FJ2978,FJ2989,FJ3000
+FMA68670	apical part of right posterior segmental artery	3	FJ2968,FJ2969,FJ3018
+FMA68673	posterior part of right posterior segmental artery	3	FJ2970,FJ2971,FJ2972
+FMA68677	posterior branch of right anterior segmental artery	3	FJ2974,FJ2980,FJ2981
+FMA68683	anterior branch of right anterior segmental artery	4	FJ2975,FJ2976,FJ2977
+FMA68706	medial branch of right superior segmental artery	3	FJ2994,FJ2995,FJ2996
+FMA68709	superior branch of right superior segmental artery	3	FJ2997,FJ2998,FJ2999
+FMA68712	lateral branch of right superior segmental artery	3	FJ2991,FJ2992,FJ2993
+FMA68723	basal branch of right anterior basal segmental artery	2	FJ3002,FJ3003
+FMA68725	lateral branch of right anterior basal segmental artery	1	FJ3001
+FMA68728	lateral branch of right lateral basal segmental artery	4	FJ3004,FJ3005,FJ3006
+FMA68735	accessory subsuperior branch of right posterior basal segmental artery	2	FJ3009,FJ3010
+FMA68738	laterobasal branch of right posterior basal segmental artery	2	FJ3013,FJ3014
+FMA68741	mediobasal branch of right posterior basal segmental artery	2	FJ3008,FJ3012
+FMA68880	trunk of right apical segmental vein	1	FJ3031
+FMA68921	anterior part of right apical segmental vein	2	FJ3042,FJ3053
+FMA68926	superior part of right anterior segmental vein	1	FJ3027
+FMA68928	inferior part of right anterior segmental vein	1	FJ3021
+FMA69265	right inferior suprarenal artery	1	FJ3584
+FMA69490	right lateral tarsal artery	1	FJ2163
+FMA69494	right arcuate artery	1	FJ2133
+FMA69514	right deep plantar artery	1	FJ2136
+FMA70249	right femoral artery	1	FJ2143
+FMA70439	subdivision of right hepatic artery	9	FJ1916,FJ1924,FJ2386
+FMA70447	caudate lobe branch of right hepatic artery	2	FJ1916,FJ2386
+FMA70456	trunk of right hepatic artery	1	FJ3117
+FMA70486	anterior division of right renal artery	6	FJ3558,FJ3559,FJ3560
+FMA70489	posterior division of right renal artery	3	FJ3573,FJ3574,FJ3575
+FMA70492	ureteric segment of right renal artery	2	FJ3581,FJ3582
+FMA71194	right lobe of thymus	1	FJ3151
+FMA71211	right lateral thoracic vein	1	FJ2285
+FMA71214	right thoracodorsal vein	1	FJ2306
+FMA71708	right lobe branch of right hepatic artery	2	FJ1924,FJ2394
+FMA71709	subdivision of right lobe branch of right hepatic artery	5	FJ3075,FJ3076,FJ3114
+FMA71859	segment of right hepatic biliary tree	5	FJ3071,FJ3072,FJ3108
+FMA71865	segmental tributary of right hepatic biliary tree	5	FJ3071,FJ3072,FJ3108
+FMA71867	anterior superior tributary of right hepatic biliary tree	1	FJ3071
+FMA71868	anterior inferior tributary of right hepatic biliary tree	1	FJ3072
+FMA71869	posterior superior tributary of right hepatic biliary tree	2	FJ3109,FJ3110
+FMA71870	posterior inferior tributary of right hepatic biliary tree	1	FJ3108
+FMA71905	subdivision of right hepatic portal vein	6	FJ1914,FJ3073,FJ3074
+FMA72309	right stylohyoid ligament	1	FJ2764
+FMA72653	right superior frontal gyrus	1	FJ1834
+FMA72655	right middle frontal gyrus	1	FJ1788
+FMA72657	right inferior frontal gyrus	1	FJ1745
+FMA72661	right precentral gyrus	1	FJ1801
+FMA72665	right postcentral gyrus	1	FJ1798
+FMA72667	right supramarginal gyrus	1	FJ1842
+FMA72669	right angular gyrus	1	FJ1733
+FMA72671	right superior parietal lobule	1	FJ1836
+FMA72685	right middle temporal gyrus	1	FJ1790
+FMA72687	right inferior temporal gyrus	1	FJ1747
+FMA72689	right fusiform gyrus	1	FJ1784
+FMA72705	right parahippocampal gyrus	1	FJ1786
+FMA72713	right hippocampus	1	FJ1807
+FMA72717	right cingulate gyrus	1	FJ1740
+FMA72800	anterior part of right superior temporal gyrus	1	FJ1838
+FMA72804	posterior part of right superior temporal gyrus	1	FJ1840
+FMA72826	right caudate nucleus	1	FJ1802
+FMA72828	right putamen	1	FJ1823
+FMA72830	right globus pallidus	1	FJ1805
+FMA72832	right amygdala	1	FJ1829
+FMA72906	right internal capsule	1	FJ1751
+FMA72924	right fornix of forebrain	1	FJ1804
+FMA72975	right occipital lobe	1	FJ1792
+FMA72977	right insula	1	FJ1749
+FMA73303	right lateral geniculate body	1	FJ1813
+FMA73309	right medial geniculate body	1	FJ1816
+FMA73413	right stria medullaris of thalamus	1	FJ1824
+FMA73422	right superior colliculus	1	FJ1826
+FMA73434	right inferior colliculus	1	FJ1810
+FMA73461	brachium of right superior colliculus	1	FJ1736
+FMA73463	brachium of right inferior colliculus	1	FJ1809
+FMA74075	set of right levatores costarum longi	1	FJ1463
+FMA74077	set of right levatores costarum breves	1	FJ1462
+FMA76128	trunk of inferior terminal branch of right middle cerebral artery	1	FJ1718
+FMA77380	right popliteal artery	1	FJ2170
+FMA77949	right circumflex scapular vein	1	FJ2274
+FMA77954	right anterior circumflex humeral vein	1	FJ2265
+FMA78449	right lateral ventricle	1	FJ1814
+FMA81752	right cervical rotator	1	FJ1524
+FMA82695	trunk of right portal vein	1	FJ3122
+FMA82706	caudate lobe branch of right portal vein	1	FJ1914
+FMA82734	right long ciliary nerve	1	FJ1369
+FMA85096	proper palmar digital vein of right index finger	2	FJ2354,FJ2355
+FMA85098	proper palmar digital vein of right middle finger	2	FJ2356,FJ2357
+FMA85100	proper palmar digital vein of right ring finger	2	FJ2358,FJ2359
+FMA85102	proper palmar digital vein of right little finger	3	FJ2349,FJ2351,FJ2360
+FMA85112	medial proper palmar digital artery of right middle finger	1	FJ2367
+FMA85115	lateral proper palmar digital artery of right ring finger	1	FJ2366
+FMA85119	right second common palmar digital artery	1	FJ2344
+FMA85121	right third common palmar digital artery	1	FJ2345
+FMA85123	right fourth common palmar digital artery	1	FJ2370
+FMA86340	superior segmental branch of right renal artery	1	FJ2042
+FMA86346	inferior segmental branch of right renal artery	1	FJ2043
+FMA86348	posterior segmental branch of right renal artery	1	FJ2045
+FMA258714	right thalamus	1	FJ1827
+FMA258847	right calcaneal tendon	1	FJ1405
+FMA258850	right intermediate tendon	1	FJ1581
+FMA260791	white matter of right cerebral hemisphere	1	FJ1806
+FMA268667	right recurrent interosseous artery	1	FJ2297

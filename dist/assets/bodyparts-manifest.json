@@ -1,0 +1,5402 @@
+{
+  "anatomy__sternum__static__FJ3290": {
+    "name": "manubrium",
+    "structure": "sternum",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3290",
+    "vertices": 1446,
+    "faces": 2546
+  },
+  "anatomy__sternum__static__FJ3178": {
+    "name": "body of sternum",
+    "structure": "sternum",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3178",
+    "vertices": 3691,
+    "faces": 4646
+  },
+  "anatomy__sternum__static__FJ3153": {
+    "name": "xiphoid process",
+    "structure": "sternum",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3153",
+    "vertices": 495,
+    "faces": 922
+  },
+  "anatomy__ribs__static__FJ3334": {
+    "name": "right first rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3334",
+    "vertices": 1642,
+    "faces": 3276
+  },
+  "anatomy__ribs__static__FJ3336": {
+    "name": "right second rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3336",
+    "vertices": 2861,
+    "faces": 5594
+  },
+  "anatomy__ribs__static__FJ3338": {
+    "name": "right third rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3338",
+    "vertices": 3634,
+    "faces": 7254
+  },
+  "anatomy__ribs__static__FJ3340": {
+    "name": "right fourth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3340",
+    "vertices": 4435,
+    "faces": 8832
+  },
+  "anatomy__ribs__static__FJ3228": {
+    "name": "left first rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3228",
+    "vertices": 1641,
+    "faces": 3276
+  },
+  "anatomy__ribs__static__FJ3229": {
+    "name": "left second rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3229",
+    "vertices": 2862,
+    "faces": 5594
+  },
+  "anatomy__ribs__static__FJ3230": {
+    "name": "left third rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3230",
+    "vertices": 3637,
+    "faces": 7254
+  },
+  "anatomy__ribs__static__FJ3342": {
+    "name": "right fifth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3342",
+    "vertices": 4910,
+    "faces": 9710
+  },
+  "anatomy__ribs__static__FJ3232": {
+    "name": "left fifth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3232",
+    "vertices": 4912,
+    "faces": 9710
+  },
+  "anatomy__ribs__static__FJ3231": {
+    "name": "left fourth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3231",
+    "vertices": 4445,
+    "faces": 8850
+  },
+  "anatomy__ribs__static__FJ3344": {
+    "name": "right sixth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3344",
+    "vertices": 5168,
+    "faces": 10246
+  },
+  "anatomy__ribs__static__FJ3233": {
+    "name": "left sixth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3233",
+    "vertices": 5172,
+    "faces": 10264
+  },
+  "anatomy__ribs__static__FJ3346": {
+    "name": "right seventh rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3346",
+    "vertices": 5058,
+    "faces": 10032
+  },
+  "anatomy__ribs__static__FJ3234": {
+    "name": "left seventh rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3234",
+    "vertices": 5054,
+    "faces": 10032
+  },
+  "anatomy__ribs__static__FJ3347": {
+    "name": "right eighth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3347",
+    "vertices": 4199,
+    "faces": 8336
+  },
+  "anatomy__ribs__static__FJ3235": {
+    "name": "left eighth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3235",
+    "vertices": 4211,
+    "faces": 8336
+  },
+  "anatomy__ribs__static__FJ3348": {
+    "name": "right ninth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3348",
+    "vertices": 3808,
+    "faces": 7576
+  },
+  "anatomy__ribs__static__FJ3236": {
+    "name": "left ninth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3236",
+    "vertices": 3805,
+    "faces": 7576
+  },
+  "anatomy__ribs__static__FJ3330": {
+    "name": "right tenth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3330",
+    "vertices": 3415,
+    "faces": 6820
+  },
+  "anatomy__ribs__static__FJ3225": {
+    "name": "left tenth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3225",
+    "vertices": 3419,
+    "faces": 6826
+  },
+  "anatomy__ribs__static__FJ3331": {
+    "name": "right eleventh rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3331",
+    "vertices": 2437,
+    "faces": 4866
+  },
+  "anatomy__ribs__static__FJ3226": {
+    "name": "left eleventh rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3226",
+    "vertices": 2435,
+    "faces": 4866
+  },
+  "anatomy__ribs__static__FJ3332": {
+    "name": "right twelfth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3332",
+    "vertices": 1412,
+    "faces": 2818
+  },
+  "anatomy__ribs__static__FJ3227": {
+    "name": "left twelfth rib",
+    "structure": "ribs",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3227",
+    "vertices": 1411,
+    "faces": 2818
+  },
+  "anatomy__thoracic__static__FJ3158": {
+    "name": "first thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3158",
+    "vertices": 1078,
+    "faces": 1700
+  },
+  "anatomy__thoracic__static__FJ3160": {
+    "name": "second thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3160",
+    "vertices": 1161,
+    "faces": 1938
+  },
+  "anatomy__thoracic__static__FJ3163": {
+    "name": "third thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3163",
+    "vertices": 1175,
+    "faces": 2038
+  },
+  "anatomy__thoracic__static__FJ3166": {
+    "name": "fourth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3166",
+    "vertices": 1210,
+    "faces": 2066
+  },
+  "anatomy__skull__head__FJ3395": {
+    "name": "vomer",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3395",
+    "vertices": 3660,
+    "faces": 7218
+  },
+  "anatomy__thoracicdeep__static__FJ1461": {
+    "name": "right transversus thoracis",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1461",
+    "vertices": 4749,
+    "faces": 4188
+  },
+  "anatomy__thoracicdeep__static__FJ1461M": {
+    "name": "left transversus thoracis",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1461M",
+    "vertices": 4745,
+    "faces": 4188
+  },
+  "anatomy__thoracic__static__FJ3169": {
+    "name": "fifth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3169",
+    "vertices": 1321,
+    "faces": 2280
+  },
+  "anatomy__thoracic__static__FJ3171": {
+    "name": "sixth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3171",
+    "vertices": 1353,
+    "faces": 2248
+  },
+  "anatomy__thoracic__static__FJ3173": {
+    "name": "seventh thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3173",
+    "vertices": 1478,
+    "faces": 2574
+  },
+  "anatomy__thoracic__static__FJ3174": {
+    "name": "eighth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3174",
+    "vertices": 1392,
+    "faces": 2424
+  },
+  "anatomy__thoracic__static__FJ3175": {
+    "name": "ninth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3175",
+    "vertices": 1443,
+    "faces": 2586
+  },
+  "anatomy__thoracic__static__FJ3154": {
+    "name": "tenth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3154",
+    "vertices": 1584,
+    "faces": 2790
+  },
+  "anatomy__thoracic__static__FJ3155": {
+    "name": "eleventh thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3155",
+    "vertices": 1593,
+    "faces": 2674
+  },
+  "anatomy__thoracic__static__FJ3156": {
+    "name": "twelfth thoracic vertebra",
+    "structure": "thoracic",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3156",
+    "vertices": 1593,
+    "faces": 2772
+  },
+  "anatomy__cervical__static__FJ3176": {
+    "name": "atlas",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3176",
+    "vertices": 1433,
+    "faces": 2094
+  },
+  "anatomy__cervical__static__FJ3177": {
+    "name": "axis",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3177",
+    "vertices": 1540,
+    "faces": 2288
+  },
+  "anatomy__cervical__static__FJ3161": {
+    "name": "third cervical vertebra",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3161",
+    "vertices": 1323,
+    "faces": 2030
+  },
+  "anatomy__cervical__static__FJ3164": {
+    "name": "fourth cervical vertebra",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3164",
+    "vertices": 1469,
+    "faces": 2410
+  },
+  "anatomy__cervical__static__FJ3167": {
+    "name": "fifth cervical vertebra",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3167",
+    "vertices": 1539,
+    "faces": 2196
+  },
+  "anatomy__cervical__static__FJ3170": {
+    "name": "sixth cervical vertebra",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3170",
+    "vertices": 1498,
+    "faces": 2374
+  },
+  "anatomy__cervical__static__FJ3172": {
+    "name": "seventh cervical vertebra",
+    "structure": "cervical",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3172",
+    "vertices": 1324,
+    "faces": 1820
+  },
+  "anatomy__lumbar__static__FJ3157": {
+    "name": "first lumbar vertebra",
+    "structure": "lumbar",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3157",
+    "vertices": 1682,
+    "faces": 2972
+  },
+  "anatomy__lumbar__static__FJ3159": {
+    "name": "second lumbar vertebra",
+    "structure": "lumbar",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3159",
+    "vertices": 1875,
+    "faces": 3214
+  },
+  "anatomy__lumbar__static__FJ3162": {
+    "name": "third lumbar vertebra",
+    "structure": "lumbar",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3162",
+    "vertices": 1849,
+    "faces": 3272
+  },
+  "anatomy__lumbar__static__FJ3165": {
+    "name": "fourth lumbar vertebra",
+    "structure": "lumbar",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3165",
+    "vertices": 1968,
+    "faces": 3512
+  },
+  "anatomy__lumbar__static__FJ3168": {
+    "name": "fifth lumbar vertebra",
+    "structure": "lumbar",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3168",
+    "vertices": 2115,
+    "faces": 3892
+  },
+  "anatomy__diaphragm__static__FJ3131": {
+    "name": "diaphragm",
+    "structure": "diaphragm",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ3131",
+    "vertices": 35527,
+    "faces": 68522
+  },
+  "anatomy__clavicle__static__FJ3362": {
+    "name": "right clavicle",
+    "structure": "clavicle",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3362",
+    "vertices": 583,
+    "faces": 1146
+  },
+  "anatomy__clavicle__static__FJ3237": {
+    "name": "left clavicle",
+    "structure": "clavicle",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3237",
+    "vertices": 602,
+    "faces": 1176
+  },
+  "anatomy__externaloblique__static__FJ1452": {
+    "name": "right external oblique",
+    "structure": "externaloblique",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1452",
+    "vertices": 63907,
+    "faces": 111826
+  },
+  "anatomy__externaloblique__static__FJ1452M": {
+    "name": "left external oblique",
+    "structure": "externaloblique",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1452M",
+    "vertices": 63893,
+    "faces": 111826
+  },
+  "anatomy__neckmuscles__static__FJ1596": {
+    "name": "right sternohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1596",
+    "vertices": 1911,
+    "faces": 3116
+  },
+  "anatomy__neckmuscles__static__FJ1574": {
+    "name": "left sternohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1574",
+    "vertices": 1812,
+    "faces": 3078
+  },
+  "anatomy__neckmuscles__static__FJ1586": {
+    "name": "right omohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1586",
+    "vertices": 3368,
+    "faces": 5414
+  },
+  "anatomy__neckmuscles__static__FJ1565": {
+    "name": "left omohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1565",
+    "vertices": 3211,
+    "faces": 5358
+  },
+  "anatomy__neckmuscles__static__FJ1597": {
+    "name": "right sternothyroid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1597",
+    "vertices": 1585,
+    "faces": 2608
+  },
+  "anatomy__neckmuscles__static__FJ1575": {
+    "name": "left sternothyroid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1575",
+    "vertices": 1569,
+    "faces": 2590
+  },
+  "anatomy__neckmuscles__static__FJ1599": {
+    "name": "right thyrohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1599",
+    "vertices": 1102,
+    "faces": 1450
+  },
+  "anatomy__neckmuscles__static__FJ1577": {
+    "name": "left thyrohyoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1577",
+    "vertices": 928,
+    "faces": 1436
+  },
+  "anatomy__pectoralisminor__static__FJ1456": {
+    "name": "right pectoralis minor",
+    "structure": "pectoralisminor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1456",
+    "vertices": 6741,
+    "faces": 9468
+  },
+  "anatomy__pectoralisminor__static__FJ1456M": {
+    "name": "left pectoralis minor",
+    "structure": "pectoralisminor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1456M",
+    "vertices": 6746,
+    "faces": 9468
+  },
+  "anatomy__rhomboids__static__FJ1536": {
+    "name": "right rhomboid major",
+    "structure": "rhomboids",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1536",
+    "vertices": 5057,
+    "faces": 7202
+  },
+  "anatomy__rhomboids__static__FJ1536M": {
+    "name": "left rhomboid major",
+    "structure": "rhomboids",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1536M",
+    "vertices": 5063,
+    "faces": 7202
+  },
+  "anatomy__rhomboids__static__FJ1537": {
+    "name": "right rhomboid minor",
+    "structure": "rhomboids",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1537",
+    "vertices": 1506,
+    "faces": 2206
+  },
+  "anatomy__rhomboids__static__FJ1537M": {
+    "name": "left rhomboid minor",
+    "structure": "rhomboids",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1537M",
+    "vertices": 1505,
+    "faces": 2206
+  },
+  "anatomy__scalenes__static__FJ1594": {
+    "name": "right scalenus posterior",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1594",
+    "vertices": 1979,
+    "faces": 2778
+  },
+  "anatomy__scalenes__static__FJ1572": {
+    "name": "left scalenus posterior",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1572",
+    "vertices": 1920,
+    "faces": 2756
+  },
+  "anatomy__scalenes__static__FJ1593": {
+    "name": "right scalenus medius",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1593",
+    "vertices": 3015,
+    "faces": 4102
+  },
+  "anatomy__scalenes__static__FJ1571": {
+    "name": "left scalenus medius",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1571",
+    "vertices": 2969,
+    "faces": 4074
+  },
+  "anatomy__scalenes__static__FJ1592": {
+    "name": "right scalenus anterior",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1592",
+    "vertices": 1697,
+    "faces": 2632
+  },
+  "anatomy__scalenes__static__FJ1570": {
+    "name": "left scalenus anterior",
+    "structure": "scalenes",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1570",
+    "vertices": 1673,
+    "faces": 2596
+  },
+  "anatomy__scapula__static__FJ3384": {
+    "name": "right scapula",
+    "structure": "scapula",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3384",
+    "vertices": 13118,
+    "faces": 26172
+  },
+  "anatomy__scapula__static__FJ3279": {
+    "name": "left scapula",
+    "structure": "scapula",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3279",
+    "vertices": 14068,
+    "faces": 28106
+  },
+  "anatomy__serratus__static__FJ1459": {
+    "name": "right serratus anterior",
+    "structure": "serratus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1459",
+    "vertices": 28465,
+    "faces": 49212
+  },
+  "anatomy__serratus__static__FJ1459M": {
+    "name": "left serratus anterior",
+    "structure": "serratus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1459M",
+    "vertices": 28450,
+    "faces": 49212
+  },
+  "anatomy__serratusposterior__static__FJ1542": {
+    "name": "right serratus posterior superior",
+    "structure": "serratusposterior",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1542",
+    "vertices": 6219,
+    "faces": 9066
+  },
+  "anatomy__serratusposterior__static__FJ1542M": {
+    "name": "left serratus posterior superior",
+    "structure": "serratusposterior",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1542M",
+    "vertices": 6203,
+    "faces": 9066
+  },
+  "anatomy__serratusposterior__static__FJ1541": {
+    "name": "right serratus posterior inferior",
+    "structure": "serratusposterior",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1541",
+    "vertices": 8698,
+    "faces": 13164
+  },
+  "anatomy__serratusposterior__static__FJ1541M": {
+    "name": "left serratus posterior inferior",
+    "structure": "serratusposterior",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1541M",
+    "vertices": 8680,
+    "faces": 13164
+  },
+  "anatomy__neckmuscles__static__FJ1595": {
+    "name": "right sternocleidomastoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1595",
+    "vertices": 6642,
+    "faces": 10344
+  },
+  "anatomy__neckmuscles__static__FJ1573": {
+    "name": "left sternocleidomastoid",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1573",
+    "vertices": 6210,
+    "faces": 10224
+  },
+  "anatomy__subclavius__static__FJ1460M": {
+    "name": "left subclavius",
+    "structure": "subclavius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1460M",
+    "vertices": 1158,
+    "faces": 1640
+  },
+  "anatomy__subclavius__static__FJ1460": {
+    "name": "right subclavius",
+    "structure": "subclavius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1460",
+    "vertices": 1155,
+    "faces": 1640
+  },
+  "anatomy__subscapularis__static__FJ1504": {
+    "name": "right subscapularis",
+    "structure": "subscapularis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1504",
+    "vertices": 2775,
+    "faces": 2092
+  },
+  "anatomy__subscapularis__static__FJ1504M": {
+    "name": "left subscapularis",
+    "structure": "subscapularis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1504M",
+    "vertices": 2759,
+    "faces": 2092
+  },
+  "anatomy__sacrum__static__FJ3393": {
+    "name": "sacrum",
+    "structure": "sacrum",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3393",
+    "vertices": 5293,
+    "faces": 9922
+  },
+  "anatomy__pelvis__static__FJ3152": {
+    "name": "right hip bone",
+    "structure": "pelvis",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3152",
+    "vertices": 1282,
+    "faces": 2374
+  },
+  "anatomy__pelvis__static__FJ3288": {
+    "name": "left hip bone",
+    "structure": "pelvis",
+    "segment": "static",
+    "layer": "bones",
+    "file_id": "FJ3288",
+    "vertices": 1257,
+    "faces": 2332
+  },
+  "anatomy__iliopsoas__static__FJ1422": {
+    "name": "right iliacus",
+    "structure": "iliopsoas",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1422",
+    "vertices": 2447,
+    "faces": 2862
+  },
+  "anatomy__iliopsoas__static__FJ1422M": {
+    "name": "left iliacus",
+    "structure": "iliopsoas",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1422M",
+    "vertices": 2452,
+    "faces": 2862
+  },
+  "anatomy__hiprotators__static__FJ1426": {
+    "name": "right obturator internus",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1426",
+    "vertices": 1883,
+    "faces": 2466
+  },
+  "anatomy__hiprotators__static__FJ1426M": {
+    "name": "left obturator internus",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1426M",
+    "vertices": 1884,
+    "faces": 2466
+  },
+  "anatomy__hiprotators__static__FJ1425": {
+    "name": "right obturator externus",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1425",
+    "vertices": 715,
+    "faces": 784
+  },
+  "anatomy__hiprotators__static__FJ1425M": {
+    "name": "left obturator externus",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1425M",
+    "vertices": 715,
+    "faces": 784
+  },
+  "anatomy__gluteusmaximus__static__FJ1418": {
+    "name": "right gluteus maximus",
+    "structure": "gluteusmaximus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1418",
+    "vertices": 2053,
+    "faces": 2376
+  },
+  "anatomy__gluteusmaximus__static__FJ1418M": {
+    "name": "left gluteus maximus",
+    "structure": "gluteusmaximus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1418M",
+    "vertices": 2053,
+    "faces": 2376
+  },
+  "anatomy__gluteus__static__FJ1419": {
+    "name": "right gluteus medius",
+    "structure": "gluteus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1419",
+    "vertices": 2312,
+    "faces": 3356
+  },
+  "anatomy__gluteus__static__FJ1419M": {
+    "name": "left gluteus medius",
+    "structure": "gluteus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1419M",
+    "vertices": 2308,
+    "faces": 3356
+  },
+  "anatomy__gluteusminimus__static__FJ1420": {
+    "name": "right gluteus minimus",
+    "structure": "gluteusminimus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1420",
+    "vertices": 3066,
+    "faces": 4208
+  },
+  "anatomy__gluteusminimus__static__FJ1420M": {
+    "name": "left gluteus minimus",
+    "structure": "gluteusminimus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1420M",
+    "vertices": 3066,
+    "faces": 4208
+  },
+  "anatomy__hiprotators__static__FJ1417": {
+    "name": "right gemellus superior",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1417",
+    "vertices": 525,
+    "faces": 402
+  },
+  "anatomy__hiprotators__static__FJ1417M": {
+    "name": "left gemellus superior",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1417M",
+    "vertices": 527,
+    "faces": 402
+  },
+  "anatomy__hiprotators__static__FJ1416": {
+    "name": "right gemellus inferior",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1416",
+    "vertices": 503,
+    "faces": 642
+  },
+  "anatomy__hiprotators__static__FJ1416M": {
+    "name": "left gemellus inferior",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1416M",
+    "vertices": 503,
+    "faces": 642
+  },
+  "anatomy__hiprotators__static__FJ1432": {
+    "name": "right quadratus femoris",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1432",
+    "vertices": 1015,
+    "faces": 1196
+  },
+  "anatomy__hiprotators__static__FJ1432M": {
+    "name": "left quadratus femoris",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1432M",
+    "vertices": 1013,
+    "faces": 1196
+  },
+  "anatomy__hiprotators__static__FJ1428": {
+    "name": "right piriformis",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1428",
+    "vertices": 798,
+    "faces": 1092
+  },
+  "anatomy__hiprotators__static__FJ1428M": {
+    "name": "left piriformis",
+    "structure": "hiprotators",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1428M",
+    "vertices": 796,
+    "faces": 1092
+  },
+  "anatomy__iliopsoas__static__FJ1431": {
+    "name": "right psoas major",
+    "structure": "iliopsoas",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1431",
+    "vertices": 3632,
+    "faces": 4900
+  },
+  "anatomy__iliopsoas__static__FJ1431M": {
+    "name": "left psoas major",
+    "structure": "iliopsoas",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1431M",
+    "vertices": 3634,
+    "faces": 4900
+  },
+  "anatomy__sartorius__hip__FJ1434": {
+    "name": "right sartorius",
+    "structure": "sartorius",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1434",
+    "vertices": 2630,
+    "faces": 3444
+  },
+  "anatomy__sartorius__hipL__FJ1434M": {
+    "name": "left sartorius",
+    "structure": "sartorius",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1434M",
+    "vertices": 2633,
+    "faces": 3444
+  },
+  "anatomy__hamstrings__hip__FJ1436": {
+    "name": "right semitendinosus",
+    "structure": "hamstrings",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1436",
+    "vertices": 1812,
+    "faces": 2712
+  },
+  "anatomy__hamstrings__hipL__FJ1436M": {
+    "name": "left semitendinosus",
+    "structure": "hamstrings",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1436M",
+    "vertices": 1808,
+    "faces": 2712
+  },
+  "anatomy__tensorfasciae__hip__FJ1438": {
+    "name": "right tensor fasciae latae",
+    "structure": "tensorfasciae",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1438",
+    "vertices": 1087,
+    "faces": 1254
+  },
+  "anatomy__tensorfasciae__hipL__FJ1438M": {
+    "name": "left tensor fasciae latae",
+    "structure": "tensorfasciae",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1438M",
+    "vertices": 1087,
+    "faces": 1254
+  },
+  "anatomy__hamstrings__hip__FJ1435": {
+    "name": "right semimembranosus",
+    "structure": "hamstrings",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1435",
+    "vertices": 2588,
+    "faces": 4612
+  },
+  "anatomy__hamstrings__hipL__FJ1435M": {
+    "name": "left semimembranosus",
+    "structure": "hamstrings",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1435M",
+    "vertices": 2588,
+    "faces": 4612
+  },
+  "anatomy__adductors__hip__FJ1427": {
+    "name": "right pectineus",
+    "structure": "adductors",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1427",
+    "vertices": 963,
+    "faces": 1380
+  },
+  "anatomy__adductors__hipL__FJ1427M": {
+    "name": "left pectineus",
+    "structure": "adductors",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1427M",
+    "vertices": 963,
+    "faces": 1380
+  },
+  "anatomy__adductors__hip__FJ1401": {
+    "name": "right adductor brevis",
+    "structure": "adductors",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1401",
+    "vertices": 1091,
+    "faces": 1464
+  },
+  "anatomy__adductors__hipL__FJ1401M": {
+    "name": "left adductor brevis",
+    "structure": "adductors",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1401M",
+    "vertices": 1089,
+    "faces": 1464
+  },
+  "anatomy__adductorlongus__hip__FJ1402": {
+    "name": "right adductor longus",
+    "structure": "adductorlongus",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1402",
+    "vertices": 1536,
+    "faces": 2616
+  },
+  "anatomy__adductorlongus__hipL__FJ1402M": {
+    "name": "left adductor longus",
+    "structure": "adductorlongus",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1402M",
+    "vertices": 1536,
+    "faces": 2616
+  },
+  "anatomy__adductors__hip__FJ1403": {
+    "name": "right adductor magnus",
+    "structure": "adductors",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1403",
+    "vertices": 4560,
+    "faces": 5972
+  },
+  "anatomy__adductors__hipL__FJ1403M": {
+    "name": "left adductor magnus",
+    "structure": "adductors",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1403M",
+    "vertices": 4562,
+    "faces": 5972
+  },
+  "anatomy__tibialis__knee__FJ1439": {
+    "name": "right tibialis anterior",
+    "structure": "tibialis",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1439",
+    "vertices": 2204,
+    "faces": 2510
+  },
+  "anatomy__tibialis__kneeL__FJ1439M": {
+    "name": "left tibialis anterior",
+    "structure": "tibialis",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1439M",
+    "vertices": 2206,
+    "faces": 2510
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1408": {
+    "name": "right extensor hallucis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1408",
+    "vertices": 1388,
+    "faces": 1668
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1408M": {
+    "name": "left extensor hallucis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1408M",
+    "vertices": 1384,
+    "faces": 1668
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1406": {
+    "name": "right extensor digitorum longus",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1406",
+    "vertices": 3964,
+    "faces": 4546
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1406M": {
+    "name": "left extensor digitorum longus",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1406M",
+    "vertices": 3965,
+    "faces": 4546
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1411": {
+    "name": "right fibularis tertius",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1411",
+    "vertices": 1488,
+    "faces": 1416
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1411M": {
+    "name": "left fibularis tertius",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1411M",
+    "vertices": 1486,
+    "faces": 1416
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1410": {
+    "name": "right fibularis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1410",
+    "vertices": 2946,
+    "faces": 3860
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1410M": {
+    "name": "left fibularis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1410M",
+    "vertices": 2947,
+    "faces": 3860
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1409": {
+    "name": "right fibularis brevis",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1409",
+    "vertices": 1605,
+    "faces": 1766
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1409M": {
+    "name": "left fibularis brevis",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1409M",
+    "vertices": 1605,
+    "faces": 1766
+  },
+  "anatomy__soleus__knee__FJ1437": {
+    "name": "right soleus",
+    "structure": "soleus",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1437",
+    "vertices": 2674,
+    "faces": 4418
+  },
+  "anatomy__soleus__kneeL__FJ1437M": {
+    "name": "left soleus",
+    "structure": "soleus",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1437M",
+    "vertices": 2674,
+    "faces": 4418
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1429": {
+    "name": "right plantaris",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1429",
+    "vertices": 1466,
+    "faces": 2512
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1429M": {
+    "name": "left plantaris",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1429M",
+    "vertices": 1466,
+    "faces": 2512
+  },
+  "anatomy__popliteus__knee__FJ1430": {
+    "name": "right popliteus",
+    "structure": "popliteus",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1430",
+    "vertices": 588,
+    "faces": 858
+  },
+  "anatomy__popliteus__kneeL__FJ1430M": {
+    "name": "left popliteus",
+    "structure": "popliteus",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1430M",
+    "vertices": 589,
+    "faces": 858
+  },
+  "anatomy__neckmuscles__static__FJ1546": {
+    "name": "right splenius cervicis",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1546",
+    "vertices": 4604,
+    "faces": 6256
+  },
+  "anatomy__neckmuscles__static__FJ1546M": {
+    "name": "left splenius cervicis",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1546M",
+    "vertices": 4610,
+    "faces": 6256
+  },
+  "anatomy__neckmuscles__static__FJ1545": {
+    "name": "right splenius capitis",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1545",
+    "vertices": 4841,
+    "faces": 7808
+  },
+  "anatomy__neckmuscles__static__FJ1545M": {
+    "name": "left splenius capitis",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1545M",
+    "vertices": 4846,
+    "faces": 7808
+  },
+  "anatomy__erectorspinae__static__FJ1527": {
+    "name": "right iliocostalis lumborum",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1527",
+    "vertices": 10585,
+    "faces": 15872
+  },
+  "anatomy__erectorspinae__static__FJ1527M": {
+    "name": "left iliocostalis lumborum",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1527M",
+    "vertices": 10581,
+    "faces": 15872
+  },
+  "anatomy__erectorspinae__static__FJ1528": {
+    "name": "right iliocostalis thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1528",
+    "vertices": 5508,
+    "faces": 8386
+  },
+  "anatomy__erectorspinae__static__FJ1528M": {
+    "name": "left iliocostalis thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1528M",
+    "vertices": 5509,
+    "faces": 8386
+  },
+  "anatomy__erectorspinae__static__FJ1526": {
+    "name": "right iliocostalis cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1526",
+    "vertices": 2315,
+    "faces": 3072
+  },
+  "anatomy__erectorspinae__static__FJ1526M": {
+    "name": "left iliocostalis cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1526M",
+    "vertices": 2326,
+    "faces": 3072
+  },
+  "anatomy__erectorspinae__static__FJ1535": {
+    "name": "right longissimus thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1535",
+    "vertices": 13066,
+    "faces": 15068
+  },
+  "anatomy__erectorspinae__static__FJ1535M": {
+    "name": "left longissimus thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1535M",
+    "vertices": 13072,
+    "faces": 15068
+  },
+  "anatomy__erectorspinae__static__FJ1533": {
+    "name": "right longissimus capitis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1533",
+    "vertices": 1821,
+    "faces": 2260
+  },
+  "anatomy__erectorspinae__static__FJ1533M": {
+    "name": "left longissimus capitis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1533M",
+    "vertices": 1824,
+    "faces": 2260
+  },
+  "anatomy__erectorspinae__static__FJ1534": {
+    "name": "right longissimus cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1534",
+    "vertices": 2325,
+    "faces": 2816
+  },
+  "anatomy__erectorspinae__static__FJ1534M": {
+    "name": "left longissimus cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1534M",
+    "vertices": 2330,
+    "faces": 2816
+  },
+  "anatomy__deepback__static__FJ1544": {
+    "name": "right spinalis thoracis",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1544",
+    "vertices": 5758,
+    "faces": 7422
+  },
+  "anatomy__deepback__static__FJ1544M": {
+    "name": "left spinalis thoracis",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1544M",
+    "vertices": 5756,
+    "faces": 7422
+  },
+  "anatomy__erectorspinae__static__FJ1540": {
+    "name": "right semispinalis thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1540",
+    "vertices": 4575,
+    "faces": 5176
+  },
+  "anatomy__erectorspinae__static__FJ1540M": {
+    "name": "left semispinalis thoracis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1540M",
+    "vertices": 4582,
+    "faces": 5176
+  },
+  "anatomy__erectorspinae__static__FJ1539": {
+    "name": "right semispinalis cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1539",
+    "vertices": 3060,
+    "faces": 3406
+  },
+  "anatomy__erectorspinae__static__FJ1539M": {
+    "name": "left semispinalis cervicis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1539M",
+    "vertices": 3047,
+    "faces": 3406
+  },
+  "anatomy__erectorspinae__static__FJ1538": {
+    "name": "right semispinalis capitis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1538",
+    "vertices": 2744,
+    "faces": 1912
+  },
+  "anatomy__erectorspinae__static__FJ1538M": {
+    "name": "left semispinalis capitis",
+    "structure": "erectorspinae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1538M",
+    "vertices": 2738,
+    "faces": 1912
+  },
+  "anatomy__deepback__static__FJ1551": {
+    "name": "right interspinalis thoracis",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1551",
+    "vertices": 425,
+    "faces": 410
+  },
+  "anatomy__deepback__static__FJ1551M": {
+    "name": "left interspinalis thoracis",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1551M",
+    "vertices": 426,
+    "faces": 410
+  },
+  "anatomy__deepback__static__FJ1522": {
+    "name": "right lumbar rotator",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1522",
+    "vertices": 5188,
+    "faces": 4742
+  },
+  "anatomy__deepback__static__FJ1522M": {
+    "name": "left lumbar rotator",
+    "structure": "deepback",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1522M",
+    "vertices": 5187,
+    "faces": 4742
+  },
+  "anatomy__humerus__shoulder__FJ3368": {
+    "name": "right humerus",
+    "structure": "humerus",
+    "segment": "shoulder",
+    "layer": "bones",
+    "file_id": "FJ3368",
+    "vertices": 2233,
+    "faces": 3784
+  },
+  "anatomy__humerus__shoulderL__FJ3262": {
+    "name": "left humerus",
+    "structure": "humerus",
+    "segment": "shoulderL",
+    "layer": "bones",
+    "file_id": "FJ3262",
+    "vertices": 2073,
+    "faces": 3844
+  },
+  "anatomy__radius__forearm__FJ3349": {
+    "name": "right radius",
+    "structure": "radius",
+    "segment": "forearm",
+    "layer": "bones",
+    "file_id": "FJ3349",
+    "vertices": 388,
+    "faces": 672
+  },
+  "anatomy__radius__forearmL__FJ3277": {
+    "name": "left radius",
+    "structure": "radius",
+    "segment": "forearmL",
+    "layer": "bones",
+    "file_id": "FJ3277",
+    "vertices": 368,
+    "faces": 632
+  },
+  "anatomy__ulna__elbow__FJ3391": {
+    "name": "right ulna",
+    "structure": "ulna",
+    "segment": "elbow",
+    "layer": "bones",
+    "file_id": "FJ3391",
+    "vertices": 500,
+    "faces": 834
+  },
+  "anatomy__ulna__elbowL__FJ3286": {
+    "name": "left ulna",
+    "structure": "ulna",
+    "segment": "elbowL",
+    "layer": "bones",
+    "file_id": "FJ3286",
+    "vertices": 496,
+    "faces": 824
+  },
+  "anatomy__carpals__wrist__FJ3389": {
+    "name": "right trapezoid",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3389",
+    "vertices": 271,
+    "faces": 360
+  },
+  "anatomy__handphalanges__wristL__FJ3296": {
+    "name": "middle phalanx of left index finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3296",
+    "vertices": 188,
+    "faces": 306
+  },
+  "anatomy__handphalanges__wristL__FJ3299": {
+    "name": "middle phalanx of left middle finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3299",
+    "vertices": 229,
+    "faces": 384
+  },
+  "anatomy__handphalanges__wristL__FJ3291": {
+    "name": "middle phalanx of left ring finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3291",
+    "vertices": 216,
+    "faces": 340
+  },
+  "anatomy__handphalanges__wristL__FJ3297": {
+    "name": "middle phalanx of left little finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3297",
+    "vertices": 192,
+    "faces": 254
+  },
+  "anatomy__handphalanges__wristL__FJ3188": {
+    "name": "distal phalanx of left thumb",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3188",
+    "vertices": 189,
+    "faces": 270
+  },
+  "anatomy__handphalanges__wristL__FJ3183": {
+    "name": "distal phalanx of left index finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3183",
+    "vertices": 204,
+    "faces": 328
+  },
+  "anatomy__handphalanges__wristL__FJ3186": {
+    "name": "distal phalanx of left middle finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3186",
+    "vertices": 173,
+    "faces": 266
+  },
+  "anatomy__handphalanges__wristL__FJ3187": {
+    "name": "distal phalanx of left ring finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3187",
+    "vertices": 140,
+    "faces": 196
+  },
+  "anatomy__handphalanges__wristL__FJ3184": {
+    "name": "distal phalanx of left little finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3184",
+    "vertices": 154,
+    "faces": 198
+  },
+  "anatomy__carpals__wrist__FJ3383": {
+    "name": "right scaphoid",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3383",
+    "vertices": 195,
+    "faces": 322
+  },
+  "anatomy__carpals__wristL__FJ3278": {
+    "name": "left scaphoid",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3278",
+    "vertices": 176,
+    "faces": 312
+  },
+  "anatomy__carpals__wrist__FJ3374": {
+    "name": "right lunate",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3374",
+    "vertices": 196,
+    "faces": 332
+  },
+  "anatomy__carpals__wristL__FJ3268": {
+    "name": "left lunate",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3268",
+    "vertices": 187,
+    "faces": 314
+  },
+  "anatomy__carpals__wrist__FJ3390": {
+    "name": "right triquetral",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3390",
+    "vertices": 139,
+    "faces": 170
+  },
+  "anatomy__carpals__wristL__FJ3285": {
+    "name": "left triquetral",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3285",
+    "vertices": 180,
+    "faces": 304
+  },
+  "anatomy__carpals__wrist__FJ3382": {
+    "name": "right pisiform",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3382",
+    "vertices": 110,
+    "faces": 190
+  },
+  "anatomy__carpals__wristL__FJ3276": {
+    "name": "left pisiform",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3276",
+    "vertices": 116,
+    "faces": 210
+  },
+  "anatomy__carpals__wrist__FJ3388": {
+    "name": "right trapezium",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3388",
+    "vertices": 277,
+    "faces": 434
+  },
+  "anatomy__carpals__wristL__FJ3283": {
+    "name": "left trapezium",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3283",
+    "vertices": 226,
+    "faces": 356
+  },
+  "anatomy__carpals__wristL__FJ3284": {
+    "name": "left trapezoid",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3284",
+    "vertices": 279,
+    "faces": 398
+  },
+  "anatomy__carpals__wrist__FJ3361": {
+    "name": "right capitate",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3361",
+    "vertices": 256,
+    "faces": 428
+  },
+  "anatomy__carpals__wristL__FJ3257": {
+    "name": "left capitate",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3257",
+    "vertices": 237,
+    "faces": 402
+  },
+  "anatomy__carpals__wrist__FJ3367": {
+    "name": "right hamate",
+    "structure": "carpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3367",
+    "vertices": 335,
+    "faces": 522
+  },
+  "anatomy__carpals__wristL__FJ3261": {
+    "name": "left hamate",
+    "structure": "carpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3261",
+    "vertices": 280,
+    "faces": 452
+  },
+  "anatomy__handphalanges__wrist__FJ3327": {
+    "name": "proximal phalanx of right thumb",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3327",
+    "vertices": 197,
+    "faces": 318
+  },
+  "anatomy__handphalanges__wrist__FJ3322": {
+    "name": "proximal phalanx of right index finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3322",
+    "vertices": 226,
+    "faces": 386
+  },
+  "anatomy__handphalanges__wrist__FJ3325": {
+    "name": "proximal phalanx of right middle finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3325",
+    "vertices": 271,
+    "faces": 458
+  },
+  "anatomy__handphalanges__wrist__FJ3326": {
+    "name": "proximal phalanx of right ring finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3326",
+    "vertices": 209,
+    "faces": 376
+  },
+  "anatomy__handphalanges__wrist__FJ3323": {
+    "name": "proximal phalanx of right little finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3323",
+    "vertices": 187,
+    "faces": 314
+  },
+  "anatomy__handphalanges__wrist__FJ3303": {
+    "name": "middle phalanx of right index finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3303",
+    "vertices": 190,
+    "faces": 264
+  },
+  "anatomy__handphalanges__wrist__FJ3306": {
+    "name": "middle phalanx of right middle finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3306",
+    "vertices": 227,
+    "faces": 342
+  },
+  "anatomy__handphalanges__wrist__FJ3292": {
+    "name": "middle phalanx of right ring finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3292",
+    "vertices": 219,
+    "faces": 316
+  },
+  "anatomy__handphalanges__wrist__FJ3304": {
+    "name": "middle phalanx of right little finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3304",
+    "vertices": 169,
+    "faces": 208
+  },
+  "anatomy__handphalanges__wrist__FJ3198": {
+    "name": "distal phalanx of right thumb",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3198",
+    "vertices": 187,
+    "faces": 240
+  },
+  "anatomy__handphalanges__wrist__FJ3193": {
+    "name": "distal phalanx of right index finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3193",
+    "vertices": 188,
+    "faces": 210
+  },
+  "anatomy__handphalanges__wrist__FJ3196": {
+    "name": "distal phalanx of right middle finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3196",
+    "vertices": 143,
+    "faces": 174
+  },
+  "anatomy__handphalanges__wrist__FJ3197": {
+    "name": "distal phalanx of right ring finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3197",
+    "vertices": 114,
+    "faces": 112
+  },
+  "anatomy__handphalanges__wrist__FJ3194": {
+    "name": "distal phalanx of right little finger",
+    "structure": "handphalanges",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3194",
+    "vertices": 140,
+    "faces": 188
+  },
+  "anatomy__metacarpals__wrist__FJ3350": {
+    "name": "right first metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3350",
+    "vertices": 307,
+    "faces": 566
+  },
+  "anatomy__metacarpals__wristL__FJ3240": {
+    "name": "left first metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3240",
+    "vertices": 304,
+    "faces": 578
+  },
+  "anatomy__metacarpals__wrist__FJ3352": {
+    "name": "right second metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3352",
+    "vertices": 418,
+    "faces": 748
+  },
+  "anatomy__metacarpals__wristL__FJ3243": {
+    "name": "left second metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3243",
+    "vertices": 420,
+    "faces": 774
+  },
+  "anatomy__metacarpals__wrist__FJ3354": {
+    "name": "right third metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3354",
+    "vertices": 404,
+    "faces": 702
+  },
+  "anatomy__metacarpals__wristL__FJ3246": {
+    "name": "left third metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3246",
+    "vertices": 392,
+    "faces": 708
+  },
+  "anatomy__metacarpals__wrist__FJ3356": {
+    "name": "right fourth metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3356",
+    "vertices": 340,
+    "faces": 536
+  },
+  "anatomy__metacarpals__wristL__FJ3249": {
+    "name": "left fourth metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3249",
+    "vertices": 316,
+    "faces": 528
+  },
+  "anatomy__metacarpals__wrist__FJ3358": {
+    "name": "right fifth metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wrist",
+    "layer": "bones",
+    "file_id": "FJ3358",
+    "vertices": 279,
+    "faces": 506
+  },
+  "anatomy__metacarpals__wristL__FJ3252": {
+    "name": "left fifth metacarpal bone",
+    "structure": "metacarpals",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3252",
+    "vertices": 282,
+    "faces": 500
+  },
+  "anatomy__femur__hip__FJ3365": {
+    "name": "right femur",
+    "structure": "femur",
+    "segment": "hip",
+    "layer": "bones",
+    "file_id": "FJ3365",
+    "vertices": 1574,
+    "faces": 3102
+  },
+  "anatomy__femur__hipL__FJ3259": {
+    "name": "left femur",
+    "structure": "femur",
+    "segment": "hipL",
+    "layer": "bones",
+    "file_id": "FJ3259",
+    "vertices": 1623,
+    "faces": 3204
+  },
+  "anatomy__tibia__knee__FJ3387": {
+    "name": "right tibia",
+    "structure": "tibia",
+    "segment": "knee",
+    "layer": "bones",
+    "file_id": "FJ3387",
+    "vertices": 857,
+    "faces": 1664
+  },
+  "anatomy__tibia__kneeL__FJ3282": {
+    "name": "left tibia",
+    "structure": "tibia",
+    "segment": "kneeL",
+    "layer": "bones",
+    "file_id": "FJ3282",
+    "vertices": 880,
+    "faces": 1692
+  },
+  "anatomy__fibula__knee__FJ3366": {
+    "name": "right fibula",
+    "structure": "fibula",
+    "segment": "knee",
+    "layer": "bones",
+    "file_id": "FJ3366",
+    "vertices": 593,
+    "faces": 1142
+  },
+  "anatomy__fibula__kneeL__FJ3260": {
+    "name": "left fibula",
+    "structure": "fibula",
+    "segment": "kneeL",
+    "layer": "bones",
+    "file_id": "FJ3260",
+    "vertices": 577,
+    "faces": 1124
+  },
+  "anatomy__talus__ankle__FJ3385": {
+    "name": "right talus",
+    "structure": "talus",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3385",
+    "vertices": 812,
+    "faces": 1380
+  },
+  "anatomy__talus__ankleL__FJ3280": {
+    "name": "left talus",
+    "structure": "talus",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3280",
+    "vertices": 776,
+    "faces": 1356
+  },
+  "anatomy__patella__knee__FJ3381": {
+    "name": "right patella",
+    "structure": "patella",
+    "segment": "knee",
+    "layer": "bones",
+    "file_id": "FJ3381",
+    "vertices": 178,
+    "faces": 306
+  },
+  "anatomy__patella__kneeL__FJ3275": {
+    "name": "left patella",
+    "structure": "patella",
+    "segment": "kneeL",
+    "layer": "bones",
+    "file_id": "FJ3275",
+    "vertices": 180,
+    "faces": 310
+  },
+  "anatomy__calcaneus__ankle__FJ3360": {
+    "name": "right calcaneus",
+    "structure": "calcaneus",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3360",
+    "vertices": 739,
+    "faces": 1262
+  },
+  "anatomy__calcaneus__ankleL__FJ3256": {
+    "name": "left calcaneus",
+    "structure": "calcaneus",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3256",
+    "vertices": 719,
+    "faces": 1288
+  },
+  "anatomy__navicular__ankle__FJ3308": {
+    "name": "navicular bone of right foot",
+    "structure": "navicular",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3308",
+    "vertices": 455,
+    "faces": 716
+  },
+  "anatomy__navicular__ankleL__FJ3307": {
+    "name": "navicular bone of left foot",
+    "structure": "navicular",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3307",
+    "vertices": 459,
+    "faces": 744
+  },
+  "anatomy__metatarsals__ankle__FJ3351": {
+    "name": "right first metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3351",
+    "vertices": 602,
+    "faces": 1122
+  },
+  "anatomy__metatarsals__ankleL__FJ3241": {
+    "name": "left first metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3241",
+    "vertices": 614,
+    "faces": 1172
+  },
+  "anatomy__metatarsals__ankle__FJ3353": {
+    "name": "right second metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3353",
+    "vertices": 515,
+    "faces": 752
+  },
+  "anatomy__metatarsals__ankleL__FJ3244": {
+    "name": "left second metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3244",
+    "vertices": 487,
+    "faces": 774
+  },
+  "anatomy__metatarsals__ankle__FJ3355": {
+    "name": "right third metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3355",
+    "vertices": 423,
+    "faces": 700
+  },
+  "anatomy__metatarsals__ankleL__FJ3247": {
+    "name": "left third metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3247",
+    "vertices": 429,
+    "faces": 742
+  },
+  "anatomy__metatarsals__ankle__FJ3357": {
+    "name": "right fourth metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3357",
+    "vertices": 397,
+    "faces": 674
+  },
+  "anatomy__metatarsals__ankleL__FJ3250": {
+    "name": "left fourth metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3250",
+    "vertices": 437,
+    "faces": 772
+  },
+  "anatomy__metatarsals__ankle__FJ3359": {
+    "name": "right fifth metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3359",
+    "vertices": 436,
+    "faces": 794
+  },
+  "anatomy__metatarsals__ankleL__FJ3253": {
+    "name": "left fifth metatarsal bone",
+    "structure": "metatarsals",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3253",
+    "vertices": 447,
+    "faces": 864
+  },
+  "anatomy__cuneiforms__ankle__FJ3377": {
+    "name": "right medial cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3377",
+    "vertices": 615,
+    "faces": 952
+  },
+  "anatomy__cuneiforms__ankleL__FJ3271": {
+    "name": "left medial cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3271",
+    "vertices": 582,
+    "faces": 996
+  },
+  "anatomy__cuneiforms__ankle__FJ3370": {
+    "name": "right intermediate cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3370",
+    "vertices": 288,
+    "faces": 450
+  },
+  "anatomy__cuneiforms__ankleL__FJ3264": {
+    "name": "left intermediate cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3264",
+    "vertices": 305,
+    "faces": 466
+  },
+  "anatomy__cuneiforms__ankle__FJ3373": {
+    "name": "right lateral cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3373",
+    "vertices": 395,
+    "faces": 626
+  },
+  "anatomy__cuneiforms__ankleL__FJ3267": {
+    "name": "left lateral cuneiform bone",
+    "structure": "cuneiforms",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3267",
+    "vertices": 405,
+    "faces": 680
+  },
+  "anatomy__cuboid__ankle__FJ3364": {
+    "name": "right cuboid bone",
+    "structure": "cuboid",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3364",
+    "vertices": 543,
+    "faces": 932
+  },
+  "anatomy__cuboid__ankleL__FJ3258": {
+    "name": "left cuboid bone",
+    "structure": "cuboid",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3258",
+    "vertices": 494,
+    "faces": 886
+  },
+  "anatomy__deepneck__head__FJ1589": {
+    "name": "right rectus capitis posterior major",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1589",
+    "vertices": 1074,
+    "faces": 1572
+  },
+  "anatomy__deepneck__head__FJ1567": {
+    "name": "left rectus capitis posterior major",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1567",
+    "vertices": 1038,
+    "faces": 1566
+  },
+  "anatomy__deepneck__head__FJ1590": {
+    "name": "right rectus capitis posterior minor",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1590",
+    "vertices": 744,
+    "faces": 886
+  },
+  "anatomy__deepneck__head__FJ1568": {
+    "name": "left rectus capitis posterior minor",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1568",
+    "vertices": 686,
+    "faces": 860
+  },
+  "anatomy__deepneck__head__FJ1585": {
+    "name": "right obliquus capitis superior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1585",
+    "vertices": 1569,
+    "faces": 1410
+  },
+  "anatomy__deepneck__head__FJ1564": {
+    "name": "left obliquus capitis superior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1564",
+    "vertices": 1454,
+    "faces": 1418
+  },
+  "anatomy__deepneck__head__FJ1584": {
+    "name": "right obliquus capitis inferior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1584",
+    "vertices": 692,
+    "faces": 1032
+  },
+  "anatomy__deepneck__head__FJ1563": {
+    "name": "left obliquus capitis inferior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1563",
+    "vertices": 703,
+    "faces": 1044
+  },
+  "anatomy__levatorscapulae__static__FJ1532": {
+    "name": "right levator scapulae",
+    "structure": "levatorscapulae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1532",
+    "vertices": 3311,
+    "faces": 4718
+  },
+  "anatomy__levatorscapulae__static__FJ1532M": {
+    "name": "left levator scapulae",
+    "structure": "levatorscapulae",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1532M",
+    "vertices": 3324,
+    "faces": 4718
+  },
+  "anatomy__supraspinatus__static__FJ1506": {
+    "name": "right supraspinatus",
+    "structure": "supraspinatus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1506",
+    "vertices": 843,
+    "faces": 878
+  },
+  "anatomy__supraspinatus__static__FJ1506M": {
+    "name": "left supraspinatus",
+    "structure": "supraspinatus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1506M",
+    "vertices": 842,
+    "faces": 878
+  },
+  "anatomy__infraspinatus__static__FJ1500": {
+    "name": "right infraspinatus muscle",
+    "structure": "infraspinatus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1500",
+    "vertices": 743,
+    "faces": 866
+  },
+  "anatomy__infraspinatus__static__FJ1500M": {
+    "name": "left infraspinatus muscle",
+    "structure": "infraspinatus",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1500M",
+    "vertices": 738,
+    "faces": 866
+  },
+  "anatomy__teresmajor__shoulder__FJ1507": {
+    "name": "right teres major",
+    "structure": "teresmajor",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1507",
+    "vertices": 1044,
+    "faces": 1042
+  },
+  "anatomy__teresmajor__shoulderL__FJ1507M": {
+    "name": "left teres major",
+    "structure": "teresmajor",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1507M",
+    "vertices": 1052,
+    "faces": 1042
+  },
+  "anatomy__teresminor__static__FJ1508": {
+    "name": "right teres minor",
+    "structure": "teresminor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1508",
+    "vertices": 392,
+    "faces": 506
+  },
+  "anatomy__teresminor__static__FJ1508M": {
+    "name": "left teres minor",
+    "structure": "teresminor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1508M",
+    "vertices": 391,
+    "faces": 506
+  },
+  "anatomy__toephalanges__ankle__FJ3319": {
+    "name": "proximal phalanx of right second toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3319",
+    "vertices": 236,
+    "faces": 414
+  },
+  "anatomy__toephalanges__ankleL__FJ3328": {
+    "name": "proximal phalanx of left second toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3328",
+    "vertices": 233,
+    "faces": 380
+  },
+  "anatomy__toephalanges__ankle__FJ3320": {
+    "name": "proximal phalanx of right third toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3320",
+    "vertices": 276,
+    "faces": 422
+  },
+  "anatomy__toephalanges__ankleL__FJ3311": {
+    "name": "proximal phalanx of left third toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3311",
+    "vertices": 248,
+    "faces": 408
+  },
+  "anatomy__toephalanges__ankle__FJ3321": {
+    "name": "proximal phalanx of right fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3321",
+    "vertices": 254,
+    "faces": 438
+  },
+  "anatomy__toephalanges__ankleL__FJ3312": {
+    "name": "proximal phalanx of left fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3312",
+    "vertices": 255,
+    "faces": 438
+  },
+  "anatomy__toephalanges__ankle__FJ3324": {
+    "name": "proximal phalanx of right little toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3324",
+    "vertices": 238,
+    "faces": 406
+  },
+  "anatomy__toephalanges__ankleL__FJ3315": {
+    "name": "proximal phalanx of left little toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3315",
+    "vertices": 231,
+    "faces": 396
+  },
+  "anatomy__toephalanges__ankle__FJ3300": {
+    "name": "middle phalanx of right second toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3300",
+    "vertices": 192,
+    "faces": 264
+  },
+  "anatomy__toephalanges__ankleL__FJ3293": {
+    "name": "middle phalanx of left second toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3293",
+    "vertices": 197,
+    "faces": 324
+  },
+  "anatomy__toephalanges__ankle__FJ3301": {
+    "name": "middle phalanx of right third toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3301",
+    "vertices": 190,
+    "faces": 292
+  },
+  "anatomy__toephalanges__ankleL__FJ3294": {
+    "name": "middle phalanx of left third toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3294",
+    "vertices": 185,
+    "faces": 294
+  },
+  "anatomy__toephalanges__ankle__FJ3302": {
+    "name": "middle phalanx of right fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3302",
+    "vertices": 220,
+    "faces": 350
+  },
+  "anatomy__toephalanges__ankleL__FJ3295": {
+    "name": "middle phalanx of left fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3295",
+    "vertices": 183,
+    "faces": 284
+  },
+  "anatomy__toephalanges__ankle__FJ3192": {
+    "name": "distal phalanx of right big toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3192",
+    "vertices": 289,
+    "faces": 440
+  },
+  "anatomy__toephalanges__ankleL__FJ3182": {
+    "name": "distal phalanx of left big toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3182",
+    "vertices": 256,
+    "faces": 378
+  },
+  "anatomy__toephalanges__ankle__FJ3189": {
+    "name": "distal phalanx of right second toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3189",
+    "vertices": 170,
+    "faces": 200
+  },
+  "anatomy__toephalanges__ankleL__FJ3179": {
+    "name": "distal phalanx of left second toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3179",
+    "vertices": 169,
+    "faces": 240
+  },
+  "anatomy__toephalanges__ankle__FJ3190": {
+    "name": "distal phalanx of right third toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3190",
+    "vertices": 162,
+    "faces": 260
+  },
+  "anatomy__toephalanges__ankleL__FJ3180": {
+    "name": "distal phalanx of left third toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3180",
+    "vertices": 188,
+    "faces": 336
+  },
+  "anatomy__toephalanges__ankle__FJ3191": {
+    "name": "distal phalanx of right fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3191",
+    "vertices": 144,
+    "faces": 244
+  },
+  "anatomy__toephalanges__ankleL__FJ3181": {
+    "name": "distal phalanx of left fourth toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3181",
+    "vertices": 146,
+    "faces": 226
+  },
+  "anatomy__toephalanges__ankle__FJ3195": {
+    "name": "distal phalanx of right little toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3195",
+    "vertices": 178,
+    "faces": 210
+  },
+  "anatomy__toephalanges__ankleL__FJ3185": {
+    "name": "distal phalanx of left little toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3185",
+    "vertices": 160,
+    "faces": 220
+  },
+  "anatomy__trapezius__static__FJ1520": {
+    "name": "ascending part of right trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1520",
+    "vertices": 7533,
+    "faces": 10530
+  },
+  "anatomy__trapezius__static__FJ1520M": {
+    "name": "ascending part of left trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1520M",
+    "vertices": 7507,
+    "faces": 10530
+  },
+  "anatomy__trapezius__static__FJ1554": {
+    "name": "transverse part of right trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1554",
+    "vertices": 3535,
+    "faces": 4460
+  },
+  "anatomy__trapezius__static__FJ1554M": {
+    "name": "transverse part of left trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1554M",
+    "vertices": 3535,
+    "faces": 4460
+  },
+  "anatomy__trapezius__static__FJ1521": {
+    "name": "descending part of right trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1521",
+    "vertices": 5023,
+    "faces": 7108
+  },
+  "anatomy__trapezius__static__FJ1521M": {
+    "name": "descending part of left trapezius",
+    "structure": "trapezius",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1521M",
+    "vertices": 4999,
+    "faces": 7108
+  },
+  "anatomy__deltoid__static__FJ1468": {
+    "name": "clavicular part of right deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1468",
+    "vertices": 2592,
+    "faces": 2206
+  },
+  "anatomy__deltoid__static__FJ1468M": {
+    "name": "clavicular part of left deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1468M",
+    "vertices": 2604,
+    "faces": 2206
+  },
+  "anatomy__deltoid__static__FJ1467": {
+    "name": "acromial part of right deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1467",
+    "vertices": 916,
+    "faces": 1300
+  },
+  "anatomy__deltoid__static__FJ1467M": {
+    "name": "acromial part of left deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1467M",
+    "vertices": 918,
+    "faces": 1300
+  },
+  "anatomy__deltoid__static__FJ1513": {
+    "name": "spinal part of right deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1513",
+    "vertices": 1665,
+    "faces": 1900
+  },
+  "anatomy__deltoid__static__FJ1513M": {
+    "name": "spinal part of left deltoid",
+    "structure": "deltoid",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1513M",
+    "vertices": 1678,
+    "faces": 1900
+  },
+  "anatomy__pectoralis__static__FJ1447": {
+    "name": "clavicular part of right pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1447",
+    "vertices": 1492,
+    "faces": 1846
+  },
+  "anatomy__pectoralis__static__FJ1447M": {
+    "name": "clavicular part of left pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1447M",
+    "vertices": 1495,
+    "faces": 1846
+  },
+  "anatomy__handintrinsics__wrist__FJ1483": {
+    "name": "right abductor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1483",
+    "vertices": 713,
+    "faces": 744
+  },
+  "anatomy__handintrinsics__wristL__FJ1483M": {
+    "name": "left abductor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1483M",
+    "vertices": 711,
+    "faces": 744
+  },
+  "anatomy__handintrinsics__wrist__FJ1469M": {
+    "name": "right flexor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1469M",
+    "vertices": 735,
+    "faces": 714
+  },
+  "anatomy__handintrinsics__wristL__FJ1469": {
+    "name": "left flexor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1469",
+    "vertices": 735,
+    "faces": 714
+  },
+  "anatomy__handintrinsics__wrist__FJ1501": {
+    "name": "right opponens pollicis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1501",
+    "vertices": 1015,
+    "faces": 956
+  },
+  "anatomy__handintrinsics__wristL__FJ1501M": {
+    "name": "left opponens pollicis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1501M",
+    "vertices": 1015,
+    "faces": 956
+  },
+  "anatomy__handintrinsics__wrist__FJ1466": {
+    "name": "abductor digiti minimi of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1466",
+    "vertices": 625,
+    "faces": 508
+  },
+  "anatomy__handintrinsics__wristL__FJ1466M": {
+    "name": "abductor digiti minimi of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1466M",
+    "vertices": 620,
+    "faces": 508
+  },
+  "anatomy__handintrinsics__wrist__FJ1470": {
+    "name": "flexor digiti minimi brevis of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1470",
+    "vertices": 312,
+    "faces": 328
+  },
+  "anatomy__handintrinsics__wristL__FJ1470M": {
+    "name": "flexor digiti minimi brevis of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1470M",
+    "vertices": 312,
+    "faces": 328
+  },
+  "anatomy__handintrinsics__wrist__FJ1482": {
+    "name": "opponens digiti minimi of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1482",
+    "vertices": 626,
+    "faces": 484
+  },
+  "anatomy__handintrinsics__wristL__FJ1482M": {
+    "name": "opponens digiti minimi of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1482M",
+    "vertices": 624,
+    "faces": 484
+  },
+  "anatomy__footmuscles__ankle__FJ1400": {
+    "name": "right abductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1400",
+    "vertices": 974,
+    "faces": 1068
+  },
+  "anatomy__footmuscles__ankleL__FJ1400M": {
+    "name": "left abductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1400M",
+    "vertices": 972,
+    "faces": 1068
+  },
+  "anatomy__footmuscles__ankle__FJ1413": {
+    "name": "right flexor digitorum brevis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1413",
+    "vertices": 2468,
+    "faces": 2436
+  },
+  "anatomy__footmuscles__ankleL__FJ1413M": {
+    "name": "left flexor digitorum brevis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1413M",
+    "vertices": 2479,
+    "faces": 2436
+  },
+  "anatomy__footmuscles__ankle__FJ1390": {
+    "name": "abductor digiti minimi of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1390",
+    "vertices": 1492,
+    "faces": 1276
+  },
+  "anatomy__footmuscles__ankleL__FJ1390M": {
+    "name": "abductor digiti minimi of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1390M",
+    "vertices": 1492,
+    "faces": 1276
+  },
+  "anatomy__footmuscles__ankle__FJ1412": {
+    "name": "right flexor accessorius",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1412",
+    "vertices": 718,
+    "faces": 842
+  },
+  "anatomy__footmuscles__ankleL__FJ1412M": {
+    "name": "left flexor accessorius",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1412M",
+    "vertices": 718,
+    "faces": 842
+  },
+  "anatomy__footmuscles__ankle__FJ1391": {
+    "name": "flexor digiti minimi brevis of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1391",
+    "vertices": 820,
+    "faces": 786
+  },
+  "anatomy__footmuscles__ankleL__FJ1391M": {
+    "name": "flexor digiti minimi brevis of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1391M",
+    "vertices": 821,
+    "faces": 786
+  },
+  "anatomy__footmuscles__ankle__FJ1389": {
+    "name": "fourth lumbrical of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1389",
+    "vertices": 410,
+    "faces": 328
+  },
+  "anatomy__footmuscles__ankleL__FJ1389M": {
+    "name": "fourth lumbrical of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1389M",
+    "vertices": 410,
+    "faces": 328
+  },
+  "anatomy__footmuscles__ankle__FJ1387": {
+    "name": "third lumbrical of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1387",
+    "vertices": 508,
+    "faces": 368
+  },
+  "anatomy__footmuscles__ankleL__FJ1387M": {
+    "name": "third lumbrical of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1387M",
+    "vertices": 512,
+    "faces": 368
+  },
+  "anatomy__coracobrachialis__shoulder__FJ1488": {
+    "name": "right coracobrachialis",
+    "structure": "coracobrachialis",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1488",
+    "vertices": 451,
+    "faces": 444
+  },
+  "anatomy__coracobrachialis__shoulderL__FJ1488M": {
+    "name": "left coracobrachialis",
+    "structure": "coracobrachialis",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1488M",
+    "vertices": 449,
+    "faces": 444
+  },
+  "anatomy__brachialis__shoulder__FJ1486": {
+    "name": "right brachialis",
+    "structure": "brachialis",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1486",
+    "vertices": 1266,
+    "faces": 1746
+  },
+  "anatomy__brachialis__shoulderL__FJ1486M": {
+    "name": "left brachialis",
+    "structure": "brachialis",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1486M",
+    "vertices": 1256,
+    "faces": 1746
+  },
+  "anatomy__biceps__shoulder__FJ1512": {
+    "name": "short head of right biceps brachii",
+    "structure": "biceps",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1512",
+    "vertices": 1739,
+    "faces": 1856
+  },
+  "anatomy__biceps__shoulderL__FJ1512M": {
+    "name": "short head of left biceps brachii",
+    "structure": "biceps",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1512M",
+    "vertices": 1743,
+    "faces": 1856
+  },
+  "anatomy__biceps__shoulder__FJ1478": {
+    "name": "long head of right biceps brachii",
+    "structure": "biceps",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1478",
+    "vertices": 1053,
+    "faces": 1426
+  },
+  "anatomy__biceps__shoulderL__FJ1478M": {
+    "name": "long head of left biceps brachii",
+    "structure": "biceps",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1478M",
+    "vertices": 1039,
+    "faces": 1426
+  },
+  "anatomy__triceps__shoulder__FJ1480": {
+    "name": "medial head of right triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1480",
+    "vertices": 620,
+    "faces": 832
+  },
+  "anatomy__triceps__shoulderL__FJ1480M": {
+    "name": "medial head of left triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1480M",
+    "vertices": 617,
+    "faces": 832
+  },
+  "anatomy__triceps__shoulder__FJ1477": {
+    "name": "lateral head of right triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1477",
+    "vertices": 1678,
+    "faces": 2606
+  },
+  "anatomy__triceps__shoulderL__FJ1477M": {
+    "name": "lateral head of left triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1477M",
+    "vertices": 1676,
+    "faces": 2606
+  },
+  "anatomy__triceps__shoulder__FJ1479": {
+    "name": "long head of right triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulder",
+    "layer": "muscles",
+    "file_id": "FJ1479",
+    "vertices": 1105,
+    "faces": 1588
+  },
+  "anatomy__triceps__shoulderL__FJ1479M": {
+    "name": "long head of left triceps brachii",
+    "structure": "triceps",
+    "segment": "shoulderL",
+    "layer": "muscles",
+    "file_id": "FJ1479M",
+    "vertices": 1109,
+    "faces": 1588
+  },
+  "anatomy__anconeus__elbow__FJ1485": {
+    "name": "right anconeus",
+    "structure": "anconeus",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1485",
+    "vertices": 1105,
+    "faces": 1278
+  },
+  "anatomy__anconeus__elbowL__FJ1485M": {
+    "name": "left anconeus",
+    "structure": "anconeus",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1485M",
+    "vertices": 1106,
+    "faces": 1278
+  },
+  "anatomy__footmuscles__ankle__FJ1383": {
+    "name": "first lumbrical of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1383",
+    "vertices": 838,
+    "faces": 646
+  },
+  "anatomy__footmuscles__ankleL__FJ1383M": {
+    "name": "first lumbrical of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1383M",
+    "vertices": 838,
+    "faces": 646
+  },
+  "anatomy__footmuscles__ankle__FJ1385": {
+    "name": "second lumbrical of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1385",
+    "vertices": 266,
+    "faces": 266
+  },
+  "anatomy__footmuscles__ankleL__FJ1385M": {
+    "name": "second lumbrical of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1385M",
+    "vertices": 266,
+    "faces": 266
+  },
+  "anatomy__footmuscles__ankle__FJ1388": {
+    "name": "third plantar interosseous of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1388",
+    "vertices": 908,
+    "faces": 772
+  },
+  "anatomy__footmuscles__ankleL__FJ1388M": {
+    "name": "third plantar interosseous of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1388M",
+    "vertices": 905,
+    "faces": 772
+  },
+  "anatomy__footmuscles__ankle__FJ1386": {
+    "name": "second plantar interosseous of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1386",
+    "vertices": 522,
+    "faces": 632
+  },
+  "anatomy__footmuscles__ankleL__FJ1386M": {
+    "name": "second plantar interosseous of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1386M",
+    "vertices": 522,
+    "faces": 632
+  },
+  "anatomy__footmuscles__ankle__FJ1384": {
+    "name": "first plantar interosseous of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1384",
+    "vertices": 563,
+    "faces": 674
+  },
+  "anatomy__footmuscles__ankleL__FJ1384M": {
+    "name": "first plantar interosseous of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1384M",
+    "vertices": 561,
+    "faces": 674
+  },
+  "anatomy__pronators__forearm__FJ1503": {
+    "name": "right pronator quadratus",
+    "structure": "pronators",
+    "segment": "forearm",
+    "layer": "muscles",
+    "file_id": "FJ1503",
+    "vertices": 2257,
+    "faces": 1838
+  },
+  "anatomy__pronators__forearmL__FJ1503M": {
+    "name": "left pronator quadratus",
+    "structure": "pronators",
+    "segment": "forearmL",
+    "layer": "muscles",
+    "file_id": "FJ1503M",
+    "vertices": 2259,
+    "faces": 1838
+  },
+  "anatomy__wristflexors__elbow__FJ1496": {
+    "name": "right flexor carpi radialis",
+    "structure": "wristflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1496",
+    "vertices": 819,
+    "faces": 1148
+  },
+  "anatomy__wristflexors__elbowL__FJ1496M": {
+    "name": "left flexor carpi radialis",
+    "structure": "wristflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1496M",
+    "vertices": 819,
+    "faces": 1148
+  },
+  "anatomy__wristflexors__elbow__FJ1502": {
+    "name": "right palmaris longus",
+    "structure": "wristflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1502",
+    "vertices": 4471,
+    "faces": 4968
+  },
+  "anatomy__wristflexors__elbowL__FJ1502M": {
+    "name": "left palmaris longus",
+    "structure": "wristflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1502M",
+    "vertices": 4469,
+    "faces": 4968
+  },
+  "anatomy__forearmflexors__elbow__FJ1475": {
+    "name": "right flexor digitorum superficialis",
+    "structure": "forearmflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1475",
+    "vertices": 6109,
+    "faces": 8698
+  },
+  "anatomy__forearmflexors__elbow__FJ1499": {
+    "name": "right flexor digitorum superficialis",
+    "structure": "forearmflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1499",
+    "vertices": 636,
+    "faces": 866
+  },
+  "anatomy__forearmflexors__elbowL__FJ1475M": {
+    "name": "left flexor digitorum superficialis",
+    "structure": "forearmflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1475M",
+    "vertices": 6106,
+    "faces": 8698
+  },
+  "anatomy__forearmflexors__elbowL__FJ1499M": {
+    "name": "left flexor digitorum superficialis",
+    "structure": "forearmflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1499M",
+    "vertices": 636,
+    "faces": 866
+  },
+  "anatomy__wristflexors__elbow__FJ1497": {
+    "name": "right flexor digitorum profundus",
+    "structure": "wristflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1497",
+    "vertices": 3857,
+    "faces": 4838
+  },
+  "anatomy__wristflexors__elbowL__FJ1497M": {
+    "name": "left flexor digitorum profundus",
+    "structure": "wristflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1497M",
+    "vertices": 3852,
+    "faces": 4838
+  },
+  "anatomy__thumbtendons__elbow__FJ1498": {
+    "name": "right flexor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1498",
+    "vertices": 1781,
+    "faces": 1442
+  },
+  "anatomy__thumbtendons__elbowL__FJ1498M": {
+    "name": "left flexor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1498M",
+    "vertices": 1783,
+    "faces": 1442
+  },
+  "anatomy__brachioradialis__elbow__FJ1487": {
+    "name": "right brachioradialis",
+    "structure": "brachioradialis",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1487",
+    "vertices": 3270,
+    "faces": 4874
+  },
+  "anatomy__brachioradialis__elbowL__FJ1487M": {
+    "name": "left brachioradialis",
+    "structure": "brachioradialis",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1487M",
+    "vertices": 3272,
+    "faces": 4874
+  },
+  "anatomy__wristextensors__elbow__FJ1490": {
+    "name": "right extensor carpi radialis longus",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1490",
+    "vertices": 1696,
+    "faces": 2474
+  },
+  "anatomy__wristextensors__elbowL__FJ1490M": {
+    "name": "left extensor carpi radialis longus",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1490M",
+    "vertices": 1702,
+    "faces": 2474
+  },
+  "anatomy__wristextensors__elbow__FJ1489": {
+    "name": "right extensor carpi radialis brevis",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1489",
+    "vertices": 1564,
+    "faces": 2098
+  },
+  "anatomy__wristextensors__elbowL__FJ1489M": {
+    "name": "left extensor carpi radialis brevis",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1489M",
+    "vertices": 1564,
+    "faces": 2098
+  },
+  "anatomy__forearmextensors__elbow__FJ1492": {
+    "name": "right extensor digitorum",
+    "structure": "forearmextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1492",
+    "vertices": 3355,
+    "faces": 4294
+  },
+  "anatomy__forearmextensors__elbowL__FJ1492M": {
+    "name": "left extensor digitorum",
+    "structure": "forearmextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1492M",
+    "vertices": 3350,
+    "faces": 4294
+  },
+  "anatomy__wristextensors__elbow__FJ1491": {
+    "name": "right extensor digiti minimi",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1491",
+    "vertices": 1014,
+    "faces": 1434
+  },
+  "anatomy__wristextensors__elbowL__FJ1491M": {
+    "name": "left extensor digiti minimi",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1491M",
+    "vertices": 1017,
+    "faces": 1434
+  },
+  "anatomy__wristextensors__elbow__FJ1472": {
+    "name": "right extensor carpi ulnaris",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1472",
+    "vertices": 2975,
+    "faces": 2186
+  },
+  "anatomy__wristextensors__elbow__FJ1517": {
+    "name": "right extensor carpi ulnaris",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1517",
+    "vertices": 1114,
+    "faces": 1208
+  },
+  "anatomy__wristextensors__elbowL__FJ1472M": {
+    "name": "left extensor carpi ulnaris",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1472M",
+    "vertices": 2983,
+    "faces": 2186
+  },
+  "anatomy__wristextensors__elbowL__FJ1517M": {
+    "name": "left extensor carpi ulnaris",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1517M",
+    "vertices": 1116,
+    "faces": 1208
+  },
+  "anatomy__supinator__forearm__FJ1505": {
+    "name": "right supinator",
+    "structure": "supinator",
+    "segment": "forearm",
+    "layer": "muscles",
+    "file_id": "FJ1505",
+    "vertices": 2368,
+    "faces": 3110
+  },
+  "anatomy__supinator__forearmL__FJ1505M": {
+    "name": "left supinator",
+    "structure": "supinator",
+    "segment": "forearmL",
+    "layer": "muscles",
+    "file_id": "FJ1505M",
+    "vertices": 2379,
+    "faces": 3110
+  },
+  "anatomy__thumbtendons__elbow__FJ1484": {
+    "name": "right abductor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1484",
+    "vertices": 1439,
+    "faces": 1874
+  },
+  "anatomy__thumbtendons__elbowL__FJ1484M": {
+    "name": "left abductor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1484M",
+    "vertices": 1439,
+    "faces": 1874
+  },
+  "anatomy__thumbtendons__elbow__FJ1494": {
+    "name": "right extensor pollicis brevis",
+    "structure": "thumbtendons",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1494",
+    "vertices": 846,
+    "faces": 998
+  },
+  "anatomy__thumbtendons__elbowL__FJ1494M": {
+    "name": "left extensor pollicis brevis",
+    "structure": "thumbtendons",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1494M",
+    "vertices": 846,
+    "faces": 998
+  },
+  "anatomy__thumbtendons__elbow__FJ1495": {
+    "name": "right extensor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1495",
+    "vertices": 1177,
+    "faces": 1326
+  },
+  "anatomy__thumbtendons__elbowL__FJ1495M": {
+    "name": "left extensor pollicis longus",
+    "structure": "thumbtendons",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1495M",
+    "vertices": 1178,
+    "faces": 1326
+  },
+  "anatomy__wristextensors__elbow__FJ1493": {
+    "name": "right extensor indicis",
+    "structure": "wristextensors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1493",
+    "vertices": 690,
+    "faces": 720
+  },
+  "anatomy__wristextensors__elbowL__FJ1493M": {
+    "name": "left extensor indicis",
+    "structure": "wristextensors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1493M",
+    "vertices": 692,
+    "faces": 720
+  },
+  "anatomy__pronators__forearm__FJ1474": {
+    "name": "humeral head of right pronator teres",
+    "structure": "pronators",
+    "segment": "forearm",
+    "layer": "muscles",
+    "file_id": "FJ1474",
+    "vertices": 1588,
+    "faces": 1846
+  },
+  "anatomy__pronators__forearmL__FJ1474M": {
+    "name": "humeral head of left pronator teres",
+    "structure": "pronators",
+    "segment": "forearmL",
+    "layer": "muscles",
+    "file_id": "FJ1474M",
+    "vertices": 1599,
+    "faces": 1846
+  },
+  "anatomy__pronators__forearm__FJ1516": {
+    "name": "ulnar head of right pronator teres",
+    "structure": "pronators",
+    "segment": "forearm",
+    "layer": "muscles",
+    "file_id": "FJ1516",
+    "vertices": 791,
+    "faces": 1040
+  },
+  "anatomy__pronators__forearmL__FJ1516M": {
+    "name": "ulnar head of left pronator teres",
+    "structure": "pronators",
+    "segment": "forearmL",
+    "layer": "muscles",
+    "file_id": "FJ1516M",
+    "vertices": 791,
+    "faces": 1040
+  },
+  "anatomy__wristflexors__elbow__FJ1473": {
+    "name": "humeral head of right flexor carpi ulnaris",
+    "structure": "wristflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1473",
+    "vertices": 1887,
+    "faces": 2656
+  },
+  "anatomy__wristflexors__elbowL__FJ1473M": {
+    "name": "humeral head of left flexor carpi ulnaris",
+    "structure": "wristflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1473M",
+    "vertices": 1884,
+    "faces": 2656
+  },
+  "anatomy__wristflexors__elbow__FJ1518": {
+    "name": "ulnar head of right flexor carpi ulnaris",
+    "structure": "wristflexors",
+    "segment": "elbow",
+    "layer": "muscles",
+    "file_id": "FJ1518",
+    "vertices": 1715,
+    "faces": 1538
+  },
+  "anatomy__wristflexors__elbowL__FJ1518M": {
+    "name": "ulnar head of left flexor carpi ulnaris",
+    "structure": "wristflexors",
+    "segment": "elbowL",
+    "layer": "muscles",
+    "file_id": "FJ1518M",
+    "vertices": 1717,
+    "faces": 1538
+  },
+  "anatomy__quadriceps__hip__FJ1433": {
+    "name": "right rectus femoris",
+    "structure": "quadriceps",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1433",
+    "vertices": 3326,
+    "faces": 5688
+  },
+  "anatomy__quadriceps__hipL__FJ1433M": {
+    "name": "left rectus femoris",
+    "structure": "quadriceps",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1433M",
+    "vertices": 3326,
+    "faces": 5688
+  },
+  "anatomy__quadriceps__hip__FJ1442": {
+    "name": "right vastus lateralis",
+    "structure": "quadriceps",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1442",
+    "vertices": 3975,
+    "faces": 6688
+  },
+  "anatomy__quadriceps__hipL__FJ1442M": {
+    "name": "left vastus lateralis",
+    "structure": "quadriceps",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1442M",
+    "vertices": 3974,
+    "faces": 6688
+  },
+  "anatomy__quadriceps__hip__FJ1443": {
+    "name": "right vastus medialis",
+    "structure": "quadriceps",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1443",
+    "vertices": 2773,
+    "faces": 4552
+  },
+  "anatomy__quadriceps__hipL__FJ1443M": {
+    "name": "left vastus medialis",
+    "structure": "quadriceps",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1443M",
+    "vertices": 2772,
+    "faces": 4552
+  },
+  "anatomy__quadriceps__hip__FJ1441": {
+    "name": "right vastus intermedius",
+    "structure": "quadriceps",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1441",
+    "vertices": 2748,
+    "faces": 4260
+  },
+  "anatomy__quadriceps__hipL__FJ1441M": {
+    "name": "left vastus intermedius",
+    "structure": "quadriceps",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1441M",
+    "vertices": 2744,
+    "faces": 4260
+  },
+  "anatomy__handintrinsics__wrist__FJ1510": {
+    "name": "set of lumbricals of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1510",
+    "vertices": 3008,
+    "faces": 2668
+  },
+  "anatomy__handintrinsics__wristL__FJ1510M": {
+    "name": "set of lumbricals of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1510M",
+    "vertices": 3012,
+    "faces": 2668
+  },
+  "anatomy__handintrinsics__wrist__FJ1511": {
+    "name": "set of palmar interossei of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1511",
+    "vertices": 1239,
+    "faces": 966
+  },
+  "anatomy__handintrinsics__wristL__FJ1511M": {
+    "name": "set of palmar interossei of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1511M",
+    "vertices": 1243,
+    "faces": 966
+  },
+  "anatomy__handintrinsics__wrist__FJ1509": {
+    "name": "set of dorsal interossei of right hand",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1509",
+    "vertices": 3762,
+    "faces": 2618
+  },
+  "anatomy__handintrinsics__wristL__FJ1509M": {
+    "name": "set of dorsal interossei of left hand",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1509M",
+    "vertices": 3756,
+    "faces": 2618
+  },
+  "anatomy__toephalanges__ankle__FJ3310": {
+    "name": "proximal phalanx of right big toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3310",
+    "vertices": 281,
+    "faces": 486
+  },
+  "anatomy__toephalanges__ankleL__FJ3329": {
+    "name": "proximal phalanx of left big toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3329",
+    "vertices": 318,
+    "faces": 516
+  },
+  "anatomy__adductors__hip__FJ1421": {
+    "name": "right gracilis",
+    "structure": "adductors",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1421",
+    "vertices": 2086,
+    "faces": 3172
+  },
+  "anatomy__adductors__hipL__FJ1421M": {
+    "name": "left gracilis",
+    "structure": "adductors",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1421M",
+    "vertices": 2085,
+    "faces": 3172
+  },
+  "anatomy__adductors__hip__FJ1404": {
+    "name": "right adductor minimus",
+    "structure": "adductors",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1404",
+    "vertices": 1600,
+    "faces": 1958
+  },
+  "anatomy__adductors__hipL__FJ1404M": {
+    "name": "left adductor minimus",
+    "structure": "adductors",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1404M",
+    "vertices": 1597,
+    "faces": 1958
+  },
+  "anatomy__sesamoids__ankle__FJ3372": {
+    "name": "sesamoid bone of right foot",
+    "structure": "sesamoids",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3372",
+    "vertices": 73,
+    "faces": 80
+  },
+  "anatomy__sesamoids__ankle__FJ3376": {
+    "name": "sesamoid bone of right foot",
+    "structure": "sesamoids",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3376",
+    "vertices": 104,
+    "faces": 158
+  },
+  "anatomy__sesamoids__ankleL__FJ3266": {
+    "name": "sesamoid bone of left foot",
+    "structure": "sesamoids",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3266",
+    "vertices": 78,
+    "faces": 100
+  },
+  "anatomy__sesamoids__ankleL__FJ3270": {
+    "name": "sesamoid bone of left foot",
+    "structure": "sesamoids",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3270",
+    "vertices": 96,
+    "faces": 144
+  },
+  "anatomy__neckmuscles__static__FJ1587": {
+    "name": "right platysma",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1587",
+    "vertices": 7857,
+    "faces": 13780
+  },
+  "anatomy__neckmuscles__static__FJ1558": {
+    "name": "left platysma",
+    "structure": "neckmuscles",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1558",
+    "vertices": 7290,
+    "faces": 13396
+  },
+  "anatomy__suprahyoid__head__FJ1598": {
+    "name": "right stylohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1598",
+    "vertices": 843,
+    "faces": 1236
+  },
+  "anatomy__suprahyoid__head__FJ1576": {
+    "name": "left stylohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1576",
+    "vertices": 909,
+    "faces": 1248
+  },
+  "anatomy__pelvicfloor__static__FJ2550": {
+    "name": "right pubococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2550",
+    "vertices": 3498,
+    "faces": 4616
+  },
+  "anatomy__pelvicfloor__static__FJ1457M": {
+    "name": "left pubococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1457M",
+    "vertices": 3296,
+    "faces": 4616
+  },
+  "anatomy__pelvicfloor__static__FJ2545": {
+    "name": "left pubococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2545",
+    "vertices": 2937,
+    "faces": 4670
+  },
+  "anatomy__pelvicfloor__static__FJ2551": {
+    "name": "right puborectalis",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2551",
+    "vertices": 4164,
+    "faces": 3638
+  },
+  "anatomy__pelvicfloor__static__FJ1458M": {
+    "name": "left puborectalis",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1458M",
+    "vertices": 3817,
+    "faces": 3634
+  },
+  "anatomy__pelvicfloor__static__FJ2546": {
+    "name": "left puborectalis",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2546",
+    "vertices": 3163,
+    "faces": 3618
+  },
+  "anatomy__pelvicfloor__static__FJ2549": {
+    "name": "right iliococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2549",
+    "vertices": 3319,
+    "faces": 3864
+  },
+  "anatomy__pelvicfloor__static__FJ1453M": {
+    "name": "left iliococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1453M",
+    "vertices": 3288,
+    "faces": 3862
+  },
+  "anatomy__pelvicfloor__static__FJ2544": {
+    "name": "left iliococcygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2544",
+    "vertices": 2898,
+    "faces": 3846
+  },
+  "anatomy__pectoralis__static__FJ1446": {
+    "name": "abdominal part of right pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1446",
+    "vertices": 1019,
+    "faces": 1536
+  },
+  "anatomy__pectoralis__static__FJ1446M": {
+    "name": "abdominal part of left pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1446M",
+    "vertices": 1019,
+    "faces": 1536
+  },
+  "anatomy__hamstrings__hip__FJ1395": {
+    "name": "long head of right biceps femoris",
+    "structure": "hamstrings",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1395",
+    "vertices": 2838,
+    "faces": 5110
+  },
+  "anatomy__hamstrings__hipL__FJ1395M": {
+    "name": "long head of left biceps femoris",
+    "structure": "hamstrings",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1395M",
+    "vertices": 2837,
+    "faces": 5110
+  },
+  "anatomy__hamstrings__hip__FJ1444": {
+    "name": "short head of right biceps femoris",
+    "structure": "hamstrings",
+    "segment": "hip",
+    "layer": "muscles",
+    "file_id": "FJ1444",
+    "vertices": 1211,
+    "faces": 1728
+  },
+  "anatomy__hamstrings__hipL__FJ1444M": {
+    "name": "short head of left biceps femoris",
+    "structure": "hamstrings",
+    "segment": "hipL",
+    "layer": "muscles",
+    "file_id": "FJ1444M",
+    "vertices": 1215,
+    "faces": 1728
+  },
+  "anatomy__gastrocnemius__knee__FJ1397": {
+    "name": "medial head of right gastrocnemius",
+    "structure": "gastrocnemius",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1397",
+    "vertices": 2263,
+    "faces": 3842
+  },
+  "anatomy__gastrocnemius__kneeL__FJ1397M": {
+    "name": "medial head of left gastrocnemius",
+    "structure": "gastrocnemius",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1397M",
+    "vertices": 2264,
+    "faces": 3842
+  },
+  "anatomy__gastrocnemius__knee__FJ1394": {
+    "name": "lateral head of right gastrocnemius",
+    "structure": "gastrocnemius",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1394",
+    "vertices": 1748,
+    "faces": 3052
+  },
+  "anatomy__gastrocnemius__kneeL__FJ1394M": {
+    "name": "lateral head of left gastrocnemius",
+    "structure": "gastrocnemius",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1394M",
+    "vertices": 1746,
+    "faces": 3052
+  },
+  "anatomy__footmuscles__ankle__FJ1396": {
+    "name": "medial head of right flexor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1396",
+    "vertices": 1199,
+    "faces": 992
+  },
+  "anatomy__footmuscles__ankleL__FJ1396M": {
+    "name": "medial head of left flexor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1396M",
+    "vertices": 1201,
+    "faces": 992
+  },
+  "anatomy__footmuscles__ankle__FJ1393": {
+    "name": "lateral head of right flexor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1393",
+    "vertices": 2213,
+    "faces": 1742
+  },
+  "anatomy__footmuscles__ankleL__FJ1393M": {
+    "name": "lateral head of left flexor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1393M",
+    "vertices": 2213,
+    "faces": 1742
+  },
+  "anatomy__footmuscles__ankle__FJ1398": {
+    "name": "oblique head of right adductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1398",
+    "vertices": 1168,
+    "faces": 1054
+  },
+  "anatomy__footmuscles__ankleL__FJ1398M": {
+    "name": "oblique head of left adductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1398M",
+    "vertices": 1168,
+    "faces": 1054
+  },
+  "anatomy__footmuscles__ankle__FJ1445": {
+    "name": "transverse head of right adductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1445",
+    "vertices": 1115,
+    "faces": 818
+  },
+  "anatomy__footmuscles__ankleL__FJ1445M": {
+    "name": "transverse head of left adductor hallucis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1445M",
+    "vertices": 1115,
+    "faces": 818
+  },
+  "anatomy__handintrinsics__wrist__FJ1481": {
+    "name": "oblique head of right adductor pollicis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1481",
+    "vertices": 734,
+    "faces": 658
+  },
+  "anatomy__handintrinsics__wristL__FJ1481M": {
+    "name": "oblique head of left adductor pollicis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1481M",
+    "vertices": 733,
+    "faces": 658
+  },
+  "anatomy__handintrinsics__wrist__FJ1515": {
+    "name": "transverse head of right adductor pollicis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1515",
+    "vertices": 645,
+    "faces": 754
+  },
+  "anatomy__handintrinsics__wristL__FJ1515M": {
+    "name": "transverse head of left adductor pollicis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1515M",
+    "vertices": 645,
+    "faces": 754
+  },
+  "anatomy__suprahyoid__head__FJ1556": {
+    "name": "right digastric",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1556",
+    "vertices": 457,
+    "faces": 680
+  },
+  "anatomy__suprahyoid__head__FJ1579": {
+    "name": "right digastric",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1579",
+    "vertices": 1525,
+    "faces": 2272
+  },
+  "anatomy__suprahyoid__head__FJ1555": {
+    "name": "left digastric",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1555",
+    "vertices": 408,
+    "faces": 650
+  },
+  "anatomy__suprahyoid__head__FJ1560": {
+    "name": "left digastric",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1560",
+    "vertices": 367,
+    "faces": 392
+  },
+  "anatomy__suprahyoid__head__FJ1578": {
+    "name": "left digastric",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1578",
+    "vertices": 1389,
+    "faces": 2242
+  },
+  "anatomy__deepneck__head__FJ1582": {
+    "name": "right longus capitis",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1582",
+    "vertices": 2489,
+    "faces": 3956
+  },
+  "anatomy__deepneck__head__FJ1561": {
+    "name": "left longus capitis",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1561",
+    "vertices": 2300,
+    "faces": 3898
+  },
+  "anatomy__deepneck__head__FJ1588": {
+    "name": "right rectus capitis anterior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1588",
+    "vertices": 750,
+    "faces": 804
+  },
+  "anatomy__deepneck__head__FJ1566": {
+    "name": "left rectus capitis anterior",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1566",
+    "vertices": 646,
+    "faces": 816
+  },
+  "anatomy__deepneck__head__FJ1591": {
+    "name": "right rectus capitis lateralis",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1591",
+    "vertices": 553,
+    "faces": 674
+  },
+  "anatomy__deepneck__head__FJ1569": {
+    "name": "left rectus capitis lateralis",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1569",
+    "vertices": 598,
+    "faces": 720
+  },
+  "anatomy__suprahyoid__head__FJ1583": {
+    "name": "right mylohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1583",
+    "vertices": 1267,
+    "faces": 1956
+  },
+  "anatomy__suprahyoid__head__FJ1562": {
+    "name": "left mylohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1562",
+    "vertices": 1257,
+    "faces": 1938
+  },
+  "anatomy__suprahyoid__head__FJ1580": {
+    "name": "right geniohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1580",
+    "vertices": 408,
+    "faces": 728
+  },
+  "anatomy__suprahyoid__head__FJ1559": {
+    "name": "left geniohyoid",
+    "structure": "suprahyoid",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1559",
+    "vertices": 419,
+    "faces": 732
+  },
+  "anatomy__pelvicfloor__static__FJ2547": {
+    "name": "right coccygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2547",
+    "vertices": 1607,
+    "faces": 2086
+  },
+  "anatomy__pelvicfloor__static__FJ1449M": {
+    "name": "left coccygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1449M",
+    "vertices": 1630,
+    "faces": 2088
+  },
+  "anatomy__pelvicfloor__static__FJ2542": {
+    "name": "left coccygeus",
+    "structure": "pelvicfloor",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ2542",
+    "vertices": 1482,
+    "faces": 2082
+  },
+  "anatomy__larynxmuscles__head__FJ2800": {
+    "name": "right posterior crico-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2800",
+    "vertices": 2567,
+    "faces": 4812
+  },
+  "anatomy__larynxmuscles__head__FJ2782": {
+    "name": "left posterior crico-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2782",
+    "vertices": 2611,
+    "faces": 4842
+  },
+  "anatomy__larynxmuscles__head__FJ2796": {
+    "name": "right lateral crico-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2796",
+    "vertices": 3501,
+    "faces": 6198
+  },
+  "anatomy__larynxmuscles__head__FJ2778": {
+    "name": "left lateral crico-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2778",
+    "vertices": 3559,
+    "faces": 6214
+  },
+  "anatomy__larynxmuscles__head__FJ2798": {
+    "name": "right oblique arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2798",
+    "vertices": 4117,
+    "faces": 6084
+  },
+  "anatomy__larynxmuscles__head__FJ2780": {
+    "name": "left oblique arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2780",
+    "vertices": 4267,
+    "faces": 6304
+  },
+  "anatomy__larynxmuscles__head__FJ2802": {
+    "name": "right thyro-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2802",
+    "vertices": 3594,
+    "faces": 6092
+  },
+  "anatomy__larynxmuscles__head__FJ2803": {
+    "name": "right thyro-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2803",
+    "vertices": 6818,
+    "faces": 10650
+  },
+  "anatomy__larynxmuscles__head__FJ2784": {
+    "name": "left thyro-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2784",
+    "vertices": 3588,
+    "faces": 6092
+  },
+  "anatomy__larynxmuscles__head__FJ2785": {
+    "name": "left thyro-arytenoid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2785",
+    "vertices": 5969,
+    "faces": 9290
+  },
+  "anatomy__larynxmuscles__head__FJ2806": {
+    "name": "right vocalis",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2806",
+    "vertices": 656,
+    "faces": 1148
+  },
+  "anatomy__larynxmuscles__head__FJ2788": {
+    "name": "left vocalis",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2788",
+    "vertices": 679,
+    "faces": 1152
+  },
+  "anatomy__larynxmuscles__head__FJ2791": {
+    "name": "right aryepiglotticus",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2791",
+    "vertices": 4947,
+    "faces": 4366
+  },
+  "anatomy__larynxmuscles__head__FJ2774": {
+    "name": "left aryepiglotticus",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2774",
+    "vertices": 5804,
+    "faces": 4510
+  },
+  "anatomy__larynxmuscles__head__FJ2801": {
+    "name": "straight part of right cricothyroid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2801",
+    "vertices": 2255,
+    "faces": 3232
+  },
+  "anatomy__larynxmuscles__head__FJ2783": {
+    "name": "straight part of left cricothyroid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2783",
+    "vertices": 2393,
+    "faces": 3270
+  },
+  "anatomy__larynxmuscles__head__FJ2799": {
+    "name": "oblique part of right cricothyroid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2799",
+    "vertices": 3434,
+    "faces": 5566
+  },
+  "anatomy__larynxmuscles__head__FJ2781": {
+    "name": "oblique part of left cricothyroid",
+    "structure": "larynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2781",
+    "vertices": 3572,
+    "faces": 5580
+  },
+  "anatomy__pharynxmuscles__head__FJ2759": {
+    "name": "right superior pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2759",
+    "vertices": 6403,
+    "faces": 10702
+  },
+  "anatomy__pharynxmuscles__head__FJ2747": {
+    "name": "left superior pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2747",
+    "vertices": 6380,
+    "faces": 10702
+  },
+  "anatomy__pharynxmuscles__head__FJ2742": {
+    "name": "right middle pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2742",
+    "vertices": 3497,
+    "faces": 5904
+  },
+  "anatomy__pharynxmuscles__head__FJ2754": {
+    "name": "left middle pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2754",
+    "vertices": 3454,
+    "faces": 5912
+  },
+  "anatomy__pharynxmuscles__head__FJ2752": {
+    "name": "right inferior pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2752",
+    "vertices": 4406,
+    "faces": 7448
+  },
+  "anatomy__pharynxmuscles__head__FJ2740": {
+    "name": "left inferior pharyngeal constrictor",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2740",
+    "vertices": 4424,
+    "faces": 7422
+  },
+  "anatomy__pharynxmuscles__head__FJ2758": {
+    "name": "right stylopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2758",
+    "vertices": 13352,
+    "faces": 25752
+  },
+  "anatomy__pharynxmuscles__head__FJ2746": {
+    "name": "left stylopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2746",
+    "vertices": 1985,
+    "faces": 3268
+  },
+  "anatomy__pharynxmuscles__head__FJ2757": {
+    "name": "right salpingopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2757",
+    "vertices": 4853,
+    "faces": 9152
+  },
+  "anatomy__pharynxmuscles__head__FJ2745": {
+    "name": "left salpingopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2745",
+    "vertices": 4846,
+    "faces": 9152
+  },
+  "anatomy__pharynxmuscles__head__FJ2755": {
+    "name": "right palatopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2755",
+    "vertices": 20746,
+    "faces": 41400
+  },
+  "anatomy__pharynxmuscles__head__FJ2743": {
+    "name": "left palatopharyngeus",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2743",
+    "vertices": 20760,
+    "faces": 41400
+  },
+  "anatomy__tonguemuscles__head__FJ2750": {
+    "name": "right genioglossus",
+    "structure": "tonguemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2750",
+    "vertices": 4261,
+    "faces": 7594
+  },
+  "anatomy__tonguemuscles__head__FJ2738": {
+    "name": "left genioglossus",
+    "structure": "tonguemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2738",
+    "vertices": 4685,
+    "faces": 8214
+  },
+  "anatomy__tonguemuscles__head__FJ2751": {
+    "name": "right hyoglossus",
+    "structure": "tonguemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2751",
+    "vertices": 1653,
+    "faces": 2874
+  },
+  "anatomy__tonguemuscles__head__FJ2739": {
+    "name": "left hyoglossus",
+    "structure": "tonguemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2739",
+    "vertices": 1709,
+    "faces": 2888
+  },
+  "anatomy__pharynxmuscles__head__FJ2753": {
+    "name": "right levator veli palatini",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2753",
+    "vertices": 6835,
+    "faces": 12312
+  },
+  "anatomy__pharynxmuscles__head__FJ2741": {
+    "name": "left levator veli palatini",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2741",
+    "vertices": 6821,
+    "faces": 12318
+  },
+  "anatomy__pharynxmuscles__head__FJ2760": {
+    "name": "right tensor veli palatini",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2760",
+    "vertices": 7464,
+    "faces": 13872
+  },
+  "anatomy__pharynxmuscles__head__FJ2748": {
+    "name": "left tensor veli palatini",
+    "structure": "pharynxmuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ2748",
+    "vertices": 7523,
+    "faces": 13872
+  },
+  "anatomy__eyemuscles__head__FJ1374": {
+    "name": "right superior rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1374",
+    "vertices": 1532,
+    "faces": 2812
+  },
+  "anatomy__eyemuscles__head__FJ1323": {
+    "name": "left superior rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1323",
+    "vertices": 1527,
+    "faces": 2836
+  },
+  "anatomy__eyemuscles__head__FJ1346": {
+    "name": "right inferior rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1346",
+    "vertices": 1851,
+    "faces": 3542
+  },
+  "anatomy__eyemuscles__head__FJ1295": {
+    "name": "left inferior rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1295",
+    "vertices": 1858,
+    "faces": 3560
+  },
+  "anatomy__eyemuscles__head__FJ1357": {
+    "name": "right levator palpebrae superioris",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1357",
+    "vertices": 2451,
+    "faces": 4360
+  },
+  "anatomy__eyemuscles__head__FJ1306": {
+    "name": "left levator palpebrae superioris",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1306",
+    "vertices": 2353,
+    "faces": 4360
+  },
+  "anatomy__eyemuscles__head__FJ1345": {
+    "name": "right inferior oblique",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1345",
+    "vertices": 1241,
+    "faces": 2342
+  },
+  "anatomy__eyemuscles__head__FJ1294": {
+    "name": "left inferior oblique",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1294",
+    "vertices": 1217,
+    "faces": 2360
+  },
+  "anatomy__eyemuscles__head__FJ1373": {
+    "name": "right superior oblique",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1373",
+    "vertices": 1870,
+    "faces": 3546
+  },
+  "anatomy__eyemuscles__head__FJ1322": {
+    "name": "left superior oblique",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1322",
+    "vertices": 1881,
+    "faces": 3604
+  },
+  "anatomy__eyemuscles__head__FJ1355": {
+    "name": "right lateral rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1355",
+    "vertices": 1705,
+    "faces": 3276
+  },
+  "anatomy__eyemuscles__head__FJ1304": {
+    "name": "left lateral rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1304",
+    "vertices": 1745,
+    "faces": 3316
+  },
+  "anatomy__eyemuscles__head__FJ1359": {
+    "name": "right medial rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1359",
+    "vertices": 1357,
+    "faces": 2548
+  },
+  "anatomy__eyemuscles__head__FJ1308": {
+    "name": "left medial rectus",
+    "structure": "eyemuscles",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1308",
+    "vertices": 1353,
+    "faces": 2576
+  },
+  "anatomy__footmuscles__ankle__FJ1407": {
+    "name": "right extensor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1407",
+    "vertices": 1257,
+    "faces": 1230
+  },
+  "anatomy__footmuscles__ankleL__FJ1407M": {
+    "name": "left extensor hallucis brevis",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1407M",
+    "vertices": 1257,
+    "faces": 1230
+  },
+  "anatomy__skull__head__FJ3200": {
+    "name": "frontal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3200",
+    "vertices": 8472,
+    "faces": 14510
+  },
+  "anatomy__skull__head__FJ3309": {
+    "name": "occipital bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3309",
+    "vertices": 6995,
+    "faces": 12450
+  },
+  "anatomy__skull__head__FJ3394": {
+    "name": "sphenoid bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3394",
+    "vertices": 4957,
+    "faces": 8154
+  },
+  "anatomy__skull__head__FJ3386": {
+    "name": "right temporal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3386",
+    "vertices": 3102,
+    "faces": 4928
+  },
+  "anatomy__skull__head__FJ3281": {
+    "name": "left temporal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3281",
+    "vertices": 3013,
+    "faces": 4936
+  },
+  "anatomy__skull__head__FJ3199": {
+    "name": "ethmoid",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3199",
+    "vertices": 12484,
+    "faces": 22276
+  },
+  "anatomy__mandible__head__FJ3289": {
+    "name": "mandible",
+    "structure": "mandible",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3289",
+    "vertices": 2845,
+    "faces": 5576
+  },
+  "anatomy__skull__head__FJ2772": {
+    "name": "hyoid bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ2772",
+    "vertices": 687,
+    "faces": 1196
+  },
+  "anatomy__skull__head__FJ3201": {
+    "name": "hyoid bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3201",
+    "vertices": 687,
+    "faces": 1196
+  },
+  "anatomy__skull__head__FJ3380": {
+    "name": "right parietal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3380",
+    "vertices": 8028,
+    "faces": 13002
+  },
+  "anatomy__skull__head__FJ3274": {
+    "name": "left parietal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3274",
+    "vertices": 8367,
+    "faces": 13210
+  },
+  "anatomy__skull__head__FJ3392": {
+    "name": "right zygomatic bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3392",
+    "vertices": 934,
+    "faces": 1556
+  },
+  "anatomy__skull__head__FJ3287": {
+    "name": "left zygomatic bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3287",
+    "vertices": 929,
+    "faces": 1434
+  },
+  "anatomy__skull__head__FJ3371": {
+    "name": "right lacrimal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3371",
+    "vertices": 401,
+    "faces": 702
+  },
+  "anatomy__skull__head__FJ3265": {
+    "name": "left lacrimal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3265",
+    "vertices": 366,
+    "faces": 640
+  },
+  "anatomy__skull__head__FJ3378": {
+    "name": "right nasal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3378",
+    "vertices": 265,
+    "faces": 416
+  },
+  "anatomy__skull__head__FJ3272": {
+    "name": "left nasal bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3272",
+    "vertices": 263,
+    "faces": 438
+  },
+  "anatomy__skull__head__FJ3375": {
+    "name": "right maxilla",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3375",
+    "vertices": 3513,
+    "faces": 5324
+  },
+  "anatomy__skull__head__FJ3269": {
+    "name": "left maxilla",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3269",
+    "vertices": 3577,
+    "faces": 5198
+  },
+  "anatomy__skull__head__FJ3379": {
+    "name": "right palatine bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3379",
+    "vertices": 1132,
+    "faces": 1736
+  },
+  "anatomy__skull__head__FJ3273": {
+    "name": "left palatine bone",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3273",
+    "vertices": 1164,
+    "faces": 1938
+  },
+  "anatomy__skull__head__FJ3369": {
+    "name": "right inferior nasal concha",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3369",
+    "vertices": 572,
+    "faces": 714
+  },
+  "anatomy__skull__head__FJ3263": {
+    "name": "left inferior nasal concha",
+    "structure": "skull",
+    "segment": "head",
+    "layer": "bones",
+    "file_id": "FJ3263",
+    "vertices": 482,
+    "faces": 738
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1415": {
+    "name": "right flexor hallucis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1415",
+    "vertices": 1847,
+    "faces": 2758
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1415M": {
+    "name": "left flexor hallucis longus",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1415M",
+    "vertices": 1847,
+    "faces": 2758
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1414": {
+    "name": "right flexor digitorum longus",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1414",
+    "vertices": 3037,
+    "faces": 4004
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1414M": {
+    "name": "left flexor digitorum longus",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1414M",
+    "vertices": 3039,
+    "faces": 4004
+  },
+  "anatomy__lowerlegmuscles__knee__FJ1440": {
+    "name": "right tibialis posterior",
+    "structure": "lowerlegmuscles",
+    "segment": "knee",
+    "layer": "muscles",
+    "file_id": "FJ1440",
+    "vertices": 5039,
+    "faces": 5136
+  },
+  "anatomy__lowerlegmuscles__kneeL__FJ1440M": {
+    "name": "left tibialis posterior",
+    "structure": "lowerlegmuscles",
+    "segment": "kneeL",
+    "layer": "muscles",
+    "file_id": "FJ1440M",
+    "vertices": 5037,
+    "faces": 5136
+  },
+  "anatomy__handintrinsics__wrist__FJ1514": {
+    "name": "superficial head of right flexor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wrist",
+    "layer": "muscles",
+    "file_id": "FJ1514",
+    "vertices": 954,
+    "faces": 726
+  },
+  "anatomy__handintrinsics__wristL__FJ1514M": {
+    "name": "superficial head of left flexor pollicis brevis",
+    "structure": "handintrinsics",
+    "segment": "wristL",
+    "layer": "muscles",
+    "file_id": "FJ1514M",
+    "vertices": 954,
+    "faces": 726
+  },
+  "anatomy__handphalanges__wristL__FJ3318": {
+    "name": "proximal phalanx of left thumb",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3318",
+    "vertices": 202,
+    "faces": 346
+  },
+  "anatomy__handphalanges__wristL__FJ3314": {
+    "name": "proximal phalanx of left little finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3314",
+    "vertices": 164,
+    "faces": 274
+  },
+  "anatomy__handphalanges__wristL__FJ3316": {
+    "name": "proximal phalanx of left middle finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3316",
+    "vertices": 264,
+    "faces": 460
+  },
+  "anatomy__handphalanges__wristL__FJ3313": {
+    "name": "proximal phalanx of left index finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3313",
+    "vertices": 222,
+    "faces": 392
+  },
+  "anatomy__handphalanges__wristL__FJ3317": {
+    "name": "proximal phalanx of left ring finger",
+    "structure": "handphalanges",
+    "segment": "wristL",
+    "layer": "bones",
+    "file_id": "FJ3317",
+    "vertices": 205,
+    "faces": 376
+  },
+  "anatomy__thoracicdeep__static__FJ1463": {
+    "name": "set of right levatores costarum longi",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1463",
+    "vertices": 8260,
+    "faces": 12210
+  },
+  "anatomy__thoracicdeep__static__FJ1463M": {
+    "name": "set of left levatores costarum longi",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1463M",
+    "vertices": 8256,
+    "faces": 12210
+  },
+  "anatomy__thoracicdeep__static__FJ1462": {
+    "name": "set of right levatores costarum breves",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1462",
+    "vertices": 5835,
+    "faces": 6050
+  },
+  "anatomy__thoracicdeep__static__FJ1462M": {
+    "name": "set of left levatores costarum breves",
+    "structure": "thoracicdeep",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1462M",
+    "vertices": 5815,
+    "faces": 6050
+  },
+  "anatomy__pectoralis__static__FJ1464": {
+    "name": "sternocostal part of right pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1464",
+    "vertices": 5480,
+    "faces": 7114
+  },
+  "anatomy__pectoralis__static__FJ1464M": {
+    "name": "sternocostal part of left pectoralis major",
+    "structure": "pectoralis",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1464M",
+    "vertices": 5466,
+    "faces": 7114
+  },
+  "anatomy__deepneck__head__FJ1524": {
+    "name": "right cervical rotator",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1524",
+    "vertices": 4553,
+    "faces": 3534
+  },
+  "anatomy__deepneck__head__FJ1524M": {
+    "name": "left cervical rotator",
+    "structure": "deepneck",
+    "segment": "head",
+    "layer": "muscles",
+    "file_id": "FJ1524M",
+    "vertices": 4535,
+    "faces": 3534
+  },
+  "anatomy__footmuscles__ankle__FJ1399": {
+    "name": "opponens digiti minimi of right foot",
+    "structure": "footmuscles",
+    "segment": "ankle",
+    "layer": "muscles",
+    "file_id": "FJ1399",
+    "vertices": 267,
+    "faces": 200
+  },
+  "anatomy__footmuscles__ankleL__FJ1399M": {
+    "name": "opponens digiti minimi of left foot",
+    "structure": "footmuscles",
+    "segment": "ankleL",
+    "layer": "muscles",
+    "file_id": "FJ1399M",
+    "vertices": 267,
+    "faces": 200
+  },
+  "anatomy__toephalanges__ankle__FJ3305": {
+    "name": "middle phalanx of right little toe",
+    "structure": "toephalanges",
+    "segment": "ankle",
+    "layer": "bones",
+    "file_id": "FJ3305",
+    "vertices": 102,
+    "faces": 136
+  },
+  "anatomy__toephalanges__ankleL__FJ3298": {
+    "name": "middle phalanx of left little toe",
+    "structure": "toephalanges",
+    "segment": "ankleL",
+    "layer": "bones",
+    "file_id": "FJ3298",
+    "vertices": 143,
+    "faces": 226
+  }
+}
