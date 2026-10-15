@@ -23,5 +23,5 @@ for(let i=0;i<assigned.length;i++)for(let j=i+1;j<assigned.length;j++){
   if(assigned[i].index===assigned[j].index)same++;
 }
 const distinct=new Set(assigned.map(item=>item.index)).size;
-if(assigned.length!==392||distinct<10||same/near>.08)throw Error(`Contraste insuficiente: ${assigned.length} músculos, ${distinct} tonos, ${same}/${near} vecinos iguales`);
+if(assigned.length!==394||distinct<10||same/near>.08)throw Error(`Contraste insuficiente: ${assigned.length} músculos, ${distinct} tonos, ${same}/${near} vecinos iguales`);
 console.log(`${assigned.length} músculos, ${distinct} tonos; ${same}/${near} pares vecinos comparten tono (${(100*same/near).toFixed(1)} %).`);

@@ -23,15 +23,24 @@ for(const side of ['R','L']){
   legs[side].knee.position.fromArray(joints[`knee${suffix}`]).sub(legs[side].hip.position);
   legs[side].ankle.position.fromArray(joints[`ankle${suffix}`]).sub(new THREE.Vector3().fromArray(joints[`knee${suffix}`]));
 }
-const scope={THREE,bodyRoot,headGroup,jawGroup,arms,legs};
+const scope={THREE,bodyRoot,headGroup,jawGroup,arms,legs,smootherStep(t){t=THREE.MathUtils.clamp(t,0,1);return t*t*t*(t*(t*6-15)+10)}};
 vm.createContext(scope);vm.runInContext(code,scope);
 const all=[bodyRoot,headGroup,jawGroup,...Object.values(arms.R),...Object.values(arms.L),...Object.values(legs.R),...Object.values(legs.L)];
 const reset=()=>{for(const node of all)node.rotation.set(0,0,0);bodyRoot.position.set(0,0,0)};
 const signature=()=>all.flatMap(node=>[...node.rotation.toArray().slice(0,3),...(node===bodyRoot?node.position.toArray():[])]).map(n=>Math.round(n*1000)/1000);
 const extras=movements.filter(m=>m.base),signatures=new Set();
 if(extras.length!==35)throw Error(`Se esperaban 35 secuencias; hay ${extras.length}`);
+const requiredHighlights={
+  chestpress:['pectoralis','deltoid','triceps'],
+  overheadpress:['deltoid','triceps','serratus'],
+  row:['latissimus','teresmajor','biceps','brachialis'],
+  pullup:['latissimus','teresmajor','biceps','brachialis','brachioradialis']
+};
 for(const movement of extras){
   if(!structures.some(s=>s.id===movement.highlight))throw Error(`Sin estructura: ${movement.id}`);
+  if(requiredHighlights[movement.id])for(const structure of requiredHighlights[movement.id]){
+    if(!movement.highlightAll?.includes(structure))throw Error(`${movement.id} no resalta ${structure}`);
+  }
   const frames=[];
   for(const progress of [0,25,50,75,100]){
     reset();scope.applyExamplePose(movement,progress);frames.push(signature());
@@ -59,7 +68,7 @@ for(const movement of extras.filter(m=>m.category==='Deporte')){
   let previous=null;
   for(let progress=0;progress<=100;progress+=5){
     reset();scope.applyExamplePose(movement,progress);const current=signature();
-    if(previous){const step=Math.max(...current.map((value,j)=>Math.abs(value-previous[j])));if(step>.4)throw Error(`Discontinuidad deportiva ${movement.id} en ${progress}%: ${step.toFixed(3)}`)}
+    if(previous){const changes=current.map((value,j)=>Math.abs(value-previous[j])),step=Math.max(...changes);if(step>.4)throw Error(`Discontinuidad deportiva ${movement.id} en ${progress}%: componente ${changes.indexOf(step)}, ${step.toFixed(3)}`)}
     previous=current;
   }
 }

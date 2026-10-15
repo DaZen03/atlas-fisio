@@ -766,10 +766,12 @@ function muscleAnchors(info){
   if(['forearmflexors','forearmextensors','wristflexors','wristextensors','thumbtendons'].includes(id))return ['elbow'+suffix,'wrist'+suffix,'down','forearm'+suffix];
   if(['pronators','supinator'].includes(id))return ['elbow'+suffix,'forearm'+suffix,'down'];
   if(id==='tensorfasciae')return ['static','hip'+suffix,'down'];
-  if(id==='sartorius'||info.name.includes('rectus femoris')||id==='hamstrings'&&!info.name.includes('short head of'))return ['static','knee'+suffix,'down','hip'+suffix];
+  if(id==='hamstrings'&&info.name.includes('short head of'))return ['knee'+suffix,'knee'+suffix];
+  if(id==='sartorius'||info.name.includes('rectus femoris')||id==='hamstrings')return ['static','knee'+suffix,'down','hip'+suffix];
   if(['quadriceps','hamstrings'].includes(id))return ['hip'+suffix,'knee'+suffix,'down'];
-  if(id==='gastrocnemius')return ['hip'+suffix,'ankle'+suffix,'down','knee'+suffix];
-  if(['tibialis','soleus','lowerlegmuscles'].includes(id))return ['knee'+suffix,'ankle'+suffix,'down'];
+  // Las mallas de pierna representan sobre todo el vientre muscular; se fijan al segmento tibial.
+  // El tendón distal no es una malla anatómica independiente y no debe separar el vientre del hueso al mover el tobillo.
+  if(['gastrocnemius','tibialis','soleus','lowerlegmuscles'].includes(id))return ['knee'+suffix,'knee'+suffix];
   return null;
 }
 function muscleDominant(info,anchors){
@@ -780,6 +782,7 @@ function muscleDominant(info,anchors){
 }
 function muscleMotionWeights(anchors,info){
   const keys=[...new Set([anchors[0],anchors[1],anchors[3]].filter(Boolean))];
+  if(keys.length===1)return [{key:keys[0],weight:1}];
   if(keys.length===2&&keys.includes('static')&&['trapezius','rhomboids','serratus','pectoralisminor','subclavius','scalenes'].includes(info?.structure))
     return keys.map(key=>({key,weight:key==='static'?.78:.22}));
   const dominant=muscleDominant(info,anchors);
@@ -915,6 +918,7 @@ function createPlaneGuides(){
     const mesh=new THREE.Mesh(new THREE.PlaneGeometry(id==='transversal'?2.2:2.0,id==='transversal'?2.2:2.6),new THREE.MeshBasicMaterial({color:p.color,transparent:true,opacity:.13,side:THREE.DoubleSide,depthWrite:false,depthTest:false}));
     if(id==='sagital')mesh.rotation.y=Math.PI/2;
     if(id==='transversal')mesh.rotation.x=-Math.PI/2;
+    mesh.userData.anatomicalPlaneRotation=mesh.quaternion.clone();
     const edge=new THREE.LineSegments(new THREE.EdgesGeometry(mesh.geometry),new THREE.LineBasicMaterial({color:p.color,transparent:true,opacity:.75,depthTest:false}));mesh.add(edge);
     guideGroup.add(mesh);planeMeshes[id]=mesh;
   }
@@ -933,9 +937,15 @@ function updatePlaneGuide(){
   if(!part){guideGroup.visible=false;return}
   bodyRoot.updateMatrixWorld(true);
   const joint=part.getWorldPosition(new THREE.Vector3());
+  const anatomicalFrame=bodyRoot.getWorldQuaternion(new THREE.Quaternion());
   const size={neck:.65,tmj:.55,shoulder:1,elbow:.8,radioulnar:.72,wrist:.65,hip:1.1,knee:.85,ankle:.72}[jointKey]||1;
-  for(const mesh of Object.values(planeMeshes)){mesh.position.copy(joint);mesh.scale.setScalar(size)}
+  for(const mesh of Object.values(planeMeshes)){
+    mesh.position.copy(joint);
+    mesh.quaternion.copy(anatomicalFrame).multiply(mesh.userData.anatomicalPlaneRotation);
+    mesh.scale.setScalar(size);
+  }
   const direction=plane==='sagital'?V(1,0,0):plane==='frontal'?V(0,0,1):V(0,1,0);
+  direction.applyQuaternion(anatomicalFrame).normalize();
   axisArrow.setDirection(direction);axisArrow.setColor(new THREE.Color(planes[plane].color));
   axisArrow.setLength(.6*size,.14*size,.075*size);
   axisArrow.position.copy(joint);
