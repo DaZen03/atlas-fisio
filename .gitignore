@@ -1,6 +1,8 @@
 node_modules/
 tools_temp/
 tools_py/
+assets/opensim-python/
+assets/pip-tmp/
 assets/sample/
 assets/source/*.zip
 *.pyc
