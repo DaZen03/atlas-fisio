@@ -52,7 +52,7 @@ const hasAnatomicalMesh=id=>meshCoverage.has(id)||(relatedMeshes[id]||[]).some(p
 const regionFor=(joint,side)=>['neck','tmj'].includes(joint)?'head':`${side==='L'?'left':'right'}${['hip','knee','ankle'].includes(joint)?'Leg':'Arm'}`;
 function sectionForStructure(s){
   if(['skull','mandible','tmjoint','neckjoint','neckmuscles','scalenes','deepneck','suprahyoid','eyemuscles','pharynxmuscles','larynxmuscles','tonguemuscles','foramenmagnum','transverseforamen','cervical'].includes(s.id))return 'head';
-  if(['spine','thoracic','lumbar','sacrum','sternum','ribs','rectusabdominis','externaloblique','erectorspinae','serratusposterior','deepback','thoracicdeep','diaphragm'].includes(s.id))return 'trunk';
+  if(['spine','thoracic','lumbar','sacrum','sternum','ribs','rectusabdominis','externaloblique','erectorspinae','serratusposterior','deepback','thoracicdeep','diaphragm','iliocostalis','longissimus','semispinalis','spinalis','intertransversarii','externalintercostals','internalintercostals','innermostintercostals'].includes(s.id))return 'trunk';
   if(['pelvis','ilium','ischium','pubis','foramenobturator','sacralforamina','sacroiliac','hipjoint','gluteus','gluteusmaximus','gluteusminimus','iliopsoas','hiprotators','pelvicfloor'].includes(s.id))return 'pelvis';
   if(['handphalanges','metacarpals','carpals','ulna','brachioradialis','handintrinsics','thumbtendons'].includes(s.id))return 'hand';
   if(['foot','toephalanges','metatarsals','talus','calcaneus','navicular','sesamoids','cuboid','cuneiforms','footmuscles'].includes(s.id))return 'foot';
@@ -258,8 +258,11 @@ function renderStructures(){
   const query=normalize($('structure-search').value.trim());
   const regionStructures=structures.filter(s=>browseRegion==='all'||sectionForStructure(s)===browseRegion);
   const boneMeshes=Object.values(meshManifest).filter(info=>info.layer==='bones').length;
-  const muscleMeshes=Object.values(meshManifest).filter(info=>info.layer==='muscles').length;
-  $('structure-metrics').innerHTML=`<div><strong>${structures.length}</strong><span>fichas anatómicas</span></div><div><strong>${boneMeshes}</strong><span>mallas óseas</span></div><div><strong>${muscleMeshes}</strong><span>mallas musculares</span></div><div><strong>${Object.keys(catalogSections).length-1}</strong><span>regiones para explorar</span></div>`;
+  const muscleParts=Object.values(meshManifest).filter(info=>info.layer==='muscles');
+  const muscleMeshes=muscleParts.length;
+  const muscleGroups=new Set(muscleParts.map(info=>info.structure)).size;
+  const namedMuscleParts=new Set(muscleParts.map(info=>info.name.replace(/\b(?:left|right)\s+/g,'').trim())).size;
+  $('structure-metrics').innerHTML=`<div><strong>${structures.length}</strong><span>fichas anatómicas</span></div><div><strong>${boneMeshes}</strong><span>mallas óseas</span></div><div><strong>${muscleMeshes}</strong><span>mallas musculares</span></div><div><strong>${muscleGroups}</strong><span>grupos musculares</span></div><div><strong>${namedMuscleParts}</strong><span>nombres y porciones*</span></div><div><strong>${Object.keys(catalogSections).length-1}</strong><span>regiones para explorar</span></div>`;
   $('structure-region').innerHTML=Object.entries(catalogSections).map(([id,label])=>`<option value="${id}">${label} · ${id==='all'?structures.length:structures.filter(s=>sectionForStructure(s)===id).length}</option>`).join('');
   $('structure-region').value=browseRegion;
   $('structure-region-summary').textContent=`${regionStructures.length} fichas en ${catalogSections[browseRegion].toLowerCase()}. Filtra por tipo o busca un nombre.`;
@@ -889,7 +892,7 @@ function updateLayers(){
   const structure=structures.find(item=>item.id===activeStructure);
   const selectedIsMuscle=structure?.type.startsWith('MÚSC');
   const depthStage=$('muscle-depth')?.value||'all';
-  const muscleDepth=name=>{const n=(name||'').toLowerCase();if(/deep|profund|interosse|lumbrical|rotator|multifid|transvers|quadratus|pterygoid|subscapular|infraspinat|supraspinat/.test(n))return 'deep';if(/middle|intermed|medial|longissimus|iliocostalis|serratus posterior|flexor|extensor|adductor|vastus intermed/.test(n))return 'intermediate';return 'superficial'};
+  const muscleDepth=name=>{const n=(name||'').toLowerCase();if(/deep|profund|innermost intercostal|interosse|lumbrical|rotator|multifid|intertransvers|interspinal|semispinalis|spinalis thoracis|transvers|quadratus|pterygoid|subscapular|infraspinat|supraspinat/.test(n))return 'deep';if(/internal intercostal|middle|intermed|medial|longissimus|iliocostalis|serratus posterior|flexor|extensor|adductor|vastus intermed/.test(n))return 'intermediate';return 'superficial'};
   bodyRoot.traverse(obj=>{if(!obj.isMesh||!obj.userData.layer)return;
     let show=visible[obj.userData.layer]&&!(anatomicalModelLoaded&&obj.userData.procedural&&(obj.userData.layer==='bones'||obj.userData.layer==='muscles'));
     if(obj.userData.layer==='muscles'&&depthStage!=='all')show=show&&muscleDepth(obj.userData.anatomicalName)===depthStage;

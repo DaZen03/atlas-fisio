@@ -287,6 +287,60 @@
     "vertices": 3660,
     "faces": 7218
   },
+  "anatomy__externalintercostals__static__FJ1451": {
+    "name": "right external intercostal muscle",
+    "structure": "externalintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1451",
+    "vertices": 85775,
+    "faces": 98928
+  },
+  "anatomy__externalintercostals__static__FJ1451M": {
+    "name": "left external intercostal muscle",
+    "structure": "externalintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1451M",
+    "vertices": 85756,
+    "faces": 98928
+  },
+  "anatomy__internalintercostals__static__FJ1455": {
+    "name": "right internal intercostal muscle",
+    "structure": "internalintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1455",
+    "vertices": 70842,
+    "faces": 89838
+  },
+  "anatomy__internalintercostals__static__FJ1455M": {
+    "name": "left internal intercostal muscle",
+    "structure": "internalintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1455M",
+    "vertices": 70829,
+    "faces": 89838
+  },
+  "anatomy__innermostintercostals__static__FJ1454": {
+    "name": "right innermost intercostal muscle",
+    "structure": "innermostintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1454",
+    "vertices": 70306,
+    "faces": 87218
+  },
+  "anatomy__innermostintercostals__static__FJ1454M": {
+    "name": "left innermost intercostal muscle",
+    "structure": "innermostintercostals",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1454M",
+    "vertices": 70269,
+    "faces": 87218
+  },
   "anatomy__thoracicdeep__static__FJ1461": {
     "name": "right transversus thoracis",
     "structure": "thoracicdeep",
@@ -1403,180 +1457,216 @@
     "vertices": 4846,
     "faces": 7808
   },
-  "anatomy__erectorspinae__static__FJ1527": {
+  "anatomy__iliocostalis__static__FJ1527": {
     "name": "right iliocostalis lumborum",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1527",
     "vertices": 10585,
     "faces": 15872
   },
-  "anatomy__erectorspinae__static__FJ1527M": {
+  "anatomy__iliocostalis__static__FJ1527M": {
     "name": "left iliocostalis lumborum",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1527M",
     "vertices": 10581,
     "faces": 15872
   },
-  "anatomy__erectorspinae__static__FJ1528": {
+  "anatomy__iliocostalis__static__FJ1528": {
     "name": "right iliocostalis thoracis",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1528",
     "vertices": 5508,
     "faces": 8386
   },
-  "anatomy__erectorspinae__static__FJ1528M": {
+  "anatomy__iliocostalis__static__FJ1528M": {
     "name": "left iliocostalis thoracis",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1528M",
     "vertices": 5509,
     "faces": 8386
   },
-  "anatomy__erectorspinae__static__FJ1526": {
+  "anatomy__iliocostalis__static__FJ1526": {
     "name": "right iliocostalis cervicis",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1526",
     "vertices": 2315,
     "faces": 3072
   },
-  "anatomy__erectorspinae__static__FJ1526M": {
+  "anatomy__iliocostalis__static__FJ1526M": {
     "name": "left iliocostalis cervicis",
-    "structure": "erectorspinae",
+    "structure": "iliocostalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1526M",
     "vertices": 2326,
     "faces": 3072
   },
-  "anatomy__erectorspinae__static__FJ1535": {
+  "anatomy__longissimus__static__FJ1535": {
     "name": "right longissimus thoracis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1535",
     "vertices": 13066,
     "faces": 15068
   },
-  "anatomy__erectorspinae__static__FJ1535M": {
+  "anatomy__longissimus__static__FJ1535M": {
     "name": "left longissimus thoracis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1535M",
     "vertices": 13072,
     "faces": 15068
   },
-  "anatomy__erectorspinae__static__FJ1533": {
+  "anatomy__longissimus__static__FJ1533": {
     "name": "right longissimus capitis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1533",
     "vertices": 1821,
     "faces": 2260
   },
-  "anatomy__erectorspinae__static__FJ1533M": {
+  "anatomy__longissimus__static__FJ1533M": {
     "name": "left longissimus capitis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1533M",
     "vertices": 1824,
     "faces": 2260
   },
-  "anatomy__erectorspinae__static__FJ1534": {
+  "anatomy__longissimus__static__FJ1534": {
     "name": "right longissimus cervicis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1534",
     "vertices": 2325,
     "faces": 2816
   },
-  "anatomy__erectorspinae__static__FJ1534M": {
+  "anatomy__longissimus__static__FJ1534M": {
     "name": "left longissimus cervicis",
-    "structure": "erectorspinae",
+    "structure": "longissimus",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1534M",
     "vertices": 2330,
     "faces": 2816
   },
-  "anatomy__deepback__static__FJ1544": {
+  "anatomy__spinalis__static__FJ1544": {
     "name": "right spinalis thoracis",
-    "structure": "deepback",
+    "structure": "spinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1544",
     "vertices": 5758,
     "faces": 7422
   },
-  "anatomy__deepback__static__FJ1544M": {
+  "anatomy__spinalis__static__FJ1544M": {
     "name": "left spinalis thoracis",
-    "structure": "deepback",
+    "structure": "spinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1544M",
     "vertices": 5756,
     "faces": 7422
   },
-  "anatomy__erectorspinae__static__FJ1540": {
+  "anatomy__intertransversarii__static__FJ1547": {
+    "name": "right lateral lumbar intertransversarius",
+    "structure": "intertransversarii",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1547",
+    "vertices": 1628,
+    "faces": 1362
+  },
+  "anatomy__intertransversarii__static__FJ1547M": {
+    "name": "left lateral lumbar intertransversarius",
+    "structure": "intertransversarii",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1547M",
+    "vertices": 1628,
+    "faces": 1362
+  },
+  "anatomy__intertransversarii__static__FJ1548": {
+    "name": "right medial lumbar intertransversarius",
+    "structure": "intertransversarii",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1548",
+    "vertices": 1416,
+    "faces": 1736
+  },
+  "anatomy__intertransversarii__static__FJ1548M": {
+    "name": "left medial lumbar intertransversarius",
+    "structure": "intertransversarii",
+    "segment": "static",
+    "layer": "muscles",
+    "file_id": "FJ1548M",
+    "vertices": 1413,
+    "faces": 1736
+  },
+  "anatomy__semispinalis__static__FJ1540": {
     "name": "right semispinalis thoracis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1540",
     "vertices": 4575,
     "faces": 5176
   },
-  "anatomy__erectorspinae__static__FJ1540M": {
+  "anatomy__semispinalis__static__FJ1540M": {
     "name": "left semispinalis thoracis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1540M",
     "vertices": 4582,
     "faces": 5176
   },
-  "anatomy__erectorspinae__static__FJ1539": {
+  "anatomy__semispinalis__static__FJ1539": {
     "name": "right semispinalis cervicis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1539",
     "vertices": 3060,
     "faces": 3406
   },
-  "anatomy__erectorspinae__static__FJ1539M": {
+  "anatomy__semispinalis__static__FJ1539M": {
     "name": "left semispinalis cervicis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1539M",
     "vertices": 3047,
     "faces": 3406
   },
-  "anatomy__erectorspinae__static__FJ1538": {
+  "anatomy__semispinalis__static__FJ1538": {
     "name": "right semispinalis capitis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1538",
     "vertices": 2744,
     "faces": 1912
   },
-  "anatomy__erectorspinae__static__FJ1538M": {
+  "anatomy__semispinalis__static__FJ1538M": {
     "name": "left semispinalis capitis",
-    "structure": "erectorspinae",
+    "structure": "semispinalis",
     "segment": "static",
     "layer": "muscles",
     "file_id": "FJ1538M",

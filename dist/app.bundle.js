@@ -33013,7 +33013,7 @@ var movements = [
   { id: "shoulderflex", name: "Flexi\xF3n del hombro", short: "Hombro \xB7 flexi\xF3n", joint: "Articulaci\xF3n glenohumeral \xB7 plano sagital", maxAngle: 95, summary: "El brazo asciende por delante del tronco.", muscle: "Deltoides anterior", origin: "Tercio lateral de la clav\xEDcula.", insertion: "Tuberosidad deltoidea del h\xFAmero.", observe: "Compara la elevaci\xF3n del h\xFAmero con la posici\xF3n del tronco. En un gesto completo la esc\xE1pula tambi\xE9n participa; este visor fija la esc\xE1pula.", sources: ["motions", "deltoid", "upperlimb"], highlight: "deltoid", side: "R" },
   { id: "plantar", name: "Flexi\xF3n plantar del tobillo", short: "Tobillo \xB7 flexi\xF3n plantar", joint: "Articulaci\xF3n talocrural \xB7 plano sagital", maxAngle: 35, summary: "El antepi\xE9 desciende respecto de la pierna, como al ponerse de puntillas.", muscle: "Tr\xEDceps sural: gastrocnemio y s\xF3leo", origin: "Gastrocnemio: f\xE9mur distal; s\xF3leo: tibia y f\xEDbula proximales.", insertion: "Tend\xF3n calc\xE1neo en la cara posterior del calc\xE1neo.", observe: "Estudia el desplazamiento del pie con la pierna quieta. En carga real intervienen el apoyo del suelo y otras articulaciones del pie.", sources: ["motions", "gastrocnemius2", "limbmuscles"], highlight: "gastrocnemius", side: "R" },
   { id: "hiprot", name: "Rotaci\xF3n externa de la cadera", short: "Cadera \xB7 rotaci\xF3n externa", joint: "Articulaci\xF3n coxofemoral \xB7 plano transversal", maxAngle: 35, summary: "El muslo gira hacia fuera alrededor de su eje longitudinal.", muscle: "Gl\xFAteo mayor y rotadores profundos", origin: "Gl\xFAteo mayor: cara posterior del ilion, sacro y c\xF3ccix.", insertion: "Tracto iliotibial y tuberosidad gl\xFAtea del f\xE9mur.", observe: "La orientaci\xF3n del pie ayuda a ver el giro. La animaci\xF3n rota el miembro como una unidad y no reproduce la mec\xE1nica interna de la cadera.", sources: ["motions", "gluteus2", "hipmuscles"], highlight: "gluteusmaximus", side: "R" },
-  { id: "hiphinge", name: "Bisagra de cadera", short: "Bisagra \xB7 cadera y tronco", joint: "Caderas y rodillas en apoyo \xB7 plano sagital", jointType: "Caderas sinoviales esferoideas; rodillas en bisagra modificada", maxAngle: 55, summary: "La pelvis se desplaza atr\xE1s y el tronco se inclina como unidad sobre las caderas, con ligera flexi\xF3n de rodillas y pies apoyados.", muscle: "Gl\xFAteo mayor e isquiotibiales; erectores espinales como estabilizadores", origin: "Gl\xFAteo mayor: pelvis posterior y sacro. Isquiotibiales: principalmente tuberosidad isqui\xE1tica.", insertion: "Gl\xFAteo mayor: f\xE9mur proximal y tracto iliotibial. Isquiotibiales: tibia proximal o cabeza de la f\xEDbula.", observe: "En vista lateral, compara la inclinaci\xF3n del tronco con la forma de la columna: el gesto se concentra en las caderas. La animaci\xF3n muestra 55\xB0 de inclinaci\xF3n del tronco y unos 12\xB0 de flexi\xF3n de rodilla; son valores visuales, no una prescripci\xF3n.", sources: ["hiphinge", "hipload", "hamstrings"], highlight: "hamstrings", highlightAll: ["hamstrings", "gluteusmaximus", "erectorspinae"], side: "both" },
+  { id: "hiphinge", name: "Bisagra de cadera", short: "Bisagra \xB7 cadera y tronco", joint: "Caderas y rodillas en apoyo \xB7 plano sagital", jointType: "Caderas sinoviales esferoideas; rodillas en bisagra modificada", maxAngle: 55, summary: "La pelvis se desplaza atr\xE1s y el tronco se inclina como unidad sobre las caderas, con ligera flexi\xF3n de rodillas y pies apoyados.", muscle: "Gl\xFAteo mayor e isquiotibiales; erectores espinales como estabilizadores", origin: "Gl\xFAteo mayor: pelvis posterior y sacro. Isquiotibiales: principalmente tuberosidad isqui\xE1tica.", insertion: "Gl\xFAteo mayor: f\xE9mur proximal y tracto iliotibial. Isquiotibiales: tibia proximal o cabeza de la f\xEDbula.", observe: "En vista lateral, compara la inclinaci\xF3n del tronco con la forma de la columna: el gesto se concentra en las caderas. La animaci\xF3n muestra 55\xB0 de inclinaci\xF3n del tronco y unos 12\xB0 de flexi\xF3n de rodilla; son valores visuales, no una prescripci\xF3n.", sources: ["hiphinge", "hipload", "hamstrings"], highlight: "hamstrings", highlightAll: ["hamstrings", "gluteusmaximus", "erectorspinae", "iliocostalis", "longissimus", "semispinalis"], side: "both" },
   { id: "squat", name: "Sentadilla parcial", short: "Sentadilla \xB7 apoyo bilateral", joint: "Caderas, rodillas y tobillos en apoyo \xB7 plano sagital", jointType: "Caderas esferoideas, rodillas en bisagra modificada y tobillos talocrurales", maxAngle: 60, summary: "La pelvis desciende mientras caderas y rodillas se flexionan y ambos pies permanecen apoyados.", muscle: "Cu\xE1driceps, gl\xFAteo mayor y s\xF3leo", origin: "Cu\xE1driceps: f\xE9mur y, para el recto femoral, pelvis. Gl\xFAteo mayor: pelvis posterior y sacro.", insertion: "Cu\xE1driceps: tuberosidad tibial mediante r\xF3tula y tend\xF3n patelar. Gl\xFAteo mayor: f\xE9mur y tracto iliotibial.", observe: "Sigue la flexi\xF3n coordinada de caderas y rodillas. El control llega a unos 60\xB0 de flexi\xF3n de rodilla y 20\xB0 de inclinaci\xF3n del tronco; la t\xE9cnica y la profundidad reales var\xEDan con la persona y la tarea.", sources: ["squat", "squatstudy", "quadriceps"], highlight: "quadriceps", highlightAll: ["quadriceps", "gluteusmaximus", "soleus"], side: "both" }
 ];
 var planes = {
@@ -33174,7 +33174,10 @@ var structures = [
   { id: "teresminor", name: "Redondo menor", type: "M\xDASCULO", text: "Va del borde lateral de la esc\xE1pula al tub\xE9rculo mayor del h\xFAmero. Ayuda a rotar lateralmente el brazo y forma parte del manguito rotador.", fact: "Se ve como una banda peque\xF1a posterior e inferior al infraespinoso.", sources: ["upperlimb", "rotatorcuff"] },
   { id: "rhomboids", name: "Romboides", type: "M\xDASCULOS", text: "M\xFAsculos entre la columna y el borde medial de la esc\xE1pula. Colaboran en su retracci\xF3n y estabilizaci\xF3n.", fact: "Las bandas oblicuas posteriores indican el grupo mayor y menor.", sources: ["upperlimb", "backmuscles"] },
   { id: "externaloblique", name: "Oblicuo externo", type: "M\xDASCULO", text: "Capa superficial de la pared abdominal lateral con fibras que descienden medialmente desde las costillas hacia la aponeurosis abdominal y la pelvis.", fact: "La l\xE1mina en cada flanco se\xF1ala su direcci\xF3n general, sin mostrar capas profundas.", sources: ["axialmuscles", "rectus"] },
-  { id: "erectorspinae", name: "Erectores espinales", type: "M\xDASCULOS", text: "Grupo longitudinal profundo que recorre ambos lados de la columna y contribuye a extensi\xF3n y control postural del tronco.", fact: "Dos columnas musculares posteriores indican el grupo sin diferenciar sus componentes.", sources: ["backmuscles", "backncbi"] },
+  { id: "iliocostalis", name: "Iliocostal", type: "M\xDASCULOS", text: "Componente lateral del erector de la columna, representado por porciones lumbar, tor\xE1cica y cervical. Une regiones de la pelvis y las costillas con la columna cervical.", fact: "Contribuye a extensi\xF3n bilateral e inclinaci\xF3n lateral ipsilateral del tronco y cuello.", sources: ["backmuscles", "bodyparts"] },
+  { id: "longissimus", name: "Long\xEDsimo", type: "M\xDASCULOS", text: "Componente intermedio del erector de la columna. Sus porciones tor\xE1cica, cervical y cef\xE1lica ascienden a lo largo del dorso.", fact: "Participa en extensi\xF3n de columna y cabeza; de forma unilateral ayuda a inclinar hacia el mismo lado.", sources: ["backmuscles", "bodyparts"] },
+  { id: "semispinalis", name: "Semiespinoso", type: "M\xDASCULOS", text: "M\xFAsculos transversoespinosos con porciones tor\xE1cica, cervical y de la cabeza. Sus fibras ascienden varios niveles desde ap\xF3fisis transversas hacia ap\xF3fisis espinosas y occipital.", fact: "Contribuye a extensi\xF3n bilateral y rotaci\xF3n contralateral de cabeza o columna cervical.", sources: ["backmuscles", "bodyparts"] },
+  { id: "spinalis", name: "Espinoso tor\xE1cico", type: "M\xDASCULO", text: "Componente medial del erector de la columna, pr\xF3ximo a las ap\xF3fisis espinosas tor\xE1cicas.", fact: "Contribuye a la extensi\xF3n de la columna; la malla del atlas muestra solo el segmento tor\xE1cico disponible.", sources: ["backmuscles", "bodyparts"] },
   { id: "brachioradialis", name: "Braquiorradial", type: "M\xDASCULO", text: "M\xFAsculo superficial lateral del antebrazo, desde el h\xFAmero distal hasta el radio distal. Ayuda a flexionar el codo, especialmente con el antebrazo en posici\xF3n neutra.", fact: "La banda lateral acompa\xF1a al antebrazo durante la flexi\xF3n del codo.", sources: ["upperlimb", "brachioradialis"] },
   { id: "forearmflexors", name: "Flexores del antebrazo", type: "M\xDASCULOS", text: "Grupo anterior del antebrazo que mueve mu\xF1eca y dedos. Sus tendones se dirigen hacia la palma; aqu\xED se muestra un volumen conjunto.", fact: "No se individualizan los tendones ni el t\xFAnel carpiano.", sources: ["upperlimb", "biceps2"] },
   { id: "forearmextensors", name: "Extensores del antebrazo", type: "M\xDASCULOS", text: "Grupo posterior del antebrazo cuyos tendones extienden mu\xF1eca y dedos. Se representa como una banda opuesta a los flexores.", fact: "La acci\xF3n digital individual no est\xE1 animada.", sources: ["upperlimb", "biceps2"] },
@@ -33215,7 +33218,11 @@ var structures = [
   { id: "larynxmuscles", name: "M\xFAsculos intr\xEDnsecos de la laringe", type: "M\xDASCULOS", text: "Cricoaritenoideos, tiroaritenoideo, vocal y cricotiroideo modifican la posici\xF3n y tensi\xF3n de los pliegues vocales.", fact: "Las mallas no modelan fonaci\xF3n, flujo de aire ni vibraci\xF3n vocal.", sources: ["headmuscles", "bodyparts"] },
   { id: "tonguemuscles", name: "M\xFAsculos de la lengua", type: "M\xDASCULOS", text: "Geniogloso e hiogloso forman parte del sistema extr\xEDnseco que cambia la posici\xF3n de la lengua durante habla y degluci\xF3n.", fact: "El movimiento fino de la lengua no est\xE1 animado.", sources: ["headmuscles", "bodyparts"] },
   { id: "pelvicfloor", name: "Suelo p\xE9lvico", type: "M\xDASCULOS", text: "Pubococc\xEDgeo, puborrectal, iliococc\xEDgeo y cocc\xEDgeo constituyen capas profundas que sostienen v\xEDsceras p\xE9lvicas y participan en continencia.", fact: "Estas mallas se pueden aislar para verlas bajo la pelvis; no se simula su contracci\xF3n.", sources: ["pelvicfloor", "bodyparts"] },
-  { id: "deepback", name: "M\xFAsculos profundos vertebrales", type: "M\xDASCULOS", text: "Espinoso tor\xE1cico, interespinosos y rotadores lumbares son componentes peque\xF1os pr\xF3ximos a las v\xE9rtebras.", fact: "Contribuyen al control segmentario y la postura; la columna de este visor se mueve como unidad.", sources: ["headmuscles", "bodyparts"] },
+  { id: "deepback", name: "Interespinosos y rotadores vertebrales", type: "M\xDASCULOS", text: "M\xFAsculos cortos entre ap\xF3fisis espinosas y rotadores lumbares que conectan niveles vertebrales vecinos. Se sit\xFAan bajo las capas largas de la espalda.", fact: "Aportan control segmentario y propiocepci\xF3n; la columna de este visor se mueve como unidad.", sources: ["backmuscles", "bodyparts"] },
+  { id: "intertransversarii", name: "Intertransversarios lumbares", type: "M\xDASCULOS", text: "Peque\xF1os fasc\xEDculos mediales y laterales entre ap\xF3fisis transversas lumbares, a ambos lados de la columna.", fact: "Ayudan a estabilizar segmentos y pueden colaborar en la inclinaci\xF3n lateral.", sources: ["backmuscles", "bodyparts"] },
+  { id: "externalintercostals", name: "Intercostales externos", type: "M\xDASCULOS", text: "Capa superficial de los espacios intercostales, con fibras oblicuas hacia abajo y adelante entre costillas vecinas.", fact: "Elevan las costillas durante la inspiraci\xF3n; aqu\xED se muestran como una malla de referencia y no se anima la respiraci\xF3n.", sources: ["axialmuscles", "bodyparts"] },
+  { id: "internalintercostals", name: "Intercostales internos", type: "M\xDASCULOS", text: "Capa profunda a los intercostales externos, con fibras que suelen orientarse hacia abajo y atr\xE1s. Ocupan la mayor parte de cada espacio intercostal.", fact: "La porci\xF3n inter\xF3sea ayuda principalmente a descender las costillas en espiraci\xF3n forzada; la porci\xF3n intercondral puede elevarlas.", sources: ["axialmuscles", "bodyparts"] },
+  { id: "innermostintercostals", name: "Intercostales \xEDntimos", type: "M\xDASCULOS", text: "Capa m\xE1s profunda de los espacios intercostales, separada de los intercostales internos por el paquete vasculonervioso intercostal.", fact: "Su orientaci\xF3n y acci\xF3n se parecen a la capa interna; el modelo no representa nervios ni vasos.", sources: ["axialmuscles", "bodyparts"] },
   { id: "thoracicdeep", name: "M\xFAsculos profundos del t\xF3rax", type: "M\xDASCULOS", text: "Transverso tor\xE1cico y elevadores de las costillas se sit\xFAan junto a la cara interna tor\xE1cica o entre v\xE9rtebras y costillas.", fact: "La respiraci\xF3n y el movimiento individual de las costillas no se animan.", sources: ["axialmuscles", "bodyparts"] },
   { id: "diaphragm", name: "Diafragma", type: "M\xDASCULO", text: "Amplia c\xFApula m\xFAsculotendinosa que separa t\xF3rax y abdomen y es principal motor de la inspiraci\xF3n.", fact: "Se ve como malla anat\xF3mica, sin simular sus cambios de forma durante la respiraci\xF3n.", sources: ["pelvicfloor", "bodyparts"] },
   { id: "sesamoids", name: "Sesamoideos del pie", type: "HUESOS", text: "Peque\xF1os huesos dentro de tendones junto a la cabeza del primer metatarsiano. La fuente ofrece dos piezas de malla por lado.", fact: "No deben confundirse las 206 mallas \xF3seas del visor con el n\xFAmero de huesos del esqueleto adulto.", sources: ["footbones", "bodyparts"] }
@@ -33510,6 +33517,60 @@ var bodyparts_manifest_default = {
     file_id: "FJ3395",
     vertices: 3660,
     faces: 7218
+  },
+  anatomy__externalintercostals__static__FJ1451: {
+    name: "right external intercostal muscle",
+    structure: "externalintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1451",
+    vertices: 85775,
+    faces: 98928
+  },
+  anatomy__externalintercostals__static__FJ1451M: {
+    name: "left external intercostal muscle",
+    structure: "externalintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1451M",
+    vertices: 85756,
+    faces: 98928
+  },
+  anatomy__internalintercostals__static__FJ1455: {
+    name: "right internal intercostal muscle",
+    structure: "internalintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1455",
+    vertices: 70842,
+    faces: 89838
+  },
+  anatomy__internalintercostals__static__FJ1455M: {
+    name: "left internal intercostal muscle",
+    structure: "internalintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1455M",
+    vertices: 70829,
+    faces: 89838
+  },
+  anatomy__innermostintercostals__static__FJ1454: {
+    name: "right innermost intercostal muscle",
+    structure: "innermostintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1454",
+    vertices: 70306,
+    faces: 87218
+  },
+  anatomy__innermostintercostals__static__FJ1454M: {
+    name: "left innermost intercostal muscle",
+    structure: "innermostintercostals",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1454M",
+    vertices: 70269,
+    faces: 87218
   },
   anatomy__thoracicdeep__static__FJ1461: {
     name: "right transversus thoracis",
@@ -34627,180 +34688,216 @@ var bodyparts_manifest_default = {
     vertices: 4846,
     faces: 7808
   },
-  anatomy__erectorspinae__static__FJ1527: {
+  anatomy__iliocostalis__static__FJ1527: {
     name: "right iliocostalis lumborum",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1527",
     vertices: 10585,
     faces: 15872
   },
-  anatomy__erectorspinae__static__FJ1527M: {
+  anatomy__iliocostalis__static__FJ1527M: {
     name: "left iliocostalis lumborum",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1527M",
     vertices: 10581,
     faces: 15872
   },
-  anatomy__erectorspinae__static__FJ1528: {
+  anatomy__iliocostalis__static__FJ1528: {
     name: "right iliocostalis thoracis",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1528",
     vertices: 5508,
     faces: 8386
   },
-  anatomy__erectorspinae__static__FJ1528M: {
+  anatomy__iliocostalis__static__FJ1528M: {
     name: "left iliocostalis thoracis",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1528M",
     vertices: 5509,
     faces: 8386
   },
-  anatomy__erectorspinae__static__FJ1526: {
+  anatomy__iliocostalis__static__FJ1526: {
     name: "right iliocostalis cervicis",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1526",
     vertices: 2315,
     faces: 3072
   },
-  anatomy__erectorspinae__static__FJ1526M: {
+  anatomy__iliocostalis__static__FJ1526M: {
     name: "left iliocostalis cervicis",
-    structure: "erectorspinae",
+    structure: "iliocostalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1526M",
     vertices: 2326,
     faces: 3072
   },
-  anatomy__erectorspinae__static__FJ1535: {
+  anatomy__longissimus__static__FJ1535: {
     name: "right longissimus thoracis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1535",
     vertices: 13066,
     faces: 15068
   },
-  anatomy__erectorspinae__static__FJ1535M: {
+  anatomy__longissimus__static__FJ1535M: {
     name: "left longissimus thoracis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1535M",
     vertices: 13072,
     faces: 15068
   },
-  anatomy__erectorspinae__static__FJ1533: {
+  anatomy__longissimus__static__FJ1533: {
     name: "right longissimus capitis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1533",
     vertices: 1821,
     faces: 2260
   },
-  anatomy__erectorspinae__static__FJ1533M: {
+  anatomy__longissimus__static__FJ1533M: {
     name: "left longissimus capitis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1533M",
     vertices: 1824,
     faces: 2260
   },
-  anatomy__erectorspinae__static__FJ1534: {
+  anatomy__longissimus__static__FJ1534: {
     name: "right longissimus cervicis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1534",
     vertices: 2325,
     faces: 2816
   },
-  anatomy__erectorspinae__static__FJ1534M: {
+  anatomy__longissimus__static__FJ1534M: {
     name: "left longissimus cervicis",
-    structure: "erectorspinae",
+    structure: "longissimus",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1534M",
     vertices: 2330,
     faces: 2816
   },
-  anatomy__deepback__static__FJ1544: {
+  anatomy__spinalis__static__FJ1544: {
     name: "right spinalis thoracis",
-    structure: "deepback",
+    structure: "spinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1544",
     vertices: 5758,
     faces: 7422
   },
-  anatomy__deepback__static__FJ1544M: {
+  anatomy__spinalis__static__FJ1544M: {
     name: "left spinalis thoracis",
-    structure: "deepback",
+    structure: "spinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1544M",
     vertices: 5756,
     faces: 7422
   },
-  anatomy__erectorspinae__static__FJ1540: {
+  anatomy__intertransversarii__static__FJ1547: {
+    name: "right lateral lumbar intertransversarius",
+    structure: "intertransversarii",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1547",
+    vertices: 1628,
+    faces: 1362
+  },
+  anatomy__intertransversarii__static__FJ1547M: {
+    name: "left lateral lumbar intertransversarius",
+    structure: "intertransversarii",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1547M",
+    vertices: 1628,
+    faces: 1362
+  },
+  anatomy__intertransversarii__static__FJ1548: {
+    name: "right medial lumbar intertransversarius",
+    structure: "intertransversarii",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1548",
+    vertices: 1416,
+    faces: 1736
+  },
+  anatomy__intertransversarii__static__FJ1548M: {
+    name: "left medial lumbar intertransversarius",
+    structure: "intertransversarii",
+    segment: "static",
+    layer: "muscles",
+    file_id: "FJ1548M",
+    vertices: 1413,
+    faces: 1736
+  },
+  anatomy__semispinalis__static__FJ1540: {
     name: "right semispinalis thoracis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1540",
     vertices: 4575,
     faces: 5176
   },
-  anatomy__erectorspinae__static__FJ1540M: {
+  anatomy__semispinalis__static__FJ1540M: {
     name: "left semispinalis thoracis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1540M",
     vertices: 4582,
     faces: 5176
   },
-  anatomy__erectorspinae__static__FJ1539: {
+  anatomy__semispinalis__static__FJ1539: {
     name: "right semispinalis cervicis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1539",
     vertices: 3060,
     faces: 3406
   },
-  anatomy__erectorspinae__static__FJ1539M: {
+  anatomy__semispinalis__static__FJ1539M: {
     name: "left semispinalis cervicis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1539M",
     vertices: 3047,
     faces: 3406
   },
-  anatomy__erectorspinae__static__FJ1538: {
+  anatomy__semispinalis__static__FJ1538: {
     name: "right semispinalis capitis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1538",
     vertices: 2744,
     faces: 1912
   },
-  anatomy__erectorspinae__static__FJ1538M: {
+  anatomy__semispinalis__static__FJ1538M: {
     name: "left semispinalis capitis",
-    structure: "erectorspinae",
+    structure: "semispinalis",
     segment: "static",
     layer: "muscles",
     file_id: "FJ1538M",
@@ -38828,7 +38925,7 @@ var hasAnatomicalMesh = (id) => meshCoverage.has(id) || (relatedMeshes[id] || []
 var regionFor = (joint, side) => ["neck", "tmj"].includes(joint) ? "head" : `${side === "L" ? "left" : "right"}${["hip", "knee", "ankle"].includes(joint) ? "Leg" : "Arm"}`;
 function sectionForStructure(s) {
   if (["skull", "mandible", "tmjoint", "neckjoint", "neckmuscles", "scalenes", "deepneck", "suprahyoid", "eyemuscles", "pharynxmuscles", "larynxmuscles", "tonguemuscles", "foramenmagnum", "transverseforamen", "cervical"].includes(s.id)) return "head";
-  if (["spine", "thoracic", "lumbar", "sacrum", "sternum", "ribs", "rectusabdominis", "externaloblique", "erectorspinae", "serratusposterior", "deepback", "thoracicdeep", "diaphragm"].includes(s.id)) return "trunk";
+  if (["spine", "thoracic", "lumbar", "sacrum", "sternum", "ribs", "rectusabdominis", "externaloblique", "erectorspinae", "serratusposterior", "deepback", "thoracicdeep", "diaphragm", "iliocostalis", "longissimus", "semispinalis", "spinalis", "intertransversarii", "externalintercostals", "internalintercostals", "innermostintercostals"].includes(s.id)) return "trunk";
   if (["pelvis", "ilium", "ischium", "pubis", "foramenobturator", "sacralforamina", "sacroiliac", "hipjoint", "gluteus", "gluteusmaximus", "gluteusminimus", "iliopsoas", "hiprotators", "pelvicfloor"].includes(s.id)) return "pelvis";
   if (["handphalanges", "metacarpals", "carpals", "ulna", "brachioradialis", "handintrinsics", "thumbtendons"].includes(s.id)) return "hand";
   if (["foot", "toephalanges", "metatarsals", "talus", "calcaneus", "navicular", "sesamoids", "cuboid", "cuneiforms", "footmuscles"].includes(s.id)) return "foot";
@@ -39112,8 +39209,11 @@ function renderStructures() {
   const query = normalize2($("structure-search").value.trim());
   const regionStructures = structures.filter((s2) => browseRegion === "all" || sectionForStructure(s2) === browseRegion);
   const boneMeshes = Object.values(bodyparts_manifest_default).filter((info) => info.layer === "bones").length;
-  const muscleMeshes = Object.values(bodyparts_manifest_default).filter((info) => info.layer === "muscles").length;
-  $("structure-metrics").innerHTML = `<div><strong>${structures.length}</strong><span>fichas anat\xF3micas</span></div><div><strong>${boneMeshes}</strong><span>mallas \xF3seas</span></div><div><strong>${muscleMeshes}</strong><span>mallas musculares</span></div><div><strong>${Object.keys(catalogSections).length - 1}</strong><span>regiones para explorar</span></div>`;
+  const muscleParts = Object.values(bodyparts_manifest_default).filter((info) => info.layer === "muscles");
+  const muscleMeshes = muscleParts.length;
+  const muscleGroups = new Set(muscleParts.map((info) => info.structure)).size;
+  const namedMuscleParts = new Set(muscleParts.map((info) => info.name.replace(/\b(?:left|right)\s+/g, "").trim())).size;
+  $("structure-metrics").innerHTML = `<div><strong>${structures.length}</strong><span>fichas anat\xF3micas</span></div><div><strong>${boneMeshes}</strong><span>mallas \xF3seas</span></div><div><strong>${muscleMeshes}</strong><span>mallas musculares</span></div><div><strong>${muscleGroups}</strong><span>grupos musculares</span></div><div><strong>${namedMuscleParts}</strong><span>nombres y porciones*</span></div><div><strong>${Object.keys(catalogSections).length - 1}</strong><span>regiones para explorar</span></div>`;
   $("structure-region").innerHTML = Object.entries(catalogSections).map(([id, label]) => `<option value="${id}">${label} \xB7 ${id === "all" ? structures.length : structures.filter((s2) => sectionForStructure(s2) === id).length}</option>`).join("");
   $("structure-region").value = browseRegion;
   $("structure-region-summary").textContent = `${regionStructures.length} fichas en ${catalogSections[browseRegion].toLowerCase()}. Filtra por tipo o busca un nombre.`;
@@ -40035,8 +40135,8 @@ function updateLayers() {
   const depthStage = $("muscle-depth")?.value || "all";
   const muscleDepth = (name) => {
     const n = (name || "").toLowerCase();
-    if (/deep|profund|interosse|lumbrical|rotator|multifid|transvers|quadratus|pterygoid|subscapular|infraspinat|supraspinat/.test(n)) return "deep";
-    if (/middle|intermed|medial|longissimus|iliocostalis|serratus posterior|flexor|extensor|adductor|vastus intermed/.test(n)) return "intermediate";
+    if (/deep|profund|innermost intercostal|interosse|lumbrical|rotator|multifid|intertransvers|interspinal|semispinalis|spinalis thoracis|transvers|quadratus|pterygoid|subscapular|infraspinat|supraspinat/.test(n)) return "deep";
+    if (/internal intercostal|middle|intermed|medial|longissimus|iliocostalis|serratus posterior|flexor|extensor|adductor|vastus intermed/.test(n)) return "intermediate";
     return "superficial";
   };
   bodyRoot.traverse((obj) => {

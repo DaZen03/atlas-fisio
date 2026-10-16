@@ -214,3 +214,5 @@ html[data-theme="dark"] .explorer-search{background:#142723;color:#f0f5eb;border
   #touch-selection-focus:focus-visible{outline:2px solid #ffdb9e;outline-offset:2px}
 }
 @media(max-width:760px) and (max-height:520px){.stage.mobile-viewer-open .touch-selection{top:max(91px,calc(env(safe-area-inset-top) + 85px));width:min(220px,calc(100% - 105px));padding:7px 8px}}
+.structure-metrics{grid-template-columns:repeat(5,minmax(0,1fr))}.structure-count-note{margin:8px 2px 0;color:#4b6c60;font-size:12px;line-height:1.5}html[data-theme="dark"] .structure-count-note{color:#c5dbca}@media(max-width:1000px){.structure-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.structure-metrics{grid-template-columns:repeat(6,minmax(0,1fr))}@media(max-width:1000px){.structure-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}

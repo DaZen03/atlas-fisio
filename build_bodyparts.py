@@ -71,8 +71,11 @@ NEW_FOOT_MUSCLES = {'abductor hallucis':'footmuscles', 'flexor digitorum brevis'
                     'opponens digiti minimi of foot':'footmuscles',
                     'flexor accessorius':'footmuscles'}
 DEEP_MUSCLES = {
-    'transversus thoracis':'thoracicdeep', 'spinalis thoracis':'deepback',
+    'transversus thoracis':'thoracicdeep',
     'interspinalis thoracis':'deepback', 'lumbar rotator':'deepback',
+    'lateral lumbar intertransversarius':'intertransversarii',
+    'medial lumbar intertransversarius':'intertransversarii',
+    'lumbar intertransversarius':'intertransversarii',
     'cervical rotator':'deepneck',
     'set of levatores costarum longi':'thoracicdeep',
     'set of levatores costarum breves':'thoracicdeep',
@@ -113,6 +116,13 @@ def category(name):
     if name in {'sacrum', 'coccyx'}: return 'sacrum', 'static', 'bones'
     if name in {'manubrium', 'body of sternum', 'xiphoid process'}: return 'sternum', 'static', 'bones'
     if name == 'diaphragm': return 'diaphragm', 'static', 'muscles'
+    if name in {'intertransversarius muscle','lumbar intertransversarius',
+                'lateral lumbar intertransversarius','medial lumbar intertransversarius'}:
+        return 'intertransversarii', 'static', 'muscles'
+    if name in {'external intercostal muscle','internal intercostal muscle','innermost intercostal muscle'}:
+        return {'external intercostal muscle':'externalintercostals',
+                'internal intercostal muscle':'internalintercostals',
+                'innermost intercostal muscle':'innermostintercostals'}[name], 'static', 'muscles'
     if re.fullmatch(rf'(right|left) {ORDINAL} rib', name): return 'ribs', 'static', 'bones'
     if not side: return None
     bare = name.replace('right ', '').replace('left ', '')
@@ -185,8 +195,11 @@ def category(name):
     if bare in NEW_THIGH_MUSCLES:return NEW_THIGH_MUSCLES[bare], moving('hip'), 'muscles'
     if bare in NEW_CALF_MUSCLES:return NEW_CALF_MUSCLES[bare], moving('knee'), 'muscles'
     if bare in NEW_FOOT_MUSCLES:return NEW_FOOT_MUSCLES[bare], moving('ankle'), 'muscles'
+    if bare == 'intertransversarius muscle': return 'intertransversarii', 'static', 'muscles'
     if any(bare.startswith(prefix) for prefix in ('iliocostalis ','longissimus ','semispinalis ')):
-        return 'erectorspinae', 'static', 'muscles'
+        structure=next(prefix.strip() for prefix in ('iliocostalis ','longissimus ','semispinalis ') if bare.startswith(prefix))
+        return structure, 'static', 'muscles'
+    if bare == 'spinalis thoracis': return 'spinalis', 'static', 'muscles'
     return None
 
 names={}
@@ -207,7 +220,14 @@ with zipfile.ZipFile(SOURCE/'bodyparts3d-isa-99.zip') as archive:
         for file_id in elements.get(concept,[]):
             if file_id not in entries:
                 missing.append((name,file_id));continue
-            selected.setdefault(file_id,{'name':name,'structure':result[0],'segment':result[1],'layer':result[2]})
+            display_name=name
+            if name in {'external intercostal muscle','internal intercostal muscle','innermost intercostal muscle'}:
+                display_name=('left ' if file_id.endswith('M') else 'right ')+name
+            elif 'intertransversarius' in name:
+                part='lateral' if file_id.startswith('FJ1547') else 'medial'
+                side='left' if file_id.endswith('M') else 'right'
+                display_name=f'{side} {part} lumbar intertransversarius'
+            selected.setdefault(file_id,{'name':display_name,'structure':result[0],'segment':result[1],'layer':result[2]})
     print('Selected',len(selected),'meshes:',dict(Counter(item['layer'] for item in selected.values())))
     print('Segments:',dict(Counter(item['segment'] for item in selected.values())))
     print('Missing:',missing[:10], 'total',len(missing))

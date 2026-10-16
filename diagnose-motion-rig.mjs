@@ -135,7 +135,7 @@ for(const [name,setPose] of poses){
   if(maxStretch>1e-4)throw Error(`Estiramiento de malla en ${name}: ${maxStretch}`);
   if(maxLink>.40)throw Error(`Separación excesiva entre segmentos en ${name}: ${maxLink.toFixed(3)} m (${maxLinkName})`);
 }
-if(records.length!==394)throw Error(`Se esperaban 394 músculos; hay ${records.length}`);
+if(records.length!==404)throw Error(`Se esperaban 404 músculos; hay ${records.length}`);
 console.table(report);
 for(const item of unmovedByPose)console.log(`INMÓVILES ${item.name}: ${item.unmoved.length} ${item.unmoved.join(' | ')}`);
 console.log([...linkGaps].sort((a,b)=>b[1]-a[1]).slice(0,25).map(([name,gap])=>`${gap.toFixed(3)} m ${name}`).join('\n'));

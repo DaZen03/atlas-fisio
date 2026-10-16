@@ -19,11 +19,11 @@ check(movements.filter(m=>m.base).length===35, 'Faltan las 35 animaciones adicio
 check(movements.filter(m=>m.category==='Entrenamiento').every(m=>m.trainingLoad?.tension&&m.trainingLoad?.recruitment), 'Falta explicación de tensión o reclutamiento en un ejercicio.');
 check(movements.some(m=>m.id==='hiphinge')&&movements.some(m=>m.id==='squat'), 'Faltan los dos gestos funcionales en apoyo.');
 check(Object.keys(planes).length === 3, 'No hay tres planos.');
-check(structures.length === 111, 'El catálogo de estructuras cambió de tamaño.');
+check(structures.length === 118, 'El catálogo de estructuras cambió de tamaño.');
 check(Object.keys(sources).length===75, 'El catálogo de fuentes cambió de tamaño.');
-check(Object.keys(meshManifest).length === 600, 'El GLB no tiene las 600 mallas seleccionadas.');
+check(Object.keys(meshManifest).length === 610, 'El GLB no tiene las 610 mallas seleccionadas.');
 check(Object.values(meshManifest).filter(mesh=>mesh.layer==='bones').length === 206, 'Faltan mallas óseas.');
-check(Object.values(meshManifest).filter(mesh=>mesh.layer==='muscles').length === 394, 'Faltan mallas musculares.');
+check(Object.values(meshManifest).filter(mesh=>mesh.layer==='muscles').length === 404, 'Faltan 404 mallas musculares.');
 check(Object.values(meshManifest).filter(mesh=>mesh.structure==='deltoid').length===6, 'Faltan las seis porciones del deltoides.');
 check(Object.values(meshManifest).filter(mesh=>mesh.structure==='deltoid').every(mesh=>mesh.segment==='static'), 'El origen del deltoides debe permanecer en el tronco.');
 check(Object.keys(jointExplorer).length === 9, 'Falta una articulación del modo libre.');
@@ -45,7 +45,7 @@ for(const [key,joint] of Object.entries(jointExplorer)){
     check(planes[action.plane], `Plano inexistente en ${key}/${action.id}.`);
   }
 }
-for (const muscle of ['pectoralisminor','neckmuscles','levatorscapulae','hiprotators','teresmajor','coracobrachialis','pronators','wristflexors','wristextensors','adductors','lowerlegmuscles','popliteus','footmuscles','scalenes','subclavius','serratusposterior','anconeus','supinator','thumbtendons','handintrinsics']) {
+for (const muscle of ['pectoralisminor','neckmuscles','levatorscapulae','hiprotators','teresmajor','coracobrachialis','pronators','wristflexors','wristextensors','adductors','lowerlegmuscles','popliteus','footmuscles','scalenes','subclavius','serratusposterior','anconeus','supinator','thumbtendons','handintrinsics','iliocostalis','longissimus','semispinalis','spinalis','intertransversarii','externalintercostals','internalintercostals','innermostintercostals']) {
   check(Object.values(meshManifest).some(mesh=>mesh.structure===muscle), `Falta malla para ${muscle}.`);
 }
 check(fs.statSync('./dist/assets/bodyparts.glb').size > 1000000, 'Falta el archivo GLB anatómico.');
