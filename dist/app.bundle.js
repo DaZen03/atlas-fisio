@@ -40003,7 +40003,7 @@ function muscleEndpoint(mesh, toRoot, pivot) {
 }
 function muscleSpreadDirections(rootCenter, bodyCenter, bodyRadii, side) {
   const delta = rootCenter.clone().sub(bodyCenter);
-  const radial = V(delta.x / Math.max(bodyRadii.x, 0.1), delta.y / Math.max(bodyRadii.y, 0.1), delta.z / Math.max(bodyRadii.z, 0.1));
+  const radial = V(delta.x / Math.max(bodyRadii.x, 0.1), delta.y / Math.max(bodyRadii.y, 0.1), delta.z / Math.max(bodyRadii.z, 0.1) * 1.65);
   if (radial.lengthSq() < 0.05) radial.set(side === "L" ? -1 : 1, 0, 0);
   radial.normalize();
   const project = (x, y, z, fallback) => {

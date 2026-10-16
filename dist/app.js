@@ -860,7 +860,9 @@ function muscleEndpoint(mesh,toRoot,pivot){
 }
 function muscleSpreadDirections(rootCenter,bodyCenter,bodyRadii,side){
   const delta=rootCenter.clone().sub(bodyCenter);
-  const radial=V(delta.x/Math.max(bodyRadii.x,.1),delta.y/Math.max(bodyRadii.y,.1),delta.z/Math.max(bodyRadii.z,.1));
+  // La profundidad del GLB es estrecha frente a su altura; se compensa para que
+  // las capas anteriores y posteriores queden legibles al separar los grupos.
+  const radial=V(delta.x/Math.max(bodyRadii.x,.1),delta.y/Math.max(bodyRadii.y,.1),delta.z/Math.max(bodyRadii.z,.1)*1.65);
   if(radial.lengthSq()<.05)radial.set(side==='L'?-1:1,0,0);
   radial.normalize();
   const project=(x,y,z,fallback)=>{const direction=V(x,y,z);return direction.lengthSq()<.08?fallback.clone():direction.normalize()};
