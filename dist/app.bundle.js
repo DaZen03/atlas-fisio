@@ -40361,6 +40361,8 @@ navPad.addEventListener("keydown", (event) => {
 });
 var stage = document.querySelector(".stage");
 var explorer = document.querySelector(".explorer");
+var resizeViewerCanvas = () => {
+};
 var mobileViewerOpen = false;
 function syncMobileViewer() {
   const mobile = window.innerWidth <= 760;
@@ -40389,7 +40391,10 @@ function openMobileViewer() {
   syncMobileViewer();
   document.querySelector(".viewer-layout-control").classList.remove("open");
   $("viewer-settings-toggle").setAttribute("aria-expanded", "false");
-  requestAnimationFrame(() => $("mobile-viewer-close").focus());
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    resizeViewerCanvas();
+    $("mobile-viewer-close").focus();
+  }));
 }
 async function closeMobileViewer() {
   if (document.fullscreenElement === stage) await document.exitFullscreen();
@@ -40422,6 +40427,7 @@ function setViewerSize() {
   document.documentElement.style.setProperty("--viewer-height", `${size}dvh`);
   document.documentElement.style.setProperty("--viewer-dock-width", `${Math.round(window.innerWidth <= 760 ? 120 + size * 2.5 : 280 + size * 4)}px`);
   $("viewer-size-value").textContent = `${size} %`;
+  requestAnimationFrame(resizeViewerCanvas);
 }
 function updateViewerDock() {
   const shouldDock = window.innerWidth > 760 && !viewerHidden && viewerPinned && explorer.getBoundingClientRect().bottom <= 4 && !document.fullscreenElement && !stage.classList.contains("expanded");
@@ -40476,6 +40482,7 @@ window.addEventListener("resize", () => {
   syncMobileViewer();
   setViewerSize();
   queueViewerDock();
+  requestAnimationFrame(resizeViewerCanvas);
 });
 if (window.innerWidth <= 760) $("viewer-size").value = "72";
 syncMobileViewer();
@@ -40509,6 +40516,7 @@ $("fullscreen-view").addEventListener("click", async () => {
 document.addEventListener("fullscreenchange", () => {
   syncFullscreenButton();
   queueViewerDock();
+  requestAnimationFrame(resizeViewerCanvas);
 });
 var viewerInitPhase = "preparaci\xF3n";
 function init3D() {
@@ -40557,11 +40565,14 @@ function init3D() {
   raycaster = new Raycaster();
   viewerInitPhase = "ajuste del tama\xF1o del visor";
   const resize = () => {
-    const rect = wrap.getBoundingClientRect();
-    renderer.setSize(rect.width, rect.height, false);
-    camera.aspect = rect.width / rect.height;
+    const rect = wrap.getBoundingClientRect(), width = Math.floor(rect.width), height = Math.floor(rect.height);
+    if (!Number.isFinite(width) || !Number.isFinite(height) || width < 1 || height < 1) return false;
+    renderer.setSize(width, height, false);
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    return true;
   };
+  resizeViewerCanvas = resize;
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(wrap);
   else window.addEventListener("resize", resize, { passive: true });
   resize();

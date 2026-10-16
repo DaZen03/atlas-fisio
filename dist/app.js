@@ -1129,6 +1129,7 @@ navPad.addEventListener('pointerup',releaseJoystick);navPad.addEventListener('po
 navPad.addEventListener('keydown',event=>{const step=.13;if(event.key==='ArrowLeft')yaw+=step;else if(event.key==='ArrowRight')yaw-=step;else if(event.key==='ArrowUp')pitch=Math.max(-.9,pitch-step);else if(event.key==='ArrowDown')pitch=Math.min(.9,pitch+step);else return;viewTarget=null;event.preventDefault()});
 const stage=document.querySelector('.stage');
 const explorer=document.querySelector('.explorer');
+let resizeViewerCanvas=()=>{};
 let mobileViewerOpen=false;
 function syncMobileViewer(){
   const mobile=window.innerWidth<=760;
@@ -1146,7 +1147,7 @@ function openMobileViewer(){
   mobileViewerOpen=true;syncMobileViewer();
   document.querySelector('.viewer-layout-control').classList.remove('open');
   $('viewer-settings-toggle').setAttribute('aria-expanded','false');
-  requestAnimationFrame(()=>$('mobile-viewer-close').focus());
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{resizeViewerCanvas();$('mobile-viewer-close').focus()}));
 }
 async function closeMobileViewer(){
   if(document.fullscreenElement===stage)await document.exitFullscreen();
@@ -1171,6 +1172,7 @@ function setViewerSize(){
   document.documentElement.style.setProperty('--viewer-height',`${size}dvh`);
   document.documentElement.style.setProperty('--viewer-dock-width',`${Math.round(window.innerWidth<=760?120+size*2.5:280+size*4)}px`);
   $('viewer-size-value').textContent=`${size} %`;
+  requestAnimationFrame(resizeViewerCanvas);
 }
 function updateViewerDock(){
   const shouldDock=window.innerWidth>760&&!viewerHidden&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
@@ -1192,12 +1194,12 @@ $('viewer-size').addEventListener('input',()=>{setViewerSize();queueViewerDock()
 $('viewer-settings-toggle').addEventListener('click',()=>{const open=document.querySelector('.viewer-layout-control').classList.toggle('open');$('viewer-settings-toggle').setAttribute('aria-expanded',String(open))});
 $('viewer-pin').addEventListener('click',()=>{viewerPinned=!viewerPinned;$('viewer-pin').setAttribute('aria-pressed',String(viewerPinned));$('viewer-pin').textContent=viewerPinned?'Fijado':'Fijar';$('viewer-pin').title=viewerPinned?'Dejar de fijar el visor':'Mantener el visor visible';queueViewerDock()});
 window.addEventListener('scroll',queueViewerDock,{passive:true});
-window.addEventListener('resize',()=>{syncMobileViewer();setViewerSize();queueViewerDock()});
+window.addEventListener('resize',()=>{syncMobileViewer();setViewerSize();queueViewerDock();requestAnimationFrame(resizeViewerCanvas)});
 if(window.innerWidth<=760)$('viewer-size').value='72';
 syncMobileViewer();setViewerSize();queueViewerDock();
 function syncFullscreenButton(){const active=!!document.fullscreenElement||stage.classList.contains('expanded');$('fullscreen-view').setAttribute('aria-label',active?'Salir de pantalla completa':'Abrir visor en pantalla completa');$('fullscreen-view').innerHTML=active?'⛶ <span>Salir de pantalla completa</span>':'⛶ <span>Pantalla completa</span>'}
 $('fullscreen-view').addEventListener('click',async()=>{if(document.fullscreenElement){await document.exitFullscreen();return}if(stage.classList.contains('expanded')){stage.classList.remove('expanded');document.body.classList.remove('viewer-expanded');syncFullscreenButton();return}try{if(!stage.requestFullscreen)throw Error('API no disponible');await stage.requestFullscreen()}catch{stage.classList.add('expanded');document.body.classList.add('viewer-expanded');syncFullscreenButton()}});
-document.addEventListener('fullscreenchange',()=>{syncFullscreenButton();queueViewerDock()});
+document.addEventListener('fullscreenchange',()=>{syncFullscreenButton();queueViewerDock();requestAnimationFrame(resizeViewerCanvas)});
 
 let viewerInitPhase='preparación';
 function init3D(){
@@ -1221,7 +1223,12 @@ function init3D(){
   viewerInitPhase='construcción de la escena y el cuerpo';
   constructBody();createPlaneGuides();applyPose();updateLayers();highlightStructure();raycaster=new THREE.Raycaster();
   viewerInitPhase='ajuste del tamaño del visor';
-  const resize=()=>{const rect=wrap.getBoundingClientRect();renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix()};
+  const resize=()=>{
+    const rect=wrap.getBoundingClientRect(),width=Math.floor(rect.width),height=Math.floor(rect.height);
+    if(!Number.isFinite(width)||!Number.isFinite(height)||width<1||height<1)return false;
+    renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();return true;
+  };
+  resizeViewerCanvas=resize;
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(wrap);else window.addEventListener('resize',resize,{passive:true});resize();
   viewerInitPhase='instalación de controles';
   const tooltip=document.createElement('div');tooltip.className='mesh-tooltip';tooltip.style.cssText='position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44';wrap.appendChild(tooltip);
