@@ -757,7 +757,7 @@ function applyPose(){
       leg[key].rotation.set(hip.x*share,hip.y*share,hip.z*share);
     }
   }
-  updateMuscleDeformation();updatePlaneGuide();
+  updateMuscleDeformation();updateMuscleSeparations();updatePlaneGuide();
 }
 function muscleAnchors(info){
   const suffix=info.name.includes('left ')?'L':'';
@@ -858,14 +858,25 @@ function muscleEndpoint(mesh,toRoot,pivot){
   }
   return center.multiplyScalar(1/Math.max(1,count));
 }
-function muscleSpreadDirections(rootCenter,slot,side){
-  const lateral=rootCenter.x<-.035?-1:rootCenter.x>.035?1:side==='L'?-1:1;
-  const depth=rootCenter.z<-.035?-1:1;
-  const fan=((slot%7)-3)/3,orbit=(Math.floor(slot/7)%4-1.5)*.16;
-  const x=lateral*(.9+Math.abs(fan)*.16)+orbit;
-  const y=fan*.55+orbit*.5;
-  const z=depth*(.8+Math.abs(orbit))+fan*.26;
-  return {multi:V(x,y,z).normalize(),frontal:V(x,y,0).normalize(),sagital:V(0,y,z).normalize(),transversal:V(x,0,z).normalize()};
+function muscleSpreadDirections(rootCenter,bodyCenter,side){
+  const radial=rootCenter.clone().sub(bodyCenter);
+  if(radial.lengthSq()<.05)radial.set(side==='L'?-1:1,0,0);
+  radial.normalize();
+  const project=(x,y,z,fallback)=>{const direction=V(x,y,z);return direction.lengthSq()<.08?fallback.clone():direction.normalize()};
+  return {multi:radial,frontal:project(radial.x,radial.y,0,V(side==='L'?-1:1,0,0)),sagital:project(0,radial.y,radial.z,V(0,0,side==='L'?-1:1)),transversal:project(radial.x,0,radial.z,V(side==='L'?-1:1,0,0))};
+}
+function updateMuscleSeparations(){
+  if(!bodyRoot||!anatomicalMuscles.length)return;
+  const structure=structures.find(item=>item.id===activeStructure),selectedIsMuscle=structure?.type.startsWith('MÚSC');
+  const separationMode=$('separation-plane').value,amount=Number($('explode-slider').value)*.0052;
+  const bodyWorldQuaternion=bodyRoot.getWorldQuaternion(new THREE.Quaternion());
+  for(const {mesh,base,directions,spreadScale} of anatomicalMuscles){
+    const name=mesh.userData.anatomicalName||'';
+    const selected=selectedIsMuscle&&mesh.userData.structure===activeStructure&&(!selectedMeshName||name===selectedMeshName)&&(!selectedStructureSide||selectedStructureSide==='R'&&!name.includes('left ')||selectedStructureSide==='L'&&!name.includes('right '));
+    const parentWorldQuaternion=mesh.parent.getWorldQuaternion(new THREE.Quaternion()).invert();
+    const localDirection=directions[separationMode].clone().applyQuaternion(bodyWorldQuaternion).applyQuaternion(parentWorldQuaternion).normalize();
+    mesh.position.copy(base).addScaledVector(localDirection,amount*spreadScale*(separateSelected?Number(selected):1));
+  }
 }
 function updateLayers(){
   if(!bodyRoot)return;
@@ -888,16 +899,13 @@ function updateLayers(){
     if(isolateSelected&&selectedMeshName&&selected.has(obj.userData.structure))show=show&&obj.userData.anatomicalName===selectedMeshName;
     obj.visible=show;
   });
-  const separationMode=$('separation-plane').value;
-  for(const {mesh,base,directions,spreadScale} of anatomicalMuscles){
-    const name=mesh.userData.anatomicalName||'';
-    const selected=selectedIsMuscle&&mesh.userData.structure===activeStructure&&(!selectedMeshName||name===selectedMeshName)&&(!selectedStructureSide||selectedStructureSide==='R'&&!name.includes('left ')||selectedStructureSide==='L'&&!name.includes('right '));
-    mesh.position.copy(base).addScaledVector(directions[separationMode],Number($('explode-slider').value)*.0052*spreadScale*(separateSelected?Number(selected):1));
+  for(const {mesh} of anatomicalMuscles){
     const opacity=Number($('muscle-opacity').value)/100;
     for(const mat of new Set([mesh.userData.oldMaterial||mesh.material,mesh.material])){
       mat.transparent=opacity<1;mat.opacity=opacity;mat.depthWrite=opacity===1;mat.needsUpdate=true;
     }
   }
+  updateMuscleSeparations();
   if(tendonLines){
     const selectedName=selectedMeshName;
     for(const link of tendonBindings){
@@ -1009,7 +1017,17 @@ function loadAnatomicalMeshes(){
     const rootInverse=bodyRoot.matrixWorld.clone().invert();
     for(const [key,node] of Object.entries(rig))if(key!=='static')neutralRigInverse[key]=rootInverse.clone().multiply(node.matrixWorld).invert();
     const meshes=[];gltf.scene.traverse(obj=>{if(obj.isMesh)meshes.push(obj)});
-    const assignedColors=[],spreadCounts=new Map();
+    const bodyBounds=new THREE.Box3().setFromObject(gltf.scene);
+    const bodyCenter=bodyBounds.getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
+    const muscleGroupCenters=new Map();
+    for(const mesh of meshes){
+      const info=meshManifest[mesh.name];if(info?.layer!=='muscles')continue;
+      const side=info.name.includes('left ')?'L':'R',key=`${info.structure}:${side}`;
+      const center=new THREE.Box3().setFromObject(mesh).getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
+      const entry=muscleGroupCenters.get(key)||{center:V(0,0,0),count:0};entry.center.add(center);entry.count++;muscleGroupCenters.set(key,entry);
+    }
+    for(const entry of muscleGroupCenters.values())entry.center.multiplyScalar(1/entry.count);
+    const assignedColors=[],groupSpreadDirections=new Map();
     for(const mesh of meshes){
       const info=meshManifest[mesh.name];
       if(!info)continue;
@@ -1038,14 +1056,12 @@ function loadAnatomicalMeshes(){
         mesh.material.roughness=.78;mesh.material.metalness=0;
         mesh.material.transparent=false;mesh.material.opacity=1;mesh.material.depthWrite=true;
         mesh.geometry.computeBoundingBox();
-        const side=info.name.includes('left ')?'L':'R',spreadKey=`${info.segment}:${side}`;
-        const slot=spreadCounts.get(spreadKey)||0;spreadCounts.set(spreadKey,slot+1);
-        const rootCenter=new THREE.Box3().setFromObject(mesh).getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
-        const rootDirections=muscleSpreadDirections(rootCenter,slot,side);
-        const rootToParent=mesh.parent.getWorldQuaternion(new THREE.Quaternion()).invert();
-        const rootToWorld=bodyRoot.getWorldQuaternion(new THREE.Quaternion());
-        const directions=Object.fromEntries(Object.entries(rootDirections).map(([plane,direction])=>[plane,direction.applyQuaternion(rootToWorld).applyQuaternion(rootToParent).normalize()]));
-        anatomicalMuscles.push({mesh,base:mesh.position.clone(),directions,spreadScale:1+(slot%4)*.14});
+        const side=info.name.includes('left ')?'L':'R',spreadKey=`${info.structure}:${side}`;
+        const rootCenter=muscleGroupCenters.get(spreadKey)?.center||new THREE.Box3().setFromObject(mesh).getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
+        let rootDirections=groupSpreadDirections.get(spreadKey);
+        if(!rootDirections){rootDirections=muscleSpreadDirections(rootCenter,bodyCenter,side);groupSpreadDirections.set(spreadKey,rootDirections)}
+        const directions=Object.fromEntries(Object.entries(rootDirections).map(([plane,direction])=>[plane,direction.clone()]));
+        anatomicalMuscles.push({mesh,base:mesh.position.clone(),directions,spreadScale:1,groupKey:spreadKey});
       }
       pickables.push(mesh);
     }
