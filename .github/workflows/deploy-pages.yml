@@ -27,6 +27,9 @@ jobs:
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Versionar archivos para evitar caché antigua
+        run: node tools/version-assets.cjs "${GITHUB_SHA}"
+
       - name: Preparar el atlas estático
         uses: actions/upload-pages-artifact@v3
         with:
