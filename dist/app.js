@@ -883,6 +883,7 @@ function updateMuscleSeparations(){
 }
 function updateLayers(){
   if(!bodyRoot)return;
+  const separationMode=$('separation-plane').value;
   const visible={bones:$('layer-bones').checked,muscles:$('layer-muscles').checked,surface:$('layer-surface').checked,markers:$('layer-markers').checked};
   const selected=new Set([activeStructure,...(relatedMeshes[activeStructure]||[])]);
   const structure=structures.find(item=>item.id===activeStructure);

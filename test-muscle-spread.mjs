@@ -9,7 +9,9 @@ vm.createContext(scope);vm.runInContext(code,scope);
 const modes=['multi','frontal','sagital','transversal'];
 const seen=new Set();
 for(const side of ['L','R'])for(let slot=0;slot<28;slot++){
-  const directions=scope.muscleSpreadDirections(new THREE.Vector3(side==='L'?-.3:.3,.7,slot%2?-.15:.2),slot,side);
+  const rootCenter=new THREE.Vector3(side==='L'?-.3:.3,.7+slot*.025,slot%2?-.15:.2);
+  const bodyCenter=new THREE.Vector3(0,0,0),bodyRadii=new THREE.Vector3(.8,2,.35);
+  const directions=scope.muscleSpreadDirections(rootCenter,bodyCenter,bodyRadii,side);
   for(const mode of modes){
     const vector=directions[mode];
     if(!vector||!Number.isFinite(vector.length())||Math.abs(vector.length()-1)>1e-8)throw Error(`Dirección inválida: ${mode}/${side}/${slot}`);

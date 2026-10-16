@@ -40015,18 +40015,19 @@ function muscleSpreadDirections(rootCenter, bodyCenter, bodyRadii, side) {
 function updateMuscleSeparations() {
   if (!bodyRoot || !anatomicalMuscles.length) return;
   const structure = structures.find((item) => item.id === activeStructure), selectedIsMuscle = structure?.type.startsWith("M\xDASC");
-  const separationMode2 = $("separation-plane").value, amount = Number($("explode-slider").value) * 52e-4;
+  const separationMode = $("separation-plane").value, amount = Number($("explode-slider").value) * 52e-4;
   const bodyWorldQuaternion = bodyRoot.getWorldQuaternion(new Quaternion());
   for (const { mesh, base, directions, spreadScale } of anatomicalMuscles) {
     const name = mesh.userData.anatomicalName || "";
     const selected = selectedIsMuscle && mesh.userData.structure === activeStructure && (!selectedMeshName || name === selectedMeshName) && (!selectedStructureSide || selectedStructureSide === "R" && !name.includes("left ") || selectedStructureSide === "L" && !name.includes("right "));
     const parentWorldQuaternion = mesh.parent.getWorldQuaternion(new Quaternion()).invert();
-    const localDirection = directions[separationMode2].clone().applyQuaternion(bodyWorldQuaternion).applyQuaternion(parentWorldQuaternion).normalize();
+    const localDirection = directions[separationMode].clone().applyQuaternion(bodyWorldQuaternion).applyQuaternion(parentWorldQuaternion).normalize();
     mesh.position.copy(base).addScaledVector(localDirection, amount * spreadScale * (separateSelected ? Number(selected) : 1));
   }
 }
 function updateLayers() {
   if (!bodyRoot) return;
+  const separationMode = $("separation-plane").value;
   const visible = { bones: $("layer-bones").checked, muscles: $("layer-muscles").checked, surface: $("layer-surface").checked, markers: $("layer-markers").checked };
   const selected = /* @__PURE__ */ new Set([activeStructure, ...relatedMeshes[activeStructure] || []]);
   const structure = structures.find((item) => item.id === activeStructure);
