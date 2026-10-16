@@ -1261,4 +1261,9 @@ function init3D(){
   }
   requestAnimationFrame(frame);
 }
-try{init3D();loadAnatomicalMeshes()}catch(error){console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);$('canvas-fallback').hidden=false;$('canvas-fallback').setAttribute('role','alert');}
+try{init3D();loadAnatomicalMeshes()}catch(error){
+  console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);
+  const fallback=$('canvas-fallback'),detail=String(error?.cause?.message||error?.message||'error desconocido').slice(0,180);
+  fallback.textContent=`El visor 3D no pudo iniciarse. Comprueba WebGL y la aceleración por hardware del navegador. Detalle: ${detail}`;
+  fallback.hidden=false;fallback.setAttribute('role','alert');
+}
