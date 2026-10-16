@@ -85,6 +85,7 @@
             <input id="viewer-size" type="range" min="40" max="95" value="88" aria-label="Ajustar tamaño del visor">
             <div class="viewer-control-row"><label for="model-zoom">Tamaño del modelo</label><output id="model-zoom-value" for="model-zoom">100 %</output></div>
             <input id="model-zoom" type="range" min="0" max="100" value="33" aria-label="Acercar o alejar el modelo">
+            <button type="button" id="hide-viewer" class="hide-viewer">Ocultar visor y ampliar lectura</button>
           </div>
         </div>
         <div class="mesh-status" id="mesh-status" role="status">CARGANDO MALLAS ANATÓMICAS…</div>
@@ -165,6 +166,7 @@
     <section class="sources" id="fuentes"><div class="sources-intro"><span class="section-num">BIBLIOGRAFÍA Y CRÉDITOS</span><h2>Fuentes abiertas para seguir aprendiendo.</h2><p>Las referencias se agrupan por tema. Cada ficha anatómica y movimiento enlaza las fuentes usadas en su explicación; aquí puedes consultar el conjunto completo.</p><p class="sources-credit">Mallas 3D: BodyParts3D, © The Database Center for Life Science, CC Attribution 4.0 International. Visor construido con Three.js.</p></div><div class="sources-catalog"><label class="structure-search-label" for="source-search">BUSCAR REFERENCIA</label><input id="source-search" class="structure-search" type="search" placeholder="Ej. cadera, músculo, deporte" autocomplete="off"><p id="source-count" role="status"></p><div class="source-list" id="source-list"></div></div></section>
   </main>
   <button type="button" id="mobile-viewer-open" class="mobile-viewer-open" aria-controls="body-canvas" aria-expanded="false">◎ Ver modelo 3D</button>
+  <button type="button" id="restore-viewer" class="restore-viewer" aria-controls="body-canvas" hidden>◎ Mostrar visor 3D</button>
   <footer><span>ATLAS / MOVIMIENTO</span><span>USO ACADÉMICO Y EDUCATIVO · 2026</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
   <script type="module" src="./app.bundle.js"></script>
 </body>

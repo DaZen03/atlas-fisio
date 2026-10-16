@@ -1145,6 +1145,7 @@ const stagePlaceholder=document.createElement('div');
 stagePlaceholder.className='stage-placeholder panel';
 stagePlaceholder.setAttribute('aria-hidden','true');
 let viewerPinned=true,viewerDockQueued=false;
+let viewerHidden=false;
 function setViewerSize(){
   const size=Number($('viewer-size').value);
   document.documentElement.style.setProperty('--viewer-height',`${size}dvh`);
@@ -1152,10 +1153,20 @@ function setViewerSize(){
   $('viewer-size-value').textContent=`${size} %`;
 }
 function updateViewerDock(){
-  const shouldDock=window.innerWidth>760&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
+  const shouldDock=window.innerWidth>760&&!viewerHidden&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
   if(shouldDock&&!stage.classList.contains('is-docked')){stage.before(stagePlaceholder);stage.classList.add('is-docked')}
   else if(!shouldDock&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove()}
 }
+function setViewerHidden(hidden){
+  viewerHidden=hidden;
+  explorer.classList.toggle('viewer-hidden',hidden);
+  $('restore-viewer').hidden=!hidden;
+  $('hide-viewer').setAttribute('aria-expanded',String(!hidden));
+  if(hidden&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove()}
+  else if(!hidden){stage.scrollIntoView({behavior:'smooth',block:'center'});queueViewerDock()}
+}
+$('hide-viewer').addEventListener('click',()=>setViewerHidden(true));
+$('restore-viewer').addEventListener('click',()=>setViewerHidden(false));
 function queueViewerDock(){if(viewerDockQueued)return;viewerDockQueued=true;requestAnimationFrame(()=>{viewerDockQueued=false;updateViewerDock()})}
 $('viewer-size').addEventListener('input',()=>{setViewerSize();queueViewerDock()});
 $('viewer-settings-toggle').addEventListener('click',()=>{const open=document.querySelector('.viewer-layout-control').classList.toggle('open');$('viewer-settings-toggle').setAttribute('aria-expanded',String(open))});
