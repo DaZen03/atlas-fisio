@@ -1201,7 +1201,13 @@ document.addEventListener('fullscreenchange',()=>{syncFullscreenButton();queueVi
 
 function init3D(){
   const canvas=$('body-canvas'),wrap=$('canvas-wrap');
-  renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance'});
+  try{
+    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance',failIfMajorPerformanceCaveat:false});
+  }catch(primaryError){
+    console.warn('No se pudo crear el contexto WebGL de alto rendimiento; probando configuración compatible.',primaryError);
+    try{renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:true,powerPreference:'low-power',failIfMajorPerformanceCaveat:false})}
+    catch(compatibilityError){compatibilityError.cause=primaryError;throw compatibilityError}
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(37,1,.03,100);scene.add(new THREE.HemisphereLight(0xd5f2ea,0x41524b,2.3));
@@ -1211,7 +1217,7 @@ function init3D(){
   const circle=new THREE.Mesh(new THREE.RingGeometry(1.05,1.08,64),new THREE.MeshBasicMaterial({color:0x577c6b,transparent:true,opacity:.40,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-2.67;scene.add(circle);
   constructBody();createPlaneGuides();applyPose();updateLayers();highlightStructure();raycaster=new THREE.Raycaster();
   const resize=()=>{const rect=wrap.getBoundingClientRect();renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix()};
-  new ResizeObserver(resize).observe(wrap);resize();
+  if('ResizeObserver' in window)new ResizeObserver(resize).observe(wrap);else window.addEventListener('resize',resize,{passive:true});resize();
   const tooltip=document.createElement('div');tooltip.className='mesh-tooltip';tooltip.style.cssText='position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44';wrap.appendChild(tooltip);
   updateTouchSelection=(mesh=null)=>{
     const card=$('touch-selection');
@@ -1255,4 +1261,4 @@ function init3D(){
   }
   requestAnimationFrame(frame);
 }
-try{init3D();loadAnatomicalMeshes()}catch(error){console.error('No se pudo iniciar el visor 3D',error);$('canvas-fallback').hidden=false;}
+try{init3D();loadAnatomicalMeshes()}catch(error){console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);$('canvas-fallback').hidden=false;$('canvas-fallback').setAttribute('role','alert');}

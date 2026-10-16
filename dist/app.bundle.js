@@ -40512,7 +40512,17 @@ document.addEventListener("fullscreenchange", () => {
 });
 function init3D() {
   const canvas = $("body-canvas"), wrap = $("canvas-wrap");
-  renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance" });
+  try {
+    renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance", failIfMajorPerformanceCaveat: false });
+  } catch (primaryError) {
+    console.warn("No se pudo crear el contexto WebGL de alto rendimiento; probando configuraci\xF3n compatible.", primaryError);
+    try {
+      renderer = new WebGLRenderer({ canvas, antialias: false, alpha: true, powerPreference: "low-power", failIfMajorPerformanceCaveat: false });
+    } catch (compatibilityError) {
+      compatibilityError.cause = primaryError;
+      throw compatibilityError;
+    }
+  }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.toneMapping = ACESFilmicToneMapping;
@@ -40547,7 +40557,8 @@ function init3D() {
     camera.aspect = rect.width / rect.height;
     camera.updateProjectionMatrix();
   };
-  new ResizeObserver(resize).observe(wrap);
+  if ("ResizeObserver" in window) new ResizeObserver(resize).observe(wrap);
+  else window.addEventListener("resize", resize, { passive: true });
   resize();
   const tooltip = document.createElement("div");
   tooltip.className = "mesh-tooltip";
@@ -40738,8 +40749,9 @@ try {
   init3D();
   loadAnatomicalMeshes();
 } catch (error) {
-  console.error("No se pudo iniciar el visor 3D", error);
+  console.error("No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleraci\xF3n por hardware del navegador.", error);
   $("canvas-fallback").hidden = false;
+  $("canvas-fallback").setAttribute("role", "alert");
 }
 /*! Bundled license information:
 
