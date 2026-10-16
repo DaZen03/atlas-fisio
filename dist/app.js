@@ -858,8 +858,9 @@ function muscleEndpoint(mesh,toRoot,pivot){
   }
   return center.multiplyScalar(1/Math.max(1,count));
 }
-function muscleSpreadDirections(rootCenter,bodyCenter,side){
-  const radial=rootCenter.clone().sub(bodyCenter);
+function muscleSpreadDirections(rootCenter,bodyCenter,bodyRadii,side){
+  const delta=rootCenter.clone().sub(bodyCenter);
+  const radial=V(delta.x/Math.max(bodyRadii.x,.1),delta.y/Math.max(bodyRadii.y,.1),delta.z/Math.max(bodyRadii.z,.1));
   if(radial.lengthSq()<.05)radial.set(side==='L'?-1:1,0,0);
   radial.normalize();
   const project=(x,y,z,fallback)=>{const direction=V(x,y,z);return direction.lengthSq()<.08?fallback.clone():direction.normalize()};
@@ -1019,6 +1020,7 @@ function loadAnatomicalMeshes(){
     const meshes=[];gltf.scene.traverse(obj=>{if(obj.isMesh)meshes.push(obj)});
     const bodyBounds=new THREE.Box3().setFromObject(gltf.scene);
     const bodyCenter=bodyBounds.getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
+    const bodyRadii=bodyBounds.getSize(new THREE.Vector3()).multiplyScalar(.5);
     const muscleGroupCenters=new Map();
     for(const mesh of meshes){
       const info=meshManifest[mesh.name];if(info?.layer!=='muscles')continue;
@@ -1059,7 +1061,7 @@ function loadAnatomicalMeshes(){
         const side=info.name.includes('left ')?'L':'R',spreadKey=`${info.structure}:${side}`;
         const rootCenter=muscleGroupCenters.get(spreadKey)?.center||new THREE.Box3().setFromObject(mesh).getCenter(new THREE.Vector3()).applyMatrix4(rootInverse);
         let rootDirections=groupSpreadDirections.get(spreadKey);
-        if(!rootDirections){rootDirections=muscleSpreadDirections(rootCenter,bodyCenter,side);groupSpreadDirections.set(spreadKey,rootDirections)}
+        if(!rootDirections){rootDirections=muscleSpreadDirections(rootCenter,bodyCenter,bodyRadii,side);groupSpreadDirections.set(spreadKey,rootDirections)}
         const directions=Object.fromEntries(Object.entries(rootDirections).map(([plane,direction])=>[plane,direction.clone()]));
         anatomicalMuscles.push({mesh,base:mesh.position.clone(),directions,spreadScale:1,groupKey:spreadKey});
       }
