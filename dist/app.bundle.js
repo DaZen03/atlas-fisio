@@ -40510,8 +40510,10 @@ document.addEventListener("fullscreenchange", () => {
   syncFullscreenButton();
   queueViewerDock();
 });
+var viewerInitPhase = "preparaci\xF3n";
 function init3D() {
   const canvas = $("body-canvas"), wrap = $("canvas-wrap");
+  viewerInitPhase = "creaci\xF3n del contexto WebGL";
   try {
     renderer = new WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: "high-performance", failIfMajorPerformanceCaveat: false });
   } catch (primaryError) {
@@ -40523,6 +40525,7 @@ function init3D() {
       throw compatibilityError;
     }
   }
+  viewerInitPhase = "configuraci\xF3n del renderizador";
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.outputColorSpace = SRGBColorSpace;
   renderer.toneMapping = ACESFilmicToneMapping;
@@ -40545,12 +40548,14 @@ function init3D() {
   circle.rotation.x = -Math.PI / 2;
   circle.position.y = -2.67;
   scene.add(circle);
+  viewerInitPhase = "construcci\xF3n de la escena y el cuerpo";
   constructBody();
   createPlaneGuides();
   applyPose();
   updateLayers();
   highlightStructure();
   raycaster = new Raycaster();
+  viewerInitPhase = "ajuste del tama\xF1o del visor";
   const resize = () => {
     const rect = wrap.getBoundingClientRect();
     renderer.setSize(rect.width, rect.height, false);
@@ -40560,6 +40565,7 @@ function init3D() {
   if ("ResizeObserver" in window) new ResizeObserver(resize).observe(wrap);
   else window.addEventListener("resize", resize, { passive: true });
   resize();
+  viewerInitPhase = "instalaci\xF3n de controles";
   const tooltip = document.createElement("div");
   tooltip.className = "mesh-tooltip";
   tooltip.style.cssText = "position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44";
@@ -40751,7 +40757,7 @@ try {
 } catch (error) {
   console.error("No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleraci\xF3n por hardware del navegador.", error);
   const fallback = $("canvas-fallback"), detail = String(error?.cause?.message || error?.message || "error desconocido").slice(0, 180);
-  fallback.textContent = `El visor 3D no pudo iniciarse. Comprueba WebGL y la aceleraci\xF3n por hardware del navegador. Detalle: ${detail}`;
+  fallback.textContent = `El visor 3D fall\xF3 durante ${viewerInitPhase}. Comprueba WebGL y la aceleraci\xF3n por hardware. Detalle: ${detail}`;
   fallback.hidden = false;
   fallback.setAttribute("role", "alert");
 }

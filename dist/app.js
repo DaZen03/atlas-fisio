@@ -1199,8 +1199,10 @@ function syncFullscreenButton(){const active=!!document.fullscreenElement||stage
 $('fullscreen-view').addEventListener('click',async()=>{if(document.fullscreenElement){await document.exitFullscreen();return}if(stage.classList.contains('expanded')){stage.classList.remove('expanded');document.body.classList.remove('viewer-expanded');syncFullscreenButton();return}try{if(!stage.requestFullscreen)throw Error('API no disponible');await stage.requestFullscreen()}catch{stage.classList.add('expanded');document.body.classList.add('viewer-expanded');syncFullscreenButton()}});
 document.addEventListener('fullscreenchange',()=>{syncFullscreenButton();queueViewerDock()});
 
+let viewerInitPhase='preparación';
 function init3D(){
   const canvas=$('body-canvas'),wrap=$('canvas-wrap');
+  viewerInitPhase='creación del contexto WebGL';
   try{
     renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'high-performance',failIfMajorPerformanceCaveat:false});
   }catch(primaryError){
@@ -1208,6 +1210,7 @@ function init3D(){
     try{renderer=new THREE.WebGLRenderer({canvas,antialias:false,alpha:true,powerPreference:'low-power',failIfMajorPerformanceCaveat:false})}
     catch(compatibilityError){compatibilityError.cause=primaryError;throw compatibilityError}
   }
+  viewerInitPhase='configuración del renderizador';
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(37,1,.03,100);scene.add(new THREE.HemisphereLight(0xd5f2ea,0x41524b,2.3));
@@ -1215,9 +1218,12 @@ function init3D(){
   const rim=new THREE.DirectionalLight(0x98d9c4,2.1);rim.position.set(5,3,-5);scene.add(rim);
   const floor=new THREE.GridHelper(7,14,0x41675d,0x26433f);floor.position.y=-2.68;floor.material.transparent=true;floor.material.opacity=.22;scene.add(floor);
   const circle=new THREE.Mesh(new THREE.RingGeometry(1.05,1.08,64),new THREE.MeshBasicMaterial({color:0x577c6b,transparent:true,opacity:.40,side:THREE.DoubleSide}));circle.rotation.x=-Math.PI/2;circle.position.y=-2.67;scene.add(circle);
+  viewerInitPhase='construcción de la escena y el cuerpo';
   constructBody();createPlaneGuides();applyPose();updateLayers();highlightStructure();raycaster=new THREE.Raycaster();
+  viewerInitPhase='ajuste del tamaño del visor';
   const resize=()=>{const rect=wrap.getBoundingClientRect();renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix()};
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(wrap);else window.addEventListener('resize',resize,{passive:true});resize();
+  viewerInitPhase='instalación de controles';
   const tooltip=document.createElement('div');tooltip.className='mesh-tooltip';tooltip.style.cssText='position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44';wrap.appendChild(tooltip);
   updateTouchSelection=(mesh=null)=>{
     const card=$('touch-selection');
@@ -1264,6 +1270,6 @@ function init3D(){
 try{init3D();loadAnatomicalMeshes()}catch(error){
   console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);
   const fallback=$('canvas-fallback'),detail=String(error?.cause?.message||error?.message||'error desconocido').slice(0,180);
-  fallback.textContent=`El visor 3D no pudo iniciarse. Comprueba WebGL y la aceleración por hardware del navegador. Detalle: ${detail}`;
+  fallback.textContent=`El visor 3D falló durante ${viewerInitPhase}. Comprueba WebGL y la aceleración por hardware. Detalle: ${detail}`;
   fallback.hidden=false;fallback.setAttribute('role','alert');
 }
