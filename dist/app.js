@@ -235,6 +235,7 @@ function setPoseMode(mode){
 }
 function renderPartPicker(){
   const picker=$('body-part-select');
+  $('explorer-suggestions').innerHTML=structures.slice().sort((a,b)=>a.name.localeCompare(b.name,'es')).map(s=>`<option value="${s.name}"></option>`).join('');
   $('body-region-select').innerHTML=Object.entries(catalogSections).map(([id,label])=>`<option value="${id}">${label}</option>`).join('');
   $('body-region-select').value=catalogSection;
   const available=structures.filter(s=>catalogSection==='all'||sectionForStructure(s)===catalogSection);
@@ -406,6 +407,16 @@ $('structure-search').addEventListener('input',()=>renderStructures());
 $('structure-region').addEventListener('change',event=>{browseRegion=event.target.value;structureFilter='Todas';$('structure-search').value='';const first=structures.find(s=>browseRegion==='all'||sectionForStructure(s)===browseRegion);if(first&&!structures.some(s=>s.id===activeStructure&&(browseRegion==='all'||sectionForStructure(s)===browseRegion))){selectStructure(first.id);structureFilter='Todas'}renderStructures()});
 $('source-search').addEventListener('input',()=>renderSources());
 $('body-part-select').addEventListener('change',event=>selectStructure(event.target.value,{activateMotion:true}));
+$('explorer-search').addEventListener('change',event=>{
+  const normalize=value=>value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+  const query=normalize(event.target.value);
+  if(!query)return;
+  const structure=structures.find(item=>normalize(item.name)===query)||structures.find(item=>normalize(item.name).includes(query));
+  if(!structure){$('part-motion-status').textContent='No encontré esa estructura. Prueba con otro nombre anatómico.';return}
+  const piece=Object.values(meshManifest).find(info=>info.structure===structure.id&&info.layer==='muscles')||Object.values(meshManifest).find(info=>info.structure===structure.id);
+  selectStructure(structure.id,{activateMotion:true,side:piece?.name.includes('left ')?'L':piece?.name.includes('right ')?'R':null,meshName:piece?.name||null});
+  if(window.innerWidth<=760)openMobileViewer();
+});
 $('body-region-select').addEventListener('change',event=>{catalogSection=event.target.value;const first=structures.find(s=>catalogSection==='all'||sectionForStructure(s)===catalogSection);if(first)selectStructure(first.id);});
 $('movement-category').addEventListener('change',event=>{activeCategoryFilter=event.target.value;activePlaneFilter='todos';const first=movements.findIndex(matchesMovementFilter);if(first>=0)selectMovement(first);else{renderPlaneTabs();renderMovementList()}});
 $('learning-lens').addEventListener('change',event=>{activeLearningLens=event.target.value;renderLearningContext(movements[activeMovement])});
@@ -916,7 +927,8 @@ function updateLayers(){
 function createPlaneGuides(){
   guideGroup=new THREE.Group();scene.add(guideGroup);planeMeshes={};
   for(const [id,p] of Object.entries(planes)){
-    const mesh=new THREE.Mesh(new THREE.PlaneGeometry(id==='transversal'?2.2:2.0,id==='transversal'?2.2:2.6),new THREE.MeshBasicMaterial({color:p.color,transparent:true,opacity:.13,side:THREE.DoubleSide,depthWrite:false,depthTest:false}));
+    const dimensions={sagital:[1.05,5.25],frontal:[2.75,5.25],transversal:[2.75,1.45]}[id];
+    const mesh=new THREE.Mesh(new THREE.PlaneGeometry(...dimensions),new THREE.MeshBasicMaterial({color:p.color,transparent:true,opacity:.11,side:THREE.DoubleSide,depthWrite:false,depthTest:false}));
     if(id==='sagital')mesh.rotation.y=Math.PI/2;
     if(id==='transversal')mesh.rotation.x=-Math.PI/2;
     mesh.userData.anatomicalPlaneRotation=mesh.quaternion.clone();
@@ -932,24 +944,20 @@ function updatePlaneGuide(){
   guideGroup.visible=$('layer-plane').checked;
   const m=movements[activeMovement],plane=poseMode==='free'?currentFreeAction().plane:m.plane;
   for(const [id,mesh] of Object.entries(planeMeshes))mesh.visible=id===plane;
-  const jointKey=poseMode==='free'?freeJoint:movementJoint[m.id];
-  const side=poseMode==='free'?freeSide:m.side==='L'?'L':'R';
-  const part=jointKey==='neck'?headGroup:jointKey==='tmj'?jawGroup:arms[side]?.[jointKey]||legs[side]?.[jointKey];
-  if(!part){guideGroup.visible=false;return}
   bodyRoot.updateMatrixWorld(true);
-  const joint=part.getWorldPosition(new THREE.Vector3());
+  const centerOffset=V(0,-.28,0).applyQuaternion(bodyRoot.getWorldQuaternion(new THREE.Quaternion()));
+  const center=bodyRoot.getWorldPosition(new THREE.Vector3()).add(centerOffset);
   const anatomicalFrame=bodyRoot.getWorldQuaternion(new THREE.Quaternion());
-  const size={neck:.65,tmj:.55,shoulder:1,elbow:.8,radioulnar:.72,wrist:.65,hip:1.1,knee:.85,ankle:.72}[jointKey]||1;
   for(const mesh of Object.values(planeMeshes)){
-    mesh.position.copy(joint);
+    mesh.position.copy(center);
     mesh.quaternion.copy(anatomicalFrame).multiply(mesh.userData.anatomicalPlaneRotation);
-    mesh.scale.setScalar(size);
+    mesh.scale.setScalar(1);
   }
   const direction=plane==='sagital'?V(1,0,0):plane==='frontal'?V(0,0,1):V(0,1,0);
   direction.applyQuaternion(anatomicalFrame).normalize();
   axisArrow.setDirection(direction);axisArrow.setColor(new THREE.Color(planes[plane].color));
-  axisArrow.setLength(.6*size,.14*size,.075*size);
-  axisArrow.position.copy(joint);
+  axisArrow.setLength(.6,.14,.075);
+  axisArrow.position.copy(center).add(V(-1.35,1.4,.08).applyQuaternion(anatomicalFrame));
 }
 function highlightStructure(){
   for(const mesh of highlighted){

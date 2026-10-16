@@ -188,6 +188,10 @@ body{font-size:18px}
 
 /* Identificación persistente al tocar una malla: sustituye el tooltip de hover en pantallas táctiles. */
 .touch-selection{display:none}
+.explorer-search{display:block;width:100%;min-height:46px;margin:7px 0 15px;padding:10px 12px;border:1px solid #b9cbbd;border-radius:5px;background:#fbfbf7;color:#203e34;font:600 15px/1.4 'DM Sans',sans-serif}
+.explorer-search:focus{outline:2px solid #4a8972;outline-offset:1px}
+html[data-theme="dark"] .explorer-search{background:#142723;color:#f0f5eb;border-color:#527365}
+@media(max-width:760px){.explorer-search{font-size:16px;min-height:48px}}
 @media(max-width:760px){
   .stage.mobile-viewer-open .touch-selection{position:absolute;z-index:9;display:flex;align-items:center;gap:9px;left:10px;top:max(133px,calc(env(safe-area-inset-top) + 127px));width:min(248px,calc(100% - 116px));padding:9px 10px;border:1px solid #d6b46d;border-radius:9px;background:#193e36f2;color:#f6f7ed;box-shadow:0 10px 28px #061b1780;backdrop-filter:blur(8px)}
   .touch-selection-copy{min-width:0;display:grid;gap:1px;flex:1}

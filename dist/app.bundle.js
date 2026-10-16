@@ -39083,6 +39083,7 @@ function setPoseMode(mode) {
 }
 function renderPartPicker() {
   const picker = $("body-part-select");
+  $("explorer-suggestions").innerHTML = structures.slice().sort((a, b) => a.name.localeCompare(b.name, "es")).map((s) => `<option value="${s.name}"></option>`).join("");
   $("body-region-select").innerHTML = Object.entries(catalogSections).map(([id, label]) => `<option value="${id}">${label}</option>`).join("");
   $("body-region-select").value = catalogSection;
   const available = structures.filter((s) => catalogSection === "all" || sectionForStructure(s) === catalogSection);
@@ -39340,6 +39341,19 @@ $("structure-region").addEventListener("change", (event) => {
 });
 $("source-search").addEventListener("input", () => renderSources());
 $("body-part-select").addEventListener("change", (event) => selectStructure(event.target.value, { activateMotion: true }));
+$("explorer-search").addEventListener("change", (event) => {
+  const normalize2 = (value) => value.toLocaleLowerCase("es").normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
+  const query = normalize2(event.target.value);
+  if (!query) return;
+  const structure = structures.find((item) => normalize2(item.name) === query) || structures.find((item) => normalize2(item.name).includes(query));
+  if (!structure) {
+    $("part-motion-status").textContent = "No encontr\xE9 esa estructura. Prueba con otro nombre anat\xF3mico.";
+    return;
+  }
+  const piece = Object.values(bodyparts_manifest_default).find((info) => info.structure === structure.id && info.layer === "muscles") || Object.values(bodyparts_manifest_default).find((info) => info.structure === structure.id);
+  selectStructure(structure.id, { activateMotion: true, side: piece?.name.includes("left ") ? "L" : piece?.name.includes("right ") ? "R" : null, meshName: piece?.name || null });
+  if (window.innerWidth <= 760) openMobileViewer();
+});
 $("body-region-select").addEventListener("change", (event) => {
   catalogSection = event.target.value;
   const first = structures.find((s) => catalogSection === "all" || sectionForStructure(s) === catalogSection);
@@ -40066,7 +40080,8 @@ function createPlaneGuides() {
   scene.add(guideGroup);
   planeMeshes = {};
   for (const [id, p] of Object.entries(planes)) {
-    const mesh = new Mesh(new PlaneGeometry(id === "transversal" ? 2.2 : 2, id === "transversal" ? 2.2 : 2.6), new MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.13, side: DoubleSide, depthWrite: false, depthTest: false }));
+    const dimensions = { sagital: [1.05, 5.25], frontal: [2.75, 5.25], transversal: [2.75, 1.45] }[id];
+    const mesh = new Mesh(new PlaneGeometry(...dimensions), new MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.11, side: DoubleSide, depthWrite: false, depthTest: false }));
     if (id === "sagital") mesh.rotation.y = Math.PI / 2;
     if (id === "transversal") mesh.rotation.x = -Math.PI / 2;
     mesh.userData.anatomicalPlaneRotation = mesh.quaternion.clone();
@@ -40086,28 +40101,21 @@ function updatePlaneGuide() {
   guideGroup.visible = $("layer-plane").checked;
   const m = movements[activeMovement], plane = poseMode === "free" ? currentFreeAction().plane : m.plane;
   for (const [id, mesh] of Object.entries(planeMeshes)) mesh.visible = id === plane;
-  const jointKey = poseMode === "free" ? freeJoint : movementJoint[m.id];
-  const side = poseMode === "free" ? freeSide : m.side === "L" ? "L" : "R";
-  const part = jointKey === "neck" ? headGroup : jointKey === "tmj" ? jawGroup : arms[side]?.[jointKey] || legs[side]?.[jointKey];
-  if (!part) {
-    guideGroup.visible = false;
-    return;
-  }
   bodyRoot.updateMatrixWorld(true);
-  const joint = part.getWorldPosition(new Vector3());
+  const centerOffset = V(0, -0.28, 0).applyQuaternion(bodyRoot.getWorldQuaternion(new Quaternion()));
+  const center = bodyRoot.getWorldPosition(new Vector3()).add(centerOffset);
   const anatomicalFrame = bodyRoot.getWorldQuaternion(new Quaternion());
-  const size = { neck: 0.65, tmj: 0.55, shoulder: 1, elbow: 0.8, radioulnar: 0.72, wrist: 0.65, hip: 1.1, knee: 0.85, ankle: 0.72 }[jointKey] || 1;
   for (const mesh of Object.values(planeMeshes)) {
-    mesh.position.copy(joint);
+    mesh.position.copy(center);
     mesh.quaternion.copy(anatomicalFrame).multiply(mesh.userData.anatomicalPlaneRotation);
-    mesh.scale.setScalar(size);
+    mesh.scale.setScalar(1);
   }
   const direction = plane === "sagital" ? V(1, 0, 0) : plane === "frontal" ? V(0, 0, 1) : V(0, 1, 0);
   direction.applyQuaternion(anatomicalFrame).normalize();
   axisArrow.setDirection(direction);
   axisArrow.setColor(new Color(planes[plane].color));
-  axisArrow.setLength(0.6 * size, 0.14 * size, 0.075 * size);
-  axisArrow.position.copy(joint);
+  axisArrow.setLength(0.6, 0.14, 0.075);
+  axisArrow.position.copy(center).add(V(-1.35, 1.4, 0.08).applyQuaternion(anatomicalFrame));
 }
 function highlightStructure() {
   for (const mesh of highlighted) {
