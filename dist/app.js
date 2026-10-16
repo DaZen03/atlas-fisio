@@ -359,7 +359,7 @@ function selectStructure(id,{activateMotion=false,side=null,scroll=false,meshNam
   $('structure-search').value='';
   structureFilter=s.type.startsWith('HUES')?'Huesos':s.type.startsWith('MÚSC')?'Músculos':s.type==='ARTICULACIÓN'?'Articulaciones':'Aberturas';
   renderStructures();renderPartPicker();updateLayers();highlightStructure();
-  if(meshName)focusSelection();
+  if(meshName){focusSelection();updateTouchSelection();}
   if(scroll)$('explorar').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function updateReadout(){
@@ -409,7 +409,7 @@ $('body-part-select').addEventListener('change',event=>selectStructure(event.tar
 $('body-region-select').addEventListener('change',event=>{catalogSection=event.target.value;const first=structures.find(s=>catalogSection==='all'||sectionForStructure(s)===catalogSection);if(first)selectStructure(first.id);});
 $('movement-category').addEventListener('change',event=>{activeCategoryFilter=event.target.value;activePlaneFilter='todos';const first=movements.findIndex(matchesMovementFilter);if(first>=0)selectMovement(first);else{renderPlaneTabs();renderMovementList()}});
 $('learning-lens').addEventListener('change',event=>{activeLearningLens=event.target.value;renderLearningContext(movements[activeMovement])});
-$('part-substructure-select').addEventListener('change',event=>{selectedMeshName=event.target.value;selectedStructureSide=selectedMeshName.includes('left ')?'L':selectedMeshName.includes('right ')?'R':null;renderPartPicker();renderStructures();updateLayers();highlightStructure();if(selectedMeshName)focusSelection();});
+$('part-substructure-select').addEventListener('change',event=>{selectedMeshName=event.target.value;selectedStructureSide=selectedMeshName.includes('left ')?'L':selectedMeshName.includes('right ')?'R':null;renderPartPicker();renderStructures();updateLayers();highlightStructure();if(selectedMeshName){focusSelection();updateTouchSelection();}});
 $('motion-slider').addEventListener('input',e=>{progress=Number(e.target.value);poseDirection=1;playing=false;$('play-button').textContent='▶';applyPose();updateReadout();});
 $('play-button').addEventListener('click',()=>{if(!playing&&progress>=100){progress=0;poseDirection=1}playing=!playing;$('play-button').textContent=playing?'Ⅱ':'▶';$('play-button').setAttribute('aria-label',playing?'Pausar movimiento':'Reproducir movimiento');syncQuickControl()});
 $('quick-slider').addEventListener('input',event=>{const target=$(poseMode==='free'?'free-slider':'motion-slider');target.value=event.target.value;target.dispatchEvent(new Event('input',{bubbles:true}))});
@@ -435,6 +435,7 @@ renderPlaneTabs();renderMovementList();renderDetail();renderStructures();renderP
 
 let scene,camera,renderer,bodyRoot,boneRoot,muscleRoot,surfaceRoot,markerRoot,guideGroup,planeMeshes,axisArrow;
 let armR,legR,arms={},legs={},headGroup,jawGroup,raycaster,highlighted=[];
+let updateTouchSelection=()=>{};
 const DEFAULT_DISTANCE=8.4,MIN_DISTANCE=.55,MAX_DISTANCE=32;
 let yaw=-.32,pitch=.07,distance=DEFAULT_DISTANCE,viewTarget=-.32;
 const cameraTarget=new THREE.Vector3(0,-.18,0);
@@ -1173,6 +1174,18 @@ function init3D(){
   const resize=()=>{const rect=wrap.getBoundingClientRect();renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix()};
   new ResizeObserver(resize).observe(wrap);resize();
   const tooltip=document.createElement('div');tooltip.className='mesh-tooltip';tooltip.style.cssText='position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44';wrap.appendChild(tooltip);
+  updateTouchSelection=(mesh=null)=>{
+    const card=$('touch-selection');
+    const item=structures.find(s=>s.id===(mesh?.userData.structure||activeStructure));
+    const anatomicalName=mesh?.userData.anatomicalName||selectedMeshName;
+    if(!item||!anatomicalName){card.hidden=true;return}
+    const side=mesh?.userData.side||(anatomicalName.includes('right ')?'R':anatomicalName.includes('left ')?'L':null);
+    $('touch-selection-kicker').textContent=item.type.startsWith('MÚSC')?'MÚSCULO SELECCIONADO':'ESTRUCTURA SELECCIONADA';
+    $('touch-selection-name').textContent=item.name;
+    $('touch-selection-detail').textContent=`${anatomicalName}${side?` · lado ${side==='R'?'derecho':'izquierdo'}`:''}`;
+    card.hidden=false;
+  };
+  $('touch-selection-focus').addEventListener('click',focusSelection);
   function hit(e){const r=canvas.getBoundingClientRect();const p=new THREE.Vector2((e.clientX-r.left)/r.width*2-1,-(e.clientY-r.top)/r.height*2+1);raycaster.setFromCamera(p,camera);return raycaster.intersectObjects(pickables,false).find(hit=>{let node=hit.object;while(node){if(node.visible===false)return false;node=node.parent}return true})?.object;}
   const pointers=new Map();let pointerMoved=false,suppressSelection=false,pinchSpan=0,lastX=0,lastY=0;
   const panRight=new THREE.Vector3(),panUp=new THREE.Vector3();
@@ -1189,7 +1202,7 @@ function init3D(){
     if(pointers.has(e.pointerId)){const current=pointers.get(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,pan:current.pan});if(pointers.size>1){const next=span();if(pinchSpan>0)setDistance(distance*pinchSpan/next);pinchSpan=next;pointerMoved=true}else{const dx=e.clientX-lastX,dy=e.clientY-lastY;if(Math.abs(dx)+Math.abs(dy)>2)pointerMoved=true;if(current.pan)panView(dx,dy);else{yaw-=dx*.008;pitch=Math.max(-.65,Math.min(.65,pitch+dy*.006));viewTarget=null}lastX=e.clientX;lastY=e.clientY}tooltip.style.display='none';}
     else{const mesh=hit(e);if(mesh){const item=structures.find(s=>s.id===mesh.userData.structure);tooltip.textContent=mesh.userData.jointKey?`${item?.name||''} · ${mesh.userData.side==='C'?'línea media':`lado ${mesh.userData.side==='R'?'derecho':'izquierdo'}`}`:mesh.userData.anatomicalName?`${item?.name||''} · ${mesh.userData.anatomicalName}`:item?.name||'';tooltip.style.left=`${e.offsetX+12}px`;tooltip.style.top=`${e.offsetY+12}px`;tooltip.style.display='block';canvas.style.cursor='pointer';}else{tooltip.style.display='none';canvas.style.cursor='grab';}}
   });
-  canvas.addEventListener('pointerup',e=>{const select=pointers.size===1&&!pointers.get(e.pointerId)?.pan&&!pointerMoved&&!suppressSelection;pointers.delete(e.pointerId);canvas.style.cursor='grab';if(pointers.size===1){const remaining=[...pointers.values()][0];lastX=remaining.x;lastY=remaining.y}else if(pointers.size===0){pinchSpan=0;suppressSelection=false}if(select){const mesh=hit(e);if(mesh){const name=mesh.userData.anatomicalName||'',side=mesh.userData.side||(name.includes('right ')?'R':name.includes('left ')?'L':null);if(mesh.userData.jointKey){freeSide=side||freeSide;freeJoint=mesh.userData.jointKey;freeAction=jointExplorer[freeJoint].actions[0].id;setPoseMode('free')}else selectStructure(mesh.userData.structure,{activateMotion:true,side,meshName:name})}}});
+  canvas.addEventListener('pointerup',e=>{const select=pointers.size===1&&!pointers.get(e.pointerId)?.pan&&!pointerMoved&&!suppressSelection;pointers.delete(e.pointerId);canvas.style.cursor='grab';if(pointers.size===1){const remaining=[...pointers.values()][0];lastX=remaining.x;lastY=remaining.y}else if(pointers.size===0){pinchSpan=0;suppressSelection=false}if(select){const mesh=hit(e);if(mesh){const name=mesh.userData.anatomicalName||'',side=mesh.userData.side||(name.includes('right ')?'R':name.includes('left ')?'L':null);if(mesh.userData.jointKey){freeSide=side||freeSide;freeJoint=mesh.userData.jointKey;freeAction=jointExplorer[freeJoint].actions[0].id;setPoseMode('free')}else{selectStructure(mesh.userData.structure,{activateMotion:true,side,meshName:name});updateTouchSelection(mesh)}}}});
   canvas.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);canvas.style.cursor='grab';if(!pointers.size){pinchSpan=0;suppressSelection=false}});
   canvas.addEventListener('pointerleave',()=>tooltip.style.display='none');
   canvas.addEventListener('wheel',e=>{e.preventDefault();setDistance(distance*Math.exp(e.deltaY*.0012));},{passive:false});

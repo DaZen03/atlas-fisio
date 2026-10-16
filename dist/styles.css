@@ -185,3 +185,16 @@ body{font-size:18px}
   .view-buttons button{flex:0 0 auto;min-height:38px;padding:8px 11px;font-size:12px}
 }
 @media(max-width:760px) and (max-height:520px){.plane-badge,.mesh-status{display:none}.nav-control{top:52%}.quick-motion{bottom:62px;width:min(180px,calc(100% - 100px))}.view-buttons button{min-height:34px}}
+
+/* Identificación persistente al tocar una malla: sustituye el tooltip de hover en pantallas táctiles. */
+.touch-selection{display:none}
+@media(max-width:760px){
+  .stage.mobile-viewer-open .touch-selection{position:absolute;z-index:9;display:flex;align-items:center;gap:9px;left:10px;top:max(133px,calc(env(safe-area-inset-top) + 127px));width:min(248px,calc(100% - 116px));padding:9px 10px;border:1px solid #d6b46d;border-radius:9px;background:#193e36f2;color:#f6f7ed;box-shadow:0 10px 28px #061b1780;backdrop-filter:blur(8px)}
+  .touch-selection-copy{min-width:0;display:grid;gap:1px;flex:1}
+  .touch-selection-copy span:first-child{color:#ffe0a0;font-size:9px;font-weight:800;letter-spacing:.09em;line-height:1.25}
+  .touch-selection-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 13px/1.25 Manrope,sans-serif;color:#fff}
+  #touch-selection-detail{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c7ddd0;font-size:10px;line-height:1.3}
+  #touch-selection-focus{flex:0 0 auto;border:1px solid #91b7a4;border-radius:5px;background:#315f51;color:#fff;padding:6px 7px;font:800 10px 'DM Sans',sans-serif}
+  #touch-selection-focus:focus-visible{outline:2px solid #ffdb9e;outline-offset:2px}
+}
+@media(max-width:760px) and (max-height:520px){.stage.mobile-viewer-open .touch-selection{top:max(91px,calc(env(safe-area-inset-top) + 85px));width:min(220px,calc(100% - 105px));padding:7px 8px}}

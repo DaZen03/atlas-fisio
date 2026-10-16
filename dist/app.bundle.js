@@ -39245,7 +39245,10 @@ function selectStructure(id, { activateMotion = false, side = null, scroll = fal
   renderPartPicker();
   updateLayers();
   highlightStructure();
-  if (meshName) focusSelection();
+  if (meshName) {
+    focusSelection();
+    updateTouchSelection();
+  }
   if (scroll) $("explorar").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 function updateReadout() {
@@ -39363,7 +39366,10 @@ $("part-substructure-select").addEventListener("change", (event) => {
   renderStructures();
   updateLayers();
   highlightStructure();
-  if (selectedMeshName) focusSelection();
+  if (selectedMeshName) {
+    focusSelection();
+    updateTouchSelection();
+  }
 });
 $("motion-slider").addEventListener("input", (e) => {
   progress = Number(e.target.value);
@@ -39466,6 +39472,8 @@ var headGroup;
 var jawGroup;
 var raycaster;
 var highlighted = [];
+var updateTouchSelection = () => {
+};
 var DEFAULT_DISTANCE = 8.4;
 var MIN_DISTANCE = 0.55;
 var MAX_DISTANCE = 32;
@@ -40493,6 +40501,21 @@ function init3D() {
   tooltip.className = "mesh-tooltip";
   tooltip.style.cssText = "position:absolute;z-index:7;display:none;background:#f4eee2;color:#204037;border-radius:3px;padding:6px 9px;font-size:11px;font-weight:700;pointer-events:none;box-shadow:0 5px 20px #071c1a44";
   wrap.appendChild(tooltip);
+  updateTouchSelection = (mesh = null) => {
+    const card = $("touch-selection");
+    const item = structures.find((s) => s.id === (mesh?.userData.structure || activeStructure));
+    const anatomicalName = mesh?.userData.anatomicalName || selectedMeshName;
+    if (!item || !anatomicalName) {
+      card.hidden = true;
+      return;
+    }
+    const side = mesh?.userData.side || (anatomicalName.includes("right ") ? "R" : anatomicalName.includes("left ") ? "L" : null);
+    $("touch-selection-kicker").textContent = item.type.startsWith("M\xDASC") ? "M\xDASCULO SELECCIONADO" : "ESTRUCTURA SELECCIONADA";
+    $("touch-selection-name").textContent = item.name;
+    $("touch-selection-detail").textContent = `${anatomicalName}${side ? ` \xB7 lado ${side === "R" ? "derecho" : "izquierdo"}` : ""}`;
+    card.hidden = false;
+  };
+  $("touch-selection-focus").addEventListener("click", focusSelection);
   function hit(e) {
     const r = canvas.getBoundingClientRect();
     const p = new Vector2((e.clientX - r.left) / r.width * 2 - 1, -(e.clientY - r.top) / r.height * 2 + 1);
@@ -40595,7 +40618,10 @@ function init3D() {
           freeJoint = mesh.userData.jointKey;
           freeAction = jointExplorer[freeJoint].actions[0].id;
           setPoseMode("free");
-        } else selectStructure(mesh.userData.structure, { activateMotion: true, side, meshName: name });
+        } else {
+          selectStructure(mesh.userData.structure, { activateMotion: true, side, meshName: name });
+          updateTouchSelection(mesh);
+        }
       }
     }
   });
