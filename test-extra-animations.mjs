@@ -73,3 +73,17 @@ for(const movement of extras.filter(m=>m.category==='Deporte')){
   }
 }
 console.log('Seis gestos deportivos revisados cada 5 % sin saltos articulares.');
+const triceps=extras.find(m=>m.id==='tricepsext');
+if(!triceps)throw Error('Falta la extensión de tríceps sobre cabeza');
+for(const progress of [0,50,100]){
+  reset();scope.applyExamplePose(triceps,progress);bodyRoot.updateMatrixWorld(true);
+  for(const side of ['R','L']){
+    const shoulder=arms[side].shoulder,elbow=arms[side].elbow;
+    const upperArm=elbow.getWorldPosition(new THREE.Vector3()).sub(shoulder.getWorldPosition(new THREE.Vector3())).normalize();
+    if(upperArm.y<.9)throw Error(`El brazo no queda elevado sobre la cabeza en ${side}/${progress}%: vertical=${upperArm.y.toFixed(3)}`);
+    if(Math.abs(shoulder.rotation.x-THREE.MathUtils.degToRad(-165))>1e-6)throw Error(`El húmero cambia durante la extensión en ${side}/${progress}%`);
+    const expected=-110+progress;
+    if(Math.abs(THREE.MathUtils.radToDeg(elbow.rotation.x)-expected)>1e-6)throw Error(`Ángulo incorrecto del codo en ${side}/${progress}%`);
+  }
+}
+console.log('Extensión de tríceps: ambos brazos elevados, hombros estables y 100° de extensión coordinada del codo.');

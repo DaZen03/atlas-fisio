@@ -43,6 +43,40 @@ html[data-theme="dark"]{--bg:#101c1b;--paper:#1b2b29;--ink:#edf3e9;--muted:#b5c9
 
 /* Lectura: tamaño fluido donde hay espacio y colores legibles en ambos temas. */
 :root{--reading:#36564c;--reading-soft:#47675b;--reading-label:#4a695c}
+
+/* Simulador de brazo de momento: controla una carga externa y conecta el ángulo al gesto del visor. */
+.moment-lab{margin:16px 0;padding:15px;border:1px solid #c5d6c9;border-radius:8px;background:#f7f8f2;color:#243d35}
+.moment-lab h3{margin:3px 0 7px;font-size:17px!important;color:#244b3f}
+.moment-intro,.moment-note,.moment-explanation{font-size:13px!important;line-height:1.55;color:#405e52!important}
+.moment-fields{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.moment-fields label{display:grid;gap:5px;align-content:start;color:#35594c;font-size:12px;font-weight:700}
+.moment-fields select{width:100%;padding:9px;border:1px solid #b8cabb;border-radius:5px;background:#fff;color:#253f36;font:600 13px 'DM Sans',sans-serif}
+.moment-fields output,.moment-range-label output{float:right;color:#244e40;font-weight:800;font-variant-numeric:tabular-nums}
+.moment-toggle{display:flex;align-items:center;gap:8px;margin:12px 0;padding:9px 10px;border-radius:5px;background:#e9f0e8;color:#31594b;font-size:12px;font-weight:700}
+.moment-toggle input{width:18px;height:18px;accent-color:#32745b}
+.moment-range-label{display:block;margin:12px 0 3px;color:#35594c;font-size:12px;font-weight:700}
+.moment-lab input[type=range]{width:100%;accent-color:#39765d;min-height:28px}
+.moment-diagram{display:block;width:100%;height:auto;max-height:210px;margin:10px 0;border-radius:7px;background:#eaf0e9;color:#a54e3d}
+.moment-gravity{stroke:#cf7259;stroke-width:2.5;stroke-dasharray:5 4}
+.moment-segment{stroke:#315f4e;stroke-width:9;stroke-linecap:round}
+.moment-extension{stroke:#698c7b;stroke-width:5;stroke-linecap:round;stroke-dasharray:3 4}
+.moment-arm{stroke:#d3684f;stroke-width:3;stroke-dasharray:6 4}
+.moment-pivot{fill:#d4775e;stroke:#fff;stroke-width:2}.moment-load-point{fill:#e6a64f;stroke:#7a5830;stroke-width:2}
+.moment-diagram text{fill:#31594b;font:700 12px 'DM Sans',sans-serif}
+.moment-results{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.moment-results div{display:grid;gap:3px;padding:10px;border-radius:6px;background:#e7eee7}
+.moment-results span{color:#4d6c5f;font-size:11px;font-weight:700}
+.moment-results strong{color:#244f40;font-size:19px;font-variant-numeric:tabular-nums}
+.moment-note{padding-top:9px;border-top:1px solid #c9d8cd}
+html[data-theme="dark"] .moment-lab{background:#1c302b;color:#edf4e9;border-color:#4b6c5a}
+html[data-theme="dark"] .moment-lab h3,html[data-theme="dark"] .moment-fields output,html[data-theme="dark"] .moment-range-label output,html[data-theme="dark"] .moment-results strong{color:#ecf6e9}
+html[data-theme="dark"] .moment-intro,html[data-theme="dark"] .moment-note,html[data-theme="dark"] .moment-explanation{color:#c5d9cc!important}
+html[data-theme="dark"] .moment-fields label,html[data-theme="dark"] .moment-range-label,html[data-theme="dark"] .moment-results span{color:#c6dccd}
+html[data-theme="dark"] .moment-fields select{background:#142723;color:#f0f5eb;border-color:#527365}
+html[data-theme="dark"] .moment-toggle,html[data-theme="dark"] .moment-results div{background:#294139;color:#e2f0e5}
+html[data-theme="dark"] .moment-diagram{background:#142723}
+html[data-theme="dark"] .moment-diagram text{fill:#d0e4d6}
+@media(max-width:480px){.moment-lab{padding:12px}.moment-fields{gap:8px}.moment-fields label{font-size:11px}.moment-results strong{font-size:17px}}
 .panel-intro,.detail-summary,.intro p,.section-heading>p,.sources p,.verification-card p,.format-grid p,.structure-detail p,.anatomy-card p,.learning-context p,.joint-map-card span,.scope-note{line-height:1.62}
 .panel-intro,.detail-summary,.anatomy-card p,.structure-detail p,.verification-card p,.format-grid p,.joint-map-card span,.sources p,.section-heading>p,.intro p,.learning-context p,.small-note,.part-picker p,.range-settings p,.free-hint,.scope-note{color:var(--reading)}
 .panel-kicker,.anatomy-card-title,.eyebrow,.section-num,.catalog-label,.learning-panel label,.part-picker label,.structure-search-label,.free-label,.timeline-footer,.endpoint,.mesh-coverage{color:var(--reading-label)}
@@ -210,9 +244,293 @@ html[data-theme="dark"] .explorer-search{background:#142723;color:#f0f5eb;border
   .touch-selection-copy span:first-child{color:#ffe0a0;font-size:9px;font-weight:800;letter-spacing:.09em;line-height:1.25}
   .touch-selection-copy strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:800 13px/1.25 Manrope,sans-serif;color:#fff}
   #touch-selection-detail{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#c7ddd0;font-size:10px;line-height:1.3}
+  #touch-selection-function{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#f1e7cc;font-size:10px;line-height:1.35}
   #touch-selection-focus{flex:0 0 auto;border:1px solid #91b7a4;border-radius:5px;background:#315f51;color:#fff;padding:6px 7px;font:800 10px 'DM Sans',sans-serif}
   #touch-selection-focus:focus-visible{outline:2px solid #ffdb9e;outline-offset:2px}
 }
 @media(max-width:760px) and (max-height:520px){.stage.mobile-viewer-open .touch-selection{top:max(91px,calc(env(safe-area-inset-top) + 85px));width:min(220px,calc(100% - 105px));padding:7px 8px}}
+
+/* La selección ofrece una ficha funcional visible junto al análisis del movimiento. */
+.selected-structure-info{margin:0 0 16px;padding:15px;border:1px solid #d6c18c;border-left:4px solid #c29a48;border-radius:7px;background:#fbf6e8;color:#243d35}
+.selected-structure-info[hidden]{display:none}
+.selected-info-heading{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#765c2d;font-size:10px;font-weight:900;letter-spacing:.08em}
+.selected-info-type{padding:3px 6px;border:1px solid #dbc993;border-radius:4px;background:#f5edda;letter-spacing:.03em;white-space:nowrap}
+.selected-structure-info h3{margin:7px 0 11px;font:800 clamp(18px,1.4vw,22px)/1.3 Manrope,sans-serif;color:#244b3f}
+.selected-info-block,.selected-info-motion{margin-top:9px;padding-top:9px;border-top:1px solid #e3d8b8}
+.selected-info-block>strong,.selected-info-motion>strong,.selected-info-sources>strong{font-size:12px;color:#725725}
+.selected-info-block p,.selected-info-motion p{margin:4px 0 0;color:#405e52;font-size:13px;line-height:1.55}
+.selected-info-piece,.selected-info-mesh{margin:7px 0 0;color:#526c60;font-size:12px;line-height:1.45}
+.selected-info-action{margin-top:8px;border:1px solid #b99a5d;border-radius:5px;background:#f5edda;color:#503f1f;padding:7px 9px;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.selected-info-action:hover{background:#eee1bd}
+.selected-info-sources{margin-top:10px;padding-top:8px;border-top:1px solid #e3d8b8}
+html[data-theme="dark"] .selected-structure-info{background:#233a31;border-color:#816c43;color:#f0f2e7}
+html[data-theme="dark"] .selected-info-heading,html[data-theme="dark"] .selected-info-block>strong,html[data-theme="dark"] .selected-info-motion>strong,html[data-theme="dark"] .selected-info-sources>strong{color:#f0d99e}
+html[data-theme="dark"] .selected-info-type,html[data-theme="dark"] .selected-info-action{background:#3f3a2c;border-color:#9b8452;color:#fff2ce}
+html[data-theme="dark"] .selected-info-block p,html[data-theme="dark"] .selected-info-motion p,html[data-theme="dark"] .selected-info-piece,html[data-theme="dark"] .selected-info-mesh{color:#d0e0d2}
+html[data-theme="dark"] .selected-info-block,html[data-theme="dark"] .selected-info-motion,html[data-theme="dark"] .selected-info-sources{border-color:#566c56}
+@media(max-width:760px){.selected-structure-info{padding:14px}.selected-info-block p,.selected-info-motion p{font-size:16px;line-height:1.55}.selected-info-block>strong,.selected-info-motion>strong,.selected-info-sources>strong{font-size:14px}}
 .structure-metrics{grid-template-columns:repeat(5,minmax(0,1fr))}.structure-count-note{margin:8px 2px 0;color:#4b6c60;font-size:12px;line-height:1.5}html[data-theme="dark"] .structure-count-note{color:#c5dbca}@media(max-width:1000px){.structure-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .structure-metrics{grid-template-columns:repeat(6,minmax(0,1fr))}@media(max-width:1000px){.structure-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Mecanismos de las máquinas: separar el torque de la máquina del momento sobre la articulación. */
+.machine-lab{margin-top:16px;padding:14px;border:1px solid #c5d6c9;border-radius:8px;background:#f7f8f2;color:#243d35}
+.machine-lab h3{margin:3px 0 7px;font-size:17px!important;color:#244b3f}
+.machine-intro,.machine-example,.machine-mechanism{font-size:13px!important;line-height:1.55;color:#405e52!important}
+.machine-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin:12px 0}
+.machine-picker button{min-height:38px;padding:8px;border:1px solid #b8cabb;border-radius:5px;background:#fff;color:#31594c;font:700 12px 'DM Sans',sans-serif;cursor:pointer}
+.machine-picker button:hover{background:#edf3ec}
+.machine-picker button.active{border-color:#bd9951;background:#f4edda;color:#493b1c;box-shadow:inset 0 0 0 1px #bd9951}
+.machine-picker button:focus-visible{outline:2px solid #39765d;outline-offset:2px}
+.machine-detail{padding:12px;border-radius:7px;background:#eaf0e9}
+.machine-detail h4{margin:0 0 4px;font:800 15px/1.35 'Manrope',sans-serif;color:#244b3f}
+.machine-example{margin:4px 0 9px!important;font-weight:700}
+.machine-diagram{display:grid;place-items:center;overflow:hidden;margin:10px 0;padding:6px;border-radius:6px;background:#f8faf5}
+.machine-diagram svg{display:block;width:100%;height:auto;max-height:160px}
+.machine-diagram text{fill:#35594c;font:700 10px 'DM Sans',sans-serif}
+.machine-bar,.machine-arm{stroke:#356451;stroke-width:8;stroke-linecap:round}
+.machine-arm{stroke:#d0785f;stroke-width:2;stroke-dasharray:5 4}
+.machine-pivot{fill:#d0785f;stroke:#fff;stroke-width:2}
+.machine-fulcrum{fill:#d6b86d;stroke:#7e6530;stroke-width:2}
+.machine-load,.machine-plate{fill:#dba958;stroke:#795d2c;stroke-width:2}
+.machine-force,.machine-arrow{stroke:#bd624e;stroke-width:3;fill:none}
+.machine-cam{fill:#d9e6d7;stroke:#356451;stroke-width:4}
+.machine-radius{stroke:#bd624e;stroke-width:3;stroke-dasharray:5 4}
+.machine-cable,.machine-frame{stroke:#638574;stroke-width:3;fill:none}
+.machine-sheave{fill:#f4e6bd;stroke:#356451;stroke-width:3}
+.machine-sheave.moving{fill:#dce8dc}
+.machine-formula{margin:10px 0;padding:10px;border-left:3px solid #c78952;border-radius:3px;background:#f5f1e5;color:#345747;font-size:13px;font-weight:800;line-height:1.5}
+.machine-mechanism{margin:9px 0!important}
+.machine-watch{padding:10px;border-radius:5px;background:#e0e9df;color:#385b4d;font-size:12px;line-height:1.5}
+.machine-watch strong{color:#244b3f}
+.machine-sources{margin-top:9px}
+html[data-theme="dark"] .machine-lab{background:#1c302b;color:#edf4e9;border-color:#4b6c5a}
+html[data-theme="dark"] .machine-lab h3,html[data-theme="dark"] .machine-detail h4{color:#ecf6e9}
+html[data-theme="dark"] .machine-intro,html[data-theme="dark"] .machine-example,html[data-theme="dark"] .machine-mechanism{color:#c5d9cc!important}
+html[data-theme="dark"] .machine-picker button{background:#142723;color:#d6e8d9;border-color:#527365}
+html[data-theme="dark"] .machine-picker button.active{background:#51472f;color:#fff0c7;border-color:#d2b260}
+html[data-theme="dark"] .machine-detail{background:#243b34}
+html[data-theme="dark"] .machine-diagram{background:#142723}
+html[data-theme="dark"] .machine-diagram text{fill:#d0e4d6}
+html[data-theme="dark"] .machine-cam{fill:#29443a}
+html[data-theme="dark"] .machine-sheave{fill:#3a5145}
+html[data-theme="dark"] .machine-formula{background:#39402f;color:#f0e4bc}
+html[data-theme="dark"] .machine-watch{background:#294139;color:#cfe3d4}
+html[data-theme="dark"] .machine-watch strong{color:#f0f5e9}
+@media(max-width:480px){.machine-lab{padding:11px}.machine-picker{gap:6px}.machine-picker button{min-height:42px;font-size:11px}.machine-detail{padding:10px}}
+
+/* Ruta de lectura y práctica recuperable por áreas. */
+.study-route{display:grid;grid-template-columns:minmax(190px,1.25fr) repeat(4,minmax(0,1fr));gap:9px;align-items:stretch;margin:0 auto 22px;padding:12px;max-width:1600px;border:1px solid #d5dfd1;border-radius:8px;background:#f1f4ed}
+.study-route-heading{display:grid;align-content:center;gap:3px;padding:4px 8px;color:#294a3d}
+.study-route-heading strong{font:800 15px/1.3 'Manrope',sans-serif}
+.study-route-heading>span:last-child{color:#587364;font-size:11px;line-height:1.4}
+.study-route>a{display:flex;align-items:center;gap:9px;min-width:0;padding:10px;border:1px solid #d3dfd3;border-radius:6px;background:#fafbf7;color:#315548;text-decoration:none}
+.study-route>a:hover,.study-route>a:focus-visible{border-color:#bd9951;background:#f7f1df;outline:none}
+.study-route>a>b{display:grid;place-items:center;flex:0 0 28px;width:28px;height:28px;border-radius:50%;background:#315b4f;color:#fff;font-size:12px}
+.study-route>a span{display:grid;gap:2px;min-width:0}
+.study-route>a strong{font-size:12px}
+.study-route>a small{color:#5b7366;font-size:10px;line-height:1.3}
+.study-route-sources{grid-column:1/-1;padding:3px 8px 0;color:#5b7366;font-size:11px;line-height:1.5}
+.study-route-sources a{color:#8b503c;text-decoration:underline;text-underline-offset:2px}
+.learning-sequence,.quiz-study-cue{display:flex;flex-wrap:wrap;align-items:center;gap:7px 11px;padding:12px 15px;border:1px solid #d7dfd4;border-radius:7px;background:#edf2ea;color:#385a49;font-size:13px;line-height:1.5}
+.learning-sequence{margin:-7px 0 16px}
+.learning-sequence strong,.quiz-study-cue strong{color:#294d3d}
+.learning-sequence i,.quiz-study-cue i{font-style:normal;color:#9b7650;font-weight:800}
+.quiz-study-cue{margin:-7px 0 16px;background:#f0f3eb}
+.quiz-study-cue span{color:#4e6859}
+.quiz-section{margin:0 auto;padding:42px clamp(16px,3vw,44px);max-width:1600px;background:#f6f7f1;color:#243d35}
+.quiz-section .section-heading{margin-bottom:22px}
+.quiz-layout{display:grid;grid-template-columns:minmax(230px,.68fr) minmax(0,1.5fr);gap:18px;align-items:start}
+.quiz-catalog,.quiz-card{border:1px solid #d3dfd3;border-radius:8px;background:#fff;padding:16px}
+.quiz-catalog-title{margin-bottom:10px;color:#4b6e5d;font-size:11px;font-weight:800;letter-spacing:.08em}
+.quiz-categories{display:grid;gap:7px}
+.quiz-categories button{display:grid;gap:4px;width:100%;padding:11px 12px;border:1px solid #cbd9cd;border-radius:6px;background:#f8faf6;color:#355749;text-align:left;cursor:pointer}
+.quiz-categories button:hover{border-color:#8aa996;background:#eff5ee}
+.quiz-categories button.active{border-color:#bd9951;background:#f4edda;box-shadow:inset 3px 0 #bd9951}
+.quiz-categories button:focus-visible,.quiz-answer:focus-visible,.quiz-next:focus-visible{outline:2px solid #39765d;outline-offset:2px}
+.quiz-categories button strong{font-size:13px}
+.quiz-categories button span{color:#5e796a;font-size:11px;line-height:1.4}
+.quiz-catalog-note{margin:12px 1px 0;color:#5b7366;font-size:12px;line-height:1.55}
+.quiz-card{min-height:360px;padding:20px}
+.quiz-card-top{display:flex;justify-content:space-between;gap:10px;color:#527061;font-size:11px;font-weight:800}
+.quiz-card h3{margin:8px 0 11px;color:#244b3f;font-size:19px!important}
+.quiz-progress{height:7px;overflow:hidden;border-radius:8px;background:#e5ece4}
+.quiz-progress span{display:block;width:0;height:100%;border-radius:inherit;background:#568268;transition:width .2s ease}
+.quiz-status{margin:12px 0 5px;color:#5b7366;font-size:12px;font-weight:700}
+.quiz-card h4{margin:5px 0 14px;color:#263f35;font:800 17px/1.45 'Manrope',sans-serif}
+.quiz-answers{display:grid;gap:8px}
+.quiz-answer{width:100%;padding:11px 12px;border:1px solid #cbd9cd;border-radius:6px;background:#f8faf6;color:#304f42;text-align:left;font:600 14px/1.45 'DM Sans',sans-serif;cursor:pointer}
+.quiz-answer:hover:not(:disabled){border-color:#87a592;background:#eff5ee}
+.quiz-answer:disabled{cursor:default;opacity:1}
+.quiz-answer.correct-answer{border-color:#5c936d;background:#e7f1e7;color:#205a35}
+.quiz-answer.selected-answer{border-color:#bd735e;background:#f7e9e4;color:#783a2c}
+.quiz-feedback{margin-top:13px;padding:12px;border-radius:6px;background:#eef2e9;color:#3f5d4e}
+.quiz-feedback strong{font-size:13px}
+.quiz-feedback p{margin:6px 0;color:#496757;font-size:13px;line-height:1.55}
+.quiz-feedback.is-correct{border-left:4px solid #559269}
+.quiz-feedback.is-incorrect{border-left:4px solid #bd735e}
+.quiz-next{margin-top:13px;min-height:42px;padding:9px 14px;border:0;border-radius:5px;background:#315b4f;color:#fff;font-weight:800;cursor:pointer}
+.quiz-next:disabled{background:#8a9b8f;cursor:not-allowed}
+html[data-theme="dark"] .study-route{border-color:#425c4d;background:#1d302a}
+html[data-theme="dark"] .study-route-heading{color:#e6f1e6}
+html[data-theme="dark"] .study-route-heading>span:last-child,html[data-theme="dark"] .study-route>a small{color:#bfd2c3}
+html[data-theme="dark"] .study-route>a{border-color:#426050;background:#263d35;color:#e6f1e6}
+html[data-theme="dark"] .study-route>a:hover,html[data-theme="dark"] .study-route>a:focus-visible{background:#4b472f;border-color:#c5a95f}
+html[data-theme="dark"] .study-route-sources{color:#bfd2c3}
+html[data-theme="dark"] .study-route-sources a{color:#f0b49a}
+html[data-theme="dark"] .learning-sequence,html[data-theme="dark"] .quiz-study-cue{border-color:#426050;background:#21382f;color:#d3e2d5}
+html[data-theme="dark"] .learning-sequence strong,html[data-theme="dark"] .quiz-study-cue strong,html[data-theme="dark"] .quiz-study-cue span{color:#d3e2d5}
+html[data-theme="dark"] .learning-sequence i,html[data-theme="dark"] .quiz-study-cue i{color:#e2c47b}
+html[data-theme="dark"] .quiz-section{background:#162522;color:#edf4e9}
+html[data-theme="dark"] .quiz-catalog,html[data-theme="dark"] .quiz-card{border-color:#426050;background:#1c302b}
+html[data-theme="dark"] .quiz-catalog-title,html[data-theme="dark"] .quiz-card-top,html[data-theme="dark"] .quiz-status,html[data-theme="dark"] .quiz-catalog-note{color:#bfd2c3}
+html[data-theme="dark"] .quiz-categories button,html[data-theme="dark"] .quiz-answer{border-color:#486557;background:#243a33;color:#e2eee3}
+html[data-theme="dark"] .quiz-categories button.active{border-color:#c5a95f;background:#4b472f;color:#fff0c7}
+html[data-theme="dark"] .quiz-categories button span{color:#bfd2c3}
+html[data-theme="dark"] .quiz-card h3,html[data-theme="dark"] .quiz-card h4{color:#edf4e9}
+html[data-theme="dark"] .quiz-progress{background:#34483f}
+html[data-theme="dark"] .quiz-answer.correct-answer{background:#244a36;color:#e4f7e7;border-color:#6eb184}
+html[data-theme="dark"] .quiz-answer.selected-answer{background:#50382f;color:#ffe6db;border-color:#d58b73}
+html[data-theme="dark"] .quiz-feedback{background:#263d34;color:#e2eee3}
+html[data-theme="dark"] .quiz-feedback p{color:#c7dbcc}
+@media(max-width:980px){.study-route{grid-template-columns:repeat(4,minmax(0,1fr))}.study-route-heading{grid-column:1/-1}.quiz-layout{grid-template-columns:minmax(200px,.72fr) minmax(0,1.3fr)}}
+@media(max-width:680px){.study-route{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;padding:9px}.study-route-heading{grid-column:1/-1;padding:2px 4px 7px}.study-route>a{padding:9px 7px}.study-route>a small{font-size:10px}.study-route-sources{padding:3px 4px 0;font-size:11px}.learning-sequence,.quiz-study-cue{align-items:flex-start;gap:5px 8px;padding:11px;font-size:14px}.learning-sequence i,.quiz-study-cue i{display:none}.quiz-section{padding:28px 14px}.quiz-layout{grid-template-columns:1fr;gap:10px}.quiz-categories{grid-template-columns:repeat(2,minmax(0,1fr))}.quiz-categories button{min-height:76px;padding:9px}.quiz-card{min-height:0;padding:14px}.quiz-card h4{font-size:16px}}
+@media(max-width:380px){.quiz-categories{grid-template-columns:1fr}.quiz-categories button{min-height:0}}
+
+/* Ruta progresiva y guía para leer las inserciones anatómicas. */
+.learning-path{padding:48px clamp(16px,3.2vw,52px) 34px;max-width:1700px;margin:0 auto;color:#243d35}
+.learning-path .section-heading{margin-bottom:23px}
+.learning-levels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.learning-level{display:flex;flex-direction:column;padding:17px 16px;border:1px solid #d4dfd4;border-radius:8px;background:#f7f8f3;min-height:100%}
+.learning-level-head{display:flex;justify-content:space-between;gap:8px;align-items:center;color:#557362;font-size:10px;font-weight:800;letter-spacing:.04em}
+.learning-level-head>span:first-child{color:#bc7658}
+.learning-level .level-time{color:#75887b;font-size:10px;font-weight:600;letter-spacing:0}
+.learning-level h3{margin:12px 0 8px;color:#284b3e;font:800 17px/1.3 'Manrope',sans-serif}
+.learning-level p,.learning-level li{font-size:13px;line-height:1.55;color:#4d675a}
+.learning-level p{margin:0 0 5px}
+.learning-level ul{margin:5px 0 15px;padding-left:18px}
+.learning-level li{margin:5px 0}
+.learning-level a{color:#9b523f;text-decoration:underline;text-decoration-color:#d5a393;text-underline-offset:2px}
+.learning-level .level-action{display:block;margin-top:auto;padding-top:12px;font-size:12px;font-weight:800;text-decoration:none}
+.learning-path-footer{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:11px;padding:13px 15px;border-radius:6px;background:#e9eee7;color:#496454;font-size:12px;line-height:1.5}
+.learning-path-footer>a{color:#294e3d;font-weight:800;text-decoration:none}
+.learning-path-footer .learning-citation{margin-left:auto}
+.learning-path-footer .learning-citation a{color:#9b523f;text-decoration:underline;text-underline-offset:2px}
+.insertion-guide{margin-top:11px;padding:10px 12px;border-radius:6px;background:#f1f4ed;color:#385648}
+.insertion-guide summary{cursor:pointer;font-size:12px;font-weight:800;color:#315745}
+.insertion-guide p{margin:9px 0;font-size:12px;line-height:1.6}
+.insertion-guide .detail-sources{margin-top:7px}
+html[data-theme="dark"] .learning-path{color:#edf4e9}
+html[data-theme="dark"] .learning-level{border-color:#425c4d;background:#1d302a}
+html[data-theme="dark"] .learning-level h3,html[data-theme="dark"] .learning-level-head{color:#e4efe4}
+html[data-theme="dark"] .learning-level .level-time{color:#bed0c1}
+html[data-theme="dark"] .learning-level p,html[data-theme="dark"] .learning-level li{color:#c8dacc}
+html[data-theme="dark"] .learning-level-head>span:first-child,html[data-theme="dark"] .learning-level a{color:#f0b49a}
+html[data-theme="dark"] .learning-path-footer{background:#263d34;color:#d3e2d5}
+html[data-theme="dark"] .learning-path-footer>a{color:#e8f1e7}
+html[data-theme="dark"] .learning-path-footer .learning-citation a{color:#f0b49a}
+html[data-theme="dark"] .insertion-guide{background:#263d34;color:#d3e2d5}
+html[data-theme="dark"] .insertion-guide summary,html[data-theme="dark"] .insertion-guide p strong{color:#edf4e9}
+@media(max-width:1050px){.learning-levels{grid-template-columns:repeat(2,minmax(0,1fr))}.learning-path-footer .learning-citation{margin-left:0}}
+@media(max-width:620px){.learning-path{padding:32px 4% 24px}.learning-levels{grid-template-columns:1fr;gap:8px}.learning-level{padding:15px}.learning-level h3{font-size:19px}.learning-level p,.learning-level li{font-size:16px}.learning-level .level-action{font-size:14px}.learning-path-footer{font-size:14px}.insertion-guide{padding:12px}.insertion-guide summary{font-size:15px}.insertion-guide p{font-size:15px}}
+
+/* Tipografía más legible para el registro de contraste. */
+.audit{padding:24px clamp(16px,2.2vw,32px)}
+.audit-heading strong{font-size:20px;line-height:1.35}
+.audit-heading span{font-size:12px;line-height:1.4}
+.audit-row{grid-template-columns:minmax(105px,.42fr) minmax(220px,1fr) minmax(250px,1fr);gap:18px;padding:14px 0;font-size:15px;line-height:1.5}
+.audit-row>span{font-size:14px;line-height:1.45}
+.audit-row strong{font-size:15px;line-height:1.5}
+.audit-row a{font-size:14px;line-height:1.5}
+@media(max-width:760px){.audit{padding:18px 15px}.audit-heading strong{font-size:19px}.audit-row{grid-template-columns:1fr;gap:5px;padding:14px 0;font-size:16px}.audit-row>span{font-size:14px}.audit-row strong{font-size:16px}.audit-row div{grid-column:auto;gap:8px 14px;padding-top:2px}.audit-row a{font-size:15px}}
+
+/* Accesos claros a roadmap, biomecánica y tests; cada elección prepara el modelo. */
+.section-access{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 auto 16px;padding:0 clamp(16px,3.2vw,52px);max-width:1700px}
+.section-access>a{display:grid;grid-template-columns:34px 1fr;grid-template-rows:auto auto;column-gap:11px;align-items:center;padding:15px 17px;border:1px solid #d3dfd3;border-radius:8px;background:#f7f8f3;color:#315548;text-decoration:none;transition:background .18s ease,border-color .18s ease}
+.section-access>a:hover,.section-access>a:focus-visible{border-color:#bd9951;background:#f5efdf;outline:none}
+.section-access>a>span{grid-row:1/3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#315b4f;color:#fff;font-size:13px;font-weight:800}
+.section-access>a strong{font:800 15px/1.35 'Manrope',sans-serif}
+.section-access>a small{color:#5b7366;font-size:12px;line-height:1.45}
+html[data-theme="dark"] .section-access>a{border-color:#426050;background:#263d35;color:#e6f1e6}
+html[data-theme="dark"] .section-access>a small{color:#bfd2c3}
+html[data-theme="dark"] .section-access>a:hover,html[data-theme="dark"] .section-access>a:focus-visible{background:#4b472f;border-color:#c5a95f}
+.biomechanics-section{padding:56px clamp(16px,3.2vw,52px) 34px;max-width:1700px;margin:0 auto;color:#243d35}
+.biomechanics-section .section-heading{margin-bottom:22px}
+.biomech-cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.biomech-cases article{display:flex;flex-direction:column;min-height:230px;padding:17px;border:1px solid #d4dfd4;border-radius:8px;background:#f7f8f3}
+.biomech-cases article>span{color:#a75e48;font-size:10px;font-weight:800;letter-spacing:.06em;line-height:1.4}
+.biomech-cases h3{margin:12px 0 8px;color:#284b3e;font:800 18px/1.3 'Manrope',sans-serif}
+.biomech-cases p{margin:0 0 15px;color:#4d675a;font-size:14px;line-height:1.55}
+.biomech-cases button{margin-top:auto;min-height:42px;padding:9px 12px;border:1px solid #789583;border-radius:5px;background:#e9efe7;color:#294e3d;text-align:left;font:800 13px/1.35 'DM Sans',sans-serif;cursor:pointer}
+.biomech-cases button:hover,.biomech-cases button:focus-visible{border-color:#bd9951;background:#f5efdf;outline:2px solid #bd9951;outline-offset:2px}
+.biomech-model-note{margin:11px 0 0;padding:12px 15px;border-radius:6px;background:#e9eee7;color:#496454;font-size:14px;line-height:1.5}
+html[data-theme="dark"] .biomechanics-section{color:#edf4e9}
+html[data-theme="dark"] .biomech-cases article{border-color:#425c4d;background:#1d302a}
+html[data-theme="dark"] .biomech-cases article>span{color:#f0b49a}
+html[data-theme="dark"] .biomech-cases h3{color:#e4efe4}
+html[data-theme="dark"] .biomech-cases p{color:#c8dacc}
+html[data-theme="dark"] .biomech-cases button{border-color:#527365;background:#29443a;color:#edf4e9}
+html[data-theme="dark"] .biomech-cases button:hover,html[data-theme="dark"] .biomech-cases button:focus-visible{background:#4b472f;border-color:#c5a95f}
+html[data-theme="dark"] .biomech-model-note{background:#263d34;color:#d3e2d5}
+.learning-level .level-action{width:100%;border:0;background:transparent;color:#9b523f;text-align:left;font-family:'DM Sans',sans-serif;cursor:pointer}
+.learning-level .level-action:hover,.learning-level .level-action:focus-visible{text-decoration:underline;text-underline-offset:3px;outline-color:#bd9951}
+
+/* Navegación por secciones con rutas claras también en móvil. */
+.topbar{position:sticky;top:0;z-index:40;gap:clamp(10px,2vw,28px)}
+.topbar nav.primary-tabs{gap:clamp(10px,1.6vw,24px);align-items:center;white-space:nowrap}
+.topbar nav.primary-tabs a{padding:9px 0;color:#385a4b;border-bottom:2px solid transparent}
+.topbar nav.primary-tabs a[aria-current="page"]{color:#1d3f33;border-color:#bd9951}
+.topbar nav.primary-tabs a:focus-visible{outline:2px solid #bd9951;outline-offset:4px;border-radius:3px}
+.section-access{grid-template-columns:repeat(3,minmax(0,1fr))}
+.section-access>a{min-height:74px}
+.section-access>a>span{background:#416b59}
+.biomech-cases a{display:block;margin-top:auto;min-height:42px;padding:11px 12px;border:1px solid #789583;border-radius:5px;background:#e9efe7;color:#294e3d;text-decoration:none;font:800 13px/1.35 'DM Sans',sans-serif}
+.biomech-cases a:hover,.biomech-cases a:focus-visible{border-color:#bd9951;background:#f5efdf;outline:2px solid #bd9951;outline-offset:2px}
+html[data-theme="dark"] .topbar nav.primary-tabs a{color:#c8ddce}
+html[data-theme="dark"] .topbar nav.primary-tabs a[aria-current="page"]{color:#f3f3e9;border-color:#cfb569}
+html[data-theme="dark"] .biomech-cases a{border-color:#527365;background:#29443a;color:#edf4e9}
+html[data-theme="dark"] .biomech-cases a:hover,html[data-theme="dark"] .biomech-cases a:focus-visible{background:#4b472f;border-color:#c5a95f}
+@media(max-width:760px){
+  .topbar{height:auto;min-height:62px;display:flex;flex-wrap:wrap;gap:0;padding:7px 0 0}
+  .topbar .brand{margin-left:4%;font-size:17px}
+  .topbar .top-actions{margin:0 4% 0 auto}
+  .topbar .topbar-tag{display:none}
+  .topbar nav.primary-tabs{display:flex;order:3;width:100%;box-sizing:border-box;gap:0;overflow-x:auto;overscroll-behavior-inline:contain;scrollbar-width:thin;padding:0 4%;background:#e5e9e0}
+  .topbar nav.primary-tabs a{flex:0 0 auto;padding:12px 13px 10px;font-size:13px}
+  html[data-theme="dark"] .topbar nav.primary-tabs{background:#172823}
+  .section-access{grid-template-columns:1fr;gap:7px;padding-inline:4%}
+  .section-access>a{min-height:60px;padding:11px 13px}
+  .biomech-cases{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){.topbar nav.primary-tabs a,.section-access>a{scroll-behavior:auto;transition:none}}
+.quiz-model-context{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin:4px 0 12px;padding:10px 12px;border-left:3px solid #bf9c55;border-radius:4px;background:#f2f4ed;color:#496454;font-size:13px;line-height:1.45}
+.quiz-model-context a{color:#315b4f;font-weight:800;text-decoration:underline;text-underline-offset:2px}
+html[data-theme="dark"] .quiz-model-context{background:#263d34;color:#d3e2d5}
+html[data-theme="dark"] .quiz-model-context a{color:#dce9d9}
+@media(max-width:1050px){.biomech-cases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.section-access{grid-template-columns:1fr;padding-inline:4%;gap:7px}.section-access>a{padding:12px 14px}.section-access>a strong{font-size:16px}.section-access>a small{font-size:13px}.biomechanics-section{padding:35px 4% 24px}.biomech-cases{grid-template-columns:1fr;gap:8px}.biomech-cases article{min-height:0;padding:15px}.biomech-cases h3{font-size:20px}.biomech-cases p{font-size:16px}.biomech-cases button{font-size:15px;min-height:46px}.biomech-model-note{font-size:15px}.quiz-model-context{font-size:15px}.learning-level .level-action{font-size:15px}}
+@media(max-width:760px){.section-access{grid-template-columns:repeat(2,minmax(0,1fr))}.section-access>a{min-height:78px}}
+@media(max-width:420px){.section-access{grid-template-columns:1fr}}
+
+.scientific-common-pair{display:inline;white-space:normal}
+.scientific-term{font-weight:650}
+.common-term{margin-left:.22em;color:#4d705c;font-size:.9em;font-weight:500}
+.term-reading-key{max-width:1700px;margin:0 auto 12px;padding:0 clamp(16px,3.2vw,52px);color:#587062;font-size:13px;line-height:1.5}
+.term-reading-key strong{color:#355748}
+html[data-theme="dark"] .common-term{color:#b7d3bc}
+html[data-theme="dark"] .term-reading-key,html[data-theme="dark"] .term-reading-key strong{color:#c4d9c9}
+@media(max-width:760px){.common-term{font-size:.94em}.term-reading-key{padding-inline:4%;font-size:14px}}
+
+/* Vistas dedicadas: el iframe mantiene el motor del atlas, pero deja visible solo el área solicitada. */
+html[data-atlas-view] main>.intro,html[data-atlas-view] main>.learning-path,html[data-atlas-view] main>.section-access,html[data-atlas-view] main>.study-route,html[data-atlas-view] main>.term-reading-key{display:none!important}
+html[data-atlas-view] main>section{display:none!important}
+html[data-atlas-view="explorar"] main>#explorar,html[data-atlas-view="explorar"] main>#guided-timeline,html[data-atlas-view="explorar"] main>.joint-map{display:block!important}
+html[data-atlas-view="estructuras"] main>#estructuras,html[data-atlas-view="practicar"] main>#cuestionarios,html[data-atlas-view="fuentes"] main>#fuentes{display:block!important}
+html[data-atlas-view="aprender"] main>#ruta-aprendizaje,html[data-atlas-view="animaciones"] main>#explorar,html[data-atlas-view="animaciones"] main>#guided-timeline,html[data-atlas-view="articulaciones"] main>#explorar,html[data-atlas-view="articulaciones"] main>.joint-map,html[data-atlas-view="verificacion"] main>#verificacion,html[data-atlas-view="formatos"] main>#formatos{display:block!important}
+html[data-atlas-view] main{min-height:100vh;padding-bottom:20px}
+html[data-atlas-view="aprender"] main>.term-reading-key{display:block!important}
+html[data-atlas-view="estructuras"] main>.term-reading-key{display:block!important}
+html[data-atlas-view="inicio"] main>.intro{display:block!important}
+html[data-atlas-view="inicio"] main>.section-access{display:grid!important}
+html[data-atlas-view]:not([data-atlas-view="explorar"]):not([data-atlas-view="animaciones"]):not([data-atlas-view="articulaciones"]) #mobile-viewer-open{display:none!important}
+nav.primary-tabs{overflow-x:auto;scrollbar-width:thin;max-width:calc(100vw - 330px)}
+@media(max-width:760px){nav.primary-tabs{max-width:none}}

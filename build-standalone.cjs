@@ -9,8 +9,12 @@ const bundle=fs.readFileSync(path.join(base,'standalone-bundle.js'),'utf8');
 if(!bundle.includes('./assets/bodyparts.glb'))throw new Error('No se encontró la ruta del GLB para integrarlo');
 const js=bundle.replaceAll('./assets/bodyparts.glb',dataUrl).replace(/<\/script/gi,'<\\/script');
 const result=html
+  .replace('data-atlas-view="inicio"','')
   .replace(/<link rel="stylesheet" href="\.\/styles\.css">/,()=>`<style>${css}</style>`)
   .replace(/<script type="module" src="\.\/app\.bundle\.js"><\/script>/,()=>`<script>${js}</script>`);
-if(result.includes('<script type="module" src="./app.bundle.js"></script>')||result.includes('<link rel="stylesheet" href="./styles.css">'))throw new Error('No se integraron los archivos del visor');
-fs.writeFileSync(path.join(base,'..','..','outputs','atlas-movimiento-3d.html'),result);
+const routeAnchors={'./vistas/aprender.html':'#ruta-aprendizaje','./vistas/explorar.html':'#explorar','./vistas/animaciones.html':'#guided-timeline','./vistas/articulaciones.html':'#explorar','./vistas/estructuras.html':'#estructuras','./vistas/practicar.html':'#cuestionarios','./vistas/verificacion.html':'#verificacion','./vistas/formatos.html':'#formatos','./vistas/fuentes.html':'#fuentes','./biomecanica/index.html':'#biomecanica','./analisis.html':'#explorar'};
+let standaloneHtml=result;
+for(const [route,anchor] of Object.entries(routeAnchors))standaloneHtml=standaloneHtml.replaceAll(`href="${route}"`,`href="${anchor}"`);
+if(standaloneHtml.includes('<script type="module" src="./app.bundle.js"></script>')||standaloneHtml.includes('<link rel="stylesheet" href="./styles.css">'))throw new Error('No se integraron los archivos del visor');
+fs.writeFileSync(path.join(base,'..','..','outputs','atlas-movimiento-3d.html'),standaloneHtml);
 console.log('Archivo HTML autónomo creado');

@@ -51,7 +51,7 @@ for(const record of records){
   if(!rig[record.dominant])throw Error(`Segmento desconocido: ${info.name} → ${record.dominant}`);
   if(anchors){
     const toRoot=mesh.matrixWorld.clone();
-    for(const anchor of [anchors[0],anchors[1]])if(anchor!==record.dominant){
+    for(const anchor of [anchors[0],anchors[1]].filter(Boolean))if(anchor!==record.dominant){
       const pivot=scope.muscleJointPivot(rig,record.dominant,anchor).getWorldPosition(new THREE.Vector3());
       links.push({name:info.name,dominant:record.dominant,anchor,record,point:scope.muscleEndpoint(mesh,toRoot,pivot)});
     }
@@ -87,9 +87,13 @@ const poses=[
   ['tobillo izquierdo',()=>rig.ankleL.rotation.x=deg(40)],
   ['brazo izquierdo',()=>rig.shoulderL.rotation.z=deg(90)],
   ['pierna izquierda',()=>rig.kneeL.rotation.x=deg(120)],
+  ['triceps overhead flexionado',()=>{rig.shoulder.rotation.x=-deg(165);rig.shoulderL.rotation.x=-deg(165);rig.elbow.rotation.x=-deg(110);rig.elbowL.rotation.x=-deg(110)}],
+  ['triceps overhead medio',()=>{rig.shoulder.rotation.x=-deg(165);rig.shoulderL.rotation.x=-deg(165);rig.elbow.rotation.x=-deg(60);rig.elbowL.rotation.x=-deg(60)}],
+  ['triceps overhead extendido',()=>{rig.shoulder.rotation.x=-deg(165);rig.shoulderL.rotation.x=-deg(165);rig.elbow.rotation.x=-deg(10);rig.elbowL.rotation.x=-deg(10)}],
 ];
 const report=[];
 const linkGaps=new Map();
+const tricepsGaps=new Map();
 const unmovedByPose=[];
 for(const [name,setPose] of poses){
   for(const node of Object.values(rig))node.rotation.set(0,0,0);
@@ -106,7 +110,7 @@ for(const [name,setPose] of poses){
   }
   root.updateMatrixWorld(true);
   let maxStretch=0,maxLink=0,maxLinkName='';
-  const jointForPose={cuello:'head',mandíbula:'jaw',hombro:'shoulder',codo:'elbow',pronación:'forearm','muñeca/mano':'wrist','codo izquierdo':'elbowL','pronación izquierda':'forearmL','muñeca izquierda':'wristL',cadera:'hip','cadera izquierda':'hipL','rodilla/isquios':'knee',tobillo:'ankle','tobillo izquierdo':'ankleL','brazo izquierdo':'shoulderL','pierna izquierda':'kneeL'}[name];
+  const jointForPose={cuello:'head',mandíbula:'jaw',hombro:'shoulder',codo:'elbow',pronación:'forearm','muñeca/mano':'wrist','codo izquierdo':'elbowL','pronación izquierda':'forearmL','muñeca izquierda':'wristL',cadera:'hip','cadera izquierda':'hipL','rodilla/isquios':'knee',tobillo:'ankle','tobillo izquierdo':'ankleL','brazo izquierdo':'shoulderL','pierna izquierda':'kneeL','triceps overhead flexionado':'elbow','triceps overhead medio':'elbow','triceps overhead extendido':'elbow'}[name];
   const unmoved=[];
   for(const record of records){
     const mesh=record.mesh,ids=[0,Math.floor(mesh.geometry.attributes.position.count/2),mesh.geometry.attributes.position.count-1];
@@ -128,15 +132,59 @@ for(const [name,setPose] of poses){
     if(gap>maxLink){maxLink=gap;maxLinkName=link.name}
     const key=`${link.name} (${link.dominant}→${link.anchor})`;
     linkGaps.set(key,Math.max(linkGaps.get(key)||0,gap));
+    if(link.name.toLowerCase().includes('triceps'))tricepsGaps.set(key,Math.max(tricepsGaps.get(key)||0,gap));
   }
   report.push({movimiento:name,desviación_máxima_de_fibras:maxStretch.toExponential(2),conexión_máxima_m:maxLink.toFixed(3),músculo:maxLinkName});
   unmovedByPose.push({name,unmoved});
   if(unmoved.length)throw Error(`${name}: músculos inmóviles: ${unmoved.join(', ')}`);
   if(maxStretch>1e-4)throw Error(`Estiramiento de malla en ${name}: ${maxStretch}`);
-  if(maxLink>.40)throw Error(`Separación excesiva entre segmentos en ${name}: ${maxLink.toFixed(3)} m (${maxLinkName})`);
+  if(!name.startsWith('triceps overhead')&&maxLink>.40)throw Error(`Separación excesiva entre segmentos en ${name}: ${maxLink.toFixed(3)} m (${maxLinkName})`);
 }
 if(records.length!==404)throw Error(`Se esperaban 404 músculos; hay ${records.length}`);
 console.table(report);
 for(const item of unmovedByPose)console.log(`INMÓVILES ${item.name}: ${item.unmoved.length} ${item.unmoved.join(' | ')}`);
 console.log([...linkGaps].sort((a,b)=>b[1]-a[1]).slice(0,25).map(([name,gap])=>`${gap.toFixed(3)} m ${name}`).join('\n'));
+console.log('Tríceps: '+[...tricepsGaps].map(([name,gap])=>`${gap.toFixed(3)} m ${name}`).join(' | '));
+const overheadTricepsMax=Math.max(...[...tricepsGaps.values()]);
+if(overheadTricepsMax>.40)throw Error(`Separación excesiva en cabeza del tríceps durante extensión sobre cabeza: ${overheadTricepsMax.toFixed(3)} m`);
+const extraMovements=movements.filter(m=>m.base),compoundAudit=[],stuckMuscles=new Set();
+for(const movement of extraMovements){
+  let maxGap=0,maxGapMuscle='',maxStretch=0;
+  for(const progress of [0,25,50,75,100]){
+    for(const node of Object.values(rig))node.rotation.set(0,0,0);
+    root.position.set(0,0,0);scope.applyExamplePose(movement,progress);root.updateMatrixWorld(true);
+    for(const suffix of ['', 'L'])for(const [key,share] of [['gluteMax',.24],['gluteMed',.32],['gluteMin',.38]]){
+      const hip=rig['hip'+suffix].rotation;rig[key+suffix].rotation.set(hip.x*share,hip.y*share,hip.z*share);
+    }
+    root.updateMatrixWorld(true);
+    const delta=Object.fromEntries(Object.entries(rig).map(([key,node])=>[key,node.matrixWorld.clone().multiply(neutralInverse[key])]));
+    for(const record of records)if(record.follower){
+      const {position,rotation}=scope.blendMuscleDeltas(record.weights,delta);
+      record.follower.position.copy(position);record.follower.quaternion.copy(rotation);
+    }
+    root.updateMatrixWorld(true);
+    for(const record of records){
+      const moved=record.neutral.map((_,i)=>worldVertex(record.mesh,[0,Math.floor(record.mesh.geometry.attributes.position.count/2),record.mesh.geometry.attributes.position.count-1][i]));
+      if(record.edgeLength>.002)maxStretch=Math.max(maxStretch,Math.abs(moved[0].distanceTo(moved[1])/record.edgeLength-1));
+      const dominantNode=rig[record.dominant],neutralWorld=neutralInverse[record.dominant]?.clone().invert();
+      const dominantMoved=dominantNode&&neutralWorld&&dominantNode.matrixWorld.elements.some((value,i)=>Math.abs(value-neutralWorld.elements[i])>1e-4);
+      // En gestos con apoyo, las mallas intrínsecas del pie siguen al pie que se mantiene apoyado.
+      const plantedFoot=movement.grounded&&['ankle','ankleL'].includes(record.dominant);
+      if(!plantedFoot&&dominantMoved&&Math.max(...moved.map((point,i)=>point.distanceTo(record.neutral[i])))<.001)stuckMuscles.add(`${movement.id}/${record.info.name}`);
+    }
+    for(const link of links){
+      const a=point.copy(link.point).applyMatrix4(link.record.follower?link.record.follower.matrix:delta[link.dominant]).clone();
+      const b=point.copy(link.point).applyMatrix4(delta[link.anchor]);
+      const gap=a.distanceTo(b);if(gap>maxGap){maxGap=gap;maxGapMuscle=link.name}
+    }
+  }
+  compoundAudit.push({movimiento:movement.id,separación:movesFmt(maxGap),estructura:maxGapMuscle,estiramiento:maxStretch.toExponential(1)});
+}
+function movesFmt(value){return value.toFixed(3)+' m'}
+if(stuckMuscles.size)throw Error(`Músculos que no acompañan su segmento en ejercicios compuestos: ${[...stuckMuscles].slice(0,12).join(', ')}`);
+if(compoundAudit.some(item=>Number(item.estiramiento)>1e-4))throw Error('Se detectó deformación artificial en ejercicios compuestos');
+const worstCompoundGap=Math.max(...compoundAudit.map(item=>Number.parseFloat(item.separación)));
+if(worstCompoundGap>.45)throw Error(`Conexión muscular demasiado alejada en ejercicio compuesto: ${worstCompoundGap.toFixed(3)} m`);
+console.log(`Revisados ${extraMovements.length} movimientos compuestos en cinco fases: sin mallas inmóviles, estiramientos artificiales ni conexiones mayores de 45 cm.`);
+console.table(compoundAudit.sort((a,b)=>Number.parseFloat(b.separación)-Number.parseFloat(a.separación)).slice(0,10));
 console.log(`${records.length} mallas musculares y ${links.length} conexiones revisadas; error neutral ${neutralError.toExponential(2)} m`);
