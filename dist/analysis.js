@@ -1,3 +1,4 @@
+import {parseYouTubeLink,formatTimecode,parseTimecode} from './youtube-link.js';
 const $ = id => document.getElementById(id);
 const videoInput = $('video-file');
 const video = $('source-video');
@@ -220,3 +221,90 @@ chartJoint.addEventListener('change',renderChart);chartSide.addEventListener('ch
 video.addEventListener('loadedmetadata',layoutVideo);window.addEventListener('resize',()=>{layoutVideo();renderChart()});
 window.addEventListener('pagehide',()=>{worker?.postMessage({type:'close'});worker?.terminate();if(sourceUrl)URL.revokeObjectURL(sourceUrl)});
 updateAtlasLink();updateStartState();
+
+let youtubeVideo=null;
+let youtubePlayer=null;
+const youtubeNotes=[];
+let youtubeApiPromise=null;
+function loadYoutubeApi(){
+  if(window.YT?.Player)return Promise.resolve();
+  if(youtubeApiPromise)return youtubeApiPromise;
+  youtubeApiPromise=new Promise((resolve,reject)=>{
+    const timeout=setTimeout(()=>reject(new Error('No se pudo conectar con el reproductor. Escribe el tiempo manualmente.')),8000);
+    const previous=window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady=()=>{clearTimeout(timeout);previous?.();resolve()};
+    const script=document.createElement('script');
+    script.src='https://www.youtube.com/iframe_api';
+    script.async=true;
+    script.onerror=()=>{clearTimeout(timeout);reject(new Error('No se cargó la API de YouTube. Escribe el tiempo manualmente.'))};
+    document.head.append(script);
+  });
+  return youtubeApiPromise;
+}
+function youtubeStatus(message,error=false){$('youtube-status').textContent=message;$('youtube-status').classList.toggle('error',error)}
+$('youtube-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  const parsed=parseYouTubeLink($('youtube-url').value);
+  if(!parsed){youtubeStatus('Introduce un enlace válido de un vídeo de YouTube.',true);return}
+  youtubePlayer?.destroy?.();youtubePlayer=null;
+  youtubeVideo=parsed;youtubeNotes.length=0;renderYoutubeNotes();
+  const iframe=document.createElement('iframe');
+  iframe.id='youtube-iframe';iframe.title='Vídeo de YouTube para observación del movimiento';
+  iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+  iframe.allowFullscreen=true;iframe.loading='lazy';iframe.referrerPolicy='strict-origin-when-cross-origin';
+  const src=new URL(`https://www.youtube-nocookie.com/embed/${parsed.id}`);
+  src.searchParams.set('start',String(parsed.start));src.searchParams.set('enablejsapi','1');src.searchParams.set('playsinline','1');
+  if(/^https?:$/.test(location.protocol))src.searchParams.set('origin',location.origin);
+  iframe.src=src.toString();
+  $('youtube-player-wrap').replaceChildren(iframe);
+  $('youtube-open').href=parsed.url;
+  $('youtube-time').value=formatTimecode(parsed.start);
+  $('youtube-workspace').hidden=false;
+  youtubeStatus('Vídeo cargado para observación. Si no permite incrustación, ábrelo en YouTube y registra el momento manualmente.');
+});
+$('youtube-capture').addEventListener('click',async()=>{
+  if(!youtubeVideo)return;
+  try{
+    await loadYoutubeApi();
+    if(!youtubePlayer){
+      youtubePlayer=await new Promise((resolve,reject)=>{
+        const timeout=setTimeout(()=>reject(new Error('El reproductor no respondió. Escribe el tiempo manualmente.')),8000);
+        new window.YT.Player('youtube-iframe',{events:{onReady:event=>{clearTimeout(timeout);resolve(event.target)},onError:()=>{clearTimeout(timeout);reject(new Error('El vídeo no permite leer el tiempo.'))}}});
+      });
+    }
+    const time=youtubePlayer.getCurrentTime();
+    if(!Number.isFinite(time))throw new Error('No se pudo leer el tiempo.');
+    $('youtube-time').value=formatTimecode(time);
+    youtubeStatus(`Momento capturado: ${$('youtube-time').value}.`);
+  }catch(error){youtubeStatus(error.message,true)}
+});
+function renderYoutubeNotes(){
+  const list=$('youtube-observations');list.replaceChildren();
+  if(!youtubeNotes.length){const item=document.createElement('li');item.textContent='Aún no hay observaciones.';list.append(item)}
+  for(const note of youtubeNotes){
+    const item=document.createElement('li');
+    const link=document.createElement('a');link.href=`${youtubeVideo.url}&t=${note.seconds}s`;link.target='_blank';link.rel='noopener noreferrer';link.textContent=formatTimecode(note.seconds);
+    const heading=document.createElement('strong');heading.textContent=` · ${note.phase} · ${note.joint} · ${note.side}`;
+    const detail=document.createElement('p');detail.textContent=note.observation;
+    item.append(link,heading,detail);list.append(item);
+  }
+  $('youtube-download-notes').disabled=youtubeNotes.length===0;
+}
+$('youtube-add-note').addEventListener('click',()=>{
+  if(!youtubeVideo){youtubeStatus('Abre un enlace de YouTube antes de registrar una observación.',true);return}
+  const seconds=parseTimecode($('youtube-time').value);
+  const observation=$('youtube-observation').value.trim();
+  if(seconds===null){youtubeStatus('Escribe el momento como mm:ss, por ejemplo 01:24.',true);return}
+  if(!observation){youtubeStatus('Describe lo que ocurre en esa fase antes de añadirla.',true);return}
+  youtubeNotes.push({seconds,phase:$('youtube-phase').value,joint:jointSelect.options[jointSelect.selectedIndex].text,side:sideSelect.options[sideSelect.selectedIndex].text,observation});
+  youtubeNotes.sort((a,b)=>a.seconds-b.seconds);
+  $('youtube-observation').value='';renderYoutubeNotes();
+  youtubeStatus(`Observación añadida en ${formatTimecode(seconds)}. Las notas permanecen en esta sesión hasta que descargues el CSV.`);
+});
+$('youtube-download-notes').addEventListener('click',()=>{
+  if(!youtubeNotes.length||!youtubeVideo)return;
+  const cell=value=>`"${String(value).replaceAll('"','""')}"`;
+  const lines=['video,tiempo_s,fase,articulacion,lado,observacion',...youtubeNotes.map(note=>[youtubeVideo.url,note.seconds,note.phase,note.joint,note.side,note.observation].map(cell).join(','))];
+  const url=URL.createObjectURL(new Blob(['\ufeff'+lines.join('\n')],{type:'text/csv;charset=utf-8'}));
+  const anchor=document.createElement('a');anchor.href=url;anchor.download='atlas-observaciones-youtube.csv';anchor.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+});

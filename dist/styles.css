@@ -121,7 +121,7 @@ h3{font-size:clamp(1.25rem,2vw,1.75rem);line-height:1.3}
 @media(max-width:760px){.intro h1{font-size:clamp(2.5rem,9vw,4rem)}.section-heading h2{font-size:clamp(2rem,7vw,3.25rem)}.panel-intro,.detail-summary,.anatomy-card p,.structure-detail p,.verification-card p,.format-grid p,.learning-context p,.scope-note{font-size:.9375rem}.movement-name,.layer,.structure-tabs button{font-size:.875rem}}
 
 /* Visor ajustable y persistente durante la lectura. */
-.explorer .stage{position:sticky;top:12px;align-self:start;height:clamp(520px,var(--viewer-height,88dvh),1300px);min-height:0}
+.explorer .stage{position:sticky;top:84px;align-self:start;height:clamp(420px,min(var(--viewer-height,88dvh),calc(100dvh - 96px)),1300px);min-height:0}
 .viewer-layout-control{position:absolute;z-index:8;top:53px;left:16px;width:min(250px,calc(100% - 32px));padding:10px 12px;border:1px solid #769a89;border-radius:9px;background:#173b35e8;color:#f0f7ed;box-shadow:0 8px 24px #071b1740;backdrop-filter:blur(8px)}
 .viewer-control-row{display:flex;align-items:center;gap:8px;min-height:22px;font-size:11px;font-weight:800}
 .viewer-control-row label{flex:1}.viewer-control-row output{min-width:38px;text-align:right;color:#ffe0a1}
@@ -523,9 +523,11 @@ html[data-theme="dark"] .term-reading-key,html[data-theme="dark"] .term-reading-
 /* Vistas dedicadas: el iframe mantiene el motor del atlas, pero deja visible solo el área solicitada. */
 html[data-atlas-view] main>.intro,html[data-atlas-view] main>.learning-path,html[data-atlas-view] main>.section-access,html[data-atlas-view] main>.study-route,html[data-atlas-view] main>.term-reading-key{display:none!important}
 html[data-atlas-view] main>section{display:none!important}
-html[data-atlas-view="explorar"] main>#explorar,html[data-atlas-view="explorar"] main>#guided-timeline,html[data-atlas-view="explorar"] main>.joint-map{display:block!important}
+html[data-atlas-view="explorar"] main>#guided-timeline,html[data-atlas-view="explorar"] main>.joint-map{display:block!important}
 html[data-atlas-view="estructuras"] main>#estructuras,html[data-atlas-view="practicar"] main>#cuestionarios,html[data-atlas-view="fuentes"] main>#fuentes{display:block!important}
-html[data-atlas-view="aprender"] main>#ruta-aprendizaje,html[data-atlas-view="animaciones"] main>#explorar,html[data-atlas-view="animaciones"] main>#guided-timeline,html[data-atlas-view="articulaciones"] main>#explorar,html[data-atlas-view="articulaciones"] main>.joint-map,html[data-atlas-view="verificacion"] main>#verificacion,html[data-atlas-view="formatos"] main>#formatos{display:block!important}
+html[data-atlas-view="aprender"] main>#ruta-aprendizaje,html[data-atlas-view="animaciones"] main>#guided-timeline,html[data-atlas-view="articulaciones"] main>.joint-map,html[data-atlas-view="verificacion"] main>#verificacion,html[data-atlas-view="formatos"] main>#formatos{display:block!important}
+@media(min-width:761px){html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:grid!important}}
+@media(max-width:760px){html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:flex!important}}
 html[data-atlas-view] main{min-height:100vh;padding-bottom:20px}
 html[data-atlas-view="aprender"] main>.term-reading-key{display:block!important}
 html[data-atlas-view="estructuras"] main>.term-reading-key{display:block!important}
@@ -534,3 +536,23 @@ html[data-atlas-view="inicio"] main>.section-access{display:grid!important}
 html[data-atlas-view]:not([data-atlas-view="explorar"]):not([data-atlas-view="animaciones"]):not([data-atlas-view="articulaciones"]) #mobile-viewer-open{display:none!important}
 nav.primary-tabs{overflow-x:auto;scrollbar-width:thin;max-width:calc(100vw - 330px)}
 @media(max-width:760px){nav.primary-tabs{max-width:none}}
+
+/* Referencias visuales originales, separadas de los controles del modelo. */
+.study-visual{display:flex;align-items:center;gap:clamp(18px,3vw,38px);margin:18px 0 24px;padding:15px;border:1px solid #cbdccc;border-radius:12px;background:#edf3e9;color:#28483c}
+.study-visual img{display:block;width:clamp(210px,31%,310px);height:auto;flex:0 0 auto;border-radius:9px}
+.study-visual figcaption{display:grid;gap:7px;min-width:0;font-size:clamp(14px,1.05vw,17px);line-height:1.55}
+.study-visual figcaption strong{font:800 clamp(18px,1.45vw,23px)/1.3 Manrope,sans-serif;color:#25493a}
+.study-visual figcaption a{color:#8c4938;font-weight:800;text-underline-offset:3px}
+.animation-reference{display:none}
+html[data-atlas-view="animaciones"] .animation-reference{display:flex}
+html[data-theme="dark"] .study-visual{background:#20382e;border-color:#4d6a56;color:#d5e7d6}
+html[data-theme="dark"] .study-visual figcaption strong{color:#eef5e9}
+html[data-theme="dark"] .study-visual figcaption a{color:#f1b79f}
+@media(max-width:760px){.study-visual{flex-direction:column;align-items:stretch;padding:12px}.study-visual img{width:min(100%,360px);margin-inline:auto}.study-visual figcaption{font-size:15px}}
+
+/* El visor flotante conserva espacio para leer cuando se abandona la cuadrícula principal. */
+@media(min-width:761px){
+  .explorer .stage.is-docked{height:min(52dvh,calc(var(--viewer-dock-width,325px) * 1.3));min-height:250px}
+  html.viewer-docked:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#guided-timeline,
+  html.viewer-docked:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>.joint-map{padding-right:calc(var(--viewer-dock-width,325px) + 28px)}
+}

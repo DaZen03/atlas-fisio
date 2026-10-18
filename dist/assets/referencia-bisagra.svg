@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="t d">
+<title id="t">Bisagra de cadera</title><desc id="d">Dos posiciones esquemáticas de la bisagra de cadera: tronco erguido y tronco inclinado con la cadera como eje.</desc>
+<rect width="360" height="240" rx="18" fill="#e8f0e8"/>
+<text x="20" y="31" fill="#234739" font-family="Arial,sans-serif" font-size="17" font-weight="700">BISAGRA DE CADERA</text>
+<circle cx="104" cy="65" r="14" fill="#c9d8c9" stroke="#315b4f" stroke-width="3"/>
+<path d="M104 81 L104 139 M104 139 L91 197 M104 139 L119 197" fill="none" stroke="#315b4f" stroke-width="13" stroke-linecap="round"/>
+<circle cx="104" cy="139" r="8" fill="#eec06e"/>
+<circle cx="252" cy="98" r="14" fill="#c9d8c9" stroke="#315b4f" stroke-width="3"/>
+<path d="M239 103 L191 141 M191 141 L180 198 M191 141 L207 198" fill="none" stroke="#315b4f" stroke-width="13" stroke-linecap="round"/>
+<circle cx="191" cy="141" r="8" fill="#eec06e"/>
+<path d="M130 111 C153 92 173 91 199 104" fill="none" stroke="#bf755a" stroke-width="4" stroke-linecap="round"/>
+<path d="M200 104 L189 97 L190 113" fill="#bf755a"/>
+<text x="62" y="222" fill="#365e4c" font-family="Arial,sans-serif" font-size="14" font-weight="700">Inicio</text>
+<text x="209" y="222" fill="#365e4c" font-family="Arial,sans-serif" font-size="14" font-weight="700">Inclinación</text>
+<text x="208" y="167" fill="#8e4f3e" font-family="Arial,sans-serif" font-size="13" font-weight="700">Cadera</text>
+</svg>

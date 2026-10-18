@@ -8,7 +8,7 @@ const root = fs.mkdtempSync(path.join(os.tmpdir(), 'atlas-pages-version-'));
 try {
   const guides = path.join(root, 'guias');
   fs.mkdirSync(guides);
-  fs.writeFileSync(path.join(root, 'index.html'), '<link rel="stylesheet" href="./styles.css"><script src="./app.bundle.js"></script>');
+  fs.writeFileSync(path.join(root, 'index.html'), '<link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./site-menu.css"><script src="./app.bundle.js"></script>');
   fs.writeFileSync(path.join(guides, 'aprendizaje.html'), '<link rel="stylesheet" href="../guide-pages.css">');
   const result = spawnSync(process.execPath, [path.join(__dirname, 'version-assets.cjs'), 'abcdef0123'], {
     encoding: 'utf8',
@@ -16,6 +16,7 @@ try {
   });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   assert.match(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), /\.\/styles\.css\?v=abcdef0123/);
+  assert.match(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), /\.\/site-menu\.css\?v=abcdef0123/);
   assert.match(fs.readFileSync(path.join(root, 'index.html'), 'utf8'), /\.\/app\.bundle\.js\?v=abcdef0123/);
   assert.match(fs.readFileSync(path.join(guides, 'aprendizaje.html'), 'utf8'), /\.\.\/guide-pages\.css\?v=abcdef0123/);
   console.log('Versionado de la portada y las guías validado.');

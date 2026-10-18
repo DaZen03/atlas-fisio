@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { renderSiteMenu } = require('./site-menu.cjs');
 
 const outDir = path.join(__dirname, '..', 'dist', 'guias');
 fs.mkdirSync(outDir, { recursive: true });
@@ -64,11 +65,12 @@ const pages = [
     sections: [
       { title: 'Momento de fuerza', text: 'El momento externo se estima con τ = F × d⊥: fuerza por distancia perpendicular entre la línea de acción y el eje. Si cambia el ángulo, puede cambiar esa distancia aunque el peso sea el mismo.', points: ['Localiza el eje articular.', 'Dibuja la dirección de la carga externa.', 'Mide conceptualmente la distancia perpendicular.', 'Compara posiciones sin afirmar que el visor mide fuerza real.'] },
       { title: 'Brazos interno y externo', text: 'El brazo externo describe la geometría de la resistencia respecto al eje. El brazo interno describe la geometría de la fuerza muscular. No son intercambiables y el atlas no mide brazos internos individuales desde las mallas.', points: ['En un curl, la carga en la mano cambia su distancia al codo.', 'La línea de tracción muscular también cambia con la postura.', 'La demanda articular neta depende de fuerzas, aceleración y co-contracción, entre otros factores.'] },
-      { title: 'Máquinas y ejercicios', text: 'Poleas, levas y palancas alteran cómo la máquina transmite resistencia a lo largo del recorrido. Su efecto depende del diseño, ajustes, trayectoria y posición de la persona.', points: ['Compara el punto de aplicación de la fuerza.', 'Observa si la resistencia cambia con el ángulo.', 'Separa la ventaja mecánica del aparato del momento en una articulación.', 'Para entrenamiento, carga, técnica, fatiga y experiencia determinan el esfuerzo real.'] }
+      { title: 'Máquinas y ejercicios', text: 'Poleas, levas y palancas alteran cómo la máquina transmite resistencia a lo largo del recorrido. Su efecto depende del diseño, ajustes, trayectoria y posición de la persona.', points: ['Compara el punto de aplicación de la fuerza.', 'Observa si la resistencia cambia con el ángulo.', 'Separa la ventaja mecánica del aparato del momento en una articulación.', 'Para entrenamiento, carga, técnica, fatiga y experiencia determinan el esfuerzo real.'] },
+      { title: 'De la mecánica a la fisiología', text: 'Una carga externa crea una demanda mecánica. El sistema nervioso puede modificar el reclutamiento de unidades motoras y la frecuencia de activación para producir tensión; el resultado también depende de la tarea y del estado del músculo. El resaltado 3D no mide ninguno de estos procesos.', points: ['Unidad motora: neurona motora y fibras que inerva.', 'Mayor momento externo no identifica por sí solo cuánta tensión genera cada músculo.', 'Distingue la malla muscular macroscópica de las fibras y sarcómeros microscópicos.'] }
     ],
     prompt: 'Una carga vertical está en la mano con el codo extendido y luego con el codo flexionado. ¿Qué variable geométrica explica que el momento externo sobre el codo pueda cambiar?',
     answer: 'Cambia la distancia perpendicular entre el eje del codo y la línea de acción de la carga. El momento depende también de la magnitud y dirección de la fuerza; el ejemplo no estima el brazo interno del bíceps.',
-    cta: ['../index.html#biomecanica', 'Aplicar casos biomecánicos'], sources: ['openstax','momentarm','machines']
+    cta: ['../index.html#biomecanica', 'Aplicar casos biomecánicos'], sources: ['openstax','momentarm','machines','physiology']
   },
   {
     id: 'cuestionarios', nav: 'Cuestionarios', eyebrow: '06 · PRÁCTICA Y REPASO', title: 'Recupera la idea, recibe explicación, vuelve a intentarlo',
@@ -128,6 +130,7 @@ const references = {
   worldphysio: ['World Physiotherapy · marco educativo del fisioterapeuta', 'https://www.world.physio/what-we-do/education/physiotherapist-education-framework'],
   who: ['OMS · Marco de Competencias para la Rehabilitación', 'https://www.who.int/es/publications/b/54312'],
   openstax: ['OpenStax · Anatomía y Fisiología', 'https://openstax.org/books/anatomy-and-physiology-2e/pages/1-introduction'],
+  physiology: ['OpenStax · unidades motoras y control de la tensión', 'https://openstax.org/books/anatomy-and-physiology-2e/pages/10-4-nervous-system-control-of-muscle-tension'],
   apta: ['APTA · resultados esenciales de competencia para entrada a la práctica', 'https://www.apta.org/apta-and-you/news-publications/reports/2025/therapy-essential-outcomes-physical-therapist-entrance-into-practice'],
   ebp: ['APTA · recursos de práctica basada en evidencia para educadores', 'https://www.apta.org/for-educators/curriculum-resources/ebp-research'],
   reasoning: ['Revisión sistemática · razonamiento clínico en estudiantes de fisioterapia', 'https://doi.org/10.1093/ptj/pzae182'],
@@ -143,10 +146,8 @@ const references = {
 const escapeHtml = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 for (const current of pages) {
   const activePrimary = current.id === 'aprendizaje' || current.id === 'movimientos' ? 'learn' : ['modelo-3d','estructuras'].includes(current.id) ? 'atlas' : current.id === 'biomecanica' ? 'biomechanics' : current.id === 'cuestionarios' ? 'practice' : ['verificacion','fuentes','fidelidad'].includes(current.id) ? 'sources' : '';
-  const primaryNav = [
-    ['learn','Aprender','../vistas/aprender.html'],['atlas','Atlas 3D','../vistas/explorar.html'],['animations','Animaciones','../vistas/animaciones.html'],['joints','Articulaciones','../vistas/articulaciones.html'],['analyze','Analizar','../analisis.html'],['biomechanics','Biomecánica','../biomecanica/index.html'],['structures','Estructuras','../vistas/estructuras.html'],['practice','Practicar','../vistas/practicar.html'],['verification','Verificación','../vistas/verificacion.html'],['formats','Formatos','../vistas/formatos.html'],['sources','Fuentes','../vistas/fuentes.html']
-  ];
-  const nav = primaryNav.map(([key,label,href]) => `<a href="${href}"${key === activePrimary ? ' aria-current="page"' : ''}>${label}</a>`).join('');
+  const activeMenu = {learn:'aprender',atlas:'explorar',biomechanics:'biomecanica',practice:'practicar',sources:'fuentes'}[activePrimary] || '';
+  const nav = renderSiteMenu('../', activeMenu);
   const sections = current.sections.map((s, i) => `<section class="guide-section" id="tema-${i+1}"><span class="guide-index">TEMA ${String(i+1).padStart(2,'0')}</span><h2>${escapeHtml(s.title)}</h2><p>${escapeHtml(s.text)}</p><ul>${s.points.map(point => `<li>${escapeHtml(point)}</li>`).join('')}</ul></section>`).join('');
   const sources = [...new Set(current.sources)].map(key => { const [label,url] = references[key]; return `<li><a href="${url}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)} ↗</a></li>`; }).join('');
   const prev = pages[(pages.indexOf(current) + pages.length - 1) % pages.length];
@@ -156,11 +157,11 @@ for (const current of pages) {
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#102324">
   <meta name="description" content="Guía educativa de ${escapeHtml(current.nav.toLowerCase())} para estudiar anatomía funcional y fisioterapia con el atlas del movimiento humano.">
-  <title>${escapeHtml(current.nav)} · Atlas del movimiento humano</title><link rel="stylesheet" href="../guide-pages.css">
+  <title>${escapeHtml(current.nav)} · Atlas del movimiento humano</title><link rel="stylesheet" href="../guide-pages.css"><link rel="stylesheet" href="../site-menu.css">
 </head>
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
-  <header class="guide-header"><a class="guide-brand" href="../index.html"><span>✳</span> ATLAS/MOVIMIENTO</a><nav aria-label="Secciones principales">${nav}</nav><button class="theme-toggle" type="button" aria-pressed="false">☾ <span>Modo oscuro</span></button></header>
+  <header class="guide-header"><a class="guide-brand" href="../index.html"><span>✳</span> ATLAS/MOVIMIENTO</a>${nav}<button class="theme-toggle" type="button" aria-pressed="false">☾ <span>Modo oscuro</span></button></header>
   <main id="contenido">
     <p class="breadcrumb"><a href="../index.html">Inicio</a> / Guías / ${escapeHtml(current.nav)}</p>
     <section class="guide-hero"><div class="eyebrow">${escapeHtml(current.eyebrow)} · GUÍA DE ESTUDIO</div><h1>${escapeHtml(current.title)}</h1><p class="lead">${escapeHtml(current.intro)}</p><div class="outcomes"><h2>Al finalizar esta guía podrás</h2><ul>${current.outcomes.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div></section>
@@ -172,6 +173,14 @@ for (const current of pages) {
   <footer class="guide-footer"><a href="../index.html">Volver al atlas completo</a><span>Uso académico · Atlas del movimiento humano</span></footer>
   <script>const toggle=document.querySelector('.theme-toggle');const root=document.documentElement;try{if(localStorage.getItem('atlas-theme')==='dark')root.dataset.theme='dark'}catch{}function sync(){const dark=root.dataset.theme==='dark';toggle.setAttribute('aria-pressed',String(dark));toggle.innerHTML=dark?'☀ <span>Modo claro</span>':'☾ <span>Modo oscuro</span>'}sync();toggle.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';try{localStorage.setItem('atlas-theme',root.dataset.theme)}catch{}sync()});</script>
 </body></html>`;
-  fs.writeFileSync(path.join(outDir, `${current.id}.html`), html);
+  const sectionRoutes={
+    'ruta-aprendizaje':'../vistas/aprender.html',explorar:'../vistas/explorar.html',
+    biomecanica:'../biomecanica/index.html',cuestionarios:'../vistas/practicar.html',
+    estructuras:'../vistas/estructuras.html',verificacion:'../vistas/verificacion.html',
+    formatos:'../vistas/formatos.html',fuentes:'../vistas/fuentes.html'
+  };
+  let routedHtml=html;
+  for(const [anchor,route] of Object.entries(sectionRoutes))routedHtml=routedHtml.replaceAll(`../index.html#${anchor}`,route);
+  fs.writeFileSync(path.join(outDir, `${current.id}.html`), routedHtml);
 }
 console.log(`Generadas ${pages.length} guías en ${outDir}`);

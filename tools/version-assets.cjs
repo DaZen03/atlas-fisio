@@ -18,7 +18,7 @@ function versionReference(html, ref) {
 
 const indexPath = path.join(distDir, 'index.html');
 let indexHtml = fs.readFileSync(indexPath, 'utf8');
-for (const asset of ['styles.css', 'app.bundle.js']) indexHtml = versionReference(indexHtml, `./${asset}`);
+for (const asset of ['styles.css', 'site-menu.css', 'app.bundle.js']) indexHtml = versionReference(indexHtml, `./${asset}`);
 fs.writeFileSync(indexPath, indexHtml);
 
 const guidesDir = path.join(distDir, 'guias');
@@ -28,7 +28,7 @@ function visitHtml(directory) {
     if (entry.isDirectory()) visitHtml(target);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
       let html = fs.readFileSync(target, 'utf8');
-      for (const asset of ['guide-pages.css','analysis.css','analysis.js','biomechanics-pages.css','styles.css','app.bundle.js']) {
+      for (const asset of ['guide-pages.css','analysis.css','analysis.js','biomechanics-pages.css','biomechanics-study.js','site-menu.css','styles.css','app.bundle.js']) {
         const relative = path.relative(path.dirname(target), path.join(distDir, asset)).split(path.sep).join('/');
         const reference = `${relative.startsWith('.') ? '' : './'}${relative}`;
         if (html.includes(reference)) html = versionReference(html, reference);
@@ -42,6 +42,7 @@ const analysisJsPath = path.join(distDir, 'analysis.js');
 if (fs.existsSync(analysisJsPath)) {
   let analysisJs = fs.readFileSync(analysisJsPath, 'utf8');
   analysisJs = versionReference(analysisJs, './pose-worker.js');
+  if (analysisJs.includes('./youtube-link.js')) analysisJs = versionReference(analysisJs, './youtube-link.js');
   fs.writeFileSync(analysisJsPath, analysisJs);
 }
 console.log(`Archivos estáticos versionados con ${version}`);

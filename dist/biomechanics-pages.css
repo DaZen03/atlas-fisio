@@ -3,3 +3,30 @@
 @media(max-width:760px){.study-header{display:block;padding:9px 0 0}.study-brand{display:block;margin:0 4% 7px}.study-header nav{gap:0;padding:0 3%;background:#e5e9e0}.study-header nav a{flex:0 0 auto;padding:11px 12px 9px}.study-main{padding-top:14px}.study-hero{padding:25px 21px}.study-hero>p{font-size:16px}.case-grid{grid-template-columns:1fr}.case-card{min-height:0;padding:19px}.case-section,.explanation-section{grid-template-columns:1fr;gap:14px}.viewer-frame{min-height:500px}.viewer-frame iframe{height:72vh;min-height:500px}.study-footer{padding-inline:4%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html[data-theme=dark]{color-scheme:dark;background:#111a17;color:#e5eee4}html[data-theme=dark] body{background:#111a17;color:#e5eee4}html[data-theme=dark] .study-header{background:#17231fee;border-color:#3b5146}html[data-theme=dark] .study-brand,html[data-theme=dark] .study-header nav a,html[data-theme=dark] .study-hero h1,html[data-theme=dark] .case-card h2,html[data-theme=dark] .case-section h2{color:#e4eee4}html[data-theme=dark] .study-header nav a[aria-current=page]{border-color:#d2b971}html[data-theme=dark] .study-hero{background:linear-gradient(125deg,#24382f,#192821 72%);border-color:#40594a}html[data-theme=dark] .study-hero h1 em{color:#9cc3a5}html[data-theme=dark] .study-hero>p,html[data-theme=dark] .case-section p,html[data-theme=dark] .case-card p{color:#bdcec1}html[data-theme=dark] .case-card,html[data-theme=dark] .case-section{background:#1c2924;border-color:#3b5146}html[data-theme=dark] .case-card strong,html[data-theme=dark] .crumb a,html[data-theme=dark] .study-footer a{color:#a8cbb1}html[data-theme=dark] .case-card:hover{background:#2c3928;border-color:#c5a95f}html[data-theme=dark] .case-tabs a,html[data-theme=dark] .question-box,html[data-theme=dark] .practice-section details,html[data-theme=dark] .next-links a,html[data-theme=dark] .text-link{background:#22342c;border-color:#4e6b57;color:#d9e9dc}html[data-theme=dark] .explanation-section{background:#22352d}html[data-theme=dark] .study-note{background:#302c1f;color:#e9e2cd}html[data-theme=dark] .study-note p{color:#d4ceb9}html[data-theme=dark] .viewer-frame{border-color:#52675a}
+
+.geometry-section{grid-template-columns:minmax(0,1.2fr) minmax(300px,.8fr);align-items:start;background:#f3f6ed}
+.geometry-copy>p{max-width:650px}
+.geometry-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:18px 0}
+.geometry-controls label{display:grid;gap:4px;color:#315747;font-size:13px;font-weight:800}
+.geometry-controls output{font-weight:700;color:#9b533e}
+.geometry-controls input,.geometry-controls select{width:100%;min-width:0;accent-color:#b9764f}
+.geometry-controls select{min-height:42px;border:1px solid #afc5b1;border-radius:5px;padding:7px 9px;background:#fff;color:#284a3d;font:700 14px 'DM Sans',sans-serif}
+.geometry-formula{font-weight:800;color:#25493b!important}
+.geometry-result{display:flex;flex-wrap:wrap;gap:8px 20px;margin:8px 0 12px;padding:12px;border-radius:6px;background:#dce9db;color:#244b3b}
+.geometry-result strong{font:800 18px Manrope,sans-serif}
+.geometry-limits{font-size:13px;line-height:1.5}
+.geometry-copy>a{color:#315b4f;font-size:13px;font-weight:800;text-underline-offset:3px}
+.geometry-diagram{display:block;width:100%;height:auto;border:1px solid #b8cdb7;border-radius:9px;background:#e8f0e7;color:#284a3c;font:700 15px 'DM Sans',sans-serif}
+.geometry-segment{stroke:#315b4f;stroke-width:15;stroke-linecap:round}.geometry-trajectory{fill:none;stroke:#b9764f;stroke-width:3;stroke-dasharray:7 6}.geometry-distance{stroke:#a65742;stroke-width:4;stroke-dasharray:5 4}.geometry-gravity{stroke:#bd6650;stroke-width:3;stroke-dasharray:4 4}.geometry-axis{fill:#eec06e;stroke:#315b4f;stroke-width:3}.geometry-load{fill:#bd6650}.geometry-note{fill:#597266;font-size:12px}
+html[data-theme=dark] .geometry-section{background:#22382d}
+html[data-theme=dark] .geometry-result{background:#2b4b36;color:#e9f3e8}
+html[data-theme=dark] .geometry-controls label,html[data-theme=dark] .geometry-formula,html[data-theme=dark] .geometry-copy>a{color:#d4e8d4!important}
+html[data-theme=dark] .geometry-controls select{background:#17271f;color:#edf3e9;border-color:#5d7b61}
+@media(max-width:760px){.geometry-section{grid-template-columns:1fr}.geometry-controls{grid-template-columns:1fr}.geometry-diagram{max-width:520px;margin:auto}}
+
+.physiology-bridge,.case-provenance{margin:18px 0;font-size:15px;line-height:1.65}
+.physiology-bridge p,.case-provenance p{margin:7px 0 0}
+.physiology-bridge a,.case-provenance a{color:#315b4f;font-weight:800;text-underline-offset:3px}
+html[data-theme=dark] .physiology-bridge a,html[data-theme=dark] .case-provenance a{color:#e4d295}
+.study-header nav{min-width:0;flex:1;justify-content:flex-end}
+@media(max-width:760px){.study-header nav{width:100%;justify-content:flex-start}}

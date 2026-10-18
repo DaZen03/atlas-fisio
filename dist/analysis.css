@@ -3,3 +3,27 @@
 @media(max-width:760px){.analysis-header{display:block;padding:9px 0 0}.brand{display:block;margin:0 4% 7px}.main-tabs{gap:0;padding:0 3%;background:#e5e9e0}.main-tabs a{flex:0 0 auto;padding:11px 12px 9px;font-size:13px}.analysis-main{padding-top:14px}.hero{padding:25px 21px}.hero>p{font-size:16px}.setup-panel,.atlas-panel{grid-template-columns:1fr;gap:16px}.analysis-panel{margin:12px 0}.results-toolbar .secondary-button{margin-left:0}.video-stage{min-height:190px}.angle-summary{display:grid}.chart-wrap{min-height:245px;padding:7px}.chart-wrap canvas{height:240px}.empty-state{font-size:13px}.analysis-footer{padding:0 3%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 html[data-theme=dark]{color-scheme:dark;--bg:#111a17;--paper:#1c2924;--ink:#e7f0e7;--muted:#b6cabc;--line:#3b5146;background:var(--bg);color:#e5eee4}html[data-theme=dark] body{background:var(--bg);color:#e5eee4}html[data-theme=dark] .analysis-header{background:#17231fee;border-color:var(--line)}html[data-theme=dark] .brand,html[data-theme=dark] .main-tabs a,html[data-theme=dark] .analysis-panel h2,html[data-theme=dark] .hero h1{color:#e4eee4}html[data-theme=dark] .main-tabs a[aria-current=page]{border-color:#d2b971}html[data-theme=dark] .hero{background:linear-gradient(130deg,#24382f,#192821 72%);border-color:#40594a}html[data-theme=dark] .hero h1 em{color:#9cc3a5}html[data-theme=dark] .hero>p,html[data-theme=dark] .analysis-panel p{color:#bdcec1}html[data-theme=dark] .hero .scope-warning,html[data-theme=dark] .consent-box{background:#302c1f;border-color:#76643a;color:#e9e2cd}html[data-theme=dark] .step-tabs a,html[data-theme=dark] .file-picker,html[data-theme=dark] .chart-wrap,html[data-theme=dark] .atlas-shortcuts a{background:#22342c;border-color:#4e6b57;color:#d9e9dc}html[data-theme=dark] .setup-controls select,html[data-theme=dark] .results-toolbar select{background:#17251f;color:#edf4ea;border-color:#557262}html[data-theme=dark] .analysis-panel{background:var(--paper);border-color:var(--line)}html[data-theme=dark] .atlas-panel{background:#22352d}html[data-theme=dark] .primary-button{background:#416c55;border-color:#689477}html[data-theme=dark] .secondary-button{color:#d5e7d7;border-color:#638172}html[data-theme=dark] .analysis-footer a,html[data-theme=dark] .analysis-footer{color:#aac5b0}html[data-theme=dark] .method-details summary,html[data-theme=dark] .crumb a{color:#a8cbb1}
+
+.youtube-panel{display:grid;gap:18px}
+.youtube-form{display:grid;gap:8px}
+.youtube-form>label,.youtube-fields label{font-size:13px;font-weight:800;color:#345b4b}
+.youtube-input-row,.youtube-time-row{display:flex;gap:8px;align-items:center}
+.youtube-input-row input,.youtube-time-row input,.youtube-fields select,.youtube-fields textarea{min-width:0;min-height:44px;padding:9px 11px;border:1px solid #b7cbbb;border-radius:5px;background:#fff;color:#213e32;font:600 15px/1.4 'DM Sans',sans-serif}
+.youtube-input-row input{flex:1}.youtube-time-row input{width:100px}.youtube-fields textarea{width:100%;resize:vertical}
+.youtube-workspace{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.85fr);gap:15px;align-items:start}
+.youtube-workspace[hidden]{display:none}
+.youtube-player-wrap{aspect-ratio:16/9;min-width:0;border-radius:8px;overflow:hidden;background:#152822}
+.youtube-player-wrap iframe{display:block;width:100%;height:100%;border:0}
+.youtube-study,.youtube-notes{padding:15px;border:1px solid #d4e0d3;border-radius:8px;background:#f4f7f1}
+.youtube-study h3,.youtube-notes h3{margin:7px 0;font:800 19px/1.3 Manrope,sans-serif;color:#25493a}
+.youtube-study>p{font-size:14px}.youtube-study>a,.youtube-notes a{color:#315b4f;font-weight:800;text-underline-offset:2px}
+.youtube-fields{display:grid;gap:7px}.youtube-fields .primary-button{justify-self:start;margin-top:4px}
+.youtube-notes{grid-column:1/-1}.youtube-notes ol{margin:10px 0 15px;padding-left:25px}.youtube-notes li{padding:8px 0;border-bottom:1px solid #dce6da;line-height:1.5}.youtube-notes li p{margin:4px 0 0;overflow-wrap:anywhere}
+.youtube-panel .status.error{color:#a23d36;font-weight:800}
+html[data-theme=dark] .youtube-study,html[data-theme=dark] .youtube-notes{background:#22382d;border-color:#4e6854}
+html[data-theme=dark] .youtube-study h3,html[data-theme=dark] .youtube-notes h3,html[data-theme=dark] .youtube-form>label,html[data-theme=dark] .youtube-fields label{color:#e4efe3}
+html[data-theme=dark] .youtube-input-row input,html[data-theme=dark] .youtube-time-row input,html[data-theme=dark] .youtube-fields select,html[data-theme=dark] .youtube-fields textarea{background:#15251e;border-color:#607967;color:#f0f5ec}
+html[data-theme=dark] .youtube-study>a,html[data-theme=dark] .youtube-notes a{color:#cde6ce}
+html[data-theme=dark] .youtube-panel .status.error{color:#ffb3a8}
+@media(max-width:900px){.youtube-workspace{grid-template-columns:1fr}.youtube-notes{grid-column:auto}}
+@media(max-width:600px){.youtube-input-row{display:grid}.youtube-input-row .primary-button{width:100%}.youtube-time-row{flex-wrap:wrap}.youtube-player-wrap{margin-inline:-8px}}

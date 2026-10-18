@@ -67,11 +67,11 @@ let quizCategory='head',quizRound=[],quizIndex=0,quizScore=0,quizAnswered=false,
 let viewerInteractionsReady=false;
 const mixedQuizCategory={id:'mixed',label:'Repaso mixto',short:'06 · Todo el cuerpo',focus:'Preguntas aleatorias de anatomía regional y biomecánica.'};
 const quizModelMap={
-  'head-atlas':{movement:'neckflexion'},'head-tmj':{movement:'jawopen'},'head-foramen':{movement:'neckflexion'},'head-scm':{movement:'neckrotation'},
-  'trunk-spine':{movement:'hiphinge'},'trunk-erector':{movement:'hiphinge'},'trunk-diaphragm':{movement:'reachhigh'},'trunk-oblique':{movement:'hiprot'},
-  'upper-shoulder':{movement:'shoulder'},'upper-deltoid':{movement:'shoulder'},'upper-biceps':{movement:'curl'},'upper-serratus':{movement:'overheadpress'},
-  'lower-gluteus':{movement:'walkstep'},'lower-hamstrings':{movement:'legcurl'},'lower-tibialis':{movement:'ankle'},'lower-patella':{movement:'legextension',machine:'cam'},
-  'mech-plane':{movement:'shoulder'},'mech-torque':{movement:'curl'},'mech-angle':{movement:'elbow'},'mech-pulley':{movement:'curl',machine:'pulley'},'mech-cam':{movement:'legextension',machine:'cam'},'mech-third':{movement:'curl'}
+  'head-atlas':{movement:'neckflexion'},'head-tmj':{movement:'jawopen'},'head-foramen':{movement:'neckflexion'},'head-scm':{movement:'neckrotation'},'head-axis':{movement:'neckrotation'},'head-jaw':{movement:'jawopen'},
+  'trunk-spine':{movement:'hiphinge'},'trunk-erector':{movement:'hiphinge'},'trunk-diaphragm':{movement:'reachhigh'},'trunk-oblique':{movement:'hiprot'},'trunk-external-intercostal':{movement:'reachhigh'},'trunk-pressure':{movement:'hiphinge'},
+  'upper-shoulder':{movement:'shoulder'},'upper-deltoid':{movement:'shoulder'},'upper-biceps':{movement:'curl'},'upper-serratus':{movement:'overheadpress'},'upper-triceps':{movement:'chestpress'},'upper-pronation':{movement:'pronation'},
+  'lower-gluteus':{movement:'walkstep'},'lower-hamstrings':{movement:'legcurl'},'lower-tibialis':{movement:'ankle'},'lower-patella':{movement:'legextension',machine:'cam'},'lower-soleus':{movement:'heelraise'},'lower-chain':{movement:'squat'},
+  'mech-plane':{movement:'shoulder'},'mech-torque':{movement:'curl'},'mech-angle':{movement:'elbow'},'mech-pulley':{movement:'curl',machine:'pulley'},'mech-cam':{movement:'legextension',machine:'cam'},'mech-third':{movement:'curl'},'mech-length':{movement:'curl'},'mech-observation':{movement:'chestpress'},'mech-motor-unit':{movement:'curl'},'mech-recruitment':{movement:'chestpress'}
 };
 const meshCoverage = new Set(Object.values(meshManifest).map(item=>item.structure));
 const relatedMeshes={spine:['cervical','thoracic','lumbar','sacrum'],radiusulna:['radius','ulna'],tibiafibula:['tibia','fibula'],foot:['talus','calcaneus','navicular','cuboid','cuneiforms','metatarsals','toephalanges'],neckjoint:['skull','cervical'],radioulnarjoint:['radius','ulna'],shoulderjoint:['humerus','scapula'],elbowjoint:['humerus','radius','ulna'],wristjoint:['radius','carpals'],hipjoint:['pelvis','femur'],kneejoint:['femur','tibia','patella'],anklejoint:['tibia','fibula','talus']};
@@ -1447,7 +1447,7 @@ let viewerHidden=false;
 function setViewerSize(){
   const size=Number($('viewer-size').value);
   document.documentElement.style.setProperty('--viewer-height',`${size}dvh`);
-  document.documentElement.style.setProperty('--viewer-dock-width',`${Math.round(window.innerWidth<=760?120+size*2.5:280+size*4)}px`);
+  document.documentElement.style.setProperty('--viewer-dock-width',`${Math.round(window.innerWidth<=760?120+size*2.5:140+size*2.1)}px`);
   $('viewer-size-value').textContent=`${size} %`;
   requestAnimationFrame(resizeViewerCanvas);
 }
@@ -1455,13 +1455,14 @@ function updateViewerDock(){
   const shouldDock=window.innerWidth>760&&!viewerHidden&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
   if(shouldDock&&!stage.classList.contains('is-docked')){stage.before(stagePlaceholder);stage.classList.add('is-docked')}
   else if(!shouldDock&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove()}
+  document.documentElement.classList.toggle('viewer-docked',shouldDock);
 }
 function setViewerHidden(hidden){
   viewerHidden=hidden;
   explorer.classList.toggle('viewer-hidden',hidden);
   $('restore-viewer').hidden=!hidden;
   $('hide-viewer').setAttribute('aria-expanded',String(!hidden));
-  if(hidden&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove()}
+  if(hidden&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove();document.documentElement.classList.remove('viewer-docked')}
   else if(!hidden){stage.scrollIntoView({behavior:'smooth',block:'center'});queueViewerDock()}
 }
 $('hide-viewer').addEventListener('click',()=>setViewerHidden(true));

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" role="img" aria-labelledby="t d">
+<title id="t">Flexión del codo</title><desc id="d">Esquema lateral del brazo y el antebrazo en dos posiciones, con el codo como eje.</desc>
+<rect width="360" height="240" rx="18" fill="#e8f0e8"/>
+<text x="22" y="32" fill="#234739" font-family="Arial,sans-serif" font-size="17" font-weight="700">FLEXIÓN DEL CODO</text>
+<path d="M115 55 L145 139" stroke="#294e42" stroke-width="22" stroke-linecap="round"/>
+<path d="M145 139 L161 211" stroke="#a1afa4" stroke-width="17" stroke-linecap="round" stroke-dasharray="7 5"/>
+<path d="M145 139 L235 105" stroke="#bf755a" stroke-width="19" stroke-linecap="round"/>
+<circle cx="145" cy="139" r="11" fill="#eec06e" stroke="#294e42" stroke-width="3"/>
+<path d="M180 177 A49 49 0 0 0 188 126" fill="none" stroke="#b05e46" stroke-width="4" stroke-linecap="round"/>
+<path d="M187 127 L181 140 L199 132" fill="#b05e46"/>
+<text x="23" y="84" fill="#294e42" font-family="Arial,sans-serif" font-size="15" font-weight="700">Brazo</text>
+<path d="M74 89 L116 98" stroke="#638475" stroke-width="2"/>
+<text x="212" y="79" fill="#8e4f3e" font-family="Arial,sans-serif" font-size="15" font-weight="700">Antebrazo</text>
+<text x="32" y="157" fill="#294e42" font-family="Arial,sans-serif" font-size="15" font-weight="700">Eje: codo</text>
+<path d="M111 154 L133 143" stroke="#638475" stroke-width="2"/>
+<text x="219" y="204" fill="#5e7167" font-family="Arial,sans-serif" font-size="13">Esquema · no a escala</text>
+</svg>
