@@ -535,7 +535,7 @@ function renderAudit(){
 }
 function renderJointMap(){
   $('joint-map-grid').innerHTML=Object.entries(jointExplorer).map(([key,joint],index)=>`<button type="button" class="joint-map-card" data-joint-map="${key}"><span class="num">${String(index+1).padStart(2,'0')} / ARTICULACIÓN</span><strong>${withCommonTerms(joint.name,2)}</strong><span>${withCommonTerms(joint.type,3)}</span><span>${withCommonTerms(joint.bones,3)}</span><span class="go">Enfocar zona y explorar ↗</span></button>`).join('');
-  document.querySelectorAll('[data-joint-map]').forEach(button=>button.addEventListener('click',()=>{freeJoint=button.dataset.jointMap;freeAction=jointExplorer[freeJoint].actions[0].id;freeRegion=regionFor(freeJoint,freeSide);setPoseMode('free');$('explorar').scrollIntoView({behavior:'smooth',block:'start'});requestAnimationFrame(()=>focusJoint(freeJoint,freeSide))}));
+  document.querySelectorAll('[data-joint-map]').forEach(button=>button.addEventListener('click',()=>{freeJoint=button.dataset.jointMap;freeAction=jointExplorer[freeJoint].actions[0].id;freeRegion=regionFor(freeJoint,freeSide);setPoseMode('free');document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});requestAnimationFrame(()=>focusJoint(freeJoint,freeSide))}));
 }
 function selectMovement(index){
   activeMovement=index;progress=0;poseDirection=1;playing=false;$('play-button').textContent='▶';$('play-button').setAttribute('aria-label','Reproducir movimiento');
@@ -557,7 +557,7 @@ function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true}=
       else if(jointKey)focusJoint(jointKey,movements[index].side==='L'?'L':'R');
     });
   }
-  if(scroll)$('explorar').scrollIntoView({behavior:'smooth',block:'start'});
+  if(scroll)document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});
   return true;
 }
 function prepareQuizModelForCurrentQuestion(){
@@ -594,7 +594,7 @@ function selectStructure(id,{activateMotion=false,side=null,scroll=false,meshNam
   structureFilter=s.type.startsWith('HUES')?'Huesos':s.type.startsWith('MÚSC')?'Músculos':s.type==='ARTICULACIÓN'?'Articulaciones':'Aberturas';
   renderStructures();renderPartPicker();updateLayers();highlightStructure();
   if(meshName){focusSelection();updateTouchSelection();}
-  if(scroll)$('explorar').scrollIntoView({behavior:'smooth',block:'start'});
+  if(scroll)document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});
 }
 function updateReadout(){
   const m=movements[activeMovement];
@@ -1406,20 +1406,22 @@ navPad.addEventListener('pointerup',releaseJoystick);navPad.addEventListener('po
 navPad.addEventListener('keydown',event=>{const step=.13;if(event.key==='ArrowLeft')yaw+=step;else if(event.key==='ArrowRight')yaw-=step;else if(event.key==='ArrowUp')pitch=Math.max(-.9,pitch-step);else if(event.key==='ArrowDown')pitch=Math.min(.9,pitch+step);else return;viewTarget=null;event.preventDefault()});
 const stage=document.querySelector('.stage');
 const explorer=document.querySelector('.explorer');
+const persistentAtlasViewer=['explorar','animaciones','articulaciones'].includes(document.documentElement.dataset.atlasView);
 let resizeViewerCanvas=()=>{};
 let mobileViewerOpen=false;
 function syncMobileViewer(){
   const mobile=window.innerWidth<=760;
   if(!mobile)mobileViewerOpen=false;
-  const active=mobile&&mobileViewerOpen;
+  const active=mobile&&mobileViewerOpen&&!persistentAtlasViewer;
   stage.classList.toggle('mobile-viewer-open',active);
   document.body.classList.toggle('mobile-viewer-active',active);
-  stage.setAttribute('aria-hidden',String(mobile&&!active));
+  stage.setAttribute('aria-hidden',String(mobile&&!active&&!persistentAtlasViewer));
   $('mobile-viewer-open').setAttribute('aria-expanded',String(active));
   if(active){stage.setAttribute('role','dialog');stage.setAttribute('aria-modal','true');stage.setAttribute('aria-label','Visor anatómico 3D')}
   else{stage.removeAttribute('role');stage.removeAttribute('aria-modal');stage.removeAttribute('aria-label')}
 }
 function openMobileViewer(){
+  if(persistentAtlasViewer)return;
   if(window.innerWidth>760){stage.scrollIntoView({behavior:'smooth'});return}
   mobileViewerOpen=true;syncMobileViewer();
   document.querySelector('.viewer-layout-control').classList.remove('open');
@@ -1447,12 +1449,14 @@ let viewerHidden=false;
 function setViewerSize(){
   const size=Number($('viewer-size').value);
   document.documentElement.style.setProperty('--viewer-height',`${size}dvh`);
+  document.documentElement.style.setProperty('--compact-viewer-height',`${Math.round(Math.max(250,Math.min(window.innerHeight*.56,window.innerHeight*(.2+size*.0025))))}px`);
+  document.documentElement.style.setProperty('--atlas-header-height',`${Math.ceil(document.querySelector('.topbar').getBoundingClientRect().height)}px`);
   document.documentElement.style.setProperty('--viewer-dock-width',`${Math.round(window.innerWidth<=760?120+size*2.5:140+size*2.1)}px`);
   $('viewer-size-value').textContent=`${size} %`;
   requestAnimationFrame(resizeViewerCanvas);
 }
 function updateViewerDock(){
-  const shouldDock=window.innerWidth>760&&!viewerHidden&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
+  const shouldDock=!persistentAtlasViewer&&window.innerWidth>760&&!viewerHidden&&viewerPinned&&explorer.getBoundingClientRect().bottom<=4&&!document.fullscreenElement&&!stage.classList.contains('expanded');
   if(shouldDock&&!stage.classList.contains('is-docked')){stage.before(stagePlaceholder);stage.classList.add('is-docked')}
   else if(!shouldDock&&stage.classList.contains('is-docked')){stage.classList.remove('is-docked');stagePlaceholder.remove()}
   document.documentElement.classList.toggle('viewer-docked',shouldDock);
@@ -1471,6 +1475,7 @@ function queueViewerDock(){if(viewerDockQueued)return;viewerDockQueued=true;requ
 $('viewer-size').addEventListener('input',()=>{setViewerSize();queueViewerDock()});
 $('viewer-settings-toggle').addEventListener('click',()=>{const open=document.querySelector('.viewer-layout-control').classList.toggle('open');$('viewer-settings-toggle').setAttribute('aria-expanded',String(open))});
 $('viewer-pin').addEventListener('click',()=>{viewerPinned=!viewerPinned;$('viewer-pin').setAttribute('aria-pressed',String(viewerPinned));$('viewer-pin').textContent=viewerPinned?'Fijado':'Fijar';$('viewer-pin').title=viewerPinned?'Dejar de fijar el visor':'Mantener el visor visible';queueViewerDock()});
+if(persistentAtlasViewer&&'ResizeObserver' in window)new ResizeObserver(()=>setViewerSize()).observe(document.querySelector('.topbar'));
 window.addEventListener('scroll',queueViewerDock,{passive:true});
 window.addEventListener('resize',()=>{syncMobileViewer();setViewerSize();queueViewerDock();requestAnimationFrame(resizeViewerCanvas)});
 if(window.innerWidth<=760)$('viewer-size').value='72';
@@ -1547,7 +1552,7 @@ function init3D(){
   canvas.addEventListener('wheel',e=>{e.preventDefault();setDistance(distance*Math.exp(e.deltaY*.0012));},{passive:false});
   function frame(time){
     const dt=Math.min(50,time-lastTime||16);lastTime=time;
-    if(window.innerWidth<=760&&!mobileViewerOpen){setTimeout(()=>requestAnimationFrame(frame),250);return}
+    if(window.innerWidth<=760&&!mobileViewerOpen&&!persistentAtlasViewer){setTimeout(()=>requestAnimationFrame(frame),250);return}
     if(playing){progress+=dt*.027*Number($('motion-speed').value)*poseDirection;if(progress>=100){progress=100;if($('motion-repeat').checked)poseDirection=-1;else{playing=false;$('play-button').textContent='▶'}}if(progress<=0&&poseDirection<0){progress=0;poseDirection=1;if(!$('motion-repeat').checked){playing=false;$('play-button').textContent='▶'}}$('motion-slider').value=String(progress);applyPose();updateReadout();updateMomentLab()}
     if(viewTarget!==null){let delta=((viewTarget-yaw+Math.PI*3)%(Math.PI*2))-Math.PI;yaw+=delta*.12;if(Math.abs(delta)<.002)viewTarget=null}
     if(navVector.x||navVector.y){yaw-=navVector.x*dt*.0023;pitch=Math.max(-.9,Math.min(.9,pitch+navVector.y*dt*.0018))}

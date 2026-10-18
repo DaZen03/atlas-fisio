@@ -556,3 +556,38 @@ html[data-theme="dark"] .study-visual figcaption a{color:#f1b79f}
   html.viewer-docked:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#guided-timeline,
   html.viewer-docked:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>.joint-map{padding-right:calc(var(--viewer-dock-width,325px) + 28px)}
 }
+
+/* Espacio de trabajo del atlas: el modelo ocupa la columna principal durante toda la lectura. */
+@media(min-width:761px){
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(350px,.85fr);grid-template-rows:repeat(4,auto);align-items:start;gap:12px;padding:12px 2% 36px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:contents!important}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .stage{grid-column:1;grid-row:1 / 5;position:sticky;top:calc(var(--atlas-header-height,72px) + 12px);align-self:start;width:100%;height:min(var(--viewer-height,88dvh),calc(100dvh - var(--atlas-header-height,72px) - 24px));min-height:350px;max-height:none;border-radius:10px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .controls{grid-column:2;grid-row:2;min-height:0;border-radius:10px;scroll-margin-top:calc(var(--atlas-header-height,72px) + 12px)}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .detail{grid-column:2;grid-row:3;display:block;min-height:0;border-radius:10px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#guided-timeline{grid-column:2;grid-row:1;width:auto;margin:0;border-radius:10px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>.joint-map{grid-column:2;grid-row:4;width:auto;margin:0;padding:24px 0}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .joint-map-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  html[data-atlas-view="articulaciones"] main>.joint-map{grid-row:1}
+  html[data-atlas-view="articulaciones"] main>#guided-timeline{grid-row:4}
+}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) :is(.hide-viewer,.restore-viewer,#viewer-pin,#viewer-pin + label){display:none!important}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .quick-motion{display:none}
+@media(max-width:760px){
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main{display:flex;flex-direction:column;gap:10px;padding:0 10px 30px;min-width:0}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:contents!important}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .stage:not(:fullscreen):not(.expanded){order:0;position:sticky;inset:auto;top:var(--atlas-header-height,106px);align-self:stretch;flex:0 0 auto;width:100%;height:var(--compact-viewer-height,320px);min-height:0;max-height:none;z-index:30;visibility:visible;pointer-events:auto;border-radius:0 0 10px 10px;box-shadow:0 10px 22px #071b1730}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .controls{order:2;width:100%;min-height:0;scroll-margin-top:calc(var(--atlas-header-height,106px) + var(--compact-viewer-height,320px) + 10px)}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .explorer .detail{order:3;width:100%;min-height:0}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#guided-timeline{order:1;width:100%;margin:0}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>.joint-map{order:4;width:100%;padding:22px 4px}
+  html[data-atlas-view="articulaciones"] main>.joint-map{order:1}
+  html[data-atlas-view="articulaciones"] main>#guided-timeline{order:4}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) #mobile-viewer-open{display:none!important}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) :is(.plane-badge,.mesh-status,.stage-overlay,.fullscreen-separation){display:none}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .stage-top{top:10px;left:12px;right:12px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .viewer-layout-control{top:35px;left:9px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .nav-control{top:45%;right:8px;transform:translateY(-50%)}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .view-buttons{bottom:7px}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .touch-selection:not([hidden]){position:absolute;z-index:9;display:flex;align-items:center;gap:7px;top:76px;left:8px;width:min(220px,calc(100% - 105px));padding:7px 8px;border:1px solid #d6b46d;border-radius:8px;background:#193e36f2;color:#f6f7ed;box-shadow:0 7px 18px #061b1780}
+  html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) #touch-selection-function{display:none}
+}
