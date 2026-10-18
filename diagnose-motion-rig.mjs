@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
 import manifest from './dist/assets/bodyparts-manifest.json' with {type:'json'};
 import joints from './dist/assets/bodyparts-joints.json' with {type:'json'};
+import {movements} from './dist/data.js';
 
 const source=fs.readFileSync('./dist/app.js','utf8');
 const rigCode=source.slice(source.indexOf('function muscleAnchors('),source.indexOf('function updateLayers('));
@@ -29,6 +30,11 @@ for(const side of ['R','L']){
   ankle.position.fromArray(joints[`ankle${suffix}`]).sub(new THREE.Vector3().fromArray(joints[`knee${suffix}`]));knee.add(ankle);
   Object.assign(rig,{['shoulder'+suffix]:shoulder,['elbow'+suffix]:elbow,['forearm'+suffix]:forearm,['wrist'+suffix]:wrist,['hip'+suffix]:hip,['knee'+suffix]:knee,['ankle'+suffix]:ankle,['gluteMax'+suffix]:gluteMax,['gluteMed'+suffix]:gluteMed,['gluteMin'+suffix]:gluteMin});
 }
+const arms={R:{shoulder:rig.shoulder,elbow:rig.elbow,forearm:rig.forearm,wrist:rig.wrist},L:{shoulder:rig.shoulderL,elbow:rig.elbowL,forearm:rig.forearmL,wrist:rig.wristL}};
+const legs={R:{hip:rig.hip,knee:rig.knee,ankle:rig.ankle},L:{hip:rig.hipL,knee:rig.kneeL,ankle:rig.ankleL}};
+scope.bodyRoot=root;scope.headGroup=head;scope.jawGroup=jaw;scope.arms=arms;scope.legs=legs;scope.movements=movements;
+scope.smootherStep=t=>{t=THREE.MathUtils.clamp(t,0,1);return t*t*t*(t*(t*6-15)+10)};
+vm.runInContext(source.slice(source.indexOf('function groundedPose('),source.indexOf('function applyPose(')),scope);
 root.updateMatrixWorld(true);
 const neutralInverse=Object.fromEntries(Object.entries(rig).map(([key,node])=>[key,node.matrixWorld.clone().invert()]));
 const records=[],point=new THREE.Vector3();
