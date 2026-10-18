@@ -1,17 +1,25 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { createHash } = require('node:crypto');
 
-const version = process.argv[2];
+const distDir = process.env.ATLAS_DIST_DIR || path.join(__dirname, '..', 'dist');
+const version = process.argv[2] === 'auto'
+  ? createHash('sha256')
+      .update(['styles.css','app.bundle.js','site-menu.css','guide-pages.css','analysis.css','pose-worker.js','youtube-link.js','biomechanics-pages.css','biomechanics-study.js']
+        .filter(asset => fs.existsSync(path.join(distDir, asset)))
+        .map(asset => `${asset}:${createHash('sha256').update(fs.readFileSync(path.join(distDir, asset))).digest('hex')}`)
+        .join('|'))
+      .digest('hex').slice(0, 12)
+  : process.argv[2];
 if (!version || !/^[a-f0-9]{7,40}$/i.test(version)) {
   throw new Error('Indica un identificador de versión Git válido.');
 }
 
-const distDir = process.env.ATLAS_DIST_DIR || path.join(__dirname, '..', 'dist');
 function versionReference(html, ref) {
   const versionedRef = `${ref}?v=${version}`;
   if (html.includes(versionedRef)) return html;
   const escaped = ref.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const pattern = new RegExp(`${escaped}(?!\\?v=)`);
+  const pattern = new RegExp(`${escaped}(?:\\?v=[a-f0-9]{7,40})?`, 'i');
   if (!pattern.test(html)) throw new Error(`No se encontró ${ref} en ${distDir}`);
   return html.replace(pattern, versionedRef);
 }
@@ -28,8 +36,10 @@ function visitHtml(directory) {
     if (entry.isDirectory()) visitHtml(target);
     else if (entry.isFile() && entry.name.endsWith('.html')) {
       let html = fs.readFileSync(target, 'utf8');
+      const baseHref = html.match(/<base\s+href="([^"]+)"/i)?.[1];
+      const baseDir = baseHref ? path.resolve(path.dirname(target), baseHref) : path.dirname(target);
       for (const asset of ['guide-pages.css','analysis.css','analysis.js','biomechanics-pages.css','biomechanics-study.js','site-menu.css','styles.css','app.bundle.js']) {
-        const relative = path.relative(path.dirname(target), path.join(distDir, asset)).split(path.sep).join('/');
+        const relative = path.relative(baseDir, path.join(distDir, asset)).split(path.sep).join('/');
         const reference = `${relative.startsWith('.') ? '' : './'}${relative}`;
         if (html.includes(reference)) html = versionReference(html, reference);
       }
