@@ -572,6 +572,11 @@ html[data-theme="dark"] .study-visual figcaption a{color:#f1b79f}
 }
 html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) :is(.hide-viewer,.restore-viewer,#viewer-pin,#viewer-pin + label){display:none!important}
 html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .quick-motion{display:none}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .viewer-layout-control.viewer-settings-sidebar{position:static;inset:auto;z-index:auto;width:100%;max-width:none;margin:16px 0 20px;padding:15px 17px;border-radius:8px;background:#173b35;color:#f0f7ed;box-shadow:none;backdrop-filter:none}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .viewer-settings-sidebar::before{content:'AJUSTES DEL VISOR';display:block;margin-bottom:12px;color:#d6ecdc;font-size:12px;font-weight:800;letter-spacing:.1em}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .viewer-settings-sidebar .viewer-settings-toggle{display:none}
+html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .viewer-settings-sidebar .viewer-settings-body{position:static;display:block;width:100%;max-width:none;padding:0;border:0;background:transparent;box-shadow:none}
+@media(min-width:761px){html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .plane-badge{top:55px;left:16px}}
 @media(max-width:760px){
   html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main{display:flex;flex-direction:column;gap:10px;padding:0 10px 30px;min-width:0}
   html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:contents!important}

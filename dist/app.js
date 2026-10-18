@@ -1407,6 +1407,11 @@ navPad.addEventListener('keydown',event=>{const step=.13;if(event.key==='ArrowLe
 const stage=document.querySelector('.stage');
 const explorer=document.querySelector('.explorer');
 const persistentAtlasViewer=['explorar','animaciones','articulaciones'].includes(document.documentElement.dataset.atlasView);
+if(persistentAtlasViewer){
+  const viewerSettings=document.querySelector('.viewer-layout-control');
+  viewerSettings.classList.add('viewer-settings-sidebar');
+  document.querySelector('.explorer .panel-intro').after(viewerSettings);
+}
 let resizeViewerCanvas=()=>{};
 let mobileViewerOpen=false;
 function syncMobileViewer(){
