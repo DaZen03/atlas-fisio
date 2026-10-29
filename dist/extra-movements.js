@@ -10,14 +10,14 @@ export const extraMovements = [
   {id:'neckrotation',base:'hiprot',jointKey:'neck',category:'Fundamentos',name:'Rotación cervical',short:'Cuello · rotación',plane:'transversal',maxAngle:40,joint:'Complejo cervical · plano transversal',summary:'La cabeza gira hacia un lado para orientar la mirada.',observe:'Distingue el giro cervical de rotar ambos hombros.',muscles:'Esternocleidomastoideo contralateral y esplenio ipsilateral colaboran.',highlight:'neckmuscles',pose:{head:[0,40,0]}},
   {id:'jawopen',base:'elbow',jointKey:'tmj',category:'Fundamentos',name:'Apertura mandibular',short:'Mandíbula · apertura',plane:'sagital',maxAngle:18,joint:'Temporomandibular · apertura inicial',summary:'La mandíbula se separa del maxilar en la fase inicial de apertura.',observe:'La apertura amplia requiere deslizamiento condilar, que este pivote no reproduce.',muscles:'Suprahioideos y pterigoideo lateral participan según el tramo y la fijación del hioides.',highlight:'suprahyoid',pose:{jaw:[18,0,0]}},
 
-  {id:'reachhigh',base:'shoulderflex',category:'Vida diaria',name:'Alcanzar una repisa alta',short:'Alcance · repisa',plane:'sagital',maxAngle:105,summary:'El brazo avanza y se eleva para alcanzar un objeto sobre la cabeza.',observe:'El hombro y la escápula deberían coordinarse; la escápula aquí permanece fija.',muscles:'Deltoides anterior y serrato anterior contribuyen a elevar y orientar el miembro.',highlight:'deltoid',pose:{shoulderR:[-105,0,-10],elbowR:[-18,0,0]}},
-  {id:'drinkcup',base:'elbow',category:'Vida diaria',name:'Llevar un vaso a la boca',short:'Vaso · a la boca',plane:'sagital',maxAngle:105,summary:'El codo se flexiona y el hombro aproxima la mano al rostro.',observe:'Una carga en la mano crea un brazo de momento externo que cambia con el ángulo del codo.',muscles:'Braquial y bíceps flexionan el codo; flexores y extensores de muñeca estabilizan el agarre.',highlight:'biceps',pose:{shoulderR:[-23,0,0],elbowR:[-105,0,0],wristR:[8,0,0]}},
-  {id:'putcoat',base:'shoulderflex',category:'Vida diaria',name:'Ponerse una chaqueta',short:'Chaqueta · brazo',plane:'transversal',maxAngle:80,summary:'El brazo se orienta hacia atrás y el codo se dobla para entrar en la manga.',observe:'La tarea combina hombro, codo y tronco; el visor destaca una fase aislada.',muscles:'Deltoides posterior, dorsal ancho y flexores del codo cambian su contribución por fase.',highlight:'deltoid',pose:{shoulderR:[28,-25,-20],elbowR:[-80,0,0]}},
+  {id:'reachhigh',base:'shoulderflex',category:'Vida diaria',name:'Alcanzar una repisa alta',short:'Alcance · repisa',plane:'sagital',maxAngle:112,summary:'El brazo avanza y se eleva mientras el codo se extiende y la mirada acompaña el alcance.',observe:'La elevación real combina movimiento glenohumeral y escapular. El visor coordina brazo, codo y tronco, pero no anima la escápula como segmento independiente.',muscles:'Deltoides anterior y serrato anterior contribuyen a elevar y orientar el miembro; el tríceps ayuda a extender el codo.',highlight:'deltoid'},
+  {id:'drinkcup',base:'elbow',category:'Vida diaria',name:'Llevar un vaso a la boca',short:'Vaso · a la boca',plane:'sagital',maxAngle:112,summary:'El hombro adelanta el brazo, el codo se flexiona y antebrazo y muñeca orientan el recipiente hacia la boca.',observe:'Una carga en la mano crea un brazo de momento externo que cambia con el ángulo del codo; inclinar demasiado la muñeca puede sustituir parte del alcance.',muscles:'Braquial y bíceps flexionan el codo; supinadores y músculos de la muñeca orientan y estabilizan el agarre.',highlight:'biceps'},
+  {id:'putcoat',base:'shoulderflex',category:'Vida diaria',name:'Ponerse una chaqueta',short:'Chaqueta · brazo',plane:'transversal',maxAngle:88,summary:'Un brazo busca la manga detrás del tronco y luego avanza, mientras el brazo opuesto ayuda a colocar la prenda.',observe:'La tarea es multiplanar: combina extensión y rotación de hombro, flexión de codo y giro moderado del tronco. La tela no está simulada.',muscles:'Deltoides posterior, dorsal ancho, manguito rotador y flexores del codo cambian su contribución por fase.',highlight:'deltoid'},
   {id:'sitdown',base:'squat',category:'Vida diaria',name:'Sentarse en una silla',short:'Silla · sentarse',plane:'sagital',maxAngle:70,summary:'La pelvis baja mientras caderas y rodillas se flexionan para recibir el apoyo de la silla.',observe:'La silla no está modelada: estudia la coordinación de los segmentos, no la transferencia real de cargas.',muscles:'Glúteos y cuádriceps controlan excéntricamente el descenso; el tronco ayuda a equilibrar el centro de masa.',highlight:'quadriceps',grounded:[24,-34,70]},
   {id:'standup',base:'squat',category:'Vida diaria',name:'Levantarse de una silla',short:'Silla · levantarse',plane:'sagital',maxAngle:70,summary:'Las caderas y rodillas se extienden mientras el tronco vuelve a erguirse.',observe:'En la vida real los pies y la silla determinan la trayectoria; aquí se invierte el recorrido didáctico.',muscles:'Cuádriceps y glúteo mayor generan el momento extensor principal.',highlight:'gluteusmaximus',grounded:[24,-34,70],reverse:true},
-  {id:'walkstep',base:'hipflex',category:'Vida diaria',name:'Dar un paso',short:'Marcha · paso',plane:'sagital',maxAngle:38,summary:'Una pierna avanza mientras la otra queda atrás; los brazos oscilan en sentido opuesto.',observe:'La marcha real alterna apoyo y balanceo con contacto de suelo; este visor solo muestra una fase.',muscles:'Iliopsoas ayuda al avance del muslo; glúteos y plantarflexores contribuyen a la propulsión en apoyo.',highlight:'iliopsoas',pose:{hipR:[-38,0,0],kneeR:[34,0,0],hipL:[22,0,0],kneeL:[12,0,0],shoulderR:[18,0,0],shoulderL:[-18,0,0]}},
-  {id:'stairup',base:'hipflex',category:'Vida diaria',name:'Subir un escalón',short:'Escalón · subir',plane:'sagital',maxAngle:65,summary:'La pierna adelantada flexiona cadera y rodilla para situarse sobre el escalón.',observe:'Sin escalón ni fuerza de reacción del suelo, solo se ilustra la organización articular.',muscles:'Glúteo mayor y cuádriceps extienden cadera y rodilla cuando la pierna recibe el peso.',highlight:'quadriceps',pose:{hipR:[-65,0,0],kneeR:[75,0,0],ankleR:[-12,0,0],shoulderL:[-22,0,0]}},
-  {id:'pickup',base:'hiphinge',category:'Vida diaria',name:'Recoger un objeto del suelo',short:'Objeto · recoger',plane:'sagital',maxAngle:60,summary:'Las caderas se flexionan, el tronco se inclina y los brazos alcanzan hacia abajo.',observe:'Acercar el objeto al cuerpo acorta el brazo de momento externo de su peso respecto a la cadera.',muscles:'Glúteos e isquiotibiales controlan cadera; erectores espinales estabilizan el tronco.',highlight:'hamstrings',grounded:[60,-10,20],pose:{shoulderR:[-30,0,0],shoulderL:[-30,0,0],elbowR:[-12,0,0],elbowL:[-12,0,0]}},
+  {id:'walkstep',base:'hipflex',category:'Vida diaria',name:'Dar un paso',short:'Marcha · paso',plane:'sagital',maxAngle:42,summary:'Las piernas alternan apoyo y balanceo mientras los brazos oscilan en oposición para acompañar la marcha.',observe:'La secuencia muestra transferencia y balanceo de forma didáctica. No calcula contacto del pie, doble apoyo ni fuerzas de reacción del suelo.',muscles:'Iliopsoas ayuda al avance del muslo; glúteos estabilizan el apoyo e isquiotibiales y plantarflexores participan según la fase.',highlight:'iliopsoas'},
+  {id:'stairup',base:'hipflex',category:'Vida diaria',name:'Subir un escalón',short:'Escalón · subir',plane:'sagital',maxAngle:72,summary:'La pierna adelantada se eleva, recibe el peso y se extiende mientras la pierna posterior acompaña el ascenso.',observe:'Sin escalón ni fuerza de reacción del suelo, la secuencia ilustra la coordinación articular y el desplazamiento corporal, no el apoyo real.',muscles:'Glúteo mayor y cuádriceps extienden cadera y rodilla cuando la pierna adelantada recibe el peso; los plantarflexores ayudan al impulso.',highlight:'quadriceps'},
+  {id:'pickup',base:'hiphinge',category:'Vida diaria',name:'Recoger un objeto del suelo',short:'Objeto · recoger',plane:'sagital',maxAngle:60,summary:'Las caderas se flexionan, el tronco se inclina y ambos brazos descienden para aproximarse al objeto.',observe:'Acercar el objeto al cuerpo acorta el brazo de momento externo de su peso respecto a la cadera. El visor no representa el objeto ni su masa.',muscles:'Glúteos e isquiotibiales controlan la cadera; erectores espinales estabilizan el tronco y hombro, codo y muñeca orientan el alcance.',highlight:'hamstrings',grounded:[60,-10,20]},
 
   {id:'curl',base:'elbow',category:'Entrenamiento',name:'Curl bilateral de bíceps',short:'Curl · bíceps',plane:'sagital',maxAngle:115,summary:'Ambos codos se flexionan al levantar una carga imaginaria hacia los hombros.',observe:'Alejar la carga del codo aumenta el brazo de momento externo; el modelo no calcula el peso.',muscles:'Braquial y bíceps generan flexión; la muñeca se estabiliza.',highlight:'biceps',pose:{elbowR:[-115,0,0],elbowL:[-115,0,0]}},
   {id:'tricepsext',base:'elbow',category:'Entrenamiento',name:'Extensión de tríceps sobre cabeza',short:'Tríceps · extensión',plane:'sagital',maxAngle:100,summary:'Desde los codos flexionados, los antebrazos se extienden con los brazos elevados.',observe:'Mantener el húmero aproximadamente fijo ayuda a identificar el movimiento del codo.',muscles:'Las tres cabezas del tríceps extienden el codo; la cabeza larga cruza también el hombro.',highlight:'triceps',from:{shoulderR:[-165,0,0],shoulderL:[-165,0,0],elbowR:[-110,0,0],elbowL:[-110,0,0]},pose:{shoulderR:[-165,0,0],shoulderL:[-165,0,0],elbowR:[-10,0,0],elbowL:[-10,0,0]}},
@@ -94,7 +94,67 @@ const sportStages={
   basketshot:['Carga de piernas y brazos','Impulso de piernas y elevación del hombro','Extensión del codo y salida de la muñeca'],
   cycling:['Una pierna inicia el empuje','Empuje y retorno contralaterales','Transición hacia el pedal opuesto']
 };
-for(const movement of extraMovements){if(sportPhases[movement.id]){movement.phases=sportPhases[movement.id];movement.stageLabels=sportStages[movement.id]}}
+const dailyPhases={
+  reachhigh:[
+    {at:0,pose:{shoulderR:[0,0,0],elbowR:[-12,0,0],wristR:[0,0,0],head:[0,0,0],rootRotation:[0,0,0]}},
+    {at:42,pose:{shoulderR:[-58,0,-8],elbowR:[-36,0,0],wristR:[6,0,0],head:[-5,-4,0],rootRotation:[-3,0,-2]}},
+    {at:74,pose:{shoulderR:[-96,0,-12],elbowR:[-20,0,0],wristR:[-4,0,0],head:[-9,-7,0],rootRotation:[-5,0,-3]}},
+    {at:100,pose:{shoulderR:[-112,0,-14],elbowR:[-8,0,0],wristR:[-9,0,0],head:[-11,-8,0],rootRotation:[-7,0,-4]}}
+  ],
+  drinkcup:[
+    {at:0,pose:{shoulderR:[0,0,0],elbowR:[-8,0,0],forearmR:[0,0,0],wristR:[0,0,0],head:[0,0,0]}},
+    {at:38,pose:{shoulderR:[-14,0,-5],elbowR:[-62,0,0],forearmR:[0,-18,0],wristR:[5,0,0],head:[0,-3,0]}},
+    {at:72,pose:{shoulderR:[-27,0,-8],elbowR:[-102,0,0],forearmR:[0,-34,0],wristR:[10,0,0],head:[5,-5,0]}},
+    {at:100,pose:{shoulderR:[-31,0,-7],elbowR:[-112,0,0],forearmR:[0,-38,0],wristR:[16,0,0],head:[8,-5,0]}}
+  ],
+  putcoat:[
+    {at:0,pose:{shoulderR:[0,0,0],elbowR:[-15,0,0],shoulderL:[-18,0,8],elbowL:[-35,0,0],rootRotation:[0,0,0],head:[0,0,0]}},
+    {at:32,pose:{shoulderR:[24,-18,-22],elbowR:[-62,0,0],shoulderL:[-36,0,16],elbowL:[-52,0,0],rootRotation:[0,-10,0],head:[0,7,0]}},
+    {at:66,pose:{shoulderR:[35,-34,-28],elbowR:[-92,0,0],shoulderL:[-62,0,22],elbowL:[-82,0,0],rootRotation:[0,-16,0],head:[0,10,0]}},
+    {at:100,pose:{shoulderR:[8,-10,-8],elbowR:[-45,0,0],shoulderL:[-28,0,12],elbowL:[-48,0,0],rootRotation:[0,-5,0],head:[0,3,0]}}
+  ],
+  sitdown:[
+    {at:0,pose:{shoulderR:[0,0,0],shoulderL:[0,0,0],elbowR:[-8,0,0],elbowL:[-8,0,0],head:[0,0,0]}},
+    {at:48,pose:{shoulderR:[-20,0,-4],shoulderL:[-20,0,4],elbowR:[-18,0,0],elbowL:[-18,0,0],head:[-3,0,0]}},
+    {at:100,pose:{shoulderR:[-36,0,-6],shoulderL:[-36,0,6],elbowR:[-28,0,0],elbowL:[-28,0,0],head:[-6,0,0]}}
+  ],
+  standup:[
+    {at:0,pose:{shoulderR:[-36,0,-6],shoulderL:[-36,0,6],elbowR:[-28,0,0],elbowL:[-28,0,0],head:[-6,0,0]}},
+    {at:52,pose:{shoulderR:[-18,0,-3],shoulderL:[-18,0,3],elbowR:[-16,0,0],elbowL:[-16,0,0],head:[-2,0,0]}},
+    {at:100,pose:{shoulderR:[0,0,0],shoulderL:[0,0,0],elbowR:[-6,0,0],elbowL:[-6,0,0],head:[0,0,0]}}
+  ],
+  walkstep:[
+    {at:0,pose:{hipR:[20,0,0],kneeR:[18,0,0],ankleR:[10,0,0],hipL:[-32,0,0],kneeL:[52,0,0],ankleL:[-6,0,0],shoulderR:[-24,0,0],shoulderL:[24,0,0],elbowR:[-22,0,0],elbowL:[-22,0,0],rootRotation:[0,-3,0]}},
+    {at:33,pose:{hipR:[4,0,0],kneeR:[9,0,0],ankleR:[-4,0,0],hipL:[-10,0,0],kneeL:[34,0,0],ankleL:[8,0,0],shoulderR:[-8,0,0],shoulderL:[8,0,0],rootRotation:[0,0,0]}},
+    {at:66,pose:{hipR:[-30,0,0],kneeR:[48,0,0],ankleR:[-5,0,0],hipL:[18,0,0],kneeL:[16,0,0],ankleL:[10,0,0],shoulderR:[23,0,0],shoulderL:[-23,0,0],elbowR:[-24,0,0],elbowL:[-24,0,0],rootRotation:[0,3,0]}},
+    {at:100,pose:{hipR:[-8,0,0],kneeR:[28,0,0],ankleR:[9,0,0],hipL:[5,0,0],kneeL:[8,0,0],ankleL:[-3,0,0],shoulderR:[7,0,0],shoulderL:[-7,0,0],rootRotation:[0,1,0]}}
+  ],
+  stairup:[
+    {at:0,pose:{hipR:[-12,0,0],kneeR:[18,0,0],ankleR:[4,0,0],hipL:[8,0,0],kneeL:[8,0,0],shoulderR:[10,0,0],shoulderL:[-10,0,0],rootPosition:[0,0,0]}},
+    {at:38,pose:{hipR:[-68,0,0],kneeR:[75,0,0],ankleR:[-15,0,0],hipL:[10,0,0],kneeL:[12,0,0],shoulderR:[24,0,0],shoulderL:[-24,0,0],rootPosition:[0,.04,0]}},
+    {at:72,pose:{hipR:[-38,0,0],kneeR:[44,0,0],ankleR:[-3,0,0],hipL:[2,0,0],kneeL:[18,0,0],ankleL:[14,0,0],shoulderR:[8,0,0],shoulderL:[-8,0,0],rootPosition:[0,.18,0]}},
+    {at:100,pose:{hipR:[-8,0,0],kneeR:[10,0,0],ankleR:[8,0,0],hipL:[-12,0,0],kneeL:[24,0,0],ankleL:[18,0,0],shoulderR:[-8,0,0],shoulderL:[8,0,0],rootPosition:[0,.34,0]}}
+  ],
+  pickup:[
+    {at:0,pose:{shoulderR:[0,0,0],shoulderL:[0,0,0],elbowR:[-8,0,0],elbowL:[-8,0,0],wristR:[0,0,0],wristL:[0,0,0],head:[0,0,0]}},
+    {at:48,pose:{shoulderR:[-18,0,-4],shoulderL:[-18,0,4],elbowR:[-16,0,0],elbowL:[-16,0,0],wristR:[5,0,0],wristL:[5,0,0],head:[4,0,0]}},
+    {at:100,pose:{shoulderR:[-42,0,-7],shoulderL:[-42,0,7],elbowR:[-24,0,0],elbowL:[-24,0,0],wristR:[10,0,0],wristL:[10,0,0],head:[8,0,0]}}
+  ]
+};
+const dailyStages={
+  reachhigh:['Preparar el alcance','Elevar y orientar el brazo','Extender el codo y alcanzar'],
+  drinkcup:['Tomar y orientar el recipiente','Aproximar con hombro y codo','Inclinar hacia la boca'],
+  putcoat:['Buscar la manga','Introducir el brazo y girar el tronco','Acomodar la prenda'],
+  sitdown:['Preparar el descenso','Flexionar cadera y rodilla','Controlar el contacto con la silla'],
+  standup:['Inclinarse y preparar el impulso','Extender cadera y rodilla','Recuperar la postura erguida'],
+  walkstep:['Apoyo y comienzo del balanceo','Avance de la pierna y brazo opuesto','Preparación del siguiente apoyo'],
+  stairup:['Elevar el pie al escalón','Transferir el peso a la pierna adelantada','Extender y elevar el cuerpo'],
+  pickup:['Preparar la base de apoyo','Flexionar la cadera y alcanzar','Aproximar las manos al objeto']
+};
+for(const movement of extraMovements){
+  const phases=sportPhases[movement.id]||dailyPhases[movement.id];
+  if(phases){movement.phases=phases;movement.stageLabels=sportStages[movement.id]||dailyStages[movement.id]}
+}
 
 const trainingDetails={
   curl:{tension:'La carga en la mano crea un momento externo de extensión en el codo. Braquial y bíceps producen el momento flexor; la demanda cambia con la distancia perpendicular entre carga y eje.',recruitment:'Una resistencia exigente o una serie con esfuerzo creciente puede requerir más unidades motoras de los flexores del codo.'},

@@ -8,7 +8,7 @@ Para conocer el propósito, el público y el alcance educativo del atlas, consul
 
 - `atlas-movimiento-3d.html` es autónomo: incluye el GLB y puede abrirse directamente sin conexión.
 - En el ZIP, `dist/index.html` se sirve como sitio estático. `dist/assets/bodyparts.glb` es el modelo 3D separado. Por ejemplo, desde la carpeta que contiene `dist`, se puede usar `npx serve dist` con Node.js instalado.
-- El visor requiere WebGL. Si el GLB no carga, muestra el modelo didáctico de respaldo.
+- El visor requiere WebGL. Si el GLB no carga, muestra el modelo didáctico de respaldo. Cuando las mallas anatómicas terminan de cargar, el cuerpo de respaldo se retira de la escena para evitar que ambos modelos queden superpuestos.
 - En «Gestos guiados», elige una sección y, si quieres, filtra por plano. Reproduce o desliza las 46 secuencias. «Enfoque de estudio» muestra explicaciones de fisioterapia, entrenamiento y ergonomía juntas o por separado. El texto avanza de la acción visible a los músculos, palancas y momentos sin requerir conocimientos previos.
 - En «Mover extremidades», elige lado, articulación y acción; usa el control de ángulo al costado izquierdo del modelo. El panel explica el tipo de articulación, los huesos que la forman, el plano, los músculos relacionados y la biomecánica en cada posición. En el mapa articular, «Enfocar zona y explorar» centra el visor en la articulación elegida, acerca la vista y abre sus controles.
 - En «Desglosar región», filtra cabeza, tronco, miembros superiores o inferiores y selecciona piezas individuales dentro de grupos óseos o musculares.

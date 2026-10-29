@@ -67,7 +67,7 @@ for (const movement of movements) {
   check(biomechanics[movement.id], `Falta biomecánica en ${movement.id}.`);
   check(structureIds.has(movement.highlight), `Estructura destacada inexistente en ${movement.id}.`);
   for (const source of movement.sources) check(sources[source], `Fuente inexistente ${source}.`);
-  if(movement.base)check(movement.pose||movement.grounded, `Animación adicional sin postura: ${movement.id}.`);
+  if(movement.base)check(movement.pose||movement.grounded||movement.phases?.length, `Animación adicional sin postura o fases: ${movement.id}.`);
 }
 for (const structure of structures) {
   for (const source of structure.sources) check(sources[source], `Fuente inexistente ${source}.`);

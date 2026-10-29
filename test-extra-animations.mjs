@@ -73,6 +73,23 @@ for(const movement of extras.filter(m=>m.category==='Deporte')){
   }
 }
 console.log('Seis gestos deportivos revisados cada 5 % sin saltos articulares.');
+const daily=extras.filter(m=>m.category==='Vida diaria');
+if(daily.length!==8)throw Error(`Se esperaban 8 gestos cotidianos; hay ${daily.length}`);
+for(const movement of daily){
+  if(!movement.phases||movement.phases[0].at!==0||movement.phases.at(-1).at!==100)throw Error(`Faltan fases cotidianas completas en ${movement.id}`);
+  if(movement.stageLabels?.length!==3)throw Error(`Faltan tres etapas didácticas en ${movement.id}`);
+  let previous=null;
+  for(let progress=0;progress<=100;progress+=5){
+    reset();scope.applyExamplePose(movement,progress);const current=signature();
+    if(previous){const changes=current.map((value,j)=>Math.abs(value-previous[j])),step=Math.max(...changes);if(step>.4)throw Error(`Discontinuidad cotidiana ${movement.id} en ${progress}%: componente ${changes.indexOf(step)}, ${step.toFixed(3)}`)}
+    previous=current;
+  }
+  reset();scope.applyExamplePose(movement,0);const start=all.map(node=>({rotation:new THREE.Vector3(node.rotation.x,node.rotation.y,node.rotation.z),position:node.position.clone()}));
+  reset();scope.applyExamplePose(movement,100);
+  const movingSegments=all.filter((node,index)=>new THREE.Vector3(node.rotation.x,node.rotation.y,node.rotation.z).distanceTo(start[index].rotation)>.03||node.position.distanceTo(start[index].position)>.03).length;
+  if(movingSegments<3)throw Error(`Coordinación insuficiente en ${movement.id}: solo cambian ${movingSegments} segmentos`);
+}
+console.log('Ocho gestos cotidianos revisados cada 5 %; todos coordinan al menos tres segmentos.');
 const triceps=extras.find(m=>m.id==='tricepsext');
 if(!triceps)throw Error('Falta la extensión de tríceps sobre cabeza');
 for(const progress of [0,50,100]){

@@ -114,7 +114,7 @@ function renderPlaneTabs(){
 function matchesMovementFilter(m){return (activePlaneFilter==='todos'||m.plane===activePlaneFilter)&&(activeCategoryFilter==='todos'||(m.category||'Fundamentos')===activeCategoryFilter)}
 function renderMovementList(){
   $('movement-list').innerHTML = movements.map((m,i)=>({m,i})).filter(({m})=>matchesMovementFilter(m)).map(({m,i})=>`<button type="button" class="movement ${i===activeMovement?'active':''}" data-motion="${i}" aria-pressed="${i===activeMovement}"><span class="movement-num">${String(i+1).padStart(2,'0')}</span><span class="movement-name">${withCommonTerms(m.short,2)}</span><span class="movement-arrow">↗</span></button>`).join('')||'<p class="structure-empty">No hay gestos en esta combinación de sección y plano.</p>';
-  document.querySelectorAll('[data-motion]').forEach(btn=>btn.addEventListener('click',()=>selectMovement(Number(btn.dataset.motion))));
+  document.querySelectorAll('[data-motion]').forEach(btn=>btn.addEventListener('click',()=>selectMovement(Number(btn.dataset.motion),{autoplay:true})));
 }
 function renderDetail(){
   if(poseMode==='free'){renderFreeDetail();return}
@@ -667,19 +667,20 @@ function renderJointMap(){
   $('joint-map-grid').innerHTML=Object.entries(jointExplorer).map(([key,joint],index)=>`<button type="button" class="joint-map-card" data-joint-map="${key}"><span class="num">${String(index+1).padStart(2,'0')} / ARTICULACIÓN</span><strong>${withCommonTerms(joint.name,2)}</strong><span>${withCommonTerms(joint.type,3)}</span><span>${withCommonTerms(joint.bones,3)}</span><span class="go">Enfocar zona y explorar ↗</span></button>`).join('');
   document.querySelectorAll('[data-joint-map]').forEach(button=>button.addEventListener('click',()=>{freeJoint=button.dataset.jointMap;freeAction=jointExplorer[freeJoint].actions[0].id;freeRegion=regionFor(freeJoint,freeSide);setPoseMode('free');document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});requestAnimationFrame(()=>focusJoint(freeJoint,freeSide))}));
 }
-function selectMovement(index){
+function selectMovement(index,{autoplay=false}={}){
   activeMovement=index;progress=0;poseDirection=1;playing=false;$('play-button').textContent='▶';$('play-button').setAttribute('aria-label','Reproducir movimiento');
   $('motion-slider').value='0';renderPlaneTabs();renderMovementList();renderDetail();applyPose();updateMomentLab();updatePlaneGuide();
   selectedMeshName='';
   selectStructure(movements[index].highlight,{side:movements[index].side||'R'});
   if(movements[index].grounded||['hiphinge','squat','lunge'].includes(movements[index].id))setView('side');
+  if(autoplay){playing=true;$('play-button').textContent='Ⅱ';$('play-button').setAttribute('aria-label','Pausar movimiento');syncQuickControl()}
 }
-function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true}={}){
+function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true,autoplay=false}={}){
   const index=movements.findIndex(movement=>movement.id===movementId);
   if(index<0){console.warn(`Movimiento no disponible para el visor: ${movementId}`);return false}
   if(poseMode!=='guided')setPoseMode('guided');
   if(machine)renderMachineStudy(machine);
-  selectMovement(index);
+  selectMovement(index,{autoplay});
   if(focus){
     const jointKey=movementJoint[movementId]||movementJoint[movements[index].base];
     requestAnimationFrame(()=>{
@@ -703,7 +704,7 @@ document.querySelectorAll('[data-model-movement]').forEach(button=>button.addEve
   const id=button.dataset.modelMovement,movement=movements.find(item=>item.id===id);
   if(!movement){button.setAttribute('aria-disabled','true');return}
   const machine=button.dataset.machineFocus||null;
-  if(applyMovementToModel(id,{machine,scroll:true,focus:true})&&button.closest('.biomechanics-section'))
+  if(applyMovementToModel(id,{machine,scroll:true,focus:true,autoplay:true})&&button.closest('.biomechanics-section'))
     $('biomech-model-status').textContent=`Modelo preparado: ${movement.name}${machine?` · ${machineMechanics.find(item=>item.id===machine)?.label||machine}`:''}. El visor muestra la región y el gesto seleccionados.`;
 }));
 function selectStructure(id,{activateMotion=false,side=null,scroll=false,meshName=null}={}){
@@ -859,6 +860,15 @@ function addMesh(parent,geometry,material,id){
   mesh.userData.layer=material===surfaceMat?'surface':material===markerMat?'markers':material===muscleMat||material===muscleDark?'muscles':'bones';
   if(id){mesh.userData.structure=id;pickables.push(mesh)}
   return mesh;
+}
+function removeProceduralFallback(){
+  const removable=[];
+  bodyRoot.traverse(obj=>{if(obj.isMesh&&obj.userData.procedural&&obj.userData.layer!=='markers')removable.push(obj)});
+  for(const mesh of removable)mesh.removeFromParent();
+  for(let index=pickables.length-1;index>=0;index--)if(pickables[index].userData.procedural&&pickables[index].userData.layer!=='markers')pickables.splice(index,1);
+  const surfaceControl=$('layer-surface');
+  surfaceControl.checked=false;surfaceControl.disabled=true;
+  surfaceControl.closest('.layer')?.setAttribute('title','La superficie esquemática solo se usa cuando el GLB anatómico no puede cargarse.');
 }
 function ellipsoid(parent,pos,scale,material,id){const mesh=addMesh(parent,new THREE.SphereGeometry(1,20,14),material,id);mesh.position.set(...pos);mesh.scale.set(...scale);return mesh;}
 function muscleBelly(parent,pos,scale,material,id){const mesh=addMesh(parent,muscleProfile,material,id);mesh.position.set(...pos);mesh.scale.set(...scale);return mesh;}
@@ -1471,6 +1481,7 @@ function loadAnatomicalMeshes(){
       tendonLines=new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:0xd2c5ae,transparent:true,opacity:.65,depthWrite:false}));
       tendonLines.frustumCulled=false;bodyRoot.add(tendonLines);
     }
+    removeProceduralFallback();
     anatomicalModelLoaded=true;
     poseMode=savedPoseMode;progress=savedProgress;applyPose();
     updateMomentLab();updateLayers();renderStructures();highlightStructure();updatePlaneGuide();
@@ -1697,7 +1708,7 @@ function init3D(){
   }
   requestAnimationFrame(frame);
 }
-try{init3D();viewerInteractionsReady=true;prepareQuizModelForCurrentQuestion();const startParams=new URLSearchParams(location.search),startMovement=startParams.get('movimiento');if(startMovement)applyMovementToModel(startMovement,{machine:startParams.get('maquina'),focus:true});loadAnatomicalMeshes()}catch(error){
+try{init3D();viewerInteractionsReady=true;prepareQuizModelForCurrentQuestion();const startParams=new URLSearchParams(location.search),startMovement=startParams.get('movimiento');if(startMovement)applyMovementToModel(startMovement,{machine:startParams.get('maquina'),focus:true,autoplay:true});loadAnatomicalMeshes()}catch(error){
   console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);
   const fallback=$('canvas-fallback'),detail=String(error?.cause?.message||error?.message||'error desconocido').slice(0,180);
   fallback.textContent=`El visor 3D falló durante ${viewerInitPhase}. Comprueba WebGL y la aceleración por hardware. Detalle: ${detail}`;
