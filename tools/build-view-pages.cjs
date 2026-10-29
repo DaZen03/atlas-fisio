@@ -12,6 +12,7 @@ const views=[
   {slug:'articulaciones',title:'Mapa articular',description:'Elige una articulación y relaciónala con su movimiento en el atlas.'},
   {slug:'estructuras',title:'Estructuras del cuerpo',description:'Busca huesos, articulaciones y músculos por región.'},
   {slug:'practicar',title:'Cuestionarios',description:'Practica por áreas y relaciona las respuestas con el modelo.'},
+  {slug:'reto-anatomico',title:'Reto anatómico 3D',description:'Identifica huesos y músculos resaltados en el modelo anatómico 3D.'},
   {slug:'verificacion',title:'Verificación anatómica',description:'Revisa los límites y controles de calidad del atlas.'},
   {slug:'formatos',title:'Formatos y recursos',description:'Consulta los archivos y formatos empleados por el modelo.'},
   {slug:'fuentes',title:'Fuentes y créditos',description:'Consulta la bibliografía y procedencia del atlas.'}

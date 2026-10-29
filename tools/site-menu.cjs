@@ -5,7 +5,8 @@ const groups = [
   ['Empieza aquí', [
     ['inicio', 'Inicio', 'index.html', 'Vista general'],
     ['aprender', 'Aprender', 'vistas/aprender.html', 'Ruta de estudio'],
-    ['practicar', 'Practicar', 'vistas/practicar.html', 'Preguntas por área']
+    ['practicar', 'Practicar', 'vistas/practicar.html', 'Preguntas por área'],
+    ['reto-anatomico', 'Reto anatómico', 'vistas/reto-anatomico.html', 'Adivina la estructura 3D']
   ]],
   ['Explora el cuerpo', [
     ['explorar', 'Atlas 3D', 'vistas/explorar.html', 'Capas y movimientos'],

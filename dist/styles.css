@@ -525,6 +525,7 @@ html[data-atlas-view] main>.intro,html[data-atlas-view] main>.learning-path,html
 html[data-atlas-view] main>section{display:none!important}
 html[data-atlas-view="explorar"] main>#guided-timeline,html[data-atlas-view="explorar"] main>.joint-map{display:block!important}
 html[data-atlas-view="estructuras"] main>#estructuras,html[data-atlas-view="practicar"] main>#cuestionarios,html[data-atlas-view="fuentes"] main>#fuentes{display:block!important}
+html[data-atlas-view="reto-anatomico"] main>#reto-anatomico{display:grid!important}
 html[data-atlas-view="aprender"] main>#ruta-aprendizaje,html[data-atlas-view="animaciones"] main>#guided-timeline,html[data-atlas-view="articulaciones"] main>.joint-map,html[data-atlas-view="verificacion"] main>#verificacion,html[data-atlas-view="formatos"] main>#formatos{display:block!important}
 @media(min-width:761px){html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:grid!important}}
 @media(max-width:760px){html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) main>#explorar{display:flex!important}}
@@ -534,6 +535,7 @@ html[data-atlas-view="estructuras"] main>.term-reading-key{display:block!importa
 html[data-atlas-view="inicio"] main>.intro{display:block!important}
 html[data-atlas-view="inicio"] main>.section-access{display:grid!important}
 html[data-atlas-view]:not([data-atlas-view="explorar"]):not([data-atlas-view="animaciones"]):not([data-atlas-view="articulaciones"]) #mobile-viewer-open{display:none!important}
+html[data-atlas-view="reto-anatomico"] #mobile-viewer-open{display:none!important}
 nav.primary-tabs{overflow-x:auto;scrollbar-width:thin;max-width:calc(100vw - 330px)}
 @media(max-width:760px){nav.primary-tabs{max-width:none}}
 
@@ -595,4 +597,80 @@ html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas
   html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .view-buttons{bottom:7px}
   html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) .touch-selection:not([hidden]){position:absolute;z-index:9;display:flex;align-items:center;gap:7px;top:76px;left:8px;width:min(220px,calc(100% - 105px));padding:7px 8px;border:1px solid #d6b46d;border-radius:8px;background:#193e36f2;color:#f6f7ed;box-shadow:0 7px 18px #061b1780}
   html:is([data-atlas-view="explorar"],[data-atlas-view="animaciones"],[data-atlas-view="articulaciones"]) .stage:not(:fullscreen):not(.expanded) #touch-selection-function{display:none}
+}
+
+/* Reto anatómico: identificación visual sobre el mismo modelo 3D del atlas. */
+.anatomy-game{max-width:1700px;margin:0 auto;padding:clamp(30px,4vw,64px) 3.2% 80px;grid-template-columns:minmax(220px,.7fr) minmax(430px,1.3fr);gap:20px}
+.anatomy-game-intro{grid-column:1/-1;border-bottom:1px solid #c7d5ca;padding-bottom:25px}
+.anatomy-game-intro h2{margin:11px 0 16px;font-size:clamp(35px,4.5vw,67px);line-height:1.02;letter-spacing:-.055em}
+.anatomy-game-intro h2 em{font-family:Lora,serif;font-weight:400;color:#a9513d}
+.anatomy-game-intro p{max-width:76ch;margin:0;color:#46675a;font-size:clamp(16px,1.15vw,19px);line-height:1.65}
+.anatomy-game-config{display:grid;align-content:start;gap:13px;padding:22px;background:#dfe9df;border-top:4px solid #739b83}
+.anatomy-game-config label{display:grid;gap:6px;color:#34584a;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.anatomy-game-config select{width:100%;border:1px solid #9fb9a6;border-radius:6px;background:#f8faf4;color:#203f35;padding:11px;font:700 15px 'DM Sans',sans-serif}
+.anatomy-game-config button,.anatomy-game-next,.anatomy-game-summary-actions button{border:0;border-radius:6px;background:#a8523e;color:#fff;padding:12px 16px;font:800 14px Manrope,sans-serif;cursor:pointer}
+.anatomy-game-card{min-width:0;padding:clamp(22px,3vw,38px);background:#f4f5ef;border:1px solid #cbd8cd;box-shadow:0 14px 34px #16382b16}
+.anatomy-game-meta{display:flex;justify-content:space-between;gap:15px;color:#45675a;font-size:12px;font-weight:800}
+.anatomy-game-progress{height:7px;margin:13px 0 25px;border-radius:99px;background:#d7e2d8;overflow:hidden}
+.anatomy-game-progress span{display:block;width:0;height:100%;background:#b06349;transition:width .25s ease}
+.anatomy-game-prompt span{color:#9c513e;font-size:11px;font-weight:800;letter-spacing:.12em}
+.anatomy-game-prompt h3{margin:8px 0 10px;font-size:clamp(24px,2.2vw,34px)}
+.anatomy-game-prompt p{margin:10px 0;padding:11px 13px;border-left:3px solid #d1a057;background:#f5ead1;color:#574b31;font-size:14px}
+.anatomy-game-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:22px}
+.anatomy-game-option{display:grid;grid-template-columns:31px 1fr;gap:9px;align-items:center;min-height:62px;border:1px solid #b9ccbd;border-radius:7px;background:#fbfcf7;color:#294a3d;padding:10px 13px;text-align:left;cursor:pointer}
+.anatomy-game-option>span{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#e1ebe0;color:#466859;font-size:12px;font-weight:900}
+.anatomy-game-option strong{font:800 15px/1.35 Manrope,sans-serif}
+.anatomy-game-option:hover:not(:disabled){border-color:#b3784e;background:#fff7e9}
+.anatomy-game-option.correct-answer{border-color:#4b9970;background:#dff1e4;color:#1f563b}
+.anatomy-game-option.selected-answer{border-color:#bd654f;background:#f5ddd7;color:#713829}
+.anatomy-game-option:disabled{cursor:default}
+.anatomy-game-actions{display:flex;gap:8px;margin-top:12px}
+.anatomy-game-actions button{border:1px solid #9eb8a5;border-radius:5px;background:transparent;color:#365d4d;padding:8px 11px;font-weight:800}
+.anatomy-game-actions button:disabled{opacity:.45}
+.anatomy-game-feedback{margin-top:18px;padding:17px;border-left:4px solid #bd6a50;background:#eee9dc}
+.anatomy-game-feedback.is-correct{border-color:#4d986d;background:#e2f0e4}
+.anatomy-game-feedback>strong{color:#9c4f3d;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.anatomy-game-feedback.is-correct>strong{color:#287149}
+.anatomy-game-feedback h4{margin:5px 0 8px;font:800 22px Manrope,sans-serif}
+.anatomy-game-feedback p{margin:0 0 12px;color:#3c564b;font-size:15px;line-height:1.6}
+.anatomy-game-next{width:100%;margin-top:15px}
+.anatomy-game-next:disabled{background:#9caaa0;cursor:not-allowed}
+.anatomy-game-help{grid-column:1/-1;display:grid;grid-template-columns:auto 1fr 1fr;gap:24px;align-items:start;padding:20px 23px;background:#173b35;color:#eaf5e9}
+.anatomy-game-help strong{font:800 18px Manrope,sans-serif}
+.anatomy-game-help ol,.anatomy-game-help p{margin:0;font-size:14px;line-height:1.6}
+.anatomy-game-summary{margin-top:20px;padding:18px;background:#e5ece2}
+.anatomy-game-summary>div:not(.anatomy-game-summary-actions){display:flex;justify-content:space-between;border-bottom:1px solid #c7d5ca;padding:8px 0}
+.anatomy-game-summary strong{font-family:Manrope,sans-serif;color:#234f3d}
+.anatomy-game-summary p{margin:15px 0}
+.anatomy-game-summary-actions{display:flex;gap:9px;flex-wrap:wrap}
+html[data-theme="dark"] .anatomy-game-intro p,html[data-theme="dark"] .anatomy-game-meta{color:#c7ddcd}
+html[data-theme="dark"] .anatomy-game-config{background:#263f35}
+html[data-theme="dark"] .anatomy-game-config label{color:#e4f1e6}
+html[data-theme="dark"] .anatomy-game-config select,html[data-theme="dark"] .anatomy-game-card{background:#1f332c;color:#edf6ed;border-color:#4b6858}
+html[data-theme="dark"] .anatomy-game-option{background:#29443a;color:#eef6ed;border-color:#577564}
+html[data-theme="dark"] .anatomy-game-option:hover:not(:disabled){background:#3b5141}
+html[data-theme="dark"] .anatomy-game-option.correct-answer{background:#27553c;color:#ecfff0}
+html[data-theme="dark"] .anatomy-game-option.selected-answer{background:#663d35;color:#fff0eb}
+html[data-theme="dark"] .anatomy-game-actions button{color:#dcecdf;border-color:#6c8878}
+html[data-theme="dark"] .anatomy-game-feedback{background:#493b31}
+html[data-theme="dark"] .anatomy-game-feedback.is-correct{background:#284737}
+html[data-theme="dark"] .anatomy-game-feedback p{color:#deebdf}
+html[data-theme="dark"] .anatomy-game-summary{background:#294238}
+@media(max-width:760px){.anatomy-game{display:block!important;padding:20px 4% 50px}.anatomy-game-intro{margin-bottom:12px}.anatomy-game-config{margin-bottom:10px}.anatomy-game-card{padding:19px}.anatomy-game-options{grid-template-columns:1fr}.anatomy-game-help{display:block}.anatomy-game-help ol{margin:12px 0}.anatomy-game-meta{display:grid;gap:4px}}
+
+/* En la vista de juego, el visor permanece a la derecha sin revelar el nombre objetivo. */
+@media(min-width:761px){
+  html[data-atlas-view="reto-anatomico"] main{display:grid;grid-template-columns:minmax(470px,.92fr) minmax(440px,1.08fr);gap:12px;padding:12px 2% 36px;align-items:start}
+  html[data-atlas-view="reto-anatomico"] main>#explorar{display:contents!important}
+  html[data-atlas-view="reto-anatomico"] .explorer .stage{grid-column:2;grid-row:1;position:sticky;top:calc(var(--atlas-header-height,72px) + 12px);height:calc(100dvh - var(--atlas-header-height,72px) - 24px);min-height:520px;border-radius:10px}
+  html[data-atlas-view="reto-anatomico"] main>#reto-anatomico{grid-column:1;grid-row:1;width:auto;margin:0;padding:20px;grid-template-columns:1fr}
+}
+html[data-atlas-view="reto-anatomico"] .explorer :is(.controls,.detail){display:none!important}
+html[data-atlas-view="reto-anatomico"] .stage :is(.touch-selection,.quick-motion,.viewer-layout-control,.fullscreen-separation,.plane-badge){display:none!important}
+html[data-atlas-view="reto-anatomico"] .anatomy-game-intro,html[data-atlas-view="reto-anatomico"] .anatomy-game-help{grid-column:1}
+@media(max-width:760px){
+  html[data-atlas-view="reto-anatomico"] main{display:flex;flex-direction:column;padding:0 0 30px}
+  html[data-atlas-view="reto-anatomico"] main>#explorar{display:contents!important}
+  html[data-atlas-view="reto-anatomico"] .explorer .stage{order:0;position:sticky;top:var(--atlas-header-height,62px);z-index:20;width:100%;height:48dvh;min-height:330px;visibility:visible;pointer-events:auto}
+  html[data-atlas-view="reto-anatomico"] main>#reto-anatomico{display:block!important;order:1;width:100%;box-sizing:border-box}
 }

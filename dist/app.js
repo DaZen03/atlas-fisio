@@ -64,6 +64,7 @@ const momentSegmentForJoint={shoulder:'upperArm',elbow:'forearm',radioulnar:'for
 const momentSegmentDefaults={upperArm:30,forearm:27,thigh:43,lowerLeg:40};
 let momentSelectionKey='';
 let quizCategory='head',quizRound=[],quizIndex=0,quizScore=0,quizAnswered=false,quizFinished=false;
+let anatomyGameRound=[],anatomyGameIndex=0,anatomyGameScore=0,anatomyGameStreak=0,anatomyGameBestStreak=0,anatomyGameAnswered=false,anatomyGameErrors=[],anatomyGameTarget=null,anatomyGameViewIndex=0;
 let viewerInteractionsReady=false;
 const mixedQuizCategory={id:'mixed',label:'Repaso mixto',short:'06 · Todo el cuerpo',focus:'Preguntas aleatorias de anatomía regional y biomecánica.'};
 const quizModelMap={
@@ -334,6 +335,135 @@ function advanceQuiz(){
   if(quizIndex>=quizRound.length)quizFinished=true;
   renderQuizQuestion();
 }
+const anatomyGameRegionLabels={all:'todo el cuerpo',head:'cabeza y cuello',trunk:'tronco',upper:'miembro superior',lower:'miembro inferior'};
+function anatomyGameRegionFor(structure){
+  const section=sectionForStructure(structure);
+  if(section==='head')return 'head';
+  if(section==='trunk')return 'trunk';
+  if(section==='arm'||section==='hand')return 'upper';
+  return ['pelvis','leg','foot'].includes(section)?'lower':'all';
+}
+function anatomyGameKind(structure){
+  return structure.type.startsWith('HUES')?'bones':structure.type.startsWith('MÚSC')?'muscles':'other';
+}
+function anatomyGameCandidates(){
+  const region=$('anatomy-game-region').value,type=$('anatomy-game-type').value;
+  return structures.filter(structure=>{
+    const kind=anatomyGameKind(structure);
+    return kind!=='other'&&hasAnatomicalMesh(structure.id)&&(region==='all'||anatomyGameRegionFor(structure)===region)&&(type==='mixed'||kind===type);
+  });
+}
+function anatomyGameStorageKey(){
+  return `atlas-anatomy-best:${$('anatomy-game-region').value}:${$('anatomy-game-type').value}:${$('anatomy-game-length').value}`;
+}
+function readAnatomyGameBest(){
+  try{return Number(localStorage.getItem(anatomyGameStorageKey()))||0}catch{return 0}
+}
+function writeAnatomyGameBest(value){
+  try{localStorage.setItem(anatomyGameStorageKey(),String(value))}catch{}
+}
+function anatomyGameDistractors(target){
+  const targetKind=anatomyGameKind(target),targetRegion=anatomyGameRegionFor(target);
+  const all=structures.filter(item=>item.id!==target.id&&hasAnatomicalMesh(item.id)&&anatomyGameKind(item)===targetKind);
+  const regional=shuffleItems(all.filter(item=>anatomyGameRegionFor(item)===targetRegion));
+  return [...regional,...shuffleItems(all.filter(item=>anatomyGameRegionFor(item)!==targetRegion))].slice(0,3);
+}
+function setAnatomyGameTarget(target){
+  anatomyGameTarget=target;
+  selectStructure(target.id,{activateMotion:false});
+  const views=['front','side','back'];
+  anatomyGameViewIndex=Math.floor(Math.random()*views.length);
+  setView(views[anatomyGameViewIndex]);
+  requestAnimationFrame(()=>focusSelection());
+}
+function renderAnatomyGameQuestion(){
+  const next=$('anatomy-game-next'),feedback=$('anatomy-game-feedback'),summary=$('anatomy-game-summary');
+  anatomyGameAnswered=false;feedback.hidden=true;summary.hidden=true;
+  $('anatomy-game-hint').hidden=true;
+  $('anatomy-game-clue').disabled=false;$('anatomy-game-view').disabled=false;
+  const target=anatomyGameRound[anatomyGameIndex];
+  if(!target){finishAnatomyGame();return}
+  setAnatomyGameTarget(target);
+  const progress=Math.round(anatomyGameIndex/anatomyGameRound.length*100);
+  $('anatomy-game-progress').setAttribute('aria-valuenow',String(progress));
+  $('anatomy-game-progress').querySelector('span').style.width=`${progress}%`;
+  $('anatomy-game-status').textContent=`Pregunta ${anatomyGameIndex+1} de ${anatomyGameRound.length}`;
+  $('anatomy-game-score').textContent=`Aciertos: ${anatomyGameScore} · Racha: ${anatomyGameStreak}`;
+  $('anatomy-game-kicker').textContent=anatomyGameKind(target)==='bones'?'IDENTIFICA EL HUESO':'IDENTIFICA EL MÚSCULO';
+  $('anatomy-game-question').textContent='¿Qué estructura está resaltada en amarillo?';
+  const choices=shuffleItems([target,...anatomyGameDistractors(target)]);
+  const options=$('anatomy-game-options');options.replaceChildren();
+  choices.forEach((choice,index)=>{
+    const button=document.createElement('button');button.type='button';button.className='anatomy-game-option';button.dataset.structure=choice.id;
+    button.innerHTML=`<span>${String.fromCharCode(65+index)}</span><strong>${withCommonTerms(choice.name,1)}</strong>`;
+    button.addEventListener('click',()=>answerAnatomyGame(choice.id));options.append(button);
+  });
+  next.disabled=true;next.textContent='Responde para continuar';
+}
+function answerAnatomyGame(selectedId){
+  if(anatomyGameAnswered||!anatomyGameTarget)return;
+  anatomyGameAnswered=true;
+  const correct=selectedId===anatomyGameTarget.id;
+  if(correct){anatomyGameScore++;anatomyGameStreak++;anatomyGameBestStreak=Math.max(anatomyGameBestStreak,anatomyGameStreak)}
+  else{anatomyGameStreak=0;anatomyGameErrors.push(anatomyGameTarget)}
+  $('anatomy-game-options').querySelectorAll('.anatomy-game-option').forEach(button=>{
+    button.disabled=true;
+    button.classList.toggle('correct-answer',button.dataset.structure===anatomyGameTarget.id);
+    button.classList.toggle('selected-answer',button.dataset.structure===selectedId&&button.dataset.structure!==anatomyGameTarget.id);
+  });
+  $('anatomy-game-score').textContent=`Aciertos: ${anatomyGameScore} · Racha: ${anatomyGameStreak}`;
+  const feedback=$('anatomy-game-feedback');feedback.hidden=false;
+  feedback.classList.toggle('is-correct',correct);feedback.classList.toggle('is-incorrect',!correct);
+  $('anatomy-game-result').textContent=correct?'Correcto':'Era otra estructura';
+  $('anatomy-game-name').innerHTML=withCommonTerms(anatomyGameTarget.name,2);
+  $('anatomy-game-explanation').innerHTML=withCommonTerms(`${anatomyGameTarget.text} ${anatomyGameTarget.fact}`,6);
+  $('anatomy-game-sources').innerHTML=anatomyGameTarget.sources.filter(id=>sources[id]).map(makeLink).join('');
+  $('anatomy-game-clue').disabled=true;
+  const last=anatomyGameIndex===anatomyGameRound.length-1;
+  $('anatomy-game-next').disabled=false;$('anatomy-game-next').textContent=last?'Ver resultado':'Siguiente estructura';
+  const progress=Math.round((anatomyGameIndex+1)/anatomyGameRound.length*100);
+  $('anatomy-game-progress').setAttribute('aria-valuenow',String(progress));$('anatomy-game-progress').querySelector('span').style.width=`${progress}%`;
+}
+function finishAnatomyGame(){
+  const total=anatomyGameRound.length,percentage=total?Math.round(anatomyGameScore/total*100):0,best=Math.max(readAnatomyGameBest(),percentage);
+  writeAnatomyGameBest(best);
+  $('anatomy-game-status').textContent='Ronda terminada';
+  $('anatomy-game-question').textContent=`Resultado: ${anatomyGameScore} de ${total}`;
+  $('anatomy-game-options').replaceChildren();$('anatomy-game-feedback').hidden=true;$('anatomy-game-hint').hidden=true;
+  $('anatomy-game-clue').disabled=true;$('anatomy-game-view').disabled=true;$('anatomy-game-next').disabled=true;
+  const summary=$('anatomy-game-summary');summary.hidden=false;
+  summary.innerHTML=`<div><span>Precisión</span><strong>${percentage} %</strong></div><div><span>Mejor resultado</span><strong>${best} %</strong></div><div><span>Mejor racha</span><strong>${anatomyGameBestStreak}</strong></div><p>${anatomyGameErrors.length?`Tienes ${anatomyGameErrors.length} ${anatomyGameErrors.length===1?'estructura':'estructuras'} para repasar.`:'Identificaste todas las estructuras de la ronda.'}</p><div class="anatomy-game-summary-actions"><button type="button" data-game-restart>Otra ronda</button>${anatomyGameErrors.length?'<button type="button" data-game-errors>Practicar mis errores</button>':''}</div>`;
+  summary.querySelector('[data-game-restart]').addEventListener('click',()=>startAnatomyGame());
+  summary.querySelector('[data-game-errors]')?.addEventListener('click',()=>startAnatomyGame([...new Map(anatomyGameErrors.map(item=>[item.id,item])).values()]));
+}
+function startAnatomyGame(reviewItems=null){
+  const pool=reviewItems||anatomyGameCandidates(),requested=Number($('anatomy-game-length').value);
+  if(!pool.length){
+    $('anatomy-game-status').textContent='Esta combinación no tiene estructuras disponibles en el modelo.';
+    return;
+  }
+  anatomyGameRound=shuffleItems(pool).slice(0,reviewItems?pool.length:Math.min(requested,pool.length));
+  anatomyGameIndex=0;anatomyGameScore=0;anatomyGameStreak=0;anatomyGameBestStreak=0;anatomyGameErrors=[];anatomyGameAnswered=false;
+  renderAnatomyGameQuestion();
+}
+function advanceAnatomyGame(){
+  if(!anatomyGameAnswered)return;
+  anatomyGameIndex++;
+  if(anatomyGameIndex>=anatomyGameRound.length)finishAnatomyGame();else renderAnatomyGameQuestion();
+}
+function showAnatomyGameHint(){
+  if(!anatomyGameTarget||anatomyGameAnswered)return;
+  const region=anatomyGameRegionLabels[anatomyGameRegionFor(anatomyGameTarget)],kind=anatomyGameKind(anatomyGameTarget)==='bones'?'hueso':'músculo';
+  const hint=$('anatomy-game-hint');hint.textContent=`Pista: es un ${kind} de ${region}; su nombre comienza con «${anatomyGameTarget.name.charAt(0).toLocaleUpperCase('es')}».`;hint.hidden=false;
+  $('anatomy-game-clue').disabled=true;
+}
+function changeAnatomyGameView(){
+  const views=['front','side','back'];anatomyGameViewIndex=(anatomyGameViewIndex+1)%views.length;setView(views[anatomyGameViewIndex]);requestAnimationFrame(()=>focusSelection());
+}
+$('anatomy-game-start').addEventListener('click',()=>startAnatomyGame());
+$('anatomy-game-next').addEventListener('click',advanceAnatomyGame);
+$('anatomy-game-clue').addEventListener('click',showAnatomyGameHint);
+$('anatomy-game-view').addEventListener('click',changeAnatomyGameView);
 function updateMomentLab(){
   const segmentControl=$('moment-segment');
   if(!segmentControl)return;
@@ -1344,6 +1474,7 @@ function loadAnatomicalMeshes(){
     anatomicalModelLoaded=true;
     poseMode=savedPoseMode;progress=savedProgress;applyPose();
     updateMomentLab();updateLayers();renderStructures();highlightStructure();updatePlaneGuide();
+    if(anatomyGameTarget)requestAnimationFrame(()=>focusSelection());
     const boneCount=meshes.filter(mesh=>meshManifest[mesh.name]?.layer==='bones').length;
     const muscleCount=meshes.filter(mesh=>meshManifest[mesh.name]?.layer==='muscles').length;
     $('mesh-status').textContent=`${boneCount} MALLAS ÓSEAS · ${muscleCount} MUSCULARES · GLB`;
@@ -1406,7 +1537,7 @@ navPad.addEventListener('pointerup',releaseJoystick);navPad.addEventListener('po
 navPad.addEventListener('keydown',event=>{const step=.13;if(event.key==='ArrowLeft')yaw+=step;else if(event.key==='ArrowRight')yaw-=step;else if(event.key==='ArrowUp')pitch=Math.max(-.9,pitch-step);else if(event.key==='ArrowDown')pitch=Math.min(.9,pitch+step);else return;viewTarget=null;event.preventDefault()});
 const stage=document.querySelector('.stage');
 const explorer=document.querySelector('.explorer');
-const persistentAtlasViewer=['explorar','animaciones','articulaciones'].includes(document.documentElement.dataset.atlasView);
+const persistentAtlasViewer=['explorar','animaciones','articulaciones','reto-anatomico'].includes(document.documentElement.dataset.atlasView);
 if(persistentAtlasViewer){
   const viewerSettings=document.querySelector('.viewer-layout-control');
   viewerSettings.classList.add('viewer-settings-sidebar');
@@ -1548,10 +1679,11 @@ function init3D(){
   canvas.addEventListener('contextmenu',e=>e.preventDefault());
   canvas.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0&&e.button!==2)return;e.preventDefault();pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,pan:e.pointerType==='mouse'&&e.button===2});canvas.setPointerCapture(e.pointerId);if(pointers.size===1){pointerMoved=false;lastX=e.clientX;lastY=e.clientY}else{pinchSpan=span();suppressSelection=true;pointerMoved=true}canvas.style.cursor=e.button===2?'move':'grabbing';tooltip.style.display='none'});
   canvas.addEventListener('pointermove',e=>{
+    if(!pointers.has(e.pointerId)&&document.documentElement.dataset.atlasView==='reto-anatomico'){tooltip.style.display='none';canvas.style.cursor='grab';return}
     if(pointers.has(e.pointerId)){const current=pointers.get(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,pan:current.pan});if(pointers.size>1){const next=span();if(pinchSpan>0)setDistance(distance*pinchSpan/next);pinchSpan=next;pointerMoved=true}else{const dx=e.clientX-lastX,dy=e.clientY-lastY;if(Math.abs(dx)+Math.abs(dy)>2)pointerMoved=true;if(current.pan)panView(dx,dy);else{yaw-=dx*.008;pitch=Math.max(-.65,Math.min(.65,pitch+dy*.006));viewTarget=null}lastX=e.clientX;lastY=e.clientY}tooltip.style.display='none';}
     else{const mesh=hit(e);if(mesh){const item=structures.find(s=>s.id===mesh.userData.structure);tooltip.textContent=mesh.userData.jointKey?`${item?.name||''} · ${mesh.userData.side==='C'?'línea media':`lado ${mesh.userData.side==='R'?'derecho':'izquierdo'}`}`:mesh.userData.anatomicalName?`${item?.name||''} · ${mesh.userData.anatomicalName}`:item?.name||'';tooltip.style.left=`${e.offsetX+12}px`;tooltip.style.top=`${e.offsetY+12}px`;tooltip.style.display='block';canvas.style.cursor='pointer';}else{tooltip.style.display='none';canvas.style.cursor='grab';}}
   });
-  canvas.addEventListener('pointerup',e=>{const select=pointers.size===1&&!pointers.get(e.pointerId)?.pan&&!pointerMoved&&!suppressSelection;pointers.delete(e.pointerId);canvas.style.cursor='grab';if(pointers.size===1){const remaining=[...pointers.values()][0];lastX=remaining.x;lastY=remaining.y}else if(pointers.size===0){pinchSpan=0;suppressSelection=false}if(select){const mesh=hit(e);if(mesh){const name=mesh.userData.anatomicalName||'',side=mesh.userData.side||(name.includes('right ')?'R':name.includes('left ')?'L':null);if(mesh.userData.jointKey){freeSide=side||freeSide;freeJoint=mesh.userData.jointKey;freeAction=jointExplorer[freeJoint].actions[0].id;setPoseMode('free');selectStructure(jointExplorer[freeJoint].structure,{side,meshName:name});updateTouchSelection(mesh)}else{selectStructure(mesh.userData.structure,{activateMotion:true,side,meshName:name});updateTouchSelection(mesh)}}}});
+  canvas.addEventListener('pointerup',e=>{const select=pointers.size===1&&!pointers.get(e.pointerId)?.pan&&!pointerMoved&&!suppressSelection&&document.documentElement.dataset.atlasView!=='reto-anatomico';pointers.delete(e.pointerId);canvas.style.cursor='grab';if(pointers.size===1){const remaining=[...pointers.values()][0];lastX=remaining.x;lastY=remaining.y}else if(pointers.size===0){pinchSpan=0;suppressSelection=false}if(select){const mesh=hit(e);if(mesh){const name=mesh.userData.anatomicalName||'',side=mesh.userData.side||(name.includes('right ')?'R':name.includes('left ')?'L':null);if(mesh.userData.jointKey){freeSide=side||freeSide;freeJoint=mesh.userData.jointKey;freeAction=jointExplorer[freeJoint].actions[0].id;setPoseMode('free');selectStructure(jointExplorer[freeJoint].structure,{side,meshName:name});updateTouchSelection(mesh)}else{selectStructure(mesh.userData.structure,{activateMotion:true,side,meshName:name});updateTouchSelection(mesh)}}}});
   canvas.addEventListener('pointercancel',e=>{pointers.delete(e.pointerId);canvas.style.cursor='grab';if(!pointers.size){pinchSpan=0;suppressSelection=false}});
   canvas.addEventListener('pointerleave',()=>tooltip.style.display='none');
   canvas.addEventListener('wheel',e=>{e.preventDefault();setDistance(distance*Math.exp(e.deltaY*.0012));},{passive:false});
