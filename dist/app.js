@@ -68,12 +68,19 @@ let anatomyGameRound=[],anatomyGameIndex=0,anatomyGameScore=0,anatomyGameStreak=
 let viewerInteractionsReady=false;
 const mixedQuizCategory={id:'mixed',label:'Repaso mixto',short:'06 · Todo el cuerpo',focus:'Preguntas aleatorias de anatomía regional y biomecánica.'};
 const quizModelMap={
-  'head-atlas':{movement:'neckflexion'},'head-tmj':{movement:'jawopen'},'head-foramen':{movement:'neckflexion'},'head-scm':{movement:'neckrotation'},'head-axis':{movement:'neckrotation'},'head-jaw':{movement:'jawopen'},
-  'trunk-spine':{movement:'hiphinge'},'trunk-erector':{movement:'hiphinge'},'trunk-diaphragm':{movement:'reachhigh'},'trunk-oblique':{movement:'hiprot'},'trunk-external-intercostal':{movement:'reachhigh'},'trunk-pressure':{movement:'hiphinge'},
-  'upper-shoulder':{movement:'shoulder'},'upper-deltoid':{movement:'shoulder'},'upper-biceps':{movement:'curl'},'upper-serratus':{movement:'overheadpress'},'upper-triceps':{movement:'chestpress'},'upper-pronation':{movement:'pronation'},
-  'lower-gluteus':{movement:'walkstep'},'lower-hamstrings':{movement:'legcurl'},'lower-tibialis':{movement:'ankle'},'lower-patella':{movement:'legextension',machine:'cam'},'lower-soleus':{movement:'heelraise'},'lower-chain':{movement:'squat'},
-  'mech-plane':{movement:'shoulder'},'mech-torque':{movement:'curl'},'mech-angle':{movement:'elbow'},'mech-pulley':{movement:'curl',machine:'pulley'},'mech-cam':{movement:'legextension',machine:'cam'},'mech-third':{movement:'curl'},'mech-length':{movement:'curl'},'mech-observation':{movement:'chestpress'},'mech-motor-unit':{movement:'curl'},'mech-recruitment':{movement:'chestpress'}
+  'head-atlas':{movement:'neckflexion',structure:'cervical'},'head-tmj':{movement:'jawopen',structure:'tmjoint'},'head-foramen':{movement:'neckflexion',structure:'foramenmagnum'},'head-scm':{movement:'neckrotation',structure:'neckmuscles'},'head-axis':{movement:'neckrotation',structure:'cervical'},'head-jaw':{movement:'jawopen',structure:'tmjoint'},
+  'trunk-spine':{movement:'hiphinge',structure:'thoracic'},'trunk-erector':{movement:'hiphinge',structure:'erectorspinae'},'trunk-diaphragm':{movement:'reachhigh',structure:'diaphragm'},'trunk-oblique':{movement:'hiprot',structure:'externaloblique'},'trunk-external-intercostal':{movement:'reachhigh',structure:'externalintercostals'},'trunk-pressure':{movement:'hiphinge',structure:'spine'},
+  'upper-shoulder':{movement:'shoulder',structure:'shoulderjoint'},'upper-deltoid':{movement:'shoulder',structure:'deltoid'},'upper-biceps':{movement:'curl',structure:'biceps'},'upper-serratus':{movement:'overheadpress',structure:'serratus'},'upper-triceps':{movement:'chestpress',structure:'triceps'},'upper-pronation':{movement:'pronation',structure:'radius'},
+  'lower-gluteus':{movement:'walkstep',structure:'gluteus'},'lower-hamstrings':{movement:'legcurl',structure:'hamstrings'},'lower-tibialis':{movement:'ankle',structure:'tibialis'},'lower-patella':{movement:'legextension',machine:'cam',structure:'patella'},'lower-soleus':{movement:'heelraise',structure:'soleus'},'lower-chain':{movement:'squat',structure:'anklejoint'},
+  'mech-plane':{movement:'shoulder',topic:'BIOMECÁNICA'},'mech-torque':{movement:'curl',topic:'BIOMECÁNICA'},'mech-angle':{movement:'elbow',topic:'BIOMECÁNICA'},'mech-pulley':{movement:'curl',machine:'pulley',topic:'MÁQUINA Y POLEA'},'mech-cam':{movement:'legextension',machine:'cam',topic:'MÁQUINA Y LEVA'},'mech-third':{movement:'curl',topic:'BIOMECÁNICA'},'mech-length':{movement:'curl',topic:'BIOMECÁNICA'},'mech-observation':{movement:'chestpress',topic:'LECTURA DEL MODELO'},'mech-motor-unit':{movement:'curl',topic:'FISIOLOGÍA MUSCULAR'},'mech-recruitment':{movement:'chestpress',topic:'FISIOLOGÍA MUSCULAR'}
 };
+function quizQuestionContext(question){
+  const context=quizModelMap[question?.id]||{movement:'shoulder',topic:'ANATOMÍA FUNCIONAL'};
+  const structure=context.structure?structures.find(item=>item.id===context.structure):null;
+  const topic=context.topic||(structure?.type.startsWith('HUES')?'HUESO':structure?.type.startsWith('MÚSC')?'MÚSCULO':structure?.type==='ARTICULACIÓN'?'ARTICULACIÓN':structure?.type==='ABERTURA ÓSEA'?'ABERTURA ÓSEA':'ANATOMÍA FUNCIONAL');
+  const kind=structure?.type.startsWith('HUES')?'bone':structure?.type.startsWith('MÚSC')?'muscle':structure?.type==='ARTICULACIÓN'?'joint':structure?.type==='ABERTURA ÓSEA'?'opening':'concept';
+  return {...context,structure,topic,kind};
+}
 const meshCoverage = new Set(Object.values(meshManifest).map(item=>item.structure));
 const relatedMeshes={spine:['cervical','thoracic','lumbar','sacrum'],radiusulna:['radius','ulna'],tibiafibula:['tibia','fibula'],foot:['talus','calcaneus','navicular','cuboid','cuneiforms','metatarsals','toephalanges'],neckjoint:['skull','cervical'],radioulnarjoint:['radius','ulna'],shoulderjoint:['humerus','scapula'],elbowjoint:['humerus','radius','ulna'],wristjoint:['radius','carpals'],hipjoint:['pelvis','femur'],kneejoint:['femur','tibia','patella'],anklejoint:['tibia','fibula','talus']};
 const partMotion={
@@ -293,9 +300,10 @@ function renderQuizQuestion(){
     next.disabled=false;next.textContent='Mezclar otra ronda';return;
   }
   quizAnswered=false;
+  const context=quizQuestionContext(question);
   $('quiz-score').textContent=`Aciertos: ${quizScore}`;
-  $('quiz-status').textContent=`Pregunta ${quizIndex+1} de ${quizRound.length}`;
-  $('quiz-question').innerHTML=withCommonTerms(question.question,4);
+  $('quiz-status').textContent=`Pregunta ${quizIndex+1} de ${quizRound.length} · ${context.topic}`;
+  $('quiz-question').innerHTML=`<span class="quiz-target-badge" data-kind="${context.kind}"><span class="quiz-target-symbol" aria-hidden="true">${context.kind==='bone'?'◆':context.kind==='muscle'?'≈':context.kind==='joint'?'◎':context.kind==='opening'?'◌':'↗'}</span> RESPONDE SOBRE · ${context.topic}</span>${withCommonTerms(question.question,4)}`;
   $('quiz-feedback').hidden=true;$('quiz-feedback-result').textContent='';$('quiz-explanation').textContent='';$('quiz-question-sources').replaceChildren();
   const answers=$('quiz-answers');answers.replaceChildren();
   question.answers.forEach((answer,index)=>{
@@ -389,8 +397,9 @@ function renderAnatomyGameQuestion(){
   $('anatomy-game-progress').querySelector('span').style.width=`${progress}%`;
   $('anatomy-game-status').textContent=`Pregunta ${anatomyGameIndex+1} de ${anatomyGameRound.length}`;
   $('anatomy-game-score').textContent=`Aciertos: ${anatomyGameScore} · Racha: ${anatomyGameStreak}`;
-  $('anatomy-game-kicker').textContent=anatomyGameKind(target)==='bones'?'IDENTIFICA EL HUESO':'IDENTIFICA EL MÚSCULO';
-  $('anatomy-game-question').textContent='¿Qué estructura está resaltada en amarillo?';
+  const targetKind=anatomyGameKind(target)==='bones'?'HUESO':'MÚSCULO';
+  $('anatomy-game-kicker').textContent=`IDENTIFICA EL ${targetKind} · ${anatomyGameRegionLabels[anatomyGameRegionFor(target)].toLocaleUpperCase('es')}`;
+  $('anatomy-game-question').textContent=`Se resaltó un ${targetKind.toLocaleLowerCase('es')} en amarillo. ¿Cuál es?`;
   const choices=shuffleItems([target,...anatomyGameDistractors(target)]);
   const options=$('anatomy-game-options');options.replaceChildren();
   choices.forEach((choice,index)=>{
@@ -567,6 +576,52 @@ function renderPartPicker(){
   const relation=selected.type.startsWith('MÚSC')?'Su malla acompaña la articulación o se deforma entre los segmentos conectados; no reproduce una contracción fisiológica.':directMover.has(activeStructure)?'Su segmento óseo acompaña la animación del visor.':'El control muestra el movimiento de la articulación relacionada.';
   $('part-motion-status').innerHTML=withCommonTerms(`${selectedMeshName||selected.name}${side?' · lado '+side:''}: ${jointExplorer[jointKey].name}. ${relation}`,3);
 }
+function studyRelationData(structure){
+  const section=sectionForStructure(structure);
+  let jointKey=partMotion[structure.id]||Object.entries(jointExplorer).find(([,joint])=>joint.structure===structure.id||(relatedMeshes[joint.structure]||[]).includes(structure.id))?.[0]||null;
+  const jointStructure=jointKey?structures.find(item=>item.id===jointExplorer[jointKey].structure):null;
+  const boneIds=new Set(jointStructure?relatedMeshes[jointStructure.id]||[]:[]);
+  const sameJoint=structures.filter(item=>item.id!==structure.id&&partMotion[item.id]===jointKey);
+  const candidates=[
+    jointStructure,
+    ...structures.filter(item=>boneIds.has(item.id)),
+    ...sameJoint.filter(item=>item.type.startsWith('MÚSC')),
+    ...sameJoint.filter(item=>!item.type.startsWith('MÚSC')),
+    ...structures.filter(item=>item.id!==structure.id&&sectionForStructure(item)===section)
+  ].filter(Boolean);
+  const seen=new Set(),related=[];
+  for(const item of candidates)if(item.id!==structure.id&&!seen.has(item.id)&&hasAnatomicalMesh(item.id)){seen.add(item.id);related.push(item)}
+  return {jointKey,related:related.slice(0,7)};
+}
+function studyNavigatorMarkup(structure,directPieces){
+  const {jointKey,related}=studyRelationData(structure);
+  const typeLabel=item=>item.type.startsWith('HUES')?'Hueso':item.type.startsWith('MÚSC')?'Músculo':item.type==='ARTICULACIÓN'?'Articulación':'Referencia';
+  return `<section class="study-navigator" aria-label="Continuar el aprendizaje desde ${escapeHTML(structure.name)}"><div class="study-navigator-head"><span>RUTA CONTEXTUAL</span><strong>¿Qué quieres hacer ahora?</strong></div><div class="study-mini-path" aria-label="Orden recomendado"><span class="active">1 · Estructura</span><i>→</i><span>2 · Relaciones</span><i>→</i><span>3 · Movimiento</span></div><div class="study-primary-actions"><button type="button" data-study-focus="${structure.id}">Enfocar con su contexto</button>${directPieces>1?`<button type="button" data-study-components="${structure.id}">Ver sus ${directPieces} piezas</button>`:''}${jointKey?`<button type="button" data-study-joint="${jointKey}">Mover la articulación relacionada</button>`:''}</div>${related.length?`<div class="study-related"><span>ESTRUCTURAS QUE LO ACOMPAÑAN</span><div>${related.map(item=>`<button type="button" data-study-related="${item.id}"><small>${typeLabel(item)}</small>${withCommonTerms(item.name,1)}</button>`).join('')}</div></div>`:''}<button type="button" class="study-surprise" data-study-surprise="${structure.id}">Cambiar de región y descubrir otra estructura ↗</button></section>`;
+}
+function bindStudyNavigator(root,structure){
+  if(!root)return;
+  root.querySelector('[data-study-focus]')?.addEventListener('click',()=>{
+    $('layer-bones').checked=true;$('layer-muscles').checked=true;$('isolate-structure').checked=true;
+    const muscle=structure.type.startsWith('MÚSC');$('separate-selected').checked=muscle;
+    if(muscle&&Number($('explode-slider').value)<14)$('explode-slider').value='14';
+    updateLayers();focusSelection();document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  root.querySelector('[data-study-components]')?.addEventListener('click',()=>{
+    $('layer-bones').checked=true;$('layer-muscles').checked=true;$('isolate-structure').checked=true;$('separate-selected').checked=structure.type.startsWith('MÚSC');
+    if(structure.type.startsWith('MÚSC'))$('explode-slider').value='18';
+    updateLayers();focusSelection();$('part-substructure-select').focus();
+  });
+  root.querySelector('[data-study-joint]')?.addEventListener('click',event=>{
+    const key=event.currentTarget.dataset.studyJoint;freeJoint=key;freeAction=jointExplorer[key].actions[0].id;setPoseMode('free');focusJoint(key,selectedStructureSide||freeSide);
+  });
+  root.querySelectorAll('[data-study-related]').forEach(button=>button.addEventListener('click',()=>{selectStructure(button.dataset.studyRelated,{activateMotion:false,side:selectedStructureSide});requestAnimationFrame(()=>focusSelection())}));
+  root.querySelector('[data-study-surprise]')?.addEventListener('click',()=>{
+    const currentSection=sectionForStructure(structure),currentType=structure.type.startsWith('MÚSC')?'muscle':structure.type.startsWith('HUES')?'bone':'other';
+    const start=structures.findIndex(item=>item.id===structure.id);
+    const next=[...structures.slice(start+1),...structures.slice(0,start+1)].find(item=>sectionForStructure(item)!==currentSection&&(currentType==='muscle'?!item.type.startsWith('MÚSC'):item.type.startsWith('MÚSC'))&&hasAnatomicalMesh(item.id));
+    if(next){browseRegion=sectionForStructure(next);selectStructure(next.id,{activateMotion:true,scroll:true});requestAnimationFrame(()=>focusSelection())}
+  });
+}
 function renderStructures(){
   const category=s=>s.type.startsWith('HUES')?'Huesos':s.type.startsWith('MÚSC')?'Músculos':s.type==='ARTICULACIÓN'?'Articulaciones':'Aberturas';
   const normalize=value=>value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -598,7 +653,9 @@ function renderStructures(){
   const hasMesh=anatomicalModelLoaded&&hasAnatomicalMesh(s.id);
   const directPieces=Object.values(meshManifest).filter(info=>info.structure===s.id).length;
   const oldModelDescription=/(visor|modelo|varilla|aro|anillo|banda|lámina|esquem|dibuj|se representa|se muestran|se ve|se marca|pieza|volumen|segmentos|aquí|rayos|tramo|se resaltan|contiguas)/i.test(s.fact);
-  $('structure-detail').innerHTML=`<div class="structure-detail-meta"><span class="type">${s.type}</span><span>${catalogSections[sectionForStructure(s)]}</span></div><h3>${withCommonTerms(s.name,2)}</h3>${selectedMeshName?`<p><strong>Pieza individual:</strong> ${escapeHTML(selectedMeshName)} · identificada en BodyParts3D.</p>`:''}<p>${withCommonTerms(hasMesh&&textOverrides[s.id]||s.text,5)}</p>${meshNote}${directPieces?`<p class="structure-piece-count">${directPieces} ${directPieces===1?'malla identificada':'mallas identificadas'} en el GLB</p>`:''}${oldModelDescription&&hasMesh?'':`<div class="fact"><strong>Dato de estudio:</strong> ${withCommonTerms(s.fact,3)}</div>`}<div class="structure-citations"><strong>Fuentes de esta ficha</strong><div class="detail-sources">${[...new Set([...s.sources,...(hasMesh?['bodyparts']:[])])].map(makeLink).join('')}</div></div>`;
+  const studyNavigator=studyNavigatorMarkup(s,directPieces);
+  $('structure-detail').innerHTML=`<div class="structure-detail-meta"><span class="type">${s.type}</span><span>${catalogSections[sectionForStructure(s)]}</span></div><h3>${withCommonTerms(s.name,2)}</h3>${selectedMeshName?`<p><strong>Pieza individual:</strong> ${escapeHTML(selectedMeshName)} · identificada en BodyParts3D.</p>`:''}<p>${withCommonTerms(hasMesh&&textOverrides[s.id]||s.text,5)}</p>${meshNote}${directPieces?`<p class="structure-piece-count">${directPieces} ${directPieces===1?'malla identificada':'mallas identificadas'} en el GLB</p>`:''}${oldModelDescription&&hasMesh?'':`<div class="fact"><strong>Dato de estudio:</strong> ${withCommonTerms(s.fact,3)}</div>`}${studyNavigator}<div class="structure-citations"><strong>Fuentes de esta ficha</strong><div class="detail-sources">${[...new Set([...s.sources,...(hasMesh?['bodyparts']:[])])].map(makeLink).join('')}</div></div>`;
+  bindStudyNavigator($('structure-detail'),s);
   const selectedInfo=$('selected-structure-info');
   selectedInfo.hidden=!structureInfoVisible;
   if(structureInfoVisible){
@@ -608,8 +665,9 @@ function renderStructures(){
     const sideLabel=selectedStructureSide==='L'?'izquierdo':selectedStructureSide==='R'?'derecho':'';
     const movementText=joint?`Se relaciona con ${joint.name.toLocaleLowerCase('es')}. ${s.type.startsWith('MÚSC')?'La malla acompaña el gesto del visor, pero no simula contracción ni activación fisiológica.':directMover.has(s.id)?'El segmento óseo sigue el movimiento articular en el modelo.':'Puedes explorar el rango de esa articulación con sus controles.'}`:'Esta estructura se consulta como referencia anatómica; el atlas no le asigna un control articular individual.';
     const citations=[...new Set([...s.sources,...(hasMesh?['bodyparts']:[])])];
-    selectedInfo.innerHTML=`<div class="selected-info-heading"><span>PARTE SELECCIONADA${sideLabel?` · LADO ${sideLabel.toLocaleUpperCase('es')}`:''}</span><span class="selected-info-type">${s.type}</span></div><h3>${withCommonTerms(s.name,2)}</h3>${selectedMeshName?`<p class="selected-info-piece"><strong>Pieza del modelo:</strong> ${escapeHTML(selectedMeshName)}</p>`:''}<div class="selected-info-block"><strong>${roleLabel}</strong><p>${withCommonTerms(functionText,5)}</p></div><div class="selected-info-block"><strong>Detalle anatómico</strong><p>${withCommonTerms(s.fact,3)}</p></div><div class="selected-info-motion"><strong>Relación con el movimiento</strong><p>${withCommonTerms(movementText,4)}</p>${joint?`<button type="button" class="selected-info-action" data-open-joint="${jointKey}">Explorar ${withCommonTerms(joint.name,1)} en el modelo</button>`:''}</div>${directPieces?`<p class="selected-info-mesh">Representación: ${directPieces} ${directPieces===1?'malla':'mallas'} identificadas en el modelo 3D.</p>`:''}<div class="selected-info-sources"><strong>Fuentes</strong><div class="detail-sources">${citations.map(makeLink).join('')}</div></div>`;
+    selectedInfo.innerHTML=`<div class="selected-info-heading"><span>PARTE SELECCIONADA${sideLabel?` · LADO ${sideLabel.toLocaleUpperCase('es')}`:''}</span><span class="selected-info-type">${s.type}</span></div><h3>${withCommonTerms(s.name,2)}</h3>${selectedMeshName?`<p class="selected-info-piece"><strong>Pieza del modelo:</strong> ${escapeHTML(selectedMeshName)}</p>`:''}<div class="selected-info-block"><strong>${roleLabel}</strong><p>${withCommonTerms(functionText,5)}</p></div><div class="selected-info-block"><strong>Detalle anatómico</strong><p>${withCommonTerms(s.fact,3)}</p></div><div class="selected-info-motion"><strong>Relación con el movimiento</strong><p>${withCommonTerms(movementText,4)}</p>${joint?`<button type="button" class="selected-info-action" data-open-joint="${jointKey}">Explorar ${withCommonTerms(joint.name,1)} en el modelo</button>`:''}</div>${directPieces?`<p class="selected-info-mesh">Representación: ${directPieces} ${directPieces===1?'malla':'mallas'} identificadas en el modelo 3D.</p>`:''}${studyNavigator}<div class="selected-info-sources"><strong>Fuentes</strong><div class="detail-sources">${citations.map(makeLink).join('')}</div></div>`;
     selectedInfo.querySelector('[data-open-joint]')?.addEventListener('click',event=>{const key=event.currentTarget.dataset.openJoint;freeJoint=key;freeAction=jointExplorer[key].actions[0].id;setPoseMode('free');focusJoint(key,selectedStructureSide||freeSide)});
+    bindStudyNavigator(selectedInfo,s);
   }
 }
 function renderSources(){
@@ -694,11 +752,18 @@ function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true,a
 function prepareQuizModelForCurrentQuestion(){
   if(!viewerInteractionsReady)return;
   const question=quizRound[quizIndex];if(!question)return;
-  const context=quizModelMap[question.id]||{movement:'shoulder'};
+  const context=quizQuestionContext(question);
   const movement=movements.find(item=>item.id===context.movement);
   if(!movement)return;
-  applyMovementToModel(movement.id,{machine:context.machine,focus:true});
-  $('quiz-model-context').textContent=`Modelo preparado: ${movement.name}${context.machine?` · mecanismo: ${machineMechanics.find(item=>item.id===context.machine)?.label||context.machine}`:''}.`;
+  applyMovementToModel(movement.id,{machine:context.machine,focus:!context.structure});
+  if(context.structure){
+    const side=movement.side==='L'?'L':movement.side==='R'?'R':null;
+    selectStructure(context.structure.id,{activateMotion:false,side});
+    requestAnimationFrame(()=>focusSelection());
+  }
+  const target=context.structure?`${context.topic}: ${context.structure.name}`:context.topic;
+  $('quiz-model-context').dataset.kind=context.kind;
+  $('quiz-model-context').innerHTML=`<strong><span class="quiz-context-symbol" aria-hidden="true">${context.kind==='bone'?'◆':context.kind==='muscle'?'≈':context.kind==='joint'?'◎':context.kind==='opening'?'◌':'↗'}</span> OBJETIVO · ${target}</strong><span>${context.structure?'La zona amarilla corresponde exactamente a lo que debes identificar o relacionar.':'El modelo aporta el gesto de contexto; esta pregunta no pide nombrar una malla concreta.'} ${movement.name}${context.machine?` · mecanismo: ${machineMechanics.find(item=>item.id===context.machine)?.label||context.machine}`:''}.</span>`;
 }
 document.querySelectorAll('[data-model-movement]').forEach(button=>button.addEventListener('click',()=>{
   const id=button.dataset.modelMovement,movement=movements.find(item=>item.id===id);
@@ -1060,6 +1125,14 @@ function groundedPose(value,torsoDegrees,thighDegrees,kneeDegrees){
 }
 function hipHingePose(value){return groundedPose(value,55,-8,12)}
 function squatPose(value){return groundedPose(value,20,-30,60)}
+function setForearmTwist(side,angle){
+  const arm=arms[side],axis=arm.wrist.position.clone();
+  // El eje longitudinal real une el centro aproximado del codo y la muñeca.
+  // Usar rotation.y hacía orbitar la mano porque el antebrazo GLB no es
+  // perfectamente vertical; la muñeca se alejaba entonces del cúbito distal.
+  if(axis.lengthSq()<1e-8)axis.set(0,-1,0);else axis.normalize();
+  arm.forearm.quaternion.setFromAxisAngle(axis,angle);
+}
 function applyExamplePose(m,value){
   const t=THREE.MathUtils.clamp(value/100,0,1),ease=t*t*(3-2*t),deg=THREE.MathUtils.degToRad;
   if(m.grounded){
@@ -1082,6 +1155,7 @@ function applyExamplePose(m,value){
     const initial=phases?previous.pose[key]:m.from?.[key]||[0,0,0],final=phases?next.pose[key]:m.pose?.[key]||[0,0,0];
     const v=initial.map((n,i)=>n+(final[i]-n)*(phases?phaseEase:ease));
     if(key==='rootPosition'){bodyRoot.position.add(new THREE.Vector3(...v));continue}
+    if(key==='forearmR'||key==='forearmL'){setForearmTwist(key.endsWith('L')?'L':'R',deg(v[1]));continue}
     const target=key==='rootRotation'?bodyRoot:key==='head'?headGroup:key==='jaw'?jawGroup:key.endsWith('L')?(arms.L[key.slice(0,-1)]||legs.L[key.slice(0,-1)]):(arms.R[key.slice(0,-1)]||legs.R[key.slice(0,-1)]);
     if(target)target.rotation.set(deg(v[0]),deg(v[1]),deg(v[2]));
   }
@@ -1101,7 +1175,7 @@ function applyPose(){
       const a=freeAngles[side],direction=side==='R'?-1:1;
       arms[side].shoulder.rotation.set(-deg(a.shoulder.flex),direction*deg(a.shoulder.rot),direction*deg(a.shoulder.abd));
       arms[side].elbow.rotation.x=-deg(a.elbow.flex);
-      arms[side].forearm.rotation.y=(side==='R'?1:-1)*deg(a.radioulnar.pron);
+      setForearmTwist(side,(side==='R'?1:-1)*deg(a.radioulnar.pron));
       arms[side].wrist.rotation.x=-deg(a.wrist.flex);
       legs[side].hip.rotation.set(-deg(a.hip.flex),direction*deg(a.hip.rot),direction*deg(a.hip.abd));
       legs[side].knee.rotation.x=deg(a.knee.flex);
@@ -1190,6 +1264,19 @@ function muscleMotionWeights(anchors,info){
   // deformación continua las retuerce; una transformación intermedia conserva
   // su volumen y mantiene ambos extremos próximos a sus referencias.
   if(info?.structure==='hiprotators'&&keys.includes('static'))return keys.map(key=>({key,weight:key==='static'?.60:.40}));
+  if(keys.length===2&&keys.includes('static')&&keys.includes('head')){
+    const name=info?.name?.toLowerCase()||'';
+    // El cuello no es una sola pieza rígida. Como el atlas todavía no articula
+    // C1-C7 por separado, cada malla recibe una fracción distinta del gesto
+    // craneocervical según sus inserciones. Esto evita que trapecio, elevador de
+    // la escápula e infrahioideos salten hacia delante con toda la cabeza.
+    let staticWeight={scalenes:.90,levatorscapulae:.90,trapezius:.90,deepneck:.55,neckmuscles:.58}[info?.structure];
+    if(['sternohyoid','omohyoid','sternothyroid','thyrohyoid'].some(term=>name.includes(term)))staticWeight=.94;
+    else if(name.includes('splenius cervicis'))staticWeight=.86;
+    else if(name.includes('platysma'))staticWeight=.72;
+    else if(name.includes('obliquus capitis inferior')||name.includes('cervical rotator'))staticWeight=.90;
+    if(staticWeight!=null)return keys.map(key=>({key,weight:key==='static'?staticWeight:1-staticWeight}));
+  }
   if(keys.length===2&&keys.includes('static')&&['trapezius','rhomboids','serratus','pectoralisminor','subclavius','scalenes'].includes(info?.structure))
     return keys.map(key=>({key,weight:key==='static'?.78:.22}));
   const dominant=muscleDominant(info,anchors);
@@ -1270,7 +1357,10 @@ function muscleEndpoint(mesh,toRoot,pivot){
 }
 function localizedSkinData(mesh,toRoot,rig,anchors,dominant,info){
   const anchorKeys=[...new Set([anchors[0],anchors[1]].filter(key=>key&&key!==dominant&&rig[key]))];
-  if(!anchorKeys.length||dominant.startsWith('glute')||['neckmuscles','scalenes','deepneck','suprahyoid','tonguemuscles','brachialis','hiprotators'].includes(info.structure))return null;
+  // Los músculos cervicales y escapulocervicales se dibujan con una
+  // transformación intermedia rígida. Con un único pivote para C1-C7, el
+  // skinning localizado arqueaba o invertía estas mallas al flexionar la cabeza.
+  if(!anchorKeys.length||dominant.startsWith('glute')||['neckmuscles','scalenes','deepneck','levatorscapulae','trapezius','suprahyoid','tonguemuscles','brachialis','hiprotators'].includes(info.structure))return null;
   // Ocho zonas ofrecen una transición continua sin multiplicar en exceso el
   // trabajo por fotograma en móviles; la auditoría geométrica comprueba que la
   // reducción conserva uniones y deformaciones dentro de los límites.
@@ -1767,6 +1857,10 @@ $('fullscreen-view').addEventListener('click',async()=>{if(document.fullscreenEl
 document.addEventListener('fullscreenchange',()=>{syncFullscreenButton();queueViewerDock();requestAnimationFrame(resizeViewerCanvas)});
 
 let viewerInitPhase='preparación';
+function viewerPixelRatio(){
+  const ratio=window.devicePixelRatio||1,limitedDevice=window.innerWidth<=760||Number(navigator.deviceMemory||8)<=4;
+  return Math.min(ratio,limitedDevice?1.35:1.8);
+}
 function init3D(){
   const canvas=$('body-canvas'),wrap=$('canvas-wrap');
   viewerInitPhase='creación del contexto WebGL';
@@ -1778,7 +1872,7 @@ function init3D(){
     catch(compatibilityError){compatibilityError.cause=primaryError;throw compatibilityError}
   }
   viewerInitPhase='configuración del renderizador';
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.setPixelRatio(viewerPixelRatio());renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
   scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(37,1,.03,100);scene.add(new THREE.HemisphereLight(0xd5f2ea,0x41524b,2.3));
   const key=new THREE.DirectionalLight(0xffe7ce,3.0);key.position.set(-4,7,8);scene.add(key);
@@ -1791,7 +1885,7 @@ function init3D(){
   const resize=()=>{
     const rect=wrap.getBoundingClientRect(),width=Math.floor(rect.width),height=Math.floor(rect.height);
     if(!Number.isFinite(width)||!Number.isFinite(height)||width<1||height<1)return false;
-    renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();return true;
+    renderer.setPixelRatio(viewerPixelRatio());renderer.setSize(width,height,false);camera.aspect=width/height;camera.updateProjectionMatrix();return true;
   };
   resizeViewerCanvas=resize;
   if('ResizeObserver' in window)new ResizeObserver(resize).observe(wrap);else window.addEventListener('resize',resize,{passive:true});resize();
@@ -1835,6 +1929,7 @@ function init3D(){
   canvas.addEventListener('wheel',e=>{e.preventDefault();setDistance(distance*Math.exp(e.deltaY*.0012));},{passive:false});
   function frame(time){
     const dt=Math.min(50,time-lastTime||16);lastTime=time;
+    if(document.hidden){setTimeout(()=>requestAnimationFrame(frame),300);return}
     if(window.innerWidth<=760&&!mobileViewerOpen&&!persistentAtlasViewer){setTimeout(()=>requestAnimationFrame(frame),250);return}
     if(playing){progress+=dt*.027*Number($('motion-speed').value)*poseDirection;if(progress>=100){progress=100;if($('motion-repeat').checked)poseDirection=-1;else{playing=false;$('play-button').textContent='▶'}}if(progress<=0&&poseDirection<0){progress=0;poseDirection=1;if(!$('motion-repeat').checked){playing=false;$('play-button').textContent='▶'}}$('motion-slider').value=String(progress);applyPose();updateReadout();updateMomentLab()}
     if(viewTarget!==null){let delta=((viewTarget-yaw+Math.PI*3)%(Math.PI*2))-Math.PI;yaw+=delta*.12;if(Math.abs(delta)<.002)viewTarget=null}

@@ -1,4 +1,4 @@
-import {parseYouTubeLink,formatTimecode,parseTimecode} from './youtube-link.js?v=ae94c4f1dcec';
+import {parseYouTubeLink,formatTimecode,parseTimecode} from './youtube-link.js?v=c363f63059d0';
 const $ = id => document.getElementById(id);
 const videoInput = $('video-file');
 const video = $('source-video');
@@ -94,7 +94,7 @@ function drawOverlay(landmarks){
 }
 function ensureWorker(){
   if(worker)return;
-  worker=new Worker('./pose-worker.js?v=ae94c4f1dcec',{type:'module'});
+  worker=new Worker('./pose-worker.js?v=c363f63059d0',{type:'module'});
   worker.onmessage=event=>{
     const message=event.data||{};
     if(message.type==='ready'){workerReady=true;pendingPose?.resolve(null);pendingPose=null;return}

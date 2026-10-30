@@ -27,6 +27,8 @@ html[data-theme=dark] .geometry-controls select{background:#17271f;color:#edf3e9
 .physiology-bridge,.case-provenance{margin:18px 0;font-size:15px;line-height:1.65}
 .physiology-bridge p,.case-provenance p{margin:7px 0 0}
 .physiology-bridge a,.case-provenance a{color:#315b4f;font-weight:800;text-underline-offset:3px}
+.analysis-route{margin:18px 0;border-left-color:#668fa4;background:#edf4f6}.analysis-route ol{margin:10px 0 0;padding-left:22px}.analysis-route li{margin:7px 0;color:#415e55}.analysis-route a{color:#315b4f;font-weight:800;text-underline-offset:3px}
 html[data-theme=dark] .physiology-bridge a,html[data-theme=dark] .case-provenance a{color:#e4d295}
+html[data-theme=dark] .analysis-route{background:#1d3032}html[data-theme=dark] .analysis-route li{color:#c3d5cd}html[data-theme=dark] .analysis-route a{color:#9dc9d4}
 .study-header nav{min-width:0;flex:1;justify-content:flex-end}
 @media(max-width:760px){.study-header nav{width:100%;justify-content:flex-start}}

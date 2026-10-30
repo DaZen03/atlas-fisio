@@ -81,6 +81,8 @@ Cada elemento del futuro catálogo debería incluir:
 - Pruebas visuales anterior, posterior y lateral en escritorio y móvil.
 - Preguntas que exijan localizar, seguir el trayecto y explicar función.
 
+La futura capa de cartílagos, discos y meniscos se especifica por separado en `docs/plan-cartilagos-articulaciones.md`. Debe reutilizar la misma auditoría de segmentos, pero mantenerse diferenciada de tendones, entesis y ligamentos tanto en datos como en la interfaz.
+
 ## Criterios de aceptación
 
 - Toda estructura tiene fuente y nivel de precisión visible.

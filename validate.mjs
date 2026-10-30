@@ -121,6 +121,9 @@ check(ids.has('selected-structure-info')&&ids.has('touch-selection-function'), '
 check(app.includes('Función y fijaciones')&&app.includes('Detalle anatómico')&&app.includes('Relación con el movimiento')&&app.includes('selected-info-sources'), 'La selección debe mostrar función, detalles, vínculo articular y fuentes.');
 check(app.includes("$('touch-selection-function').textContent")&&app.includes("selectStructure(jointExplorer[freeJoint].structure,{side,meshName:name})"), 'La selección táctil debe anunciar su función e incluir las articulaciones.');
 check(app.includes("withCommonTerms(question.explanation")&&app.includes("withCommonTerms(joint.type")&&app.includes("withCommonTerms(item.mechanism"), 'Las equivalencias deben mostrarse en tests, articulaciones y biomecánica de máquinas.');
+check(app.includes('function quizQuestionContext(')&&app.includes('data-kind="${context.kind}"')&&app.includes("selectStructure(context.structure.id"), 'El test debe distinguir visualmente hueso, músculo, articulación y concepto, y enfocar la estructura preguntada.');
+check(app.includes('function viewerPixelRatio(')&&app.includes('if(document.hidden)'), 'El visor debe limitar resolución en equipos modestos y pausar trabajo cuando la pestaña queda oculta.');
+for(const feature of ['function studyRelationData(','function studyNavigatorMarkup(','data-study-focus','data-study-components','data-study-related','data-study-surprise'])check(app.includes(feature),`Falta una acción de continuidad en el flujo contextual: ${feature}.`);
 check(fs.readFileSync('./dist/styles.css','utf8').includes('.scientific-common-pair'), 'Falta el estilo legible para las equivalencias terminológicas.');
 const glossaryStart=app.indexOf('const commonTermGlossary='),glossaryEnd=app.indexOf('\nlet activeMovement',glossaryStart),glossaryContext={};
 if(glossaryStart>=0&&glossaryEnd>glossaryStart){

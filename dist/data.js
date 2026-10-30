@@ -168,7 +168,7 @@ export const jointExplorer = {
     {id:'flex',label:'Flexión / extensión',min:0,max:135,positive:'Flexión',zero:'Extensión',plane:'sagital',muscles:'Braquial, bíceps y braquiorradial flexionan; el tríceps extiende el codo.'}
   ]},
   radioulnar:{name:'Radiocubital',structure:'radioulnarjoint',type:'Sinovial trocoide (pivote)',bones:'Radio y cúbito en las articulaciones radiocubitales proximal y distal.',context:'En la pronación el radio gira alrededor del cúbito. El visor rota un grupo del radio, tendones y mano en torno a un eje aproximado; no simula el deslizamiento real en ambos extremos.',sources:['joints','jointtypes','motions','upperlimb'],actions:[
-    {id:'pron',label:'Pronación / supinación',min:0,max:120,positive:'Pronación',zero:'Supinación',plane:'transversal',muscles:'Pronador redondo y pronador cuadrado pronan; supinador y bíceps braquial supinan.'}
+    {id:'pron',label:'Pronación / supinación',min:0,max:85,positive:'Pronación',zero:'Supinación',plane:'transversal',muscles:'Pronador redondo y pronador cuadrado pronan; supinador y bíceps braquial supinan.'}
   ]},
   wrist:{name:'Muñeca',structure:'wristjoint',type:'Sinovial condílea (elipsoidea)',bones:'Radio distal y complejo fibrocartilaginoso frente a la fila proximal del carpo.',context:'La radiocarpiana es biaxial. Este control muestra flexión y extensión de la mano; la desviación radial y cubital queda descrita, pero no animada.',sources:['jointtypes','upperbones','motions'],actions:[
     {id:'flex',label:'Flexión / extensión',min:-55,max:55,positive:'Flexión',negative:'Extensión',plane:'sagital',muscles:'Flexores anteriores y extensores posteriores del antebrazo actúan sobre la muñeca por medio de sus tendones.'}

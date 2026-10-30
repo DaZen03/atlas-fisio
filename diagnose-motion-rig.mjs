@@ -45,6 +45,20 @@ for(const id of ['rhomboids','serratus','pectoralisminor','subclavius']){
   if(sample&&scope.muscleAnchors(sample))throw Error(`${id} sigue al húmero aunque la escápula o clavícula está fija`);
 }
 gltf.scene.traverse(obj=>{if(!obj.isMesh)return;const info=manifest[obj.name];if(info?.layer==='muscles')records.push({mesh:obj,info});if(info?.layer==='bones')boneRecords.push({mesh:obj,info})});
+const boneSegment=info=>info.structure==='mandible'?'jaw':info.structure==='scapula'?'scapula'+(info.name.includes('left ')?'L':''):info.segment;
+for(const record of boneRecords){
+  record.segment=boneSegment(record.info);
+  if(!rig[record.segment])throw Error(`Segmento óseo desconocido: ${record.info.name} → ${record.segment}`);
+  if(record.info.name.includes('left ')&&!['static','head','jaw'].includes(record.segment)&&!record.segment.endsWith('L'))throw Error(`Hueso izquierdo asignado al lado incorrecto: ${record.info.name} → ${record.segment}`);
+  if(record.info.name.includes('right ')&&record.segment.endsWith('L'))throw Error(`Hueso derecho asignado al lado incorrecto: ${record.info.name} → ${record.segment}`);
+  rig[record.segment].attach(record.mesh);
+}
+root.updateMatrixWorld(true);
+for(const record of boneRecords){
+  const count=record.mesh.geometry.attributes.position.count;
+  record.motionIds=[0,Math.floor(count/2),count-1];
+  record.neutral=record.motionIds.map(index=>new THREE.Vector3().fromBufferAttribute(record.mesh.geometry.attributes.position,index).applyMatrix4(record.mesh.matrixWorld));
+}
 const links=[];
 const worldVertex=(mesh,i)=>{
   const vertex=new THREE.Vector3().fromBufferAttribute(mesh.geometry.attributes.position,i);
@@ -121,13 +135,15 @@ if(neutralError>1e-5)throw Error(`La unión al esqueleto cambia la posición neu
 const deg=THREE.MathUtils.degToRad;
 const poses=[
   ['cuello',()=>rig.head.rotation.y=deg(50)],
+  ['flexión cervical',()=>rig.head.rotation.x=deg(30)],
+  ['extensión cervical',()=>rig.head.rotation.x=-deg(25)],
   ['mandíbula',()=>rig.jaw.rotation.x=deg(20)],
   ['hombro',()=>rig.shoulder.rotation.z=-deg(90)],
   ['codo',()=>rig.elbow.rotation.x=-deg(135)],
-  ['pronación',()=>rig.forearm.rotation.y=deg(85)],
+  ['pronación',()=>scope.setForearmTwist('R',deg(85))],
   ['muñeca/mano',()=>rig.wrist.rotation.x=-deg(80)],
   ['codo izquierdo',()=>rig.elbowL.rotation.x=-deg(135)],
-  ['pronación izquierda',()=>rig.forearmL.rotation.y=-deg(85)],
+  ['pronación izquierda',()=>scope.setForearmTwist('L',-deg(85))],
   ['muñeca izquierda',()=>rig.wristL.rotation.x=-deg(80)],
   ['cadera',()=>rig.hip.rotation.x=-deg(110)],
   ['cadera izquierda',()=>rig.hipL.rotation.x=-deg(110)],
@@ -140,6 +156,7 @@ const poses=[
   ['triceps overhead medio',()=>{rig.shoulder.rotation.x=-deg(165);rig.shoulderL.rotation.x=-deg(165);rig.elbow.rotation.x=-deg(60);rig.elbowL.rotation.x=-deg(60)}],
   ['triceps overhead extendido',()=>{rig.shoulder.rotation.x=-deg(165);rig.shoulderL.rotation.x=-deg(165);rig.elbow.rotation.x=-deg(10);rig.elbowL.rotation.x=-deg(10)}],
 ];
+const neutralWristPositions={R:rig.wrist.getWorldPosition(new THREE.Vector3()),L:rig.wristL.getWorldPosition(new THREE.Vector3())};
 const report=[];
 const linkGaps=new Map();
 const tricepsGaps=new Map();
@@ -147,6 +164,11 @@ const unmovedByPose=[];
 for(const [name,setPose] of poses){
   for(const node of Object.values(rig))node.rotation.set(0,0,0);
   setPose();root.updateMatrixWorld(true);
+  if(name==='pronación'||name==='pronación izquierda'){
+    const side=name.endsWith('izquierda')?'L':'R',wrist=rig['wrist'+(side==='L'?'L':'')].getWorldPosition(new THREE.Vector3());
+    const drift=wrist.distanceTo(neutralWristPositions[side]);
+    if(drift>1e-6)throw Error(`${name}: el eje radiocubital desplaza la muñeca ${drift.toFixed(4)} m y separa mano/cúbito`);
+  }
   for(const suffix of ['', 'L'])for(const [key,share] of [['gluteMax',.24],['gluteMed',.32],['gluteMin',.38]]){
     const hip=rig['hip'+suffix].rotation;
     rig[key+suffix].rotation.set(hip.x*share,hip.y*share,hip.z*share);
@@ -161,7 +183,7 @@ for(const [name,setPose] of poses){
   syncSkinProxies();
   root.updateMatrixWorld(true);
   let maxStretch=0,maxStretchName='',maxMeshP95=0,maxMeshP95Name='',maxLink=0,maxLinkName='',maxLinkRoute='';const stretchValues=[];
-  const jointForPose={cuello:'head',mandíbula:'jaw',hombro:'shoulder',codo:'elbow',pronación:'forearm','muñeca/mano':'wrist','codo izquierdo':'elbowL','pronación izquierda':'forearmL','muñeca izquierda':'wristL',cadera:'hip','cadera izquierda':'hipL','rodilla/isquios':'knee',tobillo:'ankle','tobillo izquierdo':'ankleL','brazo izquierdo':'shoulderL','pierna izquierda':'kneeL','triceps overhead flexionado':'elbow','triceps overhead medio':'elbow','triceps overhead extendido':'elbow'}[name];
+  const jointForPose={cuello:'head','flexión cervical':'head','extensión cervical':'head',mandíbula:'jaw',hombro:'shoulder',codo:'elbow',pronación:'forearm','muñeca/mano':'wrist','codo izquierdo':'elbowL','pronación izquierda':'forearmL','muñeca izquierda':'wristL',cadera:'hip','cadera izquierda':'hipL','rodilla/isquios':'knee',tobillo:'ankle','tobillo izquierdo':'ankleL','brazo izquierdo':'shoulderL','pierna izquierda':'kneeL','triceps overhead flexionado':'elbow','triceps overhead medio':'elbow','triceps overhead extendido':'elbow'}[name];
   const unmoved=[];
   for(const record of records){
     const mesh=record.mesh,ids=[0,Math.floor(mesh.geometry.attributes.position.count/2),mesh.geometry.attributes.position.count-1];
