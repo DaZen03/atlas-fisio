@@ -5,12 +5,12 @@
   "type": "module",
   "description": "Atlas académico de anatomía funcional y biomecánica con visor 3D interactivo.",
   "scripts": {
-    "build:pages": "node tools/site-menu.cjs && node tools/build-study-guides.cjs && node tools/build-biomechanics-pages.cjs && node tools/build-view-pages.cjs",
+    "build:pages": "node tools/site-menu.cjs && node tools/build-study-guides.cjs && node tools/build-biomechanics-pages.cjs && node tools/build-view-pages.cjs && node tools/build-insertions-page.cjs",
     "build:bundles": "esbuild dist/app.js --bundle --format=esm --target=es2022 --minify --outfile=dist/app.bundle.js && esbuild dist/app.js --bundle --format=iife --target=es2022 --minify --outfile=standalone-bundle.js",
     "build:standalone": "node build-standalone.cjs",
     "build": "npm run build:pages && npm run build:bundles && npm run build:standalone && node tools/version-assets.cjs auto",
     "serve": "node serve.cjs",
-    "test": "node validate.mjs && node test-extra-animations.mjs && node test-hip-hinge.mjs && node test-moment-arm.mjs && node test-muscle-colors.mjs && node test-muscle-spread.mjs && node tools/test-study-tools.mjs && node tools/test-site-menu.cjs && node tools/test-version-assets.cjs && node tools/check-site-links.cjs"
+    "test": "node validate.mjs && node diagnose-motion-rig.mjs && node test-extra-animations.mjs && node test-hip-hinge.mjs && node test-moment-arm.mjs && node test-muscle-colors.mjs && node test-muscle-spread.mjs && node tools/test-study-tools.mjs && node tools/test-site-menu.cjs && node tools/test-version-assets.cjs && node tools/check-site-links.cjs"
   },
   "dependencies": {
     "three": "0.180.0"

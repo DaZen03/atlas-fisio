@@ -19,7 +19,7 @@ const commonTermGlossary={
   'escápula':'omóplato','húmero':'hueso del brazo','radio':'hueso del antebrazo del lado del pulgar','cúbito':'hueso del antebrazo del lado del meñique','ulna':'cúbito, hueso del lado del meñique','fémur':'hueso del muslo','tibia':'hueso grande de la pierna','fíbula':'peroné, hueso fino externo de la pierna','peroné':'fíbula, hueso fino externo de la pierna','patela':'rótula, hueso anterior de la rodilla','talo':'hueso superior del tobillo','talus':'talo, hueso superior del tobillo','calcáneo':'hueso del talón','clavícula':'hueso entre el pecho y el hombro','acromion':'punta ósea superior del hombro','trocánter mayor':'prominencia lateral de la cadera','tuberosidad':'prominencia o bulto del hueso',
   'deltoides':'músculo que forma la parte redondeada del hombro','pectoral mayor':'músculo grande del pecho','bíceps braquial':'músculo de delante del brazo que dobla el codo','bíceps':'músculo de delante del brazo','tríceps':'músculo de atrás del brazo que endereza el codo','iliopsoas':'músculo profundo que eleva el muslo','glúteo medio':'músculo lateral de la cadera que estabiliza la pelvis','isquiotibiales':'grupo muscular de la parte posterior del muslo','cuádriceps':'grupo muscular de delante del muslo','gastrocnemio':'gemelos, músculo superficial de la pantorrilla','sóleo':'músculo profundo de la pantorrilla','tibial anterior':'músculo delantero de la pierna que levanta el pie','manguito rotador':'grupo de músculos pequeños que estabiliza el hombro','tendón calcáneo':'tendón de Aquiles',
   'supraespinoso':'músculo de arriba de la escápula que ayuda a elevar el brazo','infraespinoso':'músculo posterior del hombro que ayuda a girar el brazo hacia fuera','serrato anterior':'músculo de las costillas que ayuda a mover y fijar la escápula','braquial':'músculo situado bajo el bíceps que dobla el codo','braquiorradial':'músculo del antebrazo que ayuda a doblar el codo','glúteo mayor':'músculo grande de la nalga que extiende la cadera','glúteo menor':'músculo profundo lateral de la cadera','erectores espinales':'grupo muscular que ayuda a enderezar y sostener la columna','esternocleidomastoideo':'músculo a los lados del cuello que gira la cabeza','pronador redondo':'músculo que ayuda a girar la palma hacia abajo','pronador cuadrado':'músculo profundo del antebrazo que gira la palma hacia abajo',
-  'origen':'punto de fijación del músculo, usado como referencia','inserción':'punto donde el músculo se fija al otro segmento','agonista':'músculo que más contribuye a la acción','sinergia':'trabajo coordinado de varios músculos','sinergista':'músculo que ayuda al principal','fascia':'capa de tejido que envuelve y conecta estructuras','línea de tracción':'dirección en la que tira el músculo','brazo de momento':'distancia perpendicular entre el eje y la fuerza','brazo externo':'distancia perpendicular desde el eje hasta la carga','momento de fuerza':'efecto de giro de una fuerza','momento externo':'efecto de giro que produce una carga sobre la articulación','torque':'efecto de giro de una fuerza','excéntricamente':'mientras el músculo controla el movimiento al alargarse','fuerza de reacción del suelo':'empuje del suelo sobre el cuerpo','cadena cinética':'movimiento conectado entre varias partes del cuerpo','unidades motoras':'grupos de fibras musculares activados por un nervio'
+  'origen':'punto de fijación del músculo, usado como referencia','inserción':'punto donde el músculo se fija al otro segmento','tendón':'tejido resistente que transmite tensión entre músculo y hueso','aponeurosis':'lámina tendinosa ancha','entesis':'zona de unión del tendón o ligamento con el hueso','unión miotendinosa':'transición entre músculo y tendón','ligamento':'tejido que conecta huesos entre sí','agonista':'músculo que más contribuye a la acción','sinergia':'trabajo coordinado de varios músculos','sinergista':'músculo que ayuda al principal','fascia':'capa de tejido que envuelve y conecta estructuras','línea de tracción':'dirección en la que tira el músculo','brazo de momento':'distancia perpendicular entre el eje y la fuerza','brazo externo':'distancia perpendicular desde el eje hasta la carga','momento de fuerza':'efecto de giro de una fuerza','momento externo':'efecto de giro que produce una carga sobre la articulación','torque':'efecto de giro de una fuerza','excéntricamente':'mientras el músculo controla el movimiento al alargarse','fuerza de reacción del suelo':'empuje del suelo sobre el cuerpo','cadena cinética':'movimiento conectado entre varias partes del cuerpo','unidades motoras':'grupos de fibras musculares activados por un nervio'
 };
 const normalizeTerm=value=>value.toLocaleLowerCase('es').normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 const commonTermsByKey=Object.fromEntries(Object.entries(commonTermGlossary).map(([term,meaning])=>[normalizeTerm(term),meaning]));
@@ -766,7 +766,7 @@ $('fullscreen-separate-selected').addEventListener('click',toggleSeparateSelecte
 $('fullscreen-reset-separation').addEventListener('click',()=>{$('explode-slider').value='0';updateLayers()});
 $('muscle-opacity').addEventListener('input',()=>updateLayers());
 $('isolate-structure').addEventListener('click',()=>{isolateSelected=!isolateSelected;updateLayers();highlightStructure()});
-$('reset-explore').addEventListener('click',()=>{isolateSelected=false;separateSelected=false;$('explode-slider').value='0';$('separation-plane').value='multi';$('muscle-opacity').value='100';$('layer-bones').checked=true;$('layer-muscles').checked=true;updateLayers();highlightStructure()});
+$('reset-explore').addEventListener('click',()=>{isolateSelected=false;separateSelected=false;$('explode-slider').value='0';$('separation-plane').value='multi';$('muscle-opacity').value='100';$('layer-bones').checked=true;$('layer-muscles').checked=true;$('layer-tendons').checked=false;updateLayers();highlightStructure()});
 $('structure-search').addEventListener('input',()=>renderStructures());
 $('structure-region').addEventListener('change',event=>{browseRegion=event.target.value;structureFilter='Todas';$('structure-search').value='';const first=structures.find(s=>browseRegion==='all'||sectionForStructure(s)===browseRegion);if(first&&!structures.some(s=>s.id===activeStructure&&(browseRegion==='all'||sectionForStructure(s)===browseRegion))){selectStructure(first.id);structureFilter='Todas'}else renderStructures()});
 $('source-search').addEventListener('input',()=>renderSources());
@@ -815,7 +815,7 @@ $('muscle-opacity').value='100';
 renderPlaneTabs();renderMovementList();renderDetail();renderMachineStudy();renderQuizCategories();renderStructures();renderPartPicker();renderSources();renderAudit();renderJointMap();renderFreeControls();startQuiz('head');
 
 let scene,camera,renderer,bodyRoot,boneRoot,muscleRoot,surfaceRoot,markerRoot,guideGroup,planeMeshes,axisArrow;
-let armR,legR,arms={},legs={},headGroup,jawGroup,raycaster,highlighted=[];
+let armR,legR,arms={},legs={},scapulae={},headGroup,jawGroup,raycaster,highlighted=[];
 let updateTouchSelection=()=>{};
 const DEFAULT_DISTANCE=8.4,MIN_DISTANCE=.55,MAX_DISTANCE=32;
 let yaw=-.32,pitch=.07,distance=DEFAULT_DISTANCE,viewTarget=-.32;
@@ -825,7 +825,8 @@ const pickables=[];
 const anatomicalMuscles=[];
 const tendonBindings=[];
 const muscleMotionBindings=[];
-let tendonLines=null;
+const skinnedMuscleBindings=[];
+let tendonLines=null,tendonMarkers=null;
 const neutralRigInverse={};
 let isolateSelected=false;
 let separateSelected=false;
@@ -1135,6 +1136,8 @@ function applyPose(){
     for(const [key,share] of [['gluteMax',.24],['gluteMed',.32],['gluteMin',.38]]){
       leg[key].rotation.set(hip.x*share,hip.y*share,hip.z*share);
     }
+    const shoulder=arms[side].shoulder.rotation,scapula=scapulae[side];
+    if(scapula)scapula.rotation.set(shoulder.x*.32,shoulder.y*.18,shoulder.z*.36);
   }
   updateMuscleDeformation();updateMuscleSeparations();updatePlaneGuide();
 }
@@ -1143,7 +1146,8 @@ function muscleAnchors(info){
   const id=info.structure;
   // El vientre del deltoides cubre el húmero; mantenerlo en el brazo evita que la mezcla rígida lo arrastre al torso.
   if(id==='deltoid')return ['shoulder'+suffix,'shoulder'+suffix];
-  if(['pectoralis','supraspinatus','infraspinatus','subscapularis','teresminor','teresmajor'].includes(id))return ['static','shoulder'+suffix,'out'];
+  if(['supraspinatus','infraspinatus','subscapularis','teresminor','teresmajor'].includes(id))return ['scapula'+suffix,'shoulder'+suffix,'out'];
+  if(id==='pectoralis')return ['static','shoulder'+suffix,'out'];
   // El vientre del coracobraquial sigue el húmero; mezclar una malla rígida con la escápula lo desplazaba en elevaciones.
   if(id==='coracobrachialis')return ['shoulder'+suffix];
   if(id==='neckmuscles'||id==='scalenes')return ['static','head','up'];
@@ -1159,9 +1163,10 @@ function muscleAnchors(info){
   // La cabeza larga conserva su origen anatómico en la escápula en la ficha; mezclar el torso en una malla rígida
   // la hacía salir del brazo al elevarlo sobre la cabeza.
   if(id==='triceps')return ['shoulder'+suffix,'elbow'+suffix,'down'];
-  if(['brachialis','anconeus'].includes(id))return ['shoulder'+suffix,'elbow'+suffix,'down'];
-  if(['forearmflexors','forearmextensors','wristflexors','wristextensors','thumbtendons'].includes(id))return ['elbow'+suffix,'wrist'+suffix,'down','forearm'+suffix];
-  if(['pronators','supinator'].includes(id))return ['elbow'+suffix,'forearm'+suffix,'down'];
+  if(id==='brachialis')return ['shoulder'+suffix,'elbow'+suffix,'down'];
+  if(id==='anconeus')return ['elbow'+suffix,'elbow'+suffix,'down'];
+  if(['forearmflexors','forearmextensors','wristflexors','wristextensors','thumbtendons'].includes(id))return ['forearm'+suffix,'wrist'+suffix,'down','forearm'+suffix];
+  if(['pronators','supinator'].includes(id))return ['forearm'+suffix,'forearm'+suffix,'down'];
   if(id==='tensorfasciae')return ['static','hip'+suffix,'down'];
   if(id==='hamstrings'&&info.name.includes('short head of'))return ['knee'+suffix,'knee'+suffix];
   if(id==='sartorius'||info.name.includes('rectus femoris')||id==='hamstrings')return ['static','knee'+suffix,'down','hip'+suffix];
@@ -1174,12 +1179,17 @@ function muscleAnchors(info){
 function muscleDominant(info,anchors){
   const gluteGroup={gluteusmaximus:'gluteMax',gluteus:'gluteMed',gluteusminimus:'gluteMin'}[info.structure];
   if(gluteGroup)return gluteGroup+(info.name.includes('left ')?'L':'');
-  if(['pectoralis','supraspinatus','infraspinatus','subscapularis','teresminor','teresmajor','iliopsoas','hiprotators','tensorfasciae'].includes(info.structure))return 'static';
+  if(['supraspinatus','infraspinatus','subscapularis','teresminor','teresmajor'].includes(info.structure))return 'scapula'+(info.name.includes('left ')?'L':'');
+  if(['pectoralis','iliopsoas','tensorfasciae'].includes(info.structure))return 'static';
   return anchors[3]||(anchors[0]==='static'?anchors[1]:anchors[0]);
 }
 function muscleMotionWeights(anchors,info){
   const keys=[...new Set([anchors[0],anchors[1],anchors[3]].filter(Boolean))];
   if(keys.length===1)return [{key:keys[0],weight:1}];
+  // Los rotadores profundos son mallas muy cortas entre pelvis y fémur. Una
+  // deformación continua las retuerce; una transformación intermedia conserva
+  // su volumen y mantiene ambos extremos próximos a sus referencias.
+  if(info?.structure==='hiprotators'&&keys.includes('static'))return keys.map(key=>({key,weight:key==='static'?.60:.40}));
   if(keys.length===2&&keys.includes('static')&&['trapezius','rhomboids','serratus','pectoralisminor','subclavius','scalenes'].includes(info?.structure))
     return keys.map(key=>({key,weight:key==='static'?.78:.22}));
   const dominant=muscleDominant(info,anchors);
@@ -1205,11 +1215,26 @@ function muscleJointPivot(rig,dominant,anchor){
 function updateMuscleDeformation(){
   if(!bodyRoot)return;
   bodyRoot.updateMatrixWorld(true);
-  const rootInverse=bodyRoot.matrixWorld.clone().invert(),delta={static:new THREE.Matrix4().identity()};
+  const rootInverse=bodyRoot.matrixWorld.clone().invert(),delta={static:new THREE.Matrix4().identity()},rigLocal={static:new THREE.Matrix4().identity()};
   for(const key of Object.keys(neutralRigInverse)){
-    const node=key==='head'?headGroup:key==='jaw'?jawGroup:key.endsWith('L')?(arms.L[key.slice(0,-1)]||legs.L[key.slice(0,-1)]):(arms.R[key]||legs.R[key]);
-    if(node)delta[key]=rootInverse.clone().multiply(node.matrixWorld).multiply(neutralRigInverse[key]);
+    const node=key==='head'?headGroup:key==='jaw'?jawGroup:key.startsWith('scapula')?scapulae[key.endsWith('L')?'L':'R']:key.endsWith('L')?(arms.L[key.slice(0,-1)]||legs.L[key.slice(0,-1)]):(arms.R[key]||legs.R[key]);
+    if(node){rigLocal[key]=rootInverse.clone().multiply(node.matrixWorld);delta[key]=rigLocal[key].clone().multiply(neutralRigInverse[key])}
   }
+  for(const binding of skinnedMuscleBindings){
+    const localFor=key=>key==='static'?staticPivotTransform(rigLocal[binding.staticPivotKey]):rigLocal[key];
+    if(binding.bridge){
+      const from=localFor(binding.bridge.from),to=localFor(binding.bridge.to);
+      for(let index=0;index<binding.bridge.bones.length;index++)setRigBlend(binding.bridge.bones[index],from,to,index/binding.steps);
+      continue;
+    }
+    const dominantLocal=localFor(binding.dominant);
+    setRigBlend(binding.dominantBone,dominantLocal,dominantLocal,0);
+    for(const chain of binding.chains){
+      const anchorLocal=localFor(chain.anchor);
+      for(let index=0;index<chain.bones.length;index++)setRigBlend(chain.bones[index],dominantLocal,anchorLocal,(index+1)/binding.steps);
+    }
+  }
+  bodyRoot.updateMatrixWorld(true);
   for(const binding of muscleMotionBindings){
     const {position,rotation}=blendMuscleDeltas(binding.weights,delta);
     binding.group.position.copy(position);binding.group.quaternion.copy(rotation);binding.group.updateMatrix();
@@ -1242,6 +1267,98 @@ function muscleEndpoint(mesh,toRoot,pivot){
     if(point.distanceToSquared(pivot)<=limit){center.add(point);count++}
   }
   return center.multiplyScalar(1/Math.max(1,count));
+}
+function localizedSkinData(mesh,toRoot,rig,anchors,dominant,info){
+  const anchorKeys=[...new Set([anchors[0],anchors[1]].filter(key=>key&&key!==dominant&&rig[key]))];
+  if(!anchorKeys.length||dominant.startsWith('glute')||['neckmuscles','scalenes','deepneck','suprahyoid','tonguemuscles','brachialis','hiprotators'].includes(info.structure))return null;
+  // Ocho zonas ofrecen una transición continua sin multiplicar en exceso el
+  // trabajo por fotograma en móviles; la auditoría geométrica comprueba que la
+  // reducción conserva uniones y deformaciones dentro de los límites.
+  const positions=mesh.geometry.attributes.position,count=positions.count,steps=8;
+  const rootToLocal=toRoot.clone().invert(),vertex=new THREE.Vector3();
+  const attachments=anchorKeys.map(key=>{
+    const pivot=muscleJointPivot(rig,dominant,key).getWorldPosition(new THREE.Vector3()).applyMatrix4(bodyRoot.matrixWorld.clone().invert());
+    const endpoint=muscleEndpoint(mesh,toRoot,pivot).applyMatrix4(rootToLocal);
+    let minimum=Infinity,maximum=0;
+    for(let index=0;index<count;index++){vertex.fromBufferAttribute(positions,index);const distance=vertex.distanceTo(endpoint);minimum=Math.min(minimum,distance);maximum=Math.max(maximum,distance)}
+    return {key,endpoint,minimum,span:Math.max(.001,maximum-minimum)};
+  });
+  const skinIndices=new Uint16Array(count*4),skinWeights=new Float32Array(count*4);
+  if(attachments.length===2){
+    const axis=attachments[1].endpoint.clone().sub(attachments[0].endpoint),axisLengthSq=Math.max(1e-8,axis.lengthSq());
+    const relative=new THREE.Vector3();
+    for(let index=0;index<count;index++){
+      vertex.fromBufferAttribute(positions,index);const amount=THREE.MathUtils.clamp(relative.copy(vertex).sub(attachments[0].endpoint).dot(axis)/axisLengthSq,0,1),scaled=amount*steps;
+      const lower=Math.floor(scaled),upper=Math.min(steps,lower+1),mix=scaled-lower;
+      skinIndices[index*4]=lower;skinWeights[index*4]=1-mix;skinIndices[index*4+1]=upper;skinWeights[index*4+1]=mix;
+    }
+    return {dominant,anchorKeys,steps,bridge:true,skinIndices,skinWeights};
+  }
+  for(let index=0;index<count;index++){
+    vertex.fromBufferAttribute(positions,index);
+    const distances=attachments.map(({endpoint})=>vertex.distanceTo(endpoint));
+    const baseInfluence=attachments.map(({minimum,span},slot)=>1-THREE.MathUtils.clamp((distances[slot]-minimum)/span,0,1));
+    const boneIndex=(chain,level)=>level===0?0:1+chain*steps+(level-1);
+    if(attachments.length===1){
+      const scaled=baseInfluence[0]*steps,lower=Math.floor(scaled),upper=Math.min(steps,lower+1),mix=scaled-lower;
+      skinIndices[index*4]=boneIndex(0,lower);skinWeights[index*4]=1-mix;
+      skinIndices[index*4+1]=boneIndex(0,upper);skinWeights[index*4+1]=mix;continue
+    }
+    const powered=baseInfluence.map(value=>value**6),total=powered.reduce((sum,value)=>sum+value,0);
+    if(total<1e-8){skinIndices[index*4]=0;skinWeights[index*4]=1;continue}
+    for(let chain=0;chain<attachments.length;chain++){
+      const scaled=baseInfluence[chain]*steps,lower=Math.floor(scaled),upper=Math.min(steps,lower+1),mix=scaled-lower,share=powered[chain]/total,slot=chain*2;
+      skinIndices[index*4+slot]=boneIndex(chain,lower);skinWeights[index*4+slot]=(1-mix)*share;
+      skinIndices[index*4+slot+1]=boneIndex(chain,upper);skinWeights[index*4+slot+1]=mix*share;
+    }
+  }
+  return {dominant,anchorKeys,steps,skinIndices,skinWeights};
+}
+const skinBlendScratch={fromPosition:new THREE.Vector3(),fromRotation:new THREE.Quaternion(),fromScale:new THREE.Vector3(),toPosition:new THREE.Vector3(),toRotation:new THREE.Quaternion(),toScale:new THREE.Vector3()};
+function setRigBlend(bone,fromMatrix,toMatrix,t){
+  const {fromPosition,fromRotation,fromScale,toPosition,toRotation,toScale}=skinBlendScratch;
+  fromMatrix.decompose(fromPosition,fromRotation,fromScale);toMatrix.decompose(toPosition,toRotation,toScale);
+  bone.position.lerpVectors(fromPosition,toPosition,t);bone.quaternion.copy(fromRotation).slerp(toRotation,t);bone.scale.lerpVectors(fromScale,toScale,t);bone.updateMatrix();
+}
+function staticPivotTransform(matrix){
+  const position=new THREE.Vector3(),rotation=new THREE.Quaternion(),scale=new THREE.Vector3();matrix.decompose(position,rotation,scale);
+  return new THREE.Matrix4().compose(position,new THREE.Quaternion(),new THREE.Vector3(1,1,1));
+}
+function convertToSkinnedMuscle(mesh,info,anchors,dominant,rig,toRoot){
+  const data=localizedSkinData(mesh,toRoot,rig,anchors,dominant,info);if(!data)return null;
+  const geometry=mesh.geometry.clone();
+  geometry.setAttribute('skinIndex',new THREE.Uint16BufferAttribute(data.skinIndices,4));
+  geometry.setAttribute('skinWeight',new THREE.Float32BufferAttribute(data.skinWeights,4));
+  const skinned=new THREE.SkinnedMesh(geometry,mesh.material);
+  skinned.name=mesh.name;skinned.position.copy(mesh.position);skinned.quaternion.copy(mesh.quaternion);skinned.scale.copy(mesh.scale);
+  skinned.userData={...mesh.userData};
+  skinned.visible=mesh.visible;skinned.renderOrder=mesh.renderOrder;skinned.castShadow=mesh.castShadow;skinned.receiveShadow=mesh.receiveShadow;
+  const parent=mesh.parent;parent.add(skinned);parent.remove(mesh);skinned.updateMatrixWorld(true);
+  const rootInverse=bodyRoot.matrixWorld.clone().invert(),staticPivotKey=data.dominant==='static'?data.anchorKeys[0]:data.dominant;
+  const localFor=key=>key==='static'?staticPivotTransform(rootInverse.clone().multiply(rig[staticPivotKey].matrixWorld)):rootInverse.clone().multiply(rig[key].matrixWorld);
+  if(data.bridge){
+    const from=data.anchorKeys[0],to=data.anchorKeys[1],fromLocal=localFor(from),toLocal=localFor(to),bones=[];
+    for(let step=0;step<=data.steps;step++){const bone=new THREE.Bone();bone.name=`atlas-skin-${info.name}-bridge-${step}`;bodyRoot.add(bone);setRigBlend(bone,fromLocal,toLocal,step/data.steps);bones.push(bone)}
+    bodyRoot.updateMatrixWorld(true);const skeleton=new THREE.Skeleton(bones);skinned.bind(skeleton,skinned.matrixWorld.clone());skinned.frustumCulled=false;
+    skinnedMuscleBindings.push({mesh:skinned,dominant:data.dominant,bridge:{from,to,bones},steps:data.steps,staticPivotKey,structure:info.structure,name:info.name});
+    return skinned;
+  }
+  const dominantBone=new THREE.Bone();dominantBone.name=`atlas-skin-${info.name}-base`;bodyRoot.add(dominantBone);
+  const dominantLocal=localFor(data.dominant);setRigBlend(dominantBone,dominantLocal,dominantLocal,0);
+  const bones=[dominantBone],chains=[];
+  for(const anchor of data.anchorKeys){
+    const anchorLocal=localFor(anchor),chain=[];
+    for(let step=1;step<=data.steps;step++){
+      const bone=new THREE.Bone();bone.name=`atlas-skin-${info.name}-${anchor}-${step}`;bodyRoot.add(bone);
+      setRigBlend(bone,dominantLocal,anchorLocal,step/data.steps);chain.push(bone);bones.push(bone);
+    }
+    chains.push({anchor,bones:chain});
+  }
+  bodyRoot.updateMatrixWorld(true);
+  const skeleton=new THREE.Skeleton(bones);
+  skinned.bind(skeleton,skinned.matrixWorld.clone());skinned.frustumCulled=false;
+  skinnedMuscleBindings.push({mesh:skinned,dominant:data.dominant,dominantBone,chains,steps:data.steps,staticPivotKey,structure:info.structure,name:info.name});
+  return skinned;
 }
 function muscleSpreadDirections(rootCenter,bodyCenter,bodyRadii,side){
   const delta=rootCenter.clone().sub(bodyCenter);
@@ -1322,9 +1439,11 @@ function updateLayers(){
       const matchesOtherSide=selectedStructureSide!=='L'||!link.name.includes('right ');
       link.enabled=(!isolateSelected||selectedIsMuscle&&selected.has(link.structure)&&(!selectedName||selectedName===link.name))&&matchesSide&&matchesOtherSide;
     }
-    tendonLines.visible=visible.muscles&&Number($('explode-slider').value)===0;
+    const showTendons=$('layer-tendons').checked&&visible.muscles&&Number($('explode-slider').value)===0;
+    tendonLines.visible=showTendons;if(tendonMarkers)tendonMarkers.visible=showTendons;
     tendonLines.material.opacity=Number($('muscle-opacity').value)/100*.65;
     tendonLines.material.needsUpdate=true;
+    if(tendonMarkers){tendonMarkers.material.opacity=Number($('muscle-opacity').value)/100*.9;tendonMarkers.material.needsUpdate=true}
     updateMuscleDeformation();
   }
   $('explode-value').textContent=`${$('explode-slider').value}%`;
@@ -1417,10 +1536,14 @@ function loadAnatomicalMeshes(){
       leg.ankle.position.copy(joints[`ankle${suffix}`].clone().sub(joints[`knee${suffix}`]));
     }
     headGroup.position.copy(joints.neck);
+    for(const side of ['R','L']){
+      const suffix=side==='L'?'L':'',scapula=new THREE.Group();scapula.position.copy(joints[`shoulder${suffix}`]);bodyRoot.add(scapula);scapulae[side]=scapula;
+    }
     bodyRoot.add(gltf.scene);
     bodyRoot.updateMatrixWorld(true);
     const rig={static:bodyRoot,head:headGroup,jaw:jawGroup};
     for(const side of ['R','L'])for(const joint of ['shoulder','elbow','forearm','wrist','hip','knee','ankle'])rig[joint+(side==='L'?'L':'')]=arms[side][joint]||legs[side][joint];
+    for(const side of ['R','L'])rig['scapula'+(side==='L'?'L':'')]=scapulae[side];
     for(const side of ['R','L'])for(const group of ['gluteMax','gluteMed','gluteMin'])rig[group+(side==='L'?'L':'')]=legs[side][group];
     bodyRoot.updateMatrixWorld(true);
     const rootInverse=bodyRoot.matrixWorld.clone().invert();
@@ -1438,7 +1561,8 @@ function loadAnatomicalMeshes(){
     }
     for(const entry of muscleGroupCenters.values())entry.center.multiplyScalar(1/entry.count);
     const assignedColors=[],groupSpreadDirections=new Map();
-    for(const mesh of meshes){
+    for(const sourceMesh of meshes){
+      let mesh=sourceMesh;
       const info=meshManifest[mesh.name];
       if(!info)continue;
       mesh.userData.layer=info.layer;mesh.userData.structure=info.structure;
@@ -1449,17 +1573,27 @@ function loadAnatomicalMeshes(){
         mesh.updateMatrixWorld(true);
         const toRoot=rootInverse.clone().multiply(mesh.matrixWorld);
         const dominant=muscleDominant(info,anchors);
-        const follower=dominant.startsWith('glute')?null:new THREE.Group();
-        if(follower)bodyRoot.add(follower);
+        const pendingLinks=[];
         for(const anchor of [anchors[0],anchors[1]].filter(Boolean))if(anchor!==dominant){
           const pivot=muscleJointPivot(rig,dominant,anchor).getWorldPosition(new THREE.Vector3()).applyMatrix4(rootInverse);
-          tendonBindings.push({structure:info.structure,name:info.name,dominant,anchor,follower,point:muscleEndpoint(mesh,toRoot,pivot),enabled:true});
+          pendingLinks.push({anchor,point:muscleEndpoint(mesh,toRoot,pivot)});
         }
-        if(follower){
-          follower.attach(mesh);
-          muscleMotionBindings.push({group:follower,weights:muscleMotionWeights(anchors,info)});
-        }else rig[dominant].attach(mesh);
-      }else rig[info.structure==='mandible'?'jaw':info.segment].attach(mesh);
+        const skinned=convertToSkinnedMuscle(mesh,info,anchors,dominant,rig,toRoot);
+        let follower=null;
+        if(skinned)mesh=skinned;
+        else{
+          follower=dominant.startsWith('glute')?null:new THREE.Group();
+          if(follower)bodyRoot.add(follower);
+          if(follower){
+            follower.attach(mesh);
+            muscleMotionBindings.push({group:follower,weights:muscleMotionWeights(anchors,info)});
+          }else rig[dominant].attach(mesh);
+        }
+        for(const link of pendingLinks)tendonBindings.push({structure:info.structure,name:info.name,dominant,anchor:link.anchor,follower,point:link.point,enabled:true});
+      }else{
+        const side=info.name.includes('left ')?'L':'',segment=info.structure==='mandible'?'jaw':info.structure==='scapula'?'scapula'+side:info.segment;
+        rig[segment].attach(mesh);
+      }
       if(info.layer==='muscles'){
         mesh.material=mesh.material.clone();
         mesh.material.color.setHex(musclePalette[colorIndex]);
@@ -1478,8 +1612,9 @@ function loadAnatomicalMeshes(){
     if(tendonBindings.length){
       const geometry=new THREE.BufferGeometry();
       geometry.setAttribute('position',new THREE.BufferAttribute(new Float32Array(tendonBindings.length*6),3).setUsage(THREE.DynamicDrawUsage));
-      tendonLines=new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:0xd2c5ae,transparent:true,opacity:.65,depthWrite:false}));
-      tendonLines.frustumCulled=false;bodyRoot.add(tendonLines);
+      tendonLines=new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:0xe9bd57,transparent:true,opacity:.65,depthWrite:false}));
+      tendonMarkers=new THREE.Points(geometry,new THREE.PointsMaterial({color:0xffde82,size:.032,sizeAttenuation:true,transparent:true,opacity:.9,depthWrite:false}));
+      tendonLines.frustumCulled=false;tendonMarkers.frustumCulled=false;bodyRoot.add(tendonLines,tendonMarkers);
     }
     removeProceduralFallback();
     anatomicalModelLoaded=true;
@@ -1708,7 +1843,7 @@ function init3D(){
   }
   requestAnimationFrame(frame);
 }
-try{init3D();viewerInteractionsReady=true;prepareQuizModelForCurrentQuestion();const startParams=new URLSearchParams(location.search),startMovement=startParams.get('movimiento');if(startMovement)applyMovementToModel(startMovement,{machine:startParams.get('maquina'),focus:true,autoplay:true});loadAnatomicalMeshes()}catch(error){
+try{const startParams=new URLSearchParams(location.search),startMovement=startParams.get('movimiento'),insertionMode=startParams.get('inserciones')==='1';if(insertionMode){$('layer-tendons').checked=true;$('layer-plane').checked=false;$('muscle-opacity').value='82'}init3D();viewerInteractionsReady=true;prepareQuizModelForCurrentQuestion();if(startMovement)applyMovementToModel(startMovement,{machine:startParams.get('maquina'),focus:true,autoplay:true});loadAnatomicalMeshes()}catch(error){
   console.error('No se pudo iniciar el visor 3D. Comprueba WebGL y la aceleración por hardware del navegador.',error);
   const fallback=$('canvas-fallback'),detail=String(error?.cause?.message||error?.message||'error desconocido').slice(0,180);
   fallback.textContent=`El visor 3D falló durante ${viewerInitPhase}. Comprueba WebGL y la aceleración por hardware. Detalle: ${detail}`;

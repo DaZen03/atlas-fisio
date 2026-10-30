@@ -11,6 +11,7 @@ const groups = [
   ['Explora el cuerpo', [
     ['explorar', 'Atlas 3D', 'vistas/explorar.html', 'Capas y movimientos'],
     ['estructuras', 'Estructuras', 'vistas/estructuras.html', 'Huesos y músculos'],
+    ['inserciones', 'Inserciones y tendones', 'inserciones/index.html', 'Fijaciones y entesis'],
     ['articulaciones', 'Articulaciones', 'vistas/articulaciones.html', 'Mapa por región'],
     ['animaciones', 'Animaciones', 'vistas/animaciones.html', 'Fases del gesto']
   ]],
