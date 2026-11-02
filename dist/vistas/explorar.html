@@ -8,8 +8,8 @@
   <meta name="description" content="Explora el modelo anatómico, sus movimientos y el mapa articular.">
   <title>Atlas 3D · Atlas del movimiento humano</title>
   <script>const atlasView=new URLSearchParams(location.search).get('vista');if(['aprender','explorar','animaciones','articulaciones','estructuras','practicar','verificacion','formatos','fuentes'].includes(atlasView))document.documentElement.dataset.atlasView=atlasView;</script>
-  <link rel="stylesheet" href="./styles.css?v=c363f63059d0">
-  <link rel="stylesheet" href="./site-menu.css?v=c363f63059d0">
+  <link rel="stylesheet" href="./styles.css?v=5779fff6cde0">
+  <link rel="stylesheet" href="./site-menu.css?v=5779fff6cde0">
 </head>
 <body>
   <header class="topbar">
@@ -287,12 +287,12 @@
       </div>
     </section>
 
-    <section class="sources" id="fuentes"><div class="sources-intro"><span class="section-num">BIBLIOGRAFÍA Y CRÉDITOS</span><h2>Fuentes abiertas para seguir aprendiendo.</h2><p>Las referencias se agrupan por tema. Cada ficha anatómica y movimiento enlaza las fuentes usadas en su explicación; aquí puedes consultar el conjunto completo.</p><p class="sources-credit">Mallas 3D: BodyParts3D, © The Database Center for Life Science, CC Attribution 4.0 International. Visor construido con Three.js.</p></div><div class="sources-catalog"><label class="structure-search-label" for="source-search">BUSCAR REFERENCIA</label><input id="source-search" class="structure-search" type="search" placeholder="Ej. cadera, músculo, deporte" autocomplete="off"><p id="source-count" role="status"></p><div class="source-list" id="source-list"></div></div></section>
+    <section class="sources" id="fuentes"><div class="sources-intro"><span class="section-num">BIBLIOGRAFÍA Y CRÉDITOS</span><h2>Fuentes abiertas para seguir aprendiendo.</h2><p>Las referencias se agrupan por tema. Cada ficha anatómica y movimiento enlaza las fuentes usadas en su explicación; aquí puedes consultar el conjunto completo.</p><p class="sources-credit">Mallas 3D: BodyParts3D, © The Database Center for Life Science, CC Attribution 4.0 International. Visor construido con Three.js.</p></div><div class="sources-catalog"><section class="legal-sources" aria-labelledby="legal-sources-title"><span class="section-num">PROCEDENCIA Y LICENCIAS</span><h3 id="legal-sources-title">Qué modelo se utiliza y bajo qué permiso</h3><article><div><strong>BodyParts3D · mallas anatómicas</strong><span class="license-badge">CC BY 4.0</span></div><p>Es la única fuente geométrica de las 610 mallas del cuerpo. Se seleccionaron piezas, transformaron coordenadas, redujeron polígonos un 99 %, añadieron materiales y convirtieron a GLB.</p><p class="legal-credit">Atribución exigida: “BodyParts3D, © The Database Center for Life Science licensed under CC Attribution 4.0 International”.</p><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/lic.html" target="_blank" rel="noopener noreferrer">Licencia oficial ↗</a><a href="https://dbarchive.biosciencedbc.jp/en/bodyparts3d/download.html" target="_blank" rel="noopener noreferrer">Datos originales ↗</a></article><article><div><strong>MediaPipe Pose Landmarker Lite · análisis opcional</strong><span class="license-badge">Apache 2.0</span></div><p>No forma parte del cuerpo 3D. Se descarga al iniciar el análisis de vídeo para estimar puntos corporales; el vídeo se procesa localmente en el dispositivo.</p><a href="https://github.com/google-ai-edge/mediapipe/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">Licencia del proyecto ↗</a><a href="./MEDIAPIPE-NOTICES.md">Avisos del modelo y privacidad ↗</a></article><article><div><strong>Three.js 0.180.0 · motor del visor</strong><span class="license-badge">MIT</span></div><p>Es la biblioteca que renderiza el GLB; no aporta anatomía ni certificación médica.</p><a href="https://github.com/mrdoob/three.js/blob/dev/LICENSE" target="_blank" rel="noopener noreferrer">Licencia oficial ↗</a><a href="./THIRD_PARTY_NOTICES.txt">Avisos incluidos ↗</a></article><aside><strong>No están incorporados como activos</strong><p>OpenSim, OpenCap, Sports2D y Z-Anatomy se citan como referencias o candidatos de investigación. Sus mallas, modelos o trayectorias no se redistribuyen en esta versión.</p></aside></section><label class="structure-search-label" for="source-search">BUSCAR REFERENCIA ACADÉMICA</label><input id="source-search" class="structure-search" type="search" placeholder="Ej. cadera, músculo, deporte" autocomplete="off"><p id="source-count" role="status"></p><div class="source-list" id="source-list"></div></div></section>
   </main>
   <button type="button" id="mobile-viewer-open" class="mobile-viewer-open" aria-controls="body-canvas" aria-expanded="false">◎ Ver modelo 3D</button>
   <button type="button" id="restore-viewer" class="restore-viewer" aria-controls="body-canvas" hidden>◎ Mostrar visor 3D</button>
   <footer><span>ATLAS / MOVIMIENTO</span><span>USO ACADÉMICO Y EDUCATIVO · 2026</span><a href="#inicio">VOLVER ARRIBA ↑</a></footer>
-  <script type="module" src="./app.bundle.js?v=c363f63059d0"></script>
+  <script type="module" src="./app.bundle.js?v=5779fff6cde0"></script>
 </body>
 </html>
 

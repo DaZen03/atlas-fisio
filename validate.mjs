@@ -165,6 +165,9 @@ check(app.includes('function groundedPose(')&&app.includes('function musclePalet
 check(app.includes("info.structure==='mandible'?'jaw':info.structure==='scapula'?'scapula'+side:info.segment"), 'La mandíbula no está vinculada al pivote temporomandibular.');
 check(!standalone.includes('src="./app.bundle.js"') && !standalone.includes('href="./styles.css"'), 'HTML autónomo con archivos externos locales.');
 for(const file of ['./dist/vistas/comunidad.html','./dist/vistas/normas-comunidad.html','./dist/vistas/admin-comunidad.html','./dist/community.js','./dist/community.css','./dist/community-admin.js','./dist/community-admin.css','./docs/community-supabase-schema.sql'])check(fs.existsSync(file),`Falta el recurso de comunidad ${file}.`);
+check(fs.existsSync('./dist/THIRD_PARTY_NOTICES.txt'),'Falta el aviso legal de activos y dependencias.');
+for(const phrase of ['PROCEDENCIA Y LICENCIAS','BodyParts3D · mallas anatómicas','MediaPipe Pose Landmarker Lite · análisis opcional','Three.js 0.180.0 · motor del visor','No están incorporados como activos'])check(html.includes(phrase),`Falta información legal visible: ${phrase}.`);
+check(html.includes('redujeron polígonos un 99 %')&&html.includes('CC BY 4.0'),'La atribución de BodyParts3D debe indicar licencia y modificaciones.');
 if(fs.existsSync('./dist/vistas/admin-comunidad.html')){
   const adminPage=fs.readFileSync('./dist/vistas/admin-comunidad.html','utf8');
   check(adminPage.includes('Administrar perfiles')&&adminPage.includes('Jhostyn')&&adminPage.includes('community-admin.js'),'El panel no identifica la sesión administrativa o no carga su lógica.');
