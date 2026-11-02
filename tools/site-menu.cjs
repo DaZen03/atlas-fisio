@@ -19,6 +19,9 @@ const groups = [
     ['biomecanica', 'Biomecánica', 'biomecanica/index.html', 'Palancas y carga'],
     ['analisis', 'Analizar vídeo', 'analisis.html', 'Observación por fases']
   ]],
+  ['Comunidad', [
+    ['comunidad', 'Foro académico', 'vistas/comunidad.html', 'Pregunta, cita y debate']
+  ]],
   ['Consulta', [
     ['verificacion', 'Verificación', 'vistas/verificacion.html', 'Alcance del modelo'],
     ['formatos', 'Formatos', 'vistas/formatos.html', 'Archivos del atlas'],

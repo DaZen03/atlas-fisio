@@ -164,6 +164,20 @@ check(app.includes('function updateMuscleDeformation()')&&app.includes('muscleAn
 check(app.includes('function groundedPose(')&&app.includes('function musclePaletteIndex('), 'Faltan la coordinación de los gestos o el contraste muscular.');
 check(app.includes("info.structure==='mandible'?'jaw':info.structure==='scapula'?'scapula'+side:info.segment"), 'La mandíbula no está vinculada al pivote temporomandibular.');
 check(!standalone.includes('src="./app.bundle.js"') && !standalone.includes('href="./styles.css"'), 'HTML autónomo con archivos externos locales.');
+for(const file of ['./dist/vistas/comunidad.html','./dist/vistas/normas-comunidad.html','./dist/vistas/admin-comunidad.html','./dist/community.js','./dist/community.css','./dist/community-admin.js','./dist/community-admin.css','./docs/community-supabase-schema.sql'])check(fs.existsSync(file),`Falta el recurso de comunidad ${file}.`);
+if(fs.existsSync('./dist/vistas/admin-comunidad.html')){
+  const adminPage=fs.readFileSync('./dist/vistas/admin-comunidad.html','utf8');
+  check(adminPage.includes('Administrar perfiles')&&adminPage.includes('Jhostyn')&&adminPage.includes('community-admin.js'),'El panel no identifica la sesión administrativa o no carga su lógica.');
+}
+if(fs.existsSync('./dist/community-admin.js')){
+  const adminJs=fs.readFileSync('./dist/community-admin.js','utf8');
+  check(adminJs.includes("name:'Jhostyn'")&&adminJs.includes("name:'Gerardo'")&&adminJs.includes("role:'admin'"),'Faltan los dos administradores de demostración.');
+  check(!/password|service_role|anon_key/i.test(adminJs),'El cliente administrativo no debe incluir contraseñas ni claves de servicio.');
+}
+if(fs.existsSync('./docs/community-supabase-schema.sql')){
+  const communitySql=fs.readFileSync('./docs/community-supabase-schema.sql','utf8');
+  check(communitySql.includes('is_community_admin')&&communitySql.includes('admins update community profiles'),'Falta protección RLS para editar otros usuarios.');
+}
 if (failures.length) {
   console.error(failures.join('\n'));
   process.exitCode = 1;

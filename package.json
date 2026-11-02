@@ -5,7 +5,7 @@
   "type": "module",
   "description": "Atlas académico de anatomía funcional y biomecánica con visor 3D interactivo.",
   "scripts": {
-    "build:pages": "node tools/site-menu.cjs && node tools/build-study-guides.cjs && node tools/build-biomechanics-pages.cjs && node tools/build-view-pages.cjs && node tools/build-insertions-page.cjs",
+    "build:pages": "node tools/site-menu.cjs && node tools/build-study-guides.cjs && node tools/build-biomechanics-pages.cjs && node tools/build-view-pages.cjs && node tools/build-insertions-page.cjs && node tools/build-community-page.cjs && node tools/build-community-admin.cjs",
     "build:bundles": "esbuild dist/app.js --bundle --format=esm --target=es2022 --minify --outfile=dist/app.bundle.js && esbuild dist/app.js --bundle --format=iife --target=es2022 --minify --outfile=standalone-bundle.js",
     "build:standalone": "node build-standalone.cjs",
     "build": "npm run build:pages && npm run build:bundles && npm run build:standalone && node tools/version-assets.cjs auto",
