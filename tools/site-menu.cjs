@@ -16,6 +16,7 @@ const groups = [
     ['animaciones', 'Animaciones', 'vistas/animaciones.html', 'Fases del gesto']
   ]],
   ['Aplica lo aprendido', [
+    ['ejercicios', 'Biblioteca de ejercicios', 'vistas/ejercicios.html', 'Del gesto al cuerpo'],
     ['biomecanica', 'Biomecánica', 'biomecanica/index.html', 'Palancas y carga'],
     ['analisis', 'Analizar vídeo', 'analisis.html', 'Observación por fases']
   ]],

@@ -5,7 +5,7 @@ const { renderSiteMenu } = require('./site-menu.cjs');
 
 const sample = renderSiteMenu('../', 'biomecanica');
 for (const group of ['Empieza aquí','Explora el cuerpo','Aplica lo aprendido','Comunidad','Consulta']) assert.ok(sample.includes(group), `Falta la categoría ${group}`);
-assert.equal([...sample.matchAll(/<a href=/g)].length, 15);
+assert.equal([...sample.matchAll(/<a href=/g)].length, 16);
 assert.match(sample, /href="\.\.\/biomecanica\/index\.html" aria-current="page"/);
 
 const root = path.join(__dirname, '..', 'dist');
