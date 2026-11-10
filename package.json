@@ -10,7 +10,7 @@
     "build:standalone": "node build-standalone.cjs",
     "build": "npm run build:pages && npm run build:bundles && npm run build:standalone && node tools/version-assets.cjs auto",
     "serve": "node serve.cjs",
-    "test": "node validate.mjs && node diagnose-motion-rig.mjs && node test-extra-animations.mjs && node test-hip-hinge.mjs && node test-moment-arm.mjs && node test-muscle-colors.mjs && node test-muscle-spread.mjs && node tools/test-study-tools.mjs && node tools/test-site-menu.cjs && node tools/test-version-assets.cjs && node tools/check-site-links.cjs"
+    "test": "node validate.mjs && node diagnose-motion-rig.mjs && node test-extra-animations.mjs && node test-hip-hinge.mjs && node test-movement-playback.mjs && node test-moment-arm.mjs && node test-muscle-colors.mjs && node test-muscle-spread.mjs && node tools/test-study-tools.mjs && node tools/test-site-menu.cjs && node tools/test-version-assets.cjs && node tools/check-site-links.cjs"
   },
   "dependencies": {
     "three": "0.180.0"

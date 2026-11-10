@@ -155,6 +155,7 @@ function renderDetail(){
   updateReadout();
 }
 function smootherStep(t){t=THREE.MathUtils.clamp(t,0,1);return t*t*t*(t*(t*6-15)+10)}
+function playbackAdvance(elapsed,speed){return Math.min(250,Math.max(0,elapsed))*.027*speed}
 function guidedFraction(m=movements[activeMovement]){const t=THREE.MathUtils.clamp(progress/100,0,1);return m.base?t:smootherStep(t)}
 function renderLoadFocus(){
   $('load-focus').hidden=false;
@@ -725,12 +726,15 @@ function renderJointMap(){
   $('joint-map-grid').innerHTML=Object.entries(jointExplorer).map(([key,joint],index)=>`<button type="button" class="joint-map-card" data-joint-map="${key}"><span class="num">${String(index+1).padStart(2,'0')} / ARTICULACIÓN</span><strong>${withCommonTerms(joint.name,2)}</strong><span>${withCommonTerms(joint.type,3)}</span><span>${withCommonTerms(joint.bones,3)}</span><span class="go">Enfocar zona y explorar ↗</span></button>`).join('');
   document.querySelectorAll('[data-joint-map]').forEach(button=>button.addEventListener('click',()=>{freeJoint=button.dataset.jointMap;freeAction=jointExplorer[freeJoint].actions[0].id;freeRegion=regionFor(freeJoint,freeSide);setPoseMode('free');document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});requestAnimationFrame(()=>focusJoint(freeJoint,freeSide))}));
 }
-function selectMovement(index,{autoplay=false}={}){
+function selectMovement(index,{autoplay=false,focus=true}={}){
   activeMovement=index;progress=0;poseDirection=1;playing=false;$('play-button').textContent='▶';$('play-button').setAttribute('aria-label','Reproducir movimiento');
   $('motion-slider').value='0';renderPlaneTabs();renderMovementList();renderDetail();applyPose();updateMomentLab();updatePlaneGuide();
   selectedMeshName='';
   selectStructure(movements[index].highlight,{side:movements[index].side||'R'});
-  if(movements[index].grounded||['hiphinge','squat','lunge'].includes(movements[index].id))setView('side');
+  // La flexión sagital vista de frente ocurre casi en profundidad y parece
+  // inmóvil. Elegir una vista legible forma parte de iniciar el gesto.
+  setView(movements[index].plane==='sagital'?'side':movements[index].plane==='transversal'?'oblique':'front');
+  if(focus)frameMovement(movements[index]);
   if(autoplay){playing=true;$('play-button').textContent='Ⅱ';$('play-button').setAttribute('aria-label','Pausar movimiento');syncQuickControl()}
 }
 function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true,autoplay=false}={}){
@@ -738,14 +742,7 @@ function applyMovementToModel(movementId,{machine=null,scroll=false,focus=true,a
   if(index<0){console.warn(`Movimiento no disponible para el visor: ${movementId}`);return false}
   if(poseMode!=='guided')setPoseMode('guided');
   if(machine)renderMachineStudy(machine);
-  selectMovement(index,{autoplay});
-  if(focus){
-    const jointKey=movementJoint[movementId]||movementJoint[movements[index].base];
-    requestAnimationFrame(()=>{
-      if(anatomicalModelLoaded)focusSelection();
-      else if(jointKey)focusJoint(jointKey,movements[index].side==='L'?'L':'R');
-    });
-  }
+  selectMovement(index,{autoplay,focus});
   if(scroll)document.querySelector('.explorer .controls').scrollIntoView({behavior:'smooth',block:'start'});
   return true;
 }
@@ -1193,7 +1190,12 @@ function applyPose(){
     if(m.id==='knee')legR.knee.rotation.x=rad;
     if(m.id==='ankle')legR.ankle.rotation.x=-rad;
     if(m.id==='plantar')legR.ankle.rotation.x=rad;
-    if(m.id==='hiprot')legR.hip.rotation.y=-rad;
+    if(m.id==='hiprot'){
+      // La rodilla flexionada deja ver el giro axial a través del pie.
+      // Sin esta referencia, la pierna casi recta parece inmóvil.
+      legR.hip.rotation.y=-rad;
+      legR.knee.rotation.x=deg(35);
+    }
     if(m.id==='hiphinge'||m.id==='squat'){
       const motion=m.id==='hiphinge'?hipHingePose(visualProgress):squatPose(visualProgress);
       bodyRoot.rotation.x=motion.torso;bodyRoot.position.copy(motion.position);
@@ -1751,10 +1753,35 @@ function focusJoint(jointKey,side=freeSide){
   setDistance(focusDistances[jointKey]||2.2);
   updateCamera();
 }
+function frameMovement(movement){
+  if(!bodyRoot||!camera)return;
+  // En gestos globales, acercarse solo al músculo resaltado deja el tronco
+  // fuera del encuadre y hace parecer que la bisagra no se reproduce.
+  const wholeBody=movement.grounded||['hiphinge','squat','lunge'].includes(movement.id);
+  if(wholeBody){
+    cameraTarget.set(0,-.18,0);
+    const halfHorizontal=Math.tan(THREE.MathUtils.degToRad(camera.fov)/2)*camera.aspect;
+    setDistance(Math.max(DEFAULT_DISTANCE,1.8/Math.max(.08,halfHorizontal)));
+    updateCamera();
+    return;
+  }
+  const jointKey=movementJoint[movement.id]||movementJoint[movement.base];
+  if(jointKey){
+    focusJoint(jointKey,movement.side==='L'?'L':'R');
+    // Incluye el segmento distal: el giro puede ocurrir fuera del primer plano
+    // si la cámara se centra únicamente en el marcador articular.
+    const movementDistance={shoulder:4.1,elbow:3.1,radioulnar:2.9,wrist:2.4,hip:4.7,knee:3.5,ankle:2.5,neck:2.25,tmj:1.8};
+    setDistance(Math.max(distance,movementDistance[jointKey]||distance));
+    if(jointKey==='hip')cameraTarget.y-=.55;
+    else if(jointKey==='knee')cameraTarget.y-=.4;
+    else if(jointKey==='shoulder')cameraTarget.y-=.3;
+    updateCamera();
+  }
+}
 function setView(v){
-  viewTarget={front:0,side:Math.PI/2,back:Math.PI}[v];
+  viewTarget={front:0,side:Math.PI/2,back:Math.PI,oblique:-Math.PI/4}[v];
   document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===v));
-  $('stage-view').textContent=`VISTA ${v==='front'?'ANTERIOR':v==='side'?'LATERAL':'POSTERIOR'} · 3D`;
+  $('stage-view').textContent=`VISTA ${v==='front'?'ANTERIOR':v==='side'?'LATERAL':v==='oblique'?'OBLICUA':'POSTERIOR'} · 3D`;
 }
 document.querySelectorAll('[data-view]').forEach(btn=>btn.addEventListener('click',()=>setView(btn.dataset.view)));
 $('focus-selection').addEventListener('click',focusSelection);
@@ -1928,10 +1955,13 @@ function init3D(){
   canvas.addEventListener('pointerleave',()=>tooltip.style.display='none');
   canvas.addEventListener('wheel',e=>{e.preventDefault();setDistance(distance*Math.exp(e.deltaY*.0012));},{passive:false});
   function frame(time){
-    const dt=Math.min(50,time-lastTime||16);lastTime=time;
+    const elapsed=Math.max(0,time-lastTime||16),dt=Math.min(50,elapsed);
+    // El recorrido se mide en tiempo real. Limitarlo a 50 ms por fotograma
+    // hacía que los gestos de cuerpo entero parecieran congelados en equipos lentos.
+    lastTime=time;
     if(document.hidden){setTimeout(()=>requestAnimationFrame(frame),300);return}
     if(window.innerWidth<=760&&!mobileViewerOpen&&!persistentAtlasViewer){setTimeout(()=>requestAnimationFrame(frame),250);return}
-    if(playing){progress+=dt*.027*Number($('motion-speed').value)*poseDirection;if(progress>=100){progress=100;if($('motion-repeat').checked)poseDirection=-1;else{playing=false;$('play-button').textContent='▶'}}if(progress<=0&&poseDirection<0){progress=0;poseDirection=1;if(!$('motion-repeat').checked){playing=false;$('play-button').textContent='▶'}}$('motion-slider').value=String(progress);applyPose();updateReadout();updateMomentLab()}
+    if(playing){progress+=playbackAdvance(elapsed,Number($('motion-speed').value))*poseDirection;if(progress>=100){progress=100;if($('motion-repeat').checked)poseDirection=-1;else{playing=false;$('play-button').textContent='▶'}}if(progress<=0&&poseDirection<0){progress=0;poseDirection=1;if(!$('motion-repeat').checked){playing=false;$('play-button').textContent='▶'}}$('motion-slider').value=String(progress);applyPose();updateReadout();updateMomentLab()}
     if(viewTarget!==null){let delta=((viewTarget-yaw+Math.PI*3)%(Math.PI*2))-Math.PI;yaw+=delta*.12;if(Math.abs(delta)<.002)viewTarget=null}
     if(navVector.x||navVector.y){yaw-=navVector.x*dt*.0023;pitch=Math.max(-.9,Math.min(.9,pitch+navVector.y*dt*.0018))}
     updateCamera();renderer.render(scene,camera);requestAnimationFrame(frame);
